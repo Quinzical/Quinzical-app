@@ -36,5 +36,9 @@ public class GameModel {
 	public void addScore(int score) {
 		_score.addWinnings(score);
 	}
+	
+	public int getScore() {
+		return _score.getCurrentScore();
+	}
 
 }

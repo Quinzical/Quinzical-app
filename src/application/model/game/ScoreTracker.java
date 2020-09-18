@@ -59,10 +59,4 @@ public class ScoreTracker {
 		int currentScore = Integer.parseInt(score);
 		return currentScore;
 	}
-
-	public String getScore() {
-		int winnings = getCurrentScore();
-		return "$" + winnings;
-	}
-
 }
