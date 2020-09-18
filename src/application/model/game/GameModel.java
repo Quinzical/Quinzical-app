@@ -1,33 +1,26 @@
-package application.model;
-
-import application.model.game.GameFiles;
-import application.model.game.ScoreTracker;
+package application.model.game;
 
 public class GameModel {
 	
 	private static GameModel _instance;
 	
-	private SetUpFiles _practiceModule = new SetUpFiles();
-	private GameFiles _gameModule = new GameFiles();
+	private GameFiles _gameFiles = new GameFiles();
 	private ScoreTracker _score = new ScoreTracker();
 	
 	private GameModel() {
 	}
 	
-	public GameModel getInstance() {
+	public static GameModel getInstance() {
 		if (_instance == null) {
 			_instance = new GameModel();
 		}
 		return _instance;
 	}
 	
-	public void startGame() {
-		//Set up files for practice module
-		_practiceModule.setUpGame();
-		
+	public void setUpGameModule() {
 		//Set up files for game module
-		_gameModule = new GameFiles();
-		_gameModule.setUpGameModule();
+		_gameFiles = new GameFiles();
+		_gameFiles.setUpGameModule();
 		
 		//Set up score tracker
 		_score.setUpScore();

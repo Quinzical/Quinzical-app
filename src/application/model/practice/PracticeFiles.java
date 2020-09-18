@@ -1,16 +1,16 @@
-package application.model;
+package application.model.practice;
 
 import java.io.File;
 
-public class SetUpFiles {
+public class PracticeFiles {
 
 	private final String _fileSeparator = System.getProperty("file.separator");
 	private final String _currentDir = System.getProperty("user.dir");
 
-	public SetUpFiles() {
+	public PracticeFiles() {
 	}
 
-	public void setUpGame() {
+	public void setUpPracticeModule() {
 		//Create subdirectory for game files if not already created
 		String gameData = _currentDir + _fileSeparator + "data";
 		File dataDir = new File(gameData);
