@@ -1,5 +1,5 @@
 package application.model;
 
-public class copyFiles {
+public class CopyFiles {
 
 }
