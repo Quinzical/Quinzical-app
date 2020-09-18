@@ -27,4 +27,9 @@ public class ScoreTracker {
 		}
 	}
 
+	public void addWinnings(int score) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -5,18 +5,36 @@ import application.model.game.ScoreTracker;
 
 public class GameModel {
 	
-	public static void main(String[] args) {
+	private static GameModel _instance;
+	
+	private SetUpFiles _practiceModule = new SetUpFiles();
+	private GameFiles _gameModule = new GameFiles();
+	private ScoreTracker _score = new ScoreTracker();
+	
+	private GameModel() {
+	}
+	
+	public GameModel getInstance() {
+		if (_instance == null) {
+			_instance = new GameModel();
+		}
+		return _instance;
+	}
+	
+	public void startGame() {
 		//Set up files for practice module
-		SetUpFiles setUp = new SetUpFiles();
-		setUp.setUpGame();
+		_practiceModule.setUpGame();
 		
 		//Set up files for game module
-		GameFiles game = new GameFiles();
-		game.setUpGameModule();
+		_gameModule = new GameFiles();
+		_gameModule.setUpGameModule();
 		
 		//Set up score tracker
-		ScoreTracker score = new ScoreTracker();
-		score.setUpScore();
+		_score.setUpScore();
+	}
+	
+	public void addScore(int score) {
+		_score.addWinnings(score);
 	}
 
 }
