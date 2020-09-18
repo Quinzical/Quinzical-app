@@ -2,6 +2,8 @@ package application.model.game;
 
 import java.io.File;
 
+import application.model.helper.FileHelper;
+
 public class GameFiles {
 
 	public static String CURRENTUSER = "default";
@@ -14,35 +16,18 @@ public class GameFiles {
 	public void setUpGameModule() {
 		//Create subdirectory for users if not already created
 		String user = _currentDir + _fileSeparator + "data" + _fileSeparator + "users";
-		File userDir = new File(user);
-		if (!userDir.exists()) {
-			if (!userDir.isDirectory()) {
-				userDir.mkdir();
-			}
-		}
+		FileHelper.makeDirectory(user);
 
 		String currentDir = setUpUser(user);
 
 		//Create subdirectory for category files if not already created
 		String categories = currentDir + _fileSeparator + "categories";
-		File categoryDir = new File(categories);
-		if (!categoryDir.exists()) {
-			if (!categoryDir.isDirectory()) {
-				categoryDir.mkdir();
-			}
-		}
-
-
+		FileHelper.makeDirectory(categories);
 	}
 
 	private String setUpUser(String userDir) {
 		String user = userDir + _fileSeparator + CURRENTUSER;
-		File dirForUser = new File(user);
-		if (!dirForUser.exists()) {
-			if (!dirForUser.isDirectory()) {
-				dirForUser.mkdir();
-			}
-		}
+		FileHelper.makeDirectory(user);
 		return user;
 	}
 
