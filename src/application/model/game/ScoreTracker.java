@@ -1,8 +1,11 @@
 package application.model.game;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class ScoreTracker {
 
@@ -28,8 +31,38 @@ public class ScoreTracker {
 	}
 
 	public void addWinnings(int score) {
-		// TODO Auto-generated method stub
-		
+		int currentScore = getCurrentScore();
+		currentScore += score;
+
+		try {
+			File tempfile = new File("temp.txt");
+			File scoreFile = new File(_scoreFile);
+			PrintWriter out = new PrintWriter(new FileWriter(tempfile));
+			out.write(currentScore + System.getProperty("line.separator"));
+			out.close();
+			tempfile.renameTo(scoreFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public int getCurrentScore() {
+		String score = "0";
+
+		try {
+			BufferedReader in = new BufferedReader(new FileReader(_scoreFile));
+			score = in.readLine();
+			in.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		int currentScore = Integer.parseInt(score);
+		return currentScore;
+	}
+
+	public String getScore() {
+		int winnings = getCurrentScore();
+		return "$" + winnings;
 	}
 
 }
