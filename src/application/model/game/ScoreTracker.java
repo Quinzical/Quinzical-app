@@ -7,11 +7,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import application.model.helper.FileHelper;
+
 public class ScoreTracker {
 
-	private final String _fileSeparator = System.getProperty("file.separator");
-	private final String _currentDir = System.getProperty("user.dir");
-	private final String _scoreFile = _currentDir + _fileSeparator + "data" + _fileSeparator + "users" + _fileSeparator + GameFiles.CURRENTUSER + _fileSeparator + "score";
+	private final String _scoreFile = FileHelper.CURRENTDIR + FileHelper.FILESEPARATOR + "data" + FileHelper.FILESEPARATOR + "users" + FileHelper.FILESEPARATOR + GameFiles.CURRENTUSER + FileHelper.FILESEPARATOR + "score";
 
 	public ScoreTracker() {
 	}
@@ -33,7 +33,6 @@ public class ScoreTracker {
 	public void addWinnings(int score) {
 		int currentScore = getCurrentScore();
 		currentScore += score;
-
 		try {
 			File tempfile = new File("temp.txt");
 			File scoreFile = new File(_scoreFile);
@@ -48,7 +47,6 @@ public class ScoreTracker {
 	
 	public int getCurrentScore() {
 		String score = "0";
-
 		try {
 			BufferedReader in = new BufferedReader(new FileReader(_scoreFile));
 			score = in.readLine();
