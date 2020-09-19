@@ -18,5 +18,6 @@ public class PracticeModel {
 	
 	public void setUpPracticeModule() {
 		_practiceFiles.setUpPracticeModule();
+		_practiceFiles.copyCategories();
 	}
 }
