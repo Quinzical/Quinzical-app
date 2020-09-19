@@ -1,38 +1,20 @@
 package application.model.practice;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.PrintWriter;
+import application.model.helper.FileHelper;
 
 public class PracticeFiles {
-
-	private final String _fileSeparator = System.getProperty("file.separator");
-	private final String _currentDir = System.getProperty("user.dir");
-
-	private String _categoriesFolder = _currentDir + _fileSeparator + "data" +_fileSeparator + "categories";
 
 	public PracticeFiles() {
 	}
 
 	public void setUpPracticeModule() {
 		//Create subdirectory for game files if not already created
-		String gameData = _currentDir + _fileSeparator + "data";
-		File dataDir = new File(gameData);
-		if (!dataDir.exists()) {
-			if (!dataDir.isDirectory()) {
-				dataDir.mkdir();
-			}
-		}
+		String gameData = FileHelper.CURRENTDIR + FileHelper.FILESEPARATOR + "data";
+		FileHelper.makeDirectory(gameData);
 
 		//Create subdirectory for category files if not already created
-		File categoryDir = new File(_categoriesFolder);
-		if (!categoryDir.exists()) {
-			if (!categoryDir.isDirectory()) {
-				categoryDir.mkdir();
-			}
-		}
+		String categories = gameData + FileHelper.FILESEPARATOR + "categories";
+		FileHelper.makeDirectory(categories);
 	}
 
 	public void copyCategories() {
@@ -76,6 +58,4 @@ public class PracticeFiles {
 				}
 			}
 		}
-
-
 	}
