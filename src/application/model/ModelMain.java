@@ -25,9 +25,14 @@ public class ModelMain {
 		_gameModel.setUpGameModule();
 	}
 	
+	public String getQuestion() {
+		return _practiceModel.getQuestion("Geography");
+	}
+	
 	public static void main(String[] args) {
 		ModelMain main = ModelMain.getInstance();
 		main.startGame();
+		main.getQuestion();
 	}
 
 }

@@ -10,7 +10,7 @@ import application.model.helper.FileHelper;
 
 public class PracticeFiles {
 
-	String _categoryFolder;
+	public static String _categoryFolder;
 
 	public PracticeFiles() {
 	}

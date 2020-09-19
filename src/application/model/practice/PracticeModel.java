@@ -5,6 +5,7 @@ public class PracticeModel {
 	private static PracticeModel _instance;
 	
 	private PracticeFiles _practiceFiles = new PracticeFiles();
+	private QuestionQuery _questionQuery = new QuestionQuery();
 	
 	private PracticeModel() {
 	}
@@ -19,5 +20,9 @@ public class PracticeModel {
 	public void setUpPracticeModule() {
 		_practiceFiles.setUpPracticeModule();
 		_practiceFiles.copyCategories();
+	}
+	
+	public String getQuestion(String category) {
+		return _questionQuery.retrieveQuestion(category);
 	}
 }
