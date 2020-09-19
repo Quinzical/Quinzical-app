@@ -26,7 +26,9 @@ public class ModelMain {
 	}
 	
 	public String getQuestion() {
-		return _practiceModel.getQuestion("Geography");
+		System.out.println(_practiceModel.getPracticeQuestion("Geography"));
+		System.out.println(_practiceModel.checkPracticeAnswer("the waikato", 1));
+		return null;
 	}
 	
 	public static void main(String[] args) {

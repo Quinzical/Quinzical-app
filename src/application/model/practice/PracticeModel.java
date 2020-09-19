@@ -5,7 +5,7 @@ public class PracticeModel {
 	private static PracticeModel _instance;
 	
 	private PracticeFiles _practiceFiles = new PracticeFiles();
-	private QuestionQuery _questionQuery = new QuestionQuery();
+	private PracticeQuestionQuery _questionQuery = new PracticeQuestionQuery();
 	
 	private PracticeModel() {
 	}
@@ -22,7 +22,11 @@ public class PracticeModel {
 		_practiceFiles.copyCategories();
 	}
 	
-	public String getQuestion(String category) {
+	public String getPracticeQuestion(String category) {
 		return _questionQuery.retrieveQuestion(category);
+	}
+
+	public String checkPracticeAnswer(String userAnswer, int numberOfAttempts) {
+		return _questionQuery.checkAnswer(userAnswer, numberOfAttempts);
 	}
 }

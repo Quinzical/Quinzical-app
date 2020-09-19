@@ -8,12 +8,12 @@ import java.util.Arrays;
 
 import application.model.helper.FileHelper;
 
-public class QuestionQuery {
+public class PracticeQuestionQuery {
 
 	String _currentQuestion = null;
 	String _currentAnswer = null;
 
-	public QuestionQuery() {
+	public PracticeQuestionQuery() {
 	}
 
 	public String retrieveQuestion(String category) {
@@ -56,7 +56,7 @@ public class QuestionQuery {
 					if (count == randomNumber) {
 						String[] separated = line.split(",");
 						_currentAnswer = separated[separated.length - 1];
-						
+
 						//Clear question before changing it 
 						_currentQuestion = null;
 						for(int i = 0; i <= separated.length - 2; i++) {
@@ -79,7 +79,10 @@ public class QuestionQuery {
 	/**
 	 * Returns "Correct!" if answer is right, "Incorrect" followed by the correct answer if answer is wrong. 
 	 */
-	public String checkAnswer() {
-		return null;
+	public String checkAnswer(String userAnswer, int numberOfAttempts) {
+		if (userAnswer.toLowerCase().contains(_currentAnswer.toLowerCase())) {
+			return "Correct!";
+		}
+		return "Incorrect, the correct answer was: " + _currentAnswer;
 	}
 }
