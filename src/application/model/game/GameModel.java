@@ -19,8 +19,8 @@ public class GameModel {
 	
 	public void setUpGameModule() {
 		//Set up files for game module
-		_gameFiles = new GameFiles();
 		_gameFiles.setUpGameModule();
+		_gameFiles.randomiseCategories();
 		
 		//Set up score tracker
 		_score.setUpScore();

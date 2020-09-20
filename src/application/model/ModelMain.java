@@ -21,13 +21,21 @@ public class ModelMain {
 	}
 	
 	public void startGame() {
+		//Practice model must be set up before game model
 		_practiceModel.setUpPracticeModule();
 		_gameModel.setUpGameModule();
+	}
+	
+	public String getQuestion() {
+		System.out.println(_practiceModel.getPracticeQuestion("Geography"));
+		System.out.println(_practiceModel.checkPracticeAnswer("the waikato", 1));
+		return null;
 	}
 	
 	public static void main(String[] args) {
 		ModelMain main = ModelMain.getInstance();
 		main.startGame();
+		main.getQuestion();
 	}
 
 }
