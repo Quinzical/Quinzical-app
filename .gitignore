@@ -7,7 +7,6 @@
 *.nar
 hs_err_pid*
 
-
 # Eclipse
 .settings/
 bin/
@@ -34,7 +33,6 @@ out/
 *.iml
 *.ipr
 *.iws
-
 
 # OS X
 .DS_Store

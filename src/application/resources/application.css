@@ -1,7 +1,7 @@
 /* Application JavaFX css */
 
 .root {
-    -fx-background-image: url("innershadow.jpg");
+    -fx-background-image: url("./images/innershadow.jpg");
     -fx-background-repeat: no-repeat;
     -fx-background-size: auto 100%;
     -fx-background-position: right;
