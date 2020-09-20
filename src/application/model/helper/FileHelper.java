@@ -37,16 +37,13 @@ public class FileHelper {
 	}
 
 	public static int countFilesInDirectory(String directory) {
-		int count = 0;
 		File dir = new File(directory);
 		if (dir.exists()) {
 			if (dir.isDirectory()) {
-				for (File file : dir.listFiles()) {
-					count++;
-				}
+				return dir.listFiles().length;
 			}
-		}
-		return count;
+        }
+        return 0;
 	}
 
 	public static int countLinesinFile(File file) {
