@@ -75,14 +75,4 @@ public class PracticeQuestionQuery {
 			}
 		}
 	}
-
-	/**
-	 * Returns "Correct!" if answer is right, "Incorrect" followed by the correct answer if answer is wrong. 
-	 */
-	public String checkAnswer(String userAnswer, int numberOfAttempts) {
-		if (userAnswer.toLowerCase().contains(_currentAnswer.toLowerCase())) {
-			return "Correct!";
-		}
-		return "Incorrect, the correct answer was: " + _currentAnswer;
-	}
 }
