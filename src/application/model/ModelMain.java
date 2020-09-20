@@ -21,6 +21,7 @@ public class ModelMain {
 	}
 	
 	public void startGame() {
+		//Practice model must be set up before game model
 		_practiceModel.setUpPracticeModule();
 		_gameModel.setUpGameModule();
 	}
