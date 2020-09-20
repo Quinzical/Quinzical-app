@@ -41,29 +41,40 @@ public class GameFiles {
 	}
 
 	public void randomiseCategories() {
-		List<Integer> randomFiles = FileHelper.makeRandomList(5);
-		List<Integer> randomQuestions = FileHelper.makeRandomList(5);
-		createAndFillRandomFiles(randomFiles, randomQuestions);
+		List<Integer> randomFiles = FileHelper.makeRandomList(5, FileHelper.countFilesInDirectory(PracticeFiles._categoryFolder));
+		createAndFillRandomFiles(randomFiles);
 	}
 
-	private void createAndFillRandomFiles(List<Integer> randomFiles, List<Integer> randomQuestions) {
+	private void createAndFillRandomFiles(List<Integer> randomFiles) {
+		int currentNumberOfGameFiles = FileHelper.countFilesInDirectory(_userCategories);
 		int count = 1;
 		File categoriesDir = new File(PracticeFiles._categoryFolder);
+		
 		if (categoriesDir.exists()) {
 			if (categoriesDir.isDirectory()) {
 				for (File file : categoriesDir.listFiles()) {
-					if (randomFiles.contains(count)) {
+					if (currentNumberOfGameFiles == 5) {
+						return;
+					} else if (randomFiles.contains(count)) {
 						String fileName = file.getName();
-						String copyfileName = _userCategories + FileHelper.FILESEPARATOR + fileName;
-						File copyFile = new File(copyfileName);
+						String copyFileName = _userCategories + FileHelper.FILESEPARATOR + fileName;
+						File copyFile = new File(copyFileName);
+						
+						List<Integer> randomQuestions = FileHelper.makeRandomList(5, FileHelper.countLinesinFile(file));
+						int linecount = 1;
+						
 						if (!copyFile.exists()) {
 							//Copy content from one file to another
 							try {
 								BufferedReader in = new BufferedReader(new FileReader(file));
 								PrintWriter out = new PrintWriter(copyFile);
 								String line;
+								
 								while((line = in.readLine()) != null) {
-									out.println(line);
+									if (randomQuestions.contains(linecount)) {
+										out.println(line);
+									}
+									linecount++;
 								}
 								in.close();
 								out.close();
@@ -71,8 +82,8 @@ public class GameFiles {
 								e.printStackTrace();
 							}
 						}
-						count++;
 					}
+					count++;
 				}
 			}
 		}
