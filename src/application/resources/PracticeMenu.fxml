@@ -69,7 +69,7 @@
       </Button>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="NEVER">
          <children>
-            <Button alignment="CENTER" maxHeight="66.0" maxWidth="66.0" minHeight="66.0" minWidth="66.0" mnemonicParsing="false" onAction="#handleSettingsButton" prefHeight="66.0" prefWidth="66.0" styleClass="setting" textAlignment="CENTER">
+            <Button alignment="CENTER" maxHeight="66.0" maxWidth="66.0" minHeight="66.0" minWidth="66.0" mnemonicParsing="false" onAction="#handleSettingsButton" prefHeight="66.0" prefWidth="66.0" styleClass="setting-button" textAlignment="CENTER">
                <font>
                   <Font size="24.0" />
                </font>
