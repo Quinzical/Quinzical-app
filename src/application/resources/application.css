@@ -1,0 +1,64 @@
+/* Application JavaFX css */
+
+.root {
+    -fx-background-image: url("./images/innershadow.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: auto 100%;
+    -fx-background-position: right;
+    -fx-background-color: #5ECACF;
+}
+
+.transparent {
+    -fx-background: #54B5BA;
+}
+
+/****************** LABEL ******************/
+.header {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);	
+}
+.header.label {
+    -fx-font-family: "Century Gothic";
+    -fx-font-weight: bold;
+    -fx-font-size: 7.5em;
+}
+
+.outline.label .text {
+    -fx-fill: #A9B8FF;
+    -fx-stroke: #5271FF;
+    -fx-stroke-width: 2px;	
+}
+
+.shadow {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);	
+}
+
+/****************** Button ******************/
+
+.button {
+    -fx-background-color: #FFEB99;
+    -fx-font-family: "Century Gothic";
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 20, 0, 0, 0);
+}
+
+.button:hover {
+    -fx-background-color: #e3d188;
+}
+
+
+.setting-button {
+    -fx-background-repeat: repeat;
+    -fx-background-size: auto;
+}
+
+.play-button {
+    -fx-font-size: 36px;
+}
+
+.practice-button {
+    -fx-font-size: 36px;
+}
+
+.exit-button {
+    -fx-font-size: 24px;
+}
