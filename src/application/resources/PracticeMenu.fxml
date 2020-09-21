@@ -36,7 +36,7 @@
                   </Label>
                </children>
                <VBox.margin>
-                  <Insets />
+                  <Insets top="10.0" />
                </VBox.margin>
             </HBox>
             <Label text="Select a category:" textAlignment="CENTER">
