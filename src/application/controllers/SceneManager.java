@@ -102,7 +102,7 @@ public class SceneManager {
      */
     public void backScene() {
         _history.pop();
-        switchScene(_history.pop());
+        switchScene(_history.peek());
     }
 
     /**

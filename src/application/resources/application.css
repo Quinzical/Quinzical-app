@@ -1,72 +1,98 @@
-/* Application JavaFX css */
+/****************** root & backgrounds ******************/
 
 .root {
-    -fx-background-image: url("./images/innershadow.jpg");
-    -fx-background-repeat: no-repeat;
-    -fx-background-size: auto 100%;
-    -fx-background-position: right;
-    -fx-background-color: #5ECACF;
+  -fx-background-image: url("./images/innershadow.jpg");
+  -fx-background-repeat: no-repeat;
+  -fx-background-size: auto 100%;
+  -fx-background-position: right;
+  -fx-background-color: #5ecacf;
+}
+
+.background {
+  -fx-background: #54b5ba;
 }
 
 .transparent {
-    -fx-background: #54B5BA;
+  -fx-background-color: transparent;
 }
 
-/****************** LABEL ******************/
+/****************** Text Fields ******************/
+
+.question-field {
+    -fx-prompt-text-fill: #5271ff;
+    -fx-background-color: transparent;
+}
+
+.question-field .text-area .scroll-pane {
+  -fx-background-color: transparent;
+}
+
+.question-field .text-area .scroll-pane .viewport {
+  -fx-background-color: transparent;
+}
+
+.question-field .text-area .scroll-pane .content {
+  -fx-background-color: transparent;
+}
+
+/****************** Labels ******************/
 .header {
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);	
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 0);
 }
 .header.label {
-    -fx-font-family: "Century Gothic";
-    -fx-font-weight: bold;
-    -fx-font-size: 7.5em;
+  -fx-font-family: "Century Gothic";
+  -fx-font-weight: bold;
+  -fx-font-size: 7.5em;
 }
 
 .outline.label .text {
-    -fx-fill: #A9B8FF;
-    -fx-stroke: #5271FF;
-    -fx-stroke-width: 2px;	
+  -fx-fill: #a9b8ff;
+  -fx-stroke: #5271ff;
+  -fx-stroke-width: 2px;
 }
 
 .darkblue.label .text {
-    -fx-fill: #A9B8FF;
-    -fx-stroke: #5271FF;
-    -fx-font-weight: bold;
-    -fx-font-size: 40px;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 3, 0, 0, 0);
+  -fx-fill: #a9b8ff;
+  -fx-stroke: #5271ff;
+  -fx-font-weight: bold;
+  -fx-font-size: 40px;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 3, 0, 0, 0);
 }
 
 .shadow {
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);	
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 0);
 }
 
-/****************** Button ******************/
+/****************** Buttons ******************/
 
 .button {
-    -fx-background-color: #FFEB99;
-    -fx-font-family: "Century Gothic";
-    -fx-font-weight: bold;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 20, 0, 0, 0);
+  -fx-background-color: #ffeb99;
+  -fx-font-family: "Century Gothic";
+  -fx-font-weight: bold;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 20, 0, 0, 0);
+}
+
+.round-button {
+    -fx-background-radius: 30px;
 }
 
 .button:hover {
-    -fx-background-color: #e3d188;
+  -fx-background-color: #e3d188;
 }
 
-
 .setting-button {
-    -fx-background-repeat: repeat;
-    -fx-background-size: auto;
+  -fx-background-repeat: repeat;
+  -fx-background-size: auto;
 }
 
 .play-button {
-    -fx-font-size: 36px;
+  -fx-font-size: 36px;
 }
 
 .practice-button {
-    -fx-font-size: 36px;
+  -fx-font-size: 36px;
 }
 
 .exit-button {
-    -fx-font-size: 24px;
+  -fx-font-size: 24px;
 }
