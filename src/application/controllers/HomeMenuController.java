@@ -31,7 +31,7 @@ public class HomeMenuController {
      */
     @FXML
     void handlePlayButton(ActionEvent event) {
-        // TODO
+        _sceneManager.switchScene(Scenes.GAME_MENU);
     }
 
     /**

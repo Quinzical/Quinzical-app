@@ -26,7 +26,8 @@ public class SceneManager {
     private final static String PATH = "/application/resources/";
 
     public enum Scenes {
-        HOME_MENU("HomeMenu.fxml"), PRACTICE_MENU("PracticeMenu.fxml"), SETTINGS_MENU("SettingsMenu.fxml");
+        HOME_MENU("HomeMenu.fxml"), PRACTICE_MENU("PracticeMenu.fxml"), SETTINGS_MENU("SettingsMenu.fxml"),
+        QUESTION("Question.fxml"), GAME_MENU("GameMenu.fxml");
 
         private final String filename;
 
