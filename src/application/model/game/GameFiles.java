@@ -15,13 +15,28 @@ public class GameFiles {
 	public static String CURRENTUSER = "default";
 	private String _userCategories;
 
+	/**
+	 * This class is used to set up the necessary files for the games module. This includes setting up files to account for the need of different users in the project. 
+	 * later on. 
+	 * 
+	 * @author Maggie Pedersen
+	 * @author Cheng-Zhen Yang
+	 */
 	public GameFiles() {
 	}
 
+	/**
+	 * Used to set the current user of the game for the project later on. 
+	 * 
+	 * @param username
+	 */
 	public void setUser(String username) {
 		CURRENTUSER = "default";
 	}
 
+	/**
+	 * Method to create directories for storing game files for the games module.
+	 */
 	public void setUpGameModule() {
 		//Create subdirectory for users if not already created
 		String user = FileHelper.CURRENTDIR + FileHelper.FILESEPARATOR + "data" + FileHelper.FILESEPARATOR + "users";
@@ -34,17 +49,31 @@ public class GameFiles {
 		FileHelper.makeDirectory(_userCategories);
 	}
 
+	/**
+	 * Method to create directory for storing the given users data if not already created. 
+	 * 
+	 * @param userDir the directory where the users files should be stored
+	 * @return String the user directory
+	 */
 	private String setUpUser(String userDir) {
 		String user = userDir + FileHelper.FILESEPARATOR + CURRENTUSER;
 		FileHelper.makeDirectory(user);
 		return user;
 	}
 
+	/**
+	 * Used to randomise the categories that the user will be given for questioning.
+	 */
 	public void randomiseCategories() {
 		List<Integer> randomFiles = FileHelper.makeRandomList(5, FileHelper.countFilesInDirectory(PracticeFiles._categoryFolder));
 		createAndFillRandomFiles(randomFiles);
 	}
 
+	/**
+	 * Used to fill the random categories with five random questions.
+	 * 
+	 * @param randomFiles a list of random numbers for choosing files
+	 */
 	private void createAndFillRandomFiles(List<Integer> randomFiles) {
 		int currentNumberOfGameFiles = FileHelper.countFilesInDirectory(_userCategories);
 		int count = 1;

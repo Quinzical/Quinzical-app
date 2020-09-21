@@ -1,5 +1,12 @@
 package application.model.game;
 
+/**
+ * This class is used to delegate tasks to different classes who carry out tasks for the function of the games module based on what the user wants to do.
+ *  
+ * @author Maggie Pedersen
+ * @author Cheng-Zhen Yang
+ *
+ */
 public class GameModel {
 	
 	private static GameModel _instance;
@@ -10,6 +17,11 @@ public class GameModel {
 	private GameModel() {
 	}
 	
+	/**
+	 * Used to return the single instance of this class.
+	 * 
+	 * @return GameModel
+	 */
 	public static GameModel getInstance() {
 		if (_instance == null) {
 			_instance = new GameModel();
@@ -17,6 +29,9 @@ public class GameModel {
 		return _instance;
 	}
 	
+	/**
+	 * Used to set up the game module by calling the correct functions from supplementary classes.
+	 */
 	public void setUpGameModule() {
 		//Set up files for game module
 		_gameFiles.setUpGameModule();
@@ -26,10 +41,16 @@ public class GameModel {
 		_score.setUpScore();
 	}
 	
+	/**
+	 * Save score to the users file, based on how they did answering the question.
+	 */
 	public void addScore(int score) {
 		_score.addWinnings(score);
 	}
 	
+	/**
+	 * Get score from file to display to the user.
+	 */
 	public int getScore() {
 		return _score.getCurrentScore();
 	}
