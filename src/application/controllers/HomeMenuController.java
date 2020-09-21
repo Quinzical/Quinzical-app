@@ -1,23 +1,26 @@
 package application.controllers;
 
+import application.controllers.SceneManager.Scenes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 public class HomeMenuController {
 
+    private final SceneManager _sceneManager = SceneManager.getInstance();
+
     @FXML
     void handleExitButton(ActionEvent event) {
-        // TODO 
+        // TODO
     }
 
     @FXML
     void handlePlayButton(ActionEvent event) {
-        // TODO 
+        // TODO
     }
 
     @FXML
     void handlePracticeButton(ActionEvent event) {
-        // TODO 
+        _sceneManager.switchScene(Scenes.PRACTICE_MENU);
     }
 
     @FXML
