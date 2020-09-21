@@ -8,6 +8,12 @@ import java.util.Arrays;
 
 import application.model.helper.FileHelper;
 
+/**
+ * 
+ * 
+ * @author Maggie Pedersen
+ * @author Cheng-Zhen Yang
+ */
 public class PracticeQuestionQuery {
 
 	String _currentQuestion = null;
@@ -16,6 +22,12 @@ public class PracticeQuestionQuery {
 	public PracticeQuestionQuery() {
 	}
 
+	/**
+	 * Used to retrieve a random question based on the category chosen by the user. 
+	 * 
+	 * @param category
+	 * @return
+	 */
 	public String retrieveQuestion(String category) {
 		//Replace spaces from category to hyphen if not already done
 		category = category.replace(' ', '-');
@@ -23,28 +35,17 @@ public class PracticeQuestionQuery {
 		String questionStr = PracticeFiles._categoryFolder + FileHelper.FILESEPARATOR + category + ".txt";
 		File questionFile = new File(questionStr);
 
-		generateRandomQuestion(countNumberOfQuestions(questionFile), questionFile);
+		generateRandomQuestion(FileHelper.countLinesinFile(questionFile), questionFile);
 
 		return _currentQuestion;
 	}
 
-	private int countNumberOfQuestions(File questionFile) {
-		int count = 0;
-		if (questionFile.isFile()) {
-			try {
-				BufferedReader in = new BufferedReader(new FileReader(questionFile));
-				String line;
-				while((line = in.readLine()) != null) {
-					count++;
-				}
-				in.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		return count;
-	}
-
+	/**
+	 * Generate a random question based on the chosen category of the user.
+	 * 
+	 * @param numberOfQuestions the number of questions in a given category
+	 * @param questionFile      the file which contains the questions of a given category
+	 */
 	private void generateRandomQuestion(int numberOfQuestions, File questionFile) {
 		int randomNumber = 1 + (int)(Math.random() * ((numberOfQuestions - 1) + 1));
 		if (questionFile.isFile()) {
@@ -77,7 +78,11 @@ public class PracticeQuestionQuery {
 	}
 
 	/**
-	 * Returns "Correct!" if answer is right, "Incorrect" followed by the correct answer if answer is wrong. 
+	 * used to check the correctness of the users answer. 
+	 * 
+	 * @param userAnswer       the answer supplied by the user
+	 * @param numberOfAttempts the number of attempts the user has had on this particular question
+	 * @return String          a string based on how many attempts the user has had and the answer they supply
 	 */
 	public String checkAnswer(String userAnswer, int numberOfAttempts) {
 		if (userAnswer.toLowerCase().contains(_currentAnswer.toLowerCase())) {

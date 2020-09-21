@@ -9,6 +9,12 @@ import java.io.PrintWriter;
 
 import application.model.helper.FileHelper;
 
+/**
+ * This class is used to keep a track of the current users score from the games module.
+ * 
+ * @author Maggie Pedersen
+ * @author Cheng-Zhen Yang
+ */
 public class ScoreTracker {
 
 	private final String _scoreFile = FileHelper.CURRENTDIR + FileHelper.FILESEPARATOR + "data" + FileHelper.FILESEPARATOR + "users" + FileHelper.FILESEPARATOR + GameFiles.CURRENTUSER + FileHelper.FILESEPARATOR + "score";
@@ -16,8 +22,10 @@ public class ScoreTracker {
 	public ScoreTracker() {
 	}
 
+	/** 
+	 * Set up file to store a users winnings if not already created.
+	 */
 	public void setUpScore() {
-		//Create file to keep track of players winnings if not already created
 		try {
 			File sFile = new File(_scoreFile);
 			if (!sFile.exists()) {
@@ -30,6 +38,11 @@ public class ScoreTracker {
 		}
 	}
 
+	/**
+	 * Save winnings from a question to the file.
+	 * 
+	 * @param score the amount the user receives for successfully answering the question
+	 */
 	public void addWinnings(int score) {
 		int currentScore = getCurrentScore();
 		currentScore += score;
@@ -45,6 +58,11 @@ public class ScoreTracker {
 		}
 	}
 	
+	/**
+	 * Get the current users score from file.
+	 * 
+	 * @return int the score of the current user
+	 */
 	public int getCurrentScore() {
 		String score = "0";
 		try {

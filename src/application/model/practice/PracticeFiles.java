@@ -8,6 +8,12 @@ import java.io.PrintWriter;
 
 import application.model.helper.FileHelper;
 
+/**
+ * This class is used to set up the necessary files for the games module.
+ * 
+ * @author Maggie Pedersen
+ * @author Cheng-Zhen Yang
+ */
 public class PracticeFiles {
 
 	public static String _categoryFolder;
@@ -15,6 +21,9 @@ public class PracticeFiles {
 	public PracticeFiles() {
 	}
 
+	/**
+	 * Method to create directories for storing game files for the practice module.
+	 */
 	public void setUpPracticeModule() {
 		//Create subdirectory for game files if not already created
 		String gameData = FileHelper.CURRENTDIR + FileHelper.FILESEPARATOR + "data";
@@ -25,6 +34,9 @@ public class PracticeFiles {
 		FileHelper.makeDirectory(_categoryFolder);
 	}
 
+	/**
+	 * Method to copy categories and their relevant questions and answers into separate files from the quinzical file.
+	 */
 	public void copyCategories() {
 		String quinzical = FileHelper.CURRENTDIR + FileHelper.FILESEPARATOR + "quinzical" + ".txt";
 		File quinzicalFile = new File(quinzical);

@@ -3,6 +3,13 @@ package application.model;
 import application.model.game.GameModel;
 import application.model.practice.PracticeModel;
 
+/**
+ * This is the main class for the model, where the game, practice and question models can be accessed. 
+ * 
+ * @author Maggie Pedersen
+ * @author Cheng-Zhen Yang
+ *
+ */
 public class ModelMain {
 	
 	private GameModel _gameModel = GameModel.getInstance();
@@ -13,6 +20,11 @@ public class ModelMain {
 	private ModelMain() {
 	}
 	
+	/**
+	 * Gets instance of this main model class.
+	 * 
+	 * @return ModelMain
+	 */
 	public static ModelMain getInstance() {
 		if (_instance == null) {
 			_instance = new ModelMain();
@@ -20,18 +32,30 @@ public class ModelMain {
 		return _instance;
 	}
 	
+	/**
+	 * Used to set up the files needed for the game.
+	 */
 	public void startGame() {
 		//Practice model must be set up before game model
 		_practiceModel.setUpPracticeModule();
 		_gameModel.setUpGameModule();
 	}
 	
+	/**
+	 * Used to get a question for either the game or practice module, depending on the inputs.
+	 * 
+	 * @return String the question to be displayed to the user
+	 */
 	public String getQuestion() {
 		System.out.println(_practiceModel.getPracticeQuestion("Geography"));
 		System.out.println(_practiceModel.checkPracticeAnswer("the waikato", 1));
 		return null;
 	}
 	
+	
+	/**
+	 * Used for testing.
+	 */
 	public static void main(String[] args) {
 		ModelMain main = ModelMain.getInstance();
 		main.startGame();
