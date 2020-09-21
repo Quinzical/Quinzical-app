@@ -35,7 +35,7 @@ public class PracticeMenuController {
      */
     @FXML
     void handleSettingsButton(ActionEvent event) {
-        // TODO
+        _sceneManager.switchScene(Scenes.SETTINGS_MENU);
     }
 
 }

@@ -21,7 +21,7 @@ public class HomeMenuController {
      */
     @FXML
     void handleExitButton(ActionEvent event) {
-        // TODO
+        _sceneManager.close();
     }
 
     /**
@@ -51,7 +51,7 @@ public class HomeMenuController {
      */
     @FXML
     void handleSettingsButton(ActionEvent event) {
-        // TODO
+        _sceneManager.switchScene(Scenes.SETTINGS_MENU);
     }
 
 }

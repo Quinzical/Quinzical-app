@@ -26,7 +26,9 @@ public class SceneManager {
     private final static String PATH = "/application/resources/";
 
     public enum Scenes {
-        HOME_MENU("HomeMenu.fxml"), PRACTICE_MENU("PracticeMenu.fxml");
+        HOME_MENU("HomeMenu.fxml"), 
+        PRACTICE_MENU("PracticeMenu.fxml"),
+        SETTINGS_MENU("SettingsMenu.fxml");
 
         private final String filename;
 
@@ -101,8 +103,16 @@ public class SceneManager {
      * Used to switch back scene by popping current scene from the history
      */
     public void backScene() {
+        _history.pop();
         switchScene(_history.pop());
     }   
+
+    /**
+     * Used to close stage/window
+     */
+    public void close() {
+        _rootStage.close();
+    }
 
     /**
      * Used to return root path

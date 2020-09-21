@@ -28,6 +28,14 @@
     -fx-stroke-width: 2px;	
 }
 
+.darkblue.label .text {
+    -fx-fill: #A9B8FF;
+    -fx-stroke: #5271FF;
+    -fx-font-weight: bold;
+    -fx-font-size: 40px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 3, 0, 0, 0);
+}
+
 .shadow {
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);	
 }
