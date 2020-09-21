@@ -5,13 +5,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 
+/**
+ * This class is the SettingsMenu controller in a MVC design.
+ * 
+ * @author Maggie Pedersen
+ * @author Cheng-Zhen Yang
+ */
 public class SettingsMenuController {
-    /**
-     * This class is the SettingsMenu controller in a MVC design.
-     * 
-     * @author Maggie Pedersen
-     * @author Cheng-Zhen Yang
-     */
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
 
@@ -36,7 +36,6 @@ public class SettingsMenuController {
     @FXML
     void handleBackButton(ActionEvent event) {
         _sceneManager.backScene();
-        System.out.println("test");
     }
 
     @FXML

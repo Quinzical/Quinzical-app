@@ -4,13 +4,13 @@ import application.controllers.SceneManager.Scenes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
+/**
+ * This class is the HomeMenu controller in a MVC design.
+ * 
+ * @author Maggie Pedersen
+ * @author Cheng-Zhen Yang
+ */
 public class HomeMenuController {
-    /**
-     * This class is the HomeMenu controller in a MVC design.
-     * 
-     * @author Maggie Pedersen
-     * @author Cheng-Zhen Yang
-     */
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
 

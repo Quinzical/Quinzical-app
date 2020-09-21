@@ -5,13 +5,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.TilePane;
 
+/**
+ * This class is the PracticeMenu controller in a MVC design.
+ * 
+ * @author Maggie Pedersen
+ * @author Cheng-Zhen Yang
+ */
 public class PracticeMenuController {
-    /**
-     * This class is the PracticeMenu controller in a MVC design.
-     * 
-     * @author Maggie Pedersen
-     * @author Cheng-Zhen Yang
-     */
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
 

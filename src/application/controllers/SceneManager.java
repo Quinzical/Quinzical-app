@@ -13,22 +13,20 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+/**
+ * This class manages javafx stage and scene. This class caches all scenes and
+ * stores history of scenes.
+ * 
+ * @author Maggie Pedersen
+ * @author Cheng-Zhen Yang
+ */
 public class SceneManager {
-    /**
-     * This class manages javafx stage and scene. This class caches all scenes and
-     * stores history of scenes.
-     * 
-     * @author Maggie Pedersen
-     * @author Cheng-Zhen Yang
-     */
 
     // CONST
     private final static String PATH = "/application/resources/";
 
     public enum Scenes {
-        HOME_MENU("HomeMenu.fxml"), 
-        PRACTICE_MENU("PracticeMenu.fxml"),
-        SETTINGS_MENU("SettingsMenu.fxml");
+        HOME_MENU("HomeMenu.fxml"), PRACTICE_MENU("PracticeMenu.fxml"), SETTINGS_MENU("SettingsMenu.fxml");
 
         private final String filename;
 
@@ -98,14 +96,14 @@ public class SceneManager {
         _history.push(scene);
         _rootStage.setScene(next);
     }
-    
+
     /**
      * Used to switch back scene by popping current scene from the history
      */
     public void backScene() {
         _history.pop();
         switchScene(_history.pop());
-    }   
+    }
 
     /**
      * Used to close stage/window
