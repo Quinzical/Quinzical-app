@@ -28,18 +28,18 @@ public class SceneManager {
     public enum Scenes {
         HOME_MENU("HomeMenu.fxml"), PRACTICE_MENU("PracticeMenu.fxml");
 
-        private final String file;
+        private final String filename;
 
-        Scenes(String file) {
-            this.file = file;
+        Scenes(String filename) {
+            this.filename = filename;
         }
     }
 
     private static final SceneManager instance = new SceneManager();
 
     private Stage _rootStage;
-    private Stack<String> _history = new Stack<String>();
-    private final Map<String, Scene> _scenes = new HashMap<String, Scene>();
+    private Stack<Scenes> _history = new Stack<Scenes>();
+    private final Map<Scenes, Scene> _scenes = new HashMap<Scenes, Scene>();
 
     private SceneManager() {
     }
@@ -76,7 +76,6 @@ public class SceneManager {
         rootStage.setMinWidth(800);
         rootStage.setMinHeight(600);
         rootStage.show();
-
         _rootStage = rootStage;
     }
 
@@ -85,17 +84,25 @@ public class SceneManager {
      *
      * @param name Scenes enum
      */
-    public void switchScene(Scenes name) {
-        Scene scene = _scenes.computeIfAbsent(name.file, k -> {
+    public void switchScene(Scenes scene) {
+        Scene next = _scenes.computeIfAbsent(scene, k -> {
             try {
-                Parent root = FXMLLoader.load(getClass().getResource(getPath(k)));
+                Parent root = FXMLLoader.load(getClass().getResource(getPath(k.filename)));
                 return new Scene(root, 1280, 800);
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
         });
-        _rootStage.setScene(scene);
+        _history.push(scene);
+        _rootStage.setScene(next);
     }
+    
+    /**
+     * Used to switch back scene by popping current scene from the history
+     */
+    public void backScene() {
+        switchScene(_history.pop());
+    }   
 
     /**
      * Used to return root path
