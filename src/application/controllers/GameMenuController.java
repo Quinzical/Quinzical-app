@@ -3,38 +3,37 @@ package application.controllers;
 import application.controllers.SceneManager.Scenes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.layout.TilePane;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
 
 /**
- * This class is the PracticeMenu controller in a MVC design.
+ * This class is the GameMenu controller in a MVC design.
  * 
  * @author Maggie Pedersen
  * @author Cheng-Zhen Yang
  */
-public class PracticeMenuController {
+public class GameMenuController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
 
     @FXML
-    private TilePane _categoriesPane;
+    private GridPane _questionGrid;
 
-    /**
-     * Used to handle back button
-     * 
-     * @param event
-     */
+    @FXML
+    private Label _categoryLabel5;
+
+    @FXML
+    private Label _categoryLabel4;
+
     @FXML
     void handleBackButton(ActionEvent event) {
-        _sceneManager.switchScene(Scenes.HOME_MENU);
+        // TODO
+        _sceneManager.backScene();
     }
 
-    /**
-     * Used to handle settings button
-     * 
-     * @param event
-     */
     @FXML
     void handleSettingsButton(ActionEvent event) {
+        // TODO
         _sceneManager.switchScene(Scenes.SETTINGS_MENU);
     }
 

@@ -3,6 +3,7 @@ package application.controllers;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Stack;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -12,39 +13,57 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+/**
+ * This class manages javafx stage and scene. This class caches all scenes and
+ * stores history of scenes.
+ * 
+ * @author Maggie Pedersen
+ * @author Cheng-Zhen Yang
+ */
 public class SceneManager {
 
     // CONST
     private final static String PATH = "/application/resources/";
-    public enum Scenes {
-        HOME_MENU("HomeMenu.fxml"),
-        PRACTICE_MENU("PracticeMenu.fxml");
-        
-        private final String file;
 
-        Scenes(String file) {
-            this.file = file;
+    public enum Scenes {
+        HOME_MENU("HomeMenu.fxml"), PRACTICE_MENU("PracticeMenu.fxml"), SETTINGS_MENU("SettingsMenu.fxml"),
+        QUESTION("Question.fxml"), GAME_MENU("GameMenu.fxml");
+
+        private final String filename;
+
+        Scenes(String filename) {
+            this.filename = filename;
         }
     }
 
-    // Create Singleton
     private static final SceneManager instance = new SceneManager();
 
     private Stage _rootStage;
-    private final Map<String, Scene> _scenes = new HashMap<String, Scene>();
+    private Stack<Scenes> _history = new Stack<Scenes>();
+    private final Map<Scenes, Scene> _scenes = new HashMap<Scenes, Scene>();
 
     private SceneManager() {
     }
 
+    /**
+     * Used to return the single instance of this class.
+     * 
+     * @return SceneManager
+     */
     public static SceneManager getInstance() {
         return instance;
     }
 
-    public void init(Stage rootStage) {
+    /**
+     * Used to init rootStage for single instance of this class.
+     * 
+     * @return SceneManager
+     */
+    public void init(Stage rootStage) throws IllegalArgumentException {
         if (rootStage == null) {
             throw new IllegalArgumentException();
         }
-        
+
         rootStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(final WindowEvent t) {
@@ -58,22 +77,48 @@ public class SceneManager {
         rootStage.setMinWidth(800);
         rootStage.setMinHeight(600);
         rootStage.show();
-
         _rootStage = rootStage;
     }
 
-    public void switchScene(Scenes name) {
-        Scene scene = _scenes.computeIfAbsent(name.file, k -> {
+    /**
+     * Used to switch current scene to new scene using Scenes enums.
+     *
+     * @param name Scenes enum
+     */
+    public void switchScene(Scenes scene) {
+        Scene next = _scenes.computeIfAbsent(scene, k -> {
             try {
-                Parent root = FXMLLoader.load(getClass().getResource(getPath(k)));
+                Parent root = FXMLLoader.load(getClass().getResource(getPath(k.filename)));
                 return new Scene(root, 1280, 800);
-            }catch(IOException ex){
+            } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
         });
-        _rootStage.setScene(scene);
+        _history.push(scene);
+        _rootStage.setScene(next);
     }
 
+    /**
+     * Used to switch back scene by popping current scene from the history
+     */
+    public void backScene() {
+        _history.pop();
+        switchScene(_history.peek());
+    }
+
+    /**
+     * Used to close stage/window
+     */
+    public void close() {
+        _rootStage.close();
+    }
+
+    /**
+     * Used to return root path
+     * 
+     * @param name
+     * @return
+     */
     private String getPath(String name) {
         return PATH + name;
     }

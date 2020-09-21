@@ -10,18 +10,19 @@ import java.util.List;
 import application.model.helper.FileHelper;
 import application.model.practice.PracticeFiles;
 
+/**
+ * This class is used to set up the necessary files for the games module. This includes setting up files to account for the need of different users in the project. 
+ * later on. 
+ * 
+ * @author Maggie Pedersen
+ * @author Cheng-Zhen Yang
+ */
 public class GameFiles {
 
 	public static String CURRENTUSER = "default";
 	private String _userCategories;
 
-	/**
-	 * This class is used to set up the necessary files for the games module. This includes setting up files to account for the need of different users in the project. 
-	 * later on. 
-	 * 
-	 * @author Maggie Pedersen
-	 * @author Cheng-Zhen Yang
-	 */
+	
 	public GameFiles() {
 	}
 

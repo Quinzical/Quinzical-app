@@ -12,77 +12,80 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" styleClass="root" stylesheets="@application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.HomeMenuController">
-   <children>
-      <HBox alignment="CENTER">
-         <children>
-            <ImageView fitHeight="195.0" fitWidth="320.0" pickOnBounds="true" preserveRatio="true" styleClass="header">
-               <image>
-                  <Image url="@images/darklogo.png" />
-               </image>
-            </ImageView>
-            <Label text="Quinzical">
-               <styleClass>
-                  <String fx:value="outline" />
-                  <String fx:value="header" />
-               </styleClass></Label>
-         </children>
-         <VBox.margin>
-            <Insets left="20.0" right="20.0" top="50.0" />
-         </VBox.margin>
-      </HBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" VBox.vgrow="ALWAYS">
-         <children>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#handlePracticeButton" prefHeight="100.0" prefWidth="360.0" styleClass="practice-button" text="Practice" textAlignment="CENTER">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#handlePlayButton" prefHeight="100.0" prefWidth="360.0" styleClass="play-button" text="Play" textAlignment="CENTER">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Button>
-         </children>
-         <padding>
-            <Insets left="50.0" right="50.0" />
-         </padding>
-      </HBox>
-      <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleExitButton" prefHeight="60.0" prefWidth="275.0" styleClass="exit-button" text="Exit" textAlignment="CENTER">
-         <font>
-            <Font size="24.0" />
-         </font>
-         <VBox.margin>
-            <Insets bottom="50.0" left="50.0" right="50.0" />
-         </VBox.margin>
-      </Button>
-      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="NEVER">
-         <children>
-            <Button alignment="CENTER" maxHeight="66.0" maxWidth="66.0" minHeight="66.0" minWidth="66.0" mnemonicParsing="false" onAction="#handleSettingsButton" prefHeight="66.0" prefWidth="66.0" styleClass="setting-button" textAlignment="CENTER">
-               <font>
-                  <Font size="24.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="70.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/settings.png" />
-                     </image>
-                     <viewport>
-                        <Rectangle2D />
-                     </viewport>
-                     <effect>
-                        <Blend />
-                     </effect>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-         <VBox.margin>
-            <Insets bottom="20.0" right="20.0" />
-         </VBox.margin>
-         <padding>
-            <Insets left="50.0" right="50.0" />
-         </padding>
-      </HBox>
-   </children>
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" styleClass="root" stylesheets="@application.css"
+    xmlns="http://javafx.com/javafx/11.0.1"
+    xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.HomeMenuController">
+    <children>
+        <HBox alignment="CENTER">
+            <children>
+                <ImageView fitHeight="195.0" fitWidth="320.0" pickOnBounds="true" preserveRatio="true" styleClass="header">
+                    <image>
+                        <Image url="@images/darklogo.png" />
+                    </image>
+                </ImageView>
+                <Label text="Quinzical">
+                    <styleClass>
+                        <String fx:value="outline" />
+                        <String fx:value="header" />
+                    </styleClass>
+                </Label>
+            </children>
+            <VBox.margin>
+                <Insets left="20.0" right="20.0" top="50.0" />
+            </VBox.margin>
+        </HBox>
+        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" VBox.vgrow="ALWAYS">
+            <children>
+                <Button alignment="CENTER" mnemonicParsing="false" onAction="#handlePracticeButton" prefHeight="100.0" prefWidth="360.0" styleClass="practice-button" text="Practice" textAlignment="CENTER">
+                    <font>
+                        <Font size="36.0" />
+                    </font>
+                </Button>
+                <Button alignment="CENTER" mnemonicParsing="false" onAction="#handlePlayButton" prefHeight="100.0" prefWidth="360.0" styleClass="play-button" text="Play" textAlignment="CENTER">
+                    <font>
+                        <Font size="36.0" />
+                    </font>
+                </Button>
+            </children>
+            <padding>
+                <Insets left="50.0" right="50.0" />
+            </padding>
+        </HBox>
+        <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleExitButton" prefHeight="60.0" prefWidth="275.0" styleClass="exit-button" text="Exit" textAlignment="CENTER">
+            <font>
+                <Font size="24.0" />
+            </font>
+            <VBox.margin>
+                <Insets bottom="50.0" left="50.0" right="50.0" />
+            </VBox.margin>
+        </Button>
+        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="NEVER">
+            <children>
+                <Button alignment="CENTER" maxHeight="66.0" maxWidth="66.0" minHeight="66.0" minWidth="66.0" mnemonicParsing="false" onAction="#handleSettingsButton" prefHeight="66.0" prefWidth="66.0" styleClass="setting-button" textAlignment="CENTER">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="70.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/settings.png" />
+                            </image>
+                            <viewport>
+                                <Rectangle2D />
+                            </viewport>
+                            <effect>
+                                <Blend />
+                            </effect>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+            <VBox.margin>
+                <Insets bottom="20.0" right="20.0" />
+            </VBox.margin>
+            <padding>
+                <Insets left="50.0" right="50.0" />
+            </padding>
+        </HBox>
+    </children>
 </VBox>
