@@ -4,11 +4,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-
-import application.model.practice.PracticeFiles;
 
 /**
  * This class is used to avoid code reuse by having helper functions for setting up files.
@@ -93,5 +90,41 @@ public class FileHelper {
 			}
 		}
 		return linecount;
+	}
+	
+	public static List<String> getLineFromFile(File file, int desiredLine) {
+		List<String> questionAndAnswer = new ArrayList<String>();
+		String currentQuestion = null;
+		String currentAnswer = null;
+		if (file.isFile()) {
+			try {
+				BufferedReader in = new BufferedReader(new FileReader(file));
+				int count = 1;
+				String line;
+				while((line = in.readLine()) != null) {
+					if (count == desiredLine) {
+						String[] separated = line.split(",");
+						currentAnswer = separated[separated.length - 1];
+
+						//Clear question before changing it 
+						currentQuestion = null;
+						for(int i = 0; i <= separated.length - 2; i++) {
+							if (currentQuestion != null) {
+								currentQuestion = currentQuestion + "," + separated[i];
+							} else {
+								currentQuestion = separated[i];
+							}
+						}
+					}
+					count++;
+				}
+				in.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		questionAndAnswer.add(currentQuestion);
+		questionAndAnswer.add(currentAnswer);
+		return questionAndAnswer;
 	}
 }

@@ -20,7 +20,7 @@ import application.model.practice.PracticeFiles;
 public class GameFiles {
 
 	public static String CURRENTUSER = "default";
-	private String _userCategories;
+	public static String _userCategories;
 
 	
 	public GameFiles() {

@@ -1,5 +1,8 @@
 package application.model.question;
 
+import application.model.game.GameModel;
+import application.model.practice.PracticeModel;
+
 /**
  * This class is used to delegate tasks to different classes who carry out tasks for the function of the practice module based on what the user wants to do.
  *  
@@ -14,6 +17,7 @@ public class QuestionModel {
 	private boolean _practice;
 	private String _category;
 	private String _questionValue;
+	private int _numberOfAttempts;
 	
 	private QuestionModel() {
 	}
@@ -49,6 +53,15 @@ public class QuestionModel {
 	}
 	
 	/**
+	 * Used to set the number of attempts for the practice module
+	 * 
+	 * @param numberOfAttempts
+	 */
+	public void setNumberOfAttempts(int numberOfAttempts) {
+		_numberOfAttempts = numberOfAttempts;
+	}
+	
+	/**
 	 * Used to set the current question value for use in the games module
 	 * 
 	 * @param value
@@ -57,5 +70,18 @@ public class QuestionModel {
 		_questionValue = value;
 	}
 	
-	
+	/**
+	 * Returns a question
+	 * 
+	 * @return String the question to be displayed to the user
+	 */
+	public String getQuestion() {
+		if (_practice) {
+			PracticeModel practiceModel = PracticeModel.getInstance();
+			return practiceModel.getPracticeQuestion(_category, _numberOfAttempts);
+		} else {
+			GameModel gameModel = GameModel.getInstance();
+			return gameModel.getGameQuestion(_category, _questionValue);
+		}
+	}
 }

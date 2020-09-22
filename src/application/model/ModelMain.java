@@ -47,8 +47,8 @@ public class ModelMain {
 	 * @return String the question to be displayed to the user
 	 */
 	public String getQuestion() {
-		System.out.println(_practiceModel.getPracticeQuestion("Geography"));
-		System.out.println(_practiceModel.checkPracticeAnswer("the waikato", 1));
+		System.out.println(_practiceModel.getPracticeQuestion("Geography", 1));
+		System.out.println(_practiceModel.checkPracticeAnswer("the waikato"));
 		return null;
 	}
 	

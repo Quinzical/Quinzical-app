@@ -12,6 +12,8 @@ public class GameModel {
 	private static GameModel _instance;
 	
 	private GameFiles _gameFiles = new GameFiles();
+	private GameQuestionQuery _questionQuery = new GameQuestionQuery();
+	
 	private ScoreTracker _score = new ScoreTracker();
 	
 	private GameModel() {
@@ -53,6 +55,17 @@ public class GameModel {
 	 */
 	public int getScore() {
 		return _score.getCurrentScore();
+	}
+
+	/**
+	 * Used to get a game question based on the chosen category and the value of the question. 
+	 * 
+	 * @param category      the category chosen by the user
+	 * @param questionValue the value of the question
+	 * @return String       the question to be displayed to the user
+	 */
+	public String getGameQuestion(String category, String questionValue) {
+		return _questionQuery.retrieveQuestion(category, questionValue);
 	}
 
 }

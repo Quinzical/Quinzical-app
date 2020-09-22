@@ -40,21 +40,21 @@ public class PracticeModel {
 	/**
 	 * Used to get a random practice question based on the chosen category. 
 	 * 
+	 * @param numberOfAttempts
 	 * @param category the category chosen by the user
 	 * @return String  the question
 	 */
-	public String getPracticeQuestion(String category) {
-		return _questionQuery.retrieveQuestion(category);
+	public String getPracticeQuestion(String category, int numberOfAttempts) {
+		return _questionQuery.retrieveQuestion(category, numberOfAttempts);
 	}
 
 	/**
 	 * Used to check whether the users answer for the current question is correct or not. 
 	 * 
 	 * @param userAnswer 
-	 * @param numberOfAttempts
 	 * @return String the message based on how the user answers
 	 */
-	public String checkPracticeAnswer(String userAnswer, int numberOfAttempts) {
-		return _questionQuery.checkAnswer(userAnswer, numberOfAttempts);
+	public String checkPracticeAnswer(String userAnswer) {
+		return _questionQuery.checkAnswer(userAnswer);
 	}
 }
