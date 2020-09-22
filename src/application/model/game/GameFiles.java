@@ -19,12 +19,12 @@ import application.model.practice.PracticeFiles;
  */
 public class GameFiles {
 
-	public static String CURRENTUSER = "default";
-	public static String _userCategories;
-
+	public static final String CURRENTUSER = "default";
+	public static final String USERCATEGORIES;
 	
 	public GameFiles() {
 	}
+	
 
 	/**
 	 * Used to set the current user of the game for the project later on. 
@@ -46,8 +46,8 @@ public class GameFiles {
 		String currentDir = setUpUser(user);
 
 		//Create subdirectory for category files if not already created
-		_userCategories = currentDir + FileHelper.FILESEPARATOR + "categories";
-		FileHelper.makeDirectory(_userCategories);
+		USERCATEGORIES = currentDir + FileHelper.FILESEPARATOR + "categories";
+		FileHelper.makeDirectory(USERCATEGORIES);
 	}
 
 	/**
@@ -76,7 +76,7 @@ public class GameFiles {
 	 * @param randomFiles a list of random numbers for choosing files
 	 */
 	private void createAndFillRandomFiles(List<Integer> randomFiles) {
-		int currentNumberOfGameFiles = FileHelper.countFilesInDirectory(_userCategories);
+		int currentNumberOfGameFiles = FileHelper.countFilesInDirectory(USERCATEGORIES);
 		int count = 1;
 		File categoriesDir = new File(PracticeFiles._categoryFolder);
 		
@@ -87,7 +87,7 @@ public class GameFiles {
 						return;
 					} else if (randomFiles.contains(count)) {
 						String fileName = file.getName();
-						String copyFileName = _userCategories + FileHelper.FILESEPARATOR + fileName;
+						String copyFileName = USERCATEGORIES + FileHelper.FILESEPARATOR + fileName;
 						File copyFile = new File(copyFileName);
 						
 						List<Integer> randomQuestions = FileHelper.makeRandomList(5, FileHelper.countLinesinFile(file));

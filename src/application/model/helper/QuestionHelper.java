@@ -56,8 +56,8 @@ public class QuestionHelper {
 	 */
 	private static boolean compareAnswers(String userAnswer, String correctAnswer) {
 		// Replace spaces between the answers with a letter to avoid any issues with multi-word answers
-		userAnswer = userAnswer.replace(' ', 'a');
-		correctAnswer = correctAnswer.replace(' ', 'a');
+		userAnswer = userAnswer.replace(' ', '_');
+		correctAnswer = correctAnswer.replace(' ', '_');
 		
 		try {
 			String command = "echo " + "\"" + correctAnswer + "\"" + " | grep -i -w " + "\"" + userAnswer + "\"";
