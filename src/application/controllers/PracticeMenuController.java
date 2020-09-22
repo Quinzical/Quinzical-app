@@ -1,14 +1,10 @@
 package application.controllers;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import application.controllers.SceneManager.Scenes;
 import application.controllers.helper.PracticeCategoryButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
 import javafx.scene.layout.TilePane;
 
 /**
