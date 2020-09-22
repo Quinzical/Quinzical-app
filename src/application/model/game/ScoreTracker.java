@@ -17,7 +17,7 @@ import application.model.helper.FileHelper;
  */
 public class ScoreTracker {
 
-	private final String _scoreFile = FileHelper.CURRENTDIR + FileHelper.FILESEPARATOR + "data" + FileHelper.FILESEPARATOR + "users" + FileHelper.FILESEPARATOR + GameFiles.CURRENTUSER + FileHelper.FILESEPARATOR + "score";
+	private final String _scoreFile = FileHelper.CURRENTDIR + FileHelper.FILESEPARATOR + "data" + FileHelper.FILESEPARATOR + "users" + FileHelper.FILESEPARATOR + GameFiles.getUserCategories() + FileHelper.FILESEPARATOR + "score";
 
 	public ScoreTracker() {
 	}
