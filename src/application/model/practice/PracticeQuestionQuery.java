@@ -83,7 +83,6 @@ public class PracticeQuestionQuery {
 	 * @return String the clue
 	 */
 	public String getClueFromQuestion() {
-		
-		return null;
+		return Character.toString(QuestionHelper.trimAnswer(_currentAnswer).charAt(0));
 	}
 }

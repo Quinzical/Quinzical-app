@@ -77,4 +77,13 @@ public class GameModel {
 	public String checkGameAnswer(String userAnswer) {
 		return _questionQuery.checkGameAnswer(userAnswer);
 	}
+	
+	/**
+	 * Used to send the clue for the current question to the user. This is only to be used if they are on their third attempt.  
+	 * 
+	 * @return String the clue for the user
+	 */
+	public String getClue() {
+		return _questionQuery.getClueFromQuestion();
+	}
 }

@@ -11,6 +11,13 @@ public class QuestionHelper {
 	public QuestionHelper() {
 	}
 
+	/**
+	 * Used to check and compare the answers between what the user inputs and the correct answer
+	 * 
+	 * @param userAnswer 
+	 * @param correctAnswer
+	 * @return boolean true if the users answer is correct, false if the answer is incorrect
+	 */
 	public static boolean checkQuestion(String userAnswer, String correctAnswer) {
 		correctAnswer = trimAnswer(correctAnswer);
 		if(compareAnswers(userAnswer, correctAnswer)) {

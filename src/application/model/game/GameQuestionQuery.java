@@ -75,4 +75,13 @@ public class GameQuestionQuery {
 		QuestionHelper.checkQuestion(userAnswer, _currentAnswer);
 		return null;
 	}
+	
+	/**
+	 * Returns the clue for the current question.
+	 *
+	 * @return String the clue
+	 */
+	public String getClueFromQuestion() {
+		return Character.toString(QuestionHelper.trimAnswer(_currentAnswer).charAt(0));
+	}
 }
