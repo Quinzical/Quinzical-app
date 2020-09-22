@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.List;
 
 import application.model.helper.FileHelper;
-import application.model.helper.QuestionChecker;
+import application.model.helper.QuestionHelper;
 
 /**
  * This class is used to retrieve questions from their relevant files for the practice module.
@@ -66,8 +66,24 @@ public class PracticeQuestionQuery {
 	 * @param userAnswer the answer supplied by the user
 	 * @return String    a string based on how many attempts the user has had and the answer they supply
 	 */
-	public String checkPracticeAnswer(String userAnswer) {
-		QuestionChecker.checkQuestion(userAnswer, _currentAnswer);
+	public String checkPracticeAnswer(String userAnswer, int numberOfAttempts) {
+		boolean correct = QuestionHelper.checkQuestion(userAnswer, _currentAnswer);
+		if (correct) {
+			return "Success!";
+		} else if (numberOfAttempts < 3) {
+			return "Incorrect!";
+		} else {
+			return "Incorrect!\n" + "The correct answer for the question " + _currentQuestion + "was:\n" + _currentAnswer;
+		}
+	}
+
+	/**
+	 * Returns the clue for the current question.
+	 *
+	 * @return String the clue
+	 */
+	public String getClueFromQuestion() {
+		
 		return null;
 	}
 }

@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.List;
 
 import application.model.helper.FileHelper;
-import application.model.helper.QuestionChecker;
+import application.model.helper.QuestionHelper;
 
 /**
  * This class is used to retrieve questions from their relevant files for the practice module.
@@ -72,7 +72,7 @@ public class GameQuestionQuery {
 	 * @return String    a string based on how many attempts the user has had and the answer they supply
 	 */
 	public String checkGameAnswer(String userAnswer) {
-		QuestionChecker.checkQuestion(userAnswer, _currentAnswer);
+		QuestionHelper.checkQuestion(userAnswer, _currentAnswer);
 		return null;
 	}
 }

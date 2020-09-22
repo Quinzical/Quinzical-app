@@ -56,6 +56,11 @@ public class ModelMain {
 		return null;
 	}
 	
+	/**
+	 * Used to check whether the user has correctly answered the question or not 
+	 * 
+	 * @param userAnswer
+	 */
 	public void checkUserAnswer(String userAnswer) {
 		QuestionModel questionModel = QuestionModel.getInstance();
 		questionModel.checkAnswer(userAnswer);
@@ -68,7 +73,7 @@ public class ModelMain {
 		ModelMain main = ModelMain.getInstance();
 		main.startGame();
 		main.getQuestion();
-		main.checkUserAnswer("Stewart");
+		main.checkUserAnswer("Rakiura");
 	}
 
 }

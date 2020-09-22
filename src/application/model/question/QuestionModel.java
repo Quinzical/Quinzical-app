@@ -1,7 +1,7 @@
 package application.model.question;
 
 import application.model.game.GameModel;
-import application.model.helper.QuestionChecker;
+
 import application.model.practice.PracticeModel;
 
 /**
@@ -86,14 +86,19 @@ public class QuestionModel {
 		}
 	}
 	
-	public boolean checkAnswer(String userAnswer) {
+	/**
+	 * Used to check the answers for the games or question model, based on what the user module is playing in.
+	 * 
+	 * @param userAnswer
+	 * @return String the message to be displayed to the user based on their answer
+	 */
+	public String checkAnswer(String userAnswer) {
 		if (_practice) {
 			PracticeModel practiceModel = PracticeModel.getInstance();
-			practiceModel.checkPracticeAnswer(userAnswer);
+			return practiceModel.checkPracticeAnswer(userAnswer, _numberOfAttempts);
 		} else {
 			GameModel gameModel = GameModel.getInstance();
-			gameModel.checkGameAnswer(userAnswer);
+			return gameModel.checkGameAnswer(userAnswer);
 		}
-		return false;
 	}
 }
