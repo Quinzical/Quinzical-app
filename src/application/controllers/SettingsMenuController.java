@@ -1,5 +1,7 @@
 package application.controllers;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -32,6 +34,29 @@ public class SettingsMenuController {
 
     @FXML
     private Label _speedValue;
+
+    /**
+     * initialize with SettingsMenu.fxml
+     */
+    public void initialize() {
+        _musicSlider.valueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                _musicValue.setText(String.valueOf(newValue.intValue()));
+            }
+        });
+
+        _speakSlider.valueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                _speakValue.setText(String.valueOf(newValue.intValue()));
+            }
+        });
+
+        _speedSlider.valueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                _speedValue.setText(String.valueOf(newValue.intValue()));
+            }
+        });
+    }
 
     @FXML
     void handleBackButton(ActionEvent event) {

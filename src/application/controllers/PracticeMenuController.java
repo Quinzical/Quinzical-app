@@ -24,7 +24,7 @@ public class PracticeMenuController {
     private TilePane _categoriesPane;
 
     /**
-     * initialize with PracticeMenuController.fxml
+     * initialize with PracticeMenu.fxml
      */
     public void initialize() {
         // Temporary add buttons
