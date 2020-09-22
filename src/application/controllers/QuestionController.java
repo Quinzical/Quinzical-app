@@ -1,5 +1,6 @@
 package application.controllers;
 
+import application.controllers.SceneManager.Scenes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -13,6 +14,8 @@ import javafx.scene.control.TextField;
  */
 public class QuestionController {
 
+    private final SceneManager _sceneManager = SceneManager.getInstance();
+
     @FXML
     private Label _categoryName;
 
@@ -25,6 +28,7 @@ public class QuestionController {
     @FXML
     void handleDontKnowButton(ActionEvent event) {
         // TODO
+        _sceneManager.backScene();
     }
 
     @FXML
@@ -34,12 +38,13 @@ public class QuestionController {
 
     @FXML
     void handleSettingsButton(ActionEvent event) {
-        // TODO
+        _sceneManager.switchScene(Scenes.SETTINGS_MENU);
     }
 
     @FXML
     void handleSubmitButton(ActionEvent event) {
         // TODO
+        _sceneManager.backScene();
     }
 
 }
