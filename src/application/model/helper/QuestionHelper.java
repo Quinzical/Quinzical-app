@@ -59,24 +59,24 @@ public class QuestionHelper {
 		userAnswer = userAnswer.replace(' ', 'a');
 		correctAnswer = correctAnswer.replace(' ', 'a');
 		
-		 try {
-			 	String command = "echo " + "\"" + correctAnswer + "\"" + " | grep -i -w " + "\"" + userAnswer + "\"";
-	            ProcessBuilder pb = new ProcessBuilder().command("bash", "-c", command);
-	            Process process = pb.start();
+		try {
+			String command = "echo " + "\"" + correctAnswer + "\"" + " | grep -i -w " + "\"" + userAnswer + "\"";
+			ProcessBuilder pb = new ProcessBuilder().command("bash", "-c", command);
+			Process process = pb.start();
 
-	            int exitStatus = process.waitFor();
+			int exitStatus = process.waitFor();
 
-	            if (exitStatus == 0) {
-	            	// The user got it correct
-	                return true;
-	            } else {
-	            	// The user did not get it right
-	                return false;
-	            }
+			if (exitStatus == 0) {
+				// The user got it correct
+				return true;
+			} else {
+				// The user did not get it right
+				return false;
+			}
 	            
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 }
