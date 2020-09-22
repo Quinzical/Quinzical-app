@@ -1,8 +1,14 @@
 package application.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import application.controllers.SceneManager.Scenes;
+import application.controllers.helper.PracticeCategoryButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.layout.TilePane;
 
 /**
@@ -15,8 +21,23 @@ public class PracticeMenuController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
 
+    // TODO change to category object
+    private final String[] categories = { "Place", "People", "Test", "Category" };
+
     @FXML
     private TilePane _categoriesPane;
+
+    /**
+     * initialize with PracticeMenuController.fxml
+     */
+    public void initialize() {
+        // Temporary add buttons
+        for (String category : categories) {
+            PracticeCategoryButton btn = new PracticeCategoryButton(category);
+            _categoriesPane.getChildren().add(btn);
+            TilePane.setMargin(btn, new Insets(10, 10, 10, 10));
+        }
+    }
 
     /**
      * Used to handle back button
