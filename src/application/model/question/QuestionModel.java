@@ -1,6 +1,7 @@
 package application.model.question;
 
 import application.model.game.GameModel;
+import application.model.helper.QuestionChecker;
 import application.model.practice.PracticeModel;
 
 /**
@@ -83,5 +84,16 @@ public class QuestionModel {
 			GameModel gameModel = GameModel.getInstance();
 			return gameModel.getGameQuestion(_category, _questionValue);
 		}
+	}
+	
+	public boolean checkAnswer(String userAnswer) {
+		if (_practice) {
+			PracticeModel practiceModel = PracticeModel.getInstance();
+			practiceModel.checkPracticeAnswer(userAnswer);
+		} else {
+			GameModel gameModel = GameModel.getInstance();
+			gameModel.checkGameAnswer(userAnswer);
+		}
+		return false;
 	}
 }

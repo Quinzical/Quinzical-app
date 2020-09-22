@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 
 import application.model.helper.FileHelper;
+import application.model.helper.QuestionChecker;
 
 /**
  * This class is used to retrieve questions from their relevant files for the practice module.
@@ -60,15 +61,13 @@ public class PracticeQuestionQuery {
 	}
 
 	/**
-	 * used to check the correctness of the users answer. 
+	 * Used to check the correctness of the users answer. 
 	 * 
 	 * @param userAnswer the answer supplied by the user
 	 * @return String    a string based on how many attempts the user has had and the answer they supply
 	 */
-	public String checkAnswer(String userAnswer) {
-		if (userAnswer.toLowerCase().contains(_currentAnswer.toLowerCase())) {
-			return "Correct!";
-		}
-		return "Incorrect, the correct answer was: " + _currentAnswer;
+	public String checkPracticeAnswer(String userAnswer) {
+		QuestionChecker.checkQuestion(userAnswer, _currentAnswer);
+		return null;
 	}
 }

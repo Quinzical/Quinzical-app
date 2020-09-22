@@ -55,6 +55,6 @@ public class PracticeModel {
 	 * @return String the message based on how the user answers
 	 */
 	public String checkPracticeAnswer(String userAnswer) {
-		return _questionQuery.checkAnswer(userAnswer);
+		return _questionQuery.checkPracticeAnswer(userAnswer);
 	}
 }

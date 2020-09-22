@@ -67,5 +67,14 @@ public class GameModel {
 	public String getGameQuestion(String category, String questionValue) {
 		return _questionQuery.retrieveQuestion(category, questionValue);
 	}
-
+	
+	/**
+	 * Used to check whether the users answer for the current question is correct or not. 
+	 * 
+	 * @param userAnswer 
+	 * @return String the message based on how the user answers
+	 */
+	public String checkGameAnswer(String userAnswer) {
+		return _questionQuery.checkGameAnswer(userAnswer);
+	}
 }

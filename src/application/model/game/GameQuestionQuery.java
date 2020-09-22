@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 
 import application.model.helper.FileHelper;
+import application.model.helper.QuestionChecker;
 
 /**
  * This class is used to retrieve questions from their relevant files for the practice module.
@@ -57,5 +58,21 @@ public class GameQuestionQuery {
 	private void setQuestionAndAnswer(List<String> questionAndAnswer) {
 		_currentQuestion = questionAndAnswer.get(0);
 		_currentAnswer = questionAndAnswer.get(1);
+		
+		//Trim leading space on answer
+		_currentAnswer = _currentAnswer.trim();
+		System.out.println(_currentQuestion);
+		System.out.println(_currentAnswer);	
+	}
+	
+	/**
+	 * Used to check the correctness of the users answer. 
+	 * 
+	 * @param userAnswer the answer supplied by the user
+	 * @return String    a string based on how many attempts the user has had and the answer they supply
+	 */
+	public String checkGameAnswer(String userAnswer) {
+		QuestionChecker.checkQuestion(userAnswer, _currentAnswer);
+		return null;
 	}
 }
