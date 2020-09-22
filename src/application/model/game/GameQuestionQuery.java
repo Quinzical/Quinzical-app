@@ -33,7 +33,7 @@ public class GameQuestionQuery {
 		//Replace spaces from category to hyphen if not already done
 		category = category.replace(' ', '-');
 		
-		String questionStr = GameFiles.USERCATEGORIES + FileHelper.FILESEPARATOR + category + ".txt";
+		String questionStr = GameFiles.getUserCategories() + FileHelper.FILESEPARATOR + category + ".txt";
 		File questionFile = new File(questionStr);
 		
 		return getQuestionFromFile(questionFile, questionValue);

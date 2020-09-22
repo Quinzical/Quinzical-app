@@ -19,21 +19,38 @@ import application.model.practice.PracticeFiles;
  */
 public class GameFiles {
 
-	public static final String CURRENTUSER = "default";
-	public static final String USERCATEGORIES;
+	private static String _currentUser = "default";
+	private static String _userCategories;
 	
 	public GameFiles() {
-	}
-	
+    }
+    
+    /**
+     * Used to get the static user categories directory.
+     * 
+     * @return userCategories
+     */
+    public static String getUserCategories() {
+        return _userCategories;
+    }
+    
+    /**
+     * Used to get the current user of the game.
+     * 
+     * @return username
+     */
+    public static String getUser() {
+        return _currentUser;
+    }
 
 	/**
 	 * Used to set the current user of the game for the project later on. 
 	 * 
 	 * @param username
 	 */
-	public void setUser(String username) {
-		CURRENTUSER = "default";
-	}
+	public static void setUser(String username) {
+		_currentUser = username;
+    }
 
 	/**
 	 * Method to create directories for storing game files for the games module.
@@ -46,8 +63,8 @@ public class GameFiles {
 		String currentDir = setUpUser(user);
 
 		//Create subdirectory for category files if not already created
-		USERCATEGORIES = currentDir + FileHelper.FILESEPARATOR + "categories";
-		FileHelper.makeDirectory(USERCATEGORIES);
+		_userCategories = currentDir + FileHelper.FILESEPARATOR + "categories";
+		FileHelper.makeDirectory(_userCategories);
 	}
 
 	/**
@@ -57,7 +74,7 @@ public class GameFiles {
 	 * @return String the user directory
 	 */
 	private String setUpUser(String userDir) {
-		String user = userDir + FileHelper.FILESEPARATOR + CURRENTUSER;
+		String user = userDir + FileHelper.FILESEPARATOR + _currentUser;
 		FileHelper.makeDirectory(user);
 		return user;
 	}
@@ -76,7 +93,7 @@ public class GameFiles {
 	 * @param randomFiles a list of random numbers for choosing files
 	 */
 	private void createAndFillRandomFiles(List<Integer> randomFiles) {
-		int currentNumberOfGameFiles = FileHelper.countFilesInDirectory(USERCATEGORIES);
+		int currentNumberOfGameFiles = FileHelper.countFilesInDirectory(_userCategories);
 		int count = 1;
 		File categoriesDir = new File(PracticeFiles._categoryFolder);
 		
@@ -87,7 +104,7 @@ public class GameFiles {
 						return;
 					} else if (randomFiles.contains(count)) {
 						String fileName = file.getName();
-						String copyFileName = USERCATEGORIES + FileHelper.FILESEPARATOR + fileName;
+						String copyFileName = _userCategories + FileHelper.FILESEPARATOR + fileName;
 						File copyFile = new File(copyFileName);
 						
 						List<Integer> randomQuestions = FileHelper.makeRandomList(5, FileHelper.countLinesinFile(file));
