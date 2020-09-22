@@ -1,4 +1,4 @@
-package application.model.practice;
+package application.model.game;
 
 import java.io.File;
 import java.util.List;
@@ -12,40 +12,42 @@ import application.model.helper.QuestionHelper;
  * @author Maggie Pedersen
  * @author Cheng-Zhen Yang
  */
-public class PracticeQuestionQuery {
-
+public class GameQuestionQuery {
+	
 	String _currentQuestion = null;
 	String _currentAnswer = null;
+	
+	boolean _correctAnswer = false;
 
-	public PracticeQuestionQuery() {
+	public GameQuestionQuery() {
 	}
 
 	/**
-	 * Used to retrieve a random question based on the category chosen by the user. 
+	 * Return the question to the model. 
 	 * 
 	 * @param category
-	 * @param numberOfAttempts the number of attempts the user has had on this particular question
-	 * @return String the question to be displayed to the user
+	 * @param questionValue
+	 * @return String the question to be returned
 	 */
-	public String retrieveQuestion(String category, int numberOfAttempts) {
+	public String retrieveQuestion(String category, String questionValue) {
 		//Replace spaces from category to hyphen if not already done
 		category = category.replace(' ', '-');
-
-		String questionStr = PracticeFiles._categoryFolder + FileHelper.FILESEPARATOR + category + ".txt";
+		
+		String questionStr = GameFiles.getUserCategories() + FileHelper.FILESEPARATOR + category + ".txt";
 		File questionFile = new File(questionStr);
-
-		return generateRandomQuestion(FileHelper.countLinesinFile(questionFile), questionFile);
+		
+		return getQuestionFromFile(questionFile, questionValue);
 	}
 
 	/**
-	 * Generate a random question based on the chosen category of the user.
+	 * Get desired question from the users files.
 	 * 
 	 * @param numberOfQuestions the number of questions in a given category
 	 * @param questionFile      the file which contains the questions of a given category
 	 */
-	private String generateRandomQuestion(int numberOfQuestions, File questionFile) {
-		int randomNumber = 1 + (int)(Math.random() * ((numberOfQuestions - 1) + 1));
-		List<String> questionAndAnswer = FileHelper.getLineFromFile(questionFile, randomNumber);
+	private String getQuestionFromFile(File questionFile, String questionValue) {
+		int lineNumber = Integer.valueOf(questionValue) / 100;
+		List<String> questionAndAnswer = FileHelper.getLineFromFile(questionFile, lineNumber);
 		setQuestionAndAnswer(questionAndAnswer);
 		return _currentQuestion;
 	}
@@ -58,34 +60,35 @@ public class PracticeQuestionQuery {
 	private void setQuestionAndAnswer(List<String> questionAndAnswer) {
 		_currentQuestion = questionAndAnswer.get(0);
 		_currentAnswer = questionAndAnswer.get(1);
+		
+		//Trim leading space on answer
+		_currentAnswer = _currentAnswer.trim();
+		System.out.println(_currentQuestion);
+		System.out.println(_currentAnswer);	
 	}
-
+	
 	/**
 	 * Used to check the correctness of the users answer. 
 	 * 
 	 * @param userAnswer the answer supplied by the user
 	 * @return String    a string based on how many attempts the user has had and the answer they supply
 	 */
-	public String checkPracticeAnswer(String userAnswer, int numberOfAttempts) {
+	public String checkGameAnswer(String userAnswer) {
 		boolean correct = QuestionHelper.checkQuestion(userAnswer, _currentAnswer);
+		_correctAnswer = correct;
 		if (correct) {
-			System.out.println("Success!");
 			return "Success!";
-		} else if (numberOfAttempts < 3) {
-			System.out.println("Incorrect!");
-			return "Incorrect!";
 		} else {
-			System.out.println("Incorrect!\n" + "The correct answer for the question " + _currentQuestion + "was:\n" + _currentAnswer);
 			return "Incorrect!\n" + "The correct answer for the question " + _currentQuestion + "was:\n" + _currentAnswer;
 		}
 	}
 
 	/**
-	 * Returns the clue for the current question.
-	 *
-	 * @return String the clue
+	 * Used to tell if the user got it correct or not.
+	 * 
+	 * @return boolean true if correct, false if incorrect
 	 */
-	public String getClueFromQuestion() {
-		return Character.toString(QuestionHelper.trimAnswer(_currentAnswer).charAt(0));
+	public boolean wonOrNot() {
+		return _correctAnswer;
 	}
 }

@@ -12,6 +12,8 @@ public class GameModel {
 	private static GameModel _instance;
 	
 	private GameFiles _gameFiles = new GameFiles();
+	private GameQuestionQuery _questionQuery = new GameQuestionQuery();
+	
 	private ScoreTracker _score = new ScoreTracker();
 	
 	private GameModel() {
@@ -42,17 +44,35 @@ public class GameModel {
 	}
 	
 	/**
-	 * Save score to the users file, based on how they did answering the question.
-	 */
-	public void addScore(int score) {
-		_score.addWinnings(score);
-	}
-	
-	/**
 	 * Get score from file to display to the user.
 	 */
 	public int getScore() {
 		return _score.getCurrentScore();
 	}
 
+	/**
+	 * Used to get a game question based on the chosen category and the value of the question. 
+	 * 
+	 * @param category      the category chosen by the user
+	 * @param questionValue the value of the question
+	 * @return String       the question to be displayed to the user
+	 */
+	public String getGameQuestion(String category, String questionValue) {
+		return _questionQuery.retrieveQuestion(category, questionValue);
+	}
+	
+	/**
+	 * Used to check whether the users answer for the current question is correct or not. 
+	 * 
+	 * @param userAnswer 
+	 * @return String the message based on how the user answers
+	 */
+	public String checkGameAnswer(String userAnswer, String questionValue) {
+		String displayString = _questionQuery.checkGameAnswer(userAnswer);
+		boolean correct = _questionQuery.wonOrNot();
+		if (correct) {
+			_score.addWinnings(questionValue);
+		}
+		return displayString;
+	}
 }

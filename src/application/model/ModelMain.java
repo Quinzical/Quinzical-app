@@ -2,13 +2,13 @@ package application.model;
 
 import application.model.game.GameModel;
 import application.model.practice.PracticeModel;
+import application.model.question.QuestionModel;
 
 /**
  * This is the main class for the model, where the game, practice and question models can be accessed. 
  * 
  * @author Maggie Pedersen
  * @author Cheng-Zhen Yang
- *
  */
 public class ModelMain {
 	
@@ -47,11 +47,26 @@ public class ModelMain {
 	 * @return String the question to be displayed to the user
 	 */
 	public String getQuestion() {
-		System.out.println(_practiceModel.getPracticeQuestion("Geography"));
-		System.out.println(_practiceModel.checkPracticeAnswer("the waikato", 1));
+		QuestionModel questionModel = QuestionModel.getInstance();
+		questionModel.setCategory("Geography");
+		questionModel.setNumberOfAttempts(2);
+		questionModel.setPractice(true);
+		questionModel.setQuestionValue("500");
+		System.out.println(questionModel.getQuestion());
+		questionModel.getClue();
+		
 		return null;
 	}
 	
+	/**
+	 * Used to check whether the user has correctly answered the question or not 
+	 * 
+	 * @param userAnswer
+	 */
+	public void checkUserAnswer(String userAnswer) {
+		QuestionModel questionModel = QuestionModel.getInstance();
+		questionModel.checkAnswer(userAnswer);
+	}
 	
 	/**
 	 * Used for testing.
@@ -60,6 +75,7 @@ public class ModelMain {
 		ModelMain main = ModelMain.getInstance();
 		main.startGame();
 		main.getQuestion();
+		main.checkUserAnswer("Rakiura");
 	}
 
 }

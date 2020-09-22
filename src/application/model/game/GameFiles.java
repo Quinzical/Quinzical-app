@@ -19,21 +19,38 @@ import application.model.practice.PracticeFiles;
  */
 public class GameFiles {
 
-	public static String CURRENTUSER = "default";
-	private String _userCategories;
-
+	private static String _currentUser = "default";
+	private static String _userCategories;
 	
 	public GameFiles() {
-	}
+    }
+    
+    /**
+     * Used to get the static user categories directory.
+     * 
+     * @return userCategories
+     */
+    public static String getUserCategories() {
+        return _userCategories;
+    }
+    
+    /**
+     * Used to get the current user of the game.
+     * 
+     * @return username
+     */
+    public static String getUser() {
+        return _currentUser;
+    }
 
 	/**
 	 * Used to set the current user of the game for the project later on. 
 	 * 
 	 * @param username
 	 */
-	public void setUser(String username) {
-		CURRENTUSER = "default";
-	}
+	public static void setUser(String username) {
+		_currentUser = username;
+    }
 
 	/**
 	 * Method to create directories for storing game files for the games module.
@@ -57,7 +74,7 @@ public class GameFiles {
 	 * @return String the user directory
 	 */
 	private String setUpUser(String userDir) {
-		String user = userDir + FileHelper.FILESEPARATOR + CURRENTUSER;
+		String user = userDir + FileHelper.FILESEPARATOR + _currentUser;
 		FileHelper.makeDirectory(user);
 		return user;
 	}

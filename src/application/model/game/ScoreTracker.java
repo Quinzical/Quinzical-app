@@ -17,7 +17,7 @@ import application.model.helper.FileHelper;
  */
 public class ScoreTracker {
 
-	private final String _scoreFile = FileHelper.CURRENTDIR + FileHelper.FILESEPARATOR + "data" + FileHelper.FILESEPARATOR + "users" + FileHelper.FILESEPARATOR + GameFiles.CURRENTUSER + FileHelper.FILESEPARATOR + "score";
+	private final String _scoreFile = FileHelper.CURRENTDIR + FileHelper.FILESEPARATOR + "data" + FileHelper.FILESEPARATOR + "users" + FileHelper.FILESEPARATOR + GameFiles.getUserCategories() + FileHelper.FILESEPARATOR + "score";
 
 	public ScoreTracker() {
 	}
@@ -43,7 +43,8 @@ public class ScoreTracker {
 	 * 
 	 * @param score the amount the user receives for successfully answering the question
 	 */
-	public void addWinnings(int score) {
+	public void addWinnings(String questionValue) {
+		int score = Integer.parseInt(questionValue);
 		int currentScore = getCurrentScore();
 		currentScore += score;
 		try {
