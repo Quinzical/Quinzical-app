@@ -49,9 +49,11 @@ public class ModelMain {
 	public String getQuestion() {
 		QuestionModel questionModel = QuestionModel.getInstance();
 		questionModel.setCategory("Geography");
-		questionModel.setPractice(false);
+		questionModel.setNumberOfAttempts(2);
+		questionModel.setPractice(true);
 		questionModel.setQuestionValue("500");
 		System.out.println(questionModel.getQuestion());
+		questionModel.getClue();
 		
 		return null;
 	}

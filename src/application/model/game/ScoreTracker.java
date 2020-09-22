@@ -43,7 +43,8 @@ public class ScoreTracker {
 	 * 
 	 * @param score the amount the user receives for successfully answering the question
 	 */
-	public void addWinnings(int score) {
+	public void addWinnings(String questionValue) {
+		int score = Integer.parseInt(questionValue);
 		int currentScore = getCurrentScore();
 		currentScore += score;
 		try {

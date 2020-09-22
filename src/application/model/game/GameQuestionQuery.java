@@ -16,6 +16,8 @@ public class GameQuestionQuery {
 	
 	String _currentQuestion = null;
 	String _currentAnswer = null;
+	
+	boolean _correctAnswer = false;
 
 	public GameQuestionQuery() {
 	}
@@ -72,16 +74,21 @@ public class GameQuestionQuery {
 	 * @return String    a string based on how many attempts the user has had and the answer they supply
 	 */
 	public String checkGameAnswer(String userAnswer) {
-		QuestionHelper.checkQuestion(userAnswer, _currentAnswer);
-		return null;
+		boolean correct = QuestionHelper.checkQuestion(userAnswer, _currentAnswer);
+		_correctAnswer = correct;
+		if (correct) {
+			return "Success!";
+		} else {
+			return "Incorrect!\n" + "The correct answer for the question " + _currentQuestion + "was:\n" + _currentAnswer;
+		}
 	}
-	
+
 	/**
-	 * Returns the clue for the current question.
-	 *
-	 * @return String the clue
+	 * Used to tell if the user got it correct or not.
+	 * 
+	 * @return boolean true if correct, false if incorrect
 	 */
-	public String getClueFromQuestion() {
-		return Character.toString(QuestionHelper.trimAnswer(_currentAnswer).charAt(0));
+	public boolean wonOrNot() {
+		return _correctAnswer;
 	}
 }

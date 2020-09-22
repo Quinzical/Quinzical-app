@@ -44,13 +44,6 @@ public class GameModel {
 	}
 	
 	/**
-	 * Save score to the users file, based on how they did answering the question.
-	 */
-	public void addScore(int score) {
-		_score.addWinnings(score);
-	}
-	
-	/**
 	 * Get score from file to display to the user.
 	 */
 	public int getScore() {
@@ -74,16 +67,12 @@ public class GameModel {
 	 * @param userAnswer 
 	 * @return String the message based on how the user answers
 	 */
-	public String checkGameAnswer(String userAnswer) {
-		return _questionQuery.checkGameAnswer(userAnswer);
-	}
-	
-	/**
-	 * Used to send the clue for the current question to the user. This is only to be used if they are on their third attempt.  
-	 * 
-	 * @return String the clue for the user
-	 */
-	public String getClue() {
-		return _questionQuery.getClueFromQuestion();
+	public String checkGameAnswer(String userAnswer, String questionValue) {
+		String displayString = _questionQuery.checkGameAnswer(userAnswer);
+		boolean correct = _questionQuery.wonOrNot();
+		if (correct) {
+			_score.addWinnings(questionValue);
+		}
+		return displayString;
 	}
 }

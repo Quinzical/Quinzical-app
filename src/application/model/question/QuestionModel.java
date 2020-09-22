@@ -45,7 +45,7 @@ public class QuestionModel {
 	}
 	
 	/**
-	 * Used to set the category for both the games and practice module
+	 * Used to set the category for both the games and practice module.
 	 * 
 	 * @param category
 	 */
@@ -54,7 +54,7 @@ public class QuestionModel {
 	}
 	
 	/**
-	 * Used to set the number of attempts for the practice module
+	 * Used to set the number of attempts for the practice module.
 	 * 
 	 * @param numberOfAttempts
 	 */
@@ -63,7 +63,7 @@ public class QuestionModel {
 	}
 	
 	/**
-	 * Used to set the current question value for use in the games module
+	 * Used to set the current question value for use in the games module.
 	 * 
 	 * @param value
 	 */
@@ -72,7 +72,7 @@ public class QuestionModel {
 	}
 	
 	/**
-	 * Returns a question
+	 * Returns a question.
 	 * 
 	 * @return String the question to be displayed to the user
 	 */
@@ -98,7 +98,21 @@ public class QuestionModel {
 			return practiceModel.checkPracticeAnswer(userAnswer, _numberOfAttempts);
 		} else {
 			GameModel gameModel = GameModel.getInstance();
-			return gameModel.checkGameAnswer(userAnswer);
+			return gameModel.checkGameAnswer(userAnswer, _questionValue);
 		}
+	}
+	
+	/**
+	 * Used to get a clue for the current question if the user is on their third attempt.
+	 * 
+	 * @return String the clue to be displayed to the user
+	 */
+	public String getClue() {
+		if (_practice && _numberOfAttempts == 2) {
+			PracticeModel practiceModel = PracticeModel.getInstance();
+			System.out.println(practiceModel.getClue());
+			return practiceModel.getClue();
+		}
+		return null;
 	}
 }

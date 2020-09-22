@@ -69,10 +69,13 @@ public class PracticeQuestionQuery {
 	public String checkPracticeAnswer(String userAnswer, int numberOfAttempts) {
 		boolean correct = QuestionHelper.checkQuestion(userAnswer, _currentAnswer);
 		if (correct) {
+			System.out.println("Success!");
 			return "Success!";
 		} else if (numberOfAttempts < 3) {
+			System.out.println("Incorrect!");
 			return "Incorrect!";
 		} else {
+			System.out.println("Incorrect!\n" + "The correct answer for the question " + _currentQuestion + "was:\n" + _currentAnswer);
 			return "Incorrect!\n" + "The correct answer for the question " + _currentQuestion + "was:\n" + _currentAnswer;
 		}
 	}
