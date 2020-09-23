@@ -5,7 +5,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
+import application.model.helper.Category;
 import application.model.helper.FileHelper;
 
 /**
@@ -17,6 +19,7 @@ import application.model.helper.FileHelper;
 public class PracticeFiles {
 
 	public static String _categoryFolder;
+	private List<Category> _categoryCollection;
 
 	public PracticeFiles() {
 	}
@@ -52,7 +55,9 @@ public class PracticeFiles {
 				while((line = in.readLine()) != null) {
 					//Replace spaces with hypens to name the files
 					if (count == 1) {
+						_categoryCollection.add(new Category(line));
 						line = line.replace(' ', '-');
+		
 						String copyName = _categoryFolder + FileHelper.FILESEPARATOR + line + ".txt";
 						copyFile = new File(copyName);
 						out = new PrintWriter(copyFile);
@@ -71,5 +76,14 @@ public class PracticeFiles {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	/**
+	 * Method to return the practice categories. 
+	 * 
+	 * @return List<Category> a list containing all the current categories
+	 */
+	public List<Category> getCategories() {
+		return _categoryCollection;
 	}
 }

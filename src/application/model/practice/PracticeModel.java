@@ -1,5 +1,9 @@
 package application.model.practice;
 
+import java.util.List;
+
+import application.model.helper.Category;
+
 /**
  * This class is used to delegate tasks to different classes who carry out tasks for the function of the practice module based on what the user wants to do.
  *  
@@ -65,5 +69,14 @@ public class PracticeModel {
 	 */
 	public String getClue() {
 		return _questionQuery.getClueFromQuestion();
+	}
+	
+	/**
+	 * Used to deliver a list of categories to the required controllers
+	 * 
+	 * @return
+	 */
+	public List<Category> getPracticeCategories() {
+		return _practiceFiles.getCategories();
 	}
 }
