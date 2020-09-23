@@ -3,8 +3,8 @@ package application.models.practice;
 import java.io.File;
 import java.util.List;
 
-import application.model.helper.FileHelper;
-import application.model.helper.QuestionHelper;
+import application.helper.FileHelper;
+import application.models.helper.QuestionHelper;
 
 /**
  * This class is used to retrieve questions from their relevant files for the practice module.

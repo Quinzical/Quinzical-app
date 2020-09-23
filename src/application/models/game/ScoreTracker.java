@@ -7,7 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import application.model.helper.FileHelper;
+import application.helper.FileHelper;
 
 /**
  * This class is used to keep a track of the current users score from the games module.

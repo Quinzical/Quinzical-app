@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import application.model.helper.FileHelper;
+import application.helper.FileHelper;
 
 /**
  * This class is used to set up the necessary files for the games module.
