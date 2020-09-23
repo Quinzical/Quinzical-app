@@ -5,7 +5,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
+import application.models.helper.Category;
 import application.helper.FileHelper;
 
 /**
@@ -17,6 +19,7 @@ import application.helper.FileHelper;
 public class PracticeFiles {
 
 	private static String _categoryFolder;
+	private List<Category> _categoryCollection;
 
 	public PracticeFiles() {
 	}
@@ -29,7 +32,6 @@ public class PracticeFiles {
     public static String getCategoryFolder() {
         return _categoryFolder;
     }
-    
 
 	/**
 	 * Method to create directories for storing game files for the practice module.
@@ -62,6 +64,7 @@ public class PracticeFiles {
 				while((line = in.readLine()) != null) {
 					//Replace spaces with hypens to name the files
 					if (count == 1) {
+						_categoryCollection.add(new Category(line));
 						line = line.replace(' ', '-');
 						String copyName = _categoryFolder + FileHelper.FILE_SEPARATOR + line + ".txt";
 						copyFile = new File(copyName);
@@ -81,5 +84,14 @@ public class PracticeFiles {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	/**
+	 * Method to return the practice categories. 
+	 * 
+	 * @return List<Category> a list containing all the current categories
+	 */
+	public List<Category> getCategories() {
+		return _categoryCollection;
 	}
 }
