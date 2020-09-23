@@ -108,6 +108,13 @@ public class SceneManager {
     }
 
     /**
+     * Used to unload scene
+     */
+    public void unloadScene() {
+        _scenes.remove(_history.peek());
+    }
+
+    /**
      * Used to close stage/window
      */
     public void close() {
