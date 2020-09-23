@@ -1,10 +1,10 @@
-package application.model.practice;
+package application.models.practice;
 
 import java.io.File;
 import java.util.List;
 
-import application.model.helper.FileHelper;
-import application.model.helper.QuestionHelper;
+import application.helper.FileHelper;
+import application.models.helper.QuestionHelper;
 
 /**
  * This class is used to retrieve questions from their relevant files for the practice module.
@@ -31,7 +31,7 @@ public class PracticeQuestionQuery {
 		//Replace spaces from category to hyphen if not already done
 		category = category.replace(' ', '-');
 
-		String questionStr = PracticeFiles._categoryFolder + FileHelper.FILESEPARATOR + category + ".txt";
+		String questionStr = PracticeFiles.getCategoryFolder() + FileHelper.FILE_SEPARATOR + category + ".txt";
 		File questionFile = new File(questionStr);
 
 		return generateRandomQuestion(FileHelper.countLinesinFile(questionFile), questionFile);
@@ -67,7 +67,8 @@ public class PracticeQuestionQuery {
 	 * @return String    a string based on how many attempts the user has had and the answer they supply
 	 */
 	public String checkPracticeAnswer(String userAnswer, int numberOfAttempts) {
-		boolean correct = QuestionHelper.checkQuestion(userAnswer, _currentAnswer);
+		QuestionHelper helper = QuestionHelper.getInstance();
+		boolean correct = helper.checkQuestion(userAnswer, _currentAnswer);
 		if (correct) {
 			System.out.println("Success!");
 			return "Success!";

@@ -1,8 +1,8 @@
-package application.model;
+package application.models;
 
-import application.model.game.GameModel;
-import application.model.practice.PracticeModel;
-import application.model.question.QuestionModel;
+import application.models.game.GameModel;
+import application.models.practice.PracticeModel;
+import application.models.question.QuestionModel;
 
 /**
  * This is the main class for the model, where the game, practice and question models can be accessed. 

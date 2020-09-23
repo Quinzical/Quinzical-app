@@ -1,4 +1,4 @@
-package application.controllers;
+package application.helper;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -23,7 +23,7 @@ import javafx.stage.WindowEvent;
 public class SceneManager {
 
     // CONST
-    private final static String PATH = "/application/resources/";
+    private final static String PATH = FileHelper.FILE_SEPARATOR + "application" + FileHelper.FILE_SEPARATOR + "resources" + FileHelper.FILE_SEPARATOR;
 
     public enum Scenes {
         HOME_MENU("HomeMenu.fxml"), PRACTICE_MENU("PracticeMenu.fxml"), SETTINGS_MENU("SettingsMenu.fxml"),

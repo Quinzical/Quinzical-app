@@ -1,7 +1,7 @@
 package application;
 
-import application.controllers.SceneManager;
-import application.controllers.SceneManager.Scenes;
+import application.helper.SceneManager;
+import application.helper.SceneManager.Scenes;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

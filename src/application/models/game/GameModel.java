@@ -1,4 +1,4 @@
-package application.model.game;
+package application.models.game;
 
 /**
  * This class is used to delegate tasks to different classes who carry out tasks for the function of the games module based on what the user wants to do.

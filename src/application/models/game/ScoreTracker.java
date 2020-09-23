@@ -1,4 +1,4 @@
-package application.model.game;
+package application.models.game;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -7,7 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import application.model.helper.FileHelper;
+import application.helper.FileHelper;
 
 /**
  * This class is used to keep a track of the current users score from the games module.
@@ -17,7 +17,7 @@ import application.model.helper.FileHelper;
  */
 public class ScoreTracker {
 
-	private final String _scoreFile = FileHelper.CURRENTDIR + FileHelper.FILESEPARATOR + "data" + FileHelper.FILESEPARATOR + "users" + FileHelper.FILESEPARATOR + GameFiles.getUserCategories() + FileHelper.FILESEPARATOR + "score";
+	private final String _scoreFile = FileHelper.CURRENT_DIR + FileHelper.FILE_SEPARATOR + "data" + FileHelper.FILE_SEPARATOR + "users" + FileHelper.FILE_SEPARATOR + GameFiles.getUserCategories() + FileHelper.FILE_SEPARATOR + "score";
 
 	public ScoreTracker() {
 	}

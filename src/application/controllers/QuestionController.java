@@ -3,7 +3,8 @@ package application.controllers;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import application.controllers.SceneManager.Scenes;
+import application.helper.SceneManager;
+import application.helper.SceneManager.Scenes;
 import application.processes.Speak;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
