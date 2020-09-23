@@ -1,6 +1,7 @@
 package application.controllers;
 
-import application.controllers.SceneManager.Scenes;
+import application.helper.SceneManager;
+import application.helper.SceneManager.Scenes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 

@@ -1,8 +1,7 @@
-package application.model.question;
+package application.models.question;
 
-import application.model.game.GameModel;
-
-import application.model.practice.PracticeModel;
+import application.models.game.GameModel;
+import application.models.practice.PracticeModel;
 
 /**
  * This class is used to delegate tasks to different classes who carry out tasks for the function of the practice module based on what the user wants to do.

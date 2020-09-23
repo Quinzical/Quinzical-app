@@ -1,4 +1,4 @@
-package application.model.game;
+package application.models.game;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -7,9 +7,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import application.model.helper.Category;
-import application.model.helper.FileHelper;
-import application.model.practice.PracticeFiles;
+import application.models.helper.Category;
+import application.helper.FileHelper;
+import application.models.practice.PracticeFiles;
 
 /**
  * This class is used to set up the necessary files for the games module. This includes setting up files to account for the need of different users in the project. 
@@ -59,13 +59,13 @@ public class GameFiles {
 	 */
 	public void setUpGameModule() {
 		//Create subdirectory for users if not already created
-		String user = FileHelper.CURRENTDIR + FileHelper.FILESEPARATOR + "data" + FileHelper.FILESEPARATOR + "users";
+		String user = FileHelper.CURRENT_DIR + FileHelper.FILE_SEPARATOR + "data" + FileHelper.FILE_SEPARATOR + "users";
 		FileHelper.makeDirectory(user);
 
 		String currentDir = setUpUser(user);
 
 		//Create subdirectory for category files if not already created
-		_userCategories = currentDir + FileHelper.FILESEPARATOR + "categories";
+		_userCategories = currentDir + FileHelper.FILE_SEPARATOR + "categories";
 		FileHelper.makeDirectory(_userCategories);
 	}
 
@@ -76,7 +76,7 @@ public class GameFiles {
 	 * @return String the user directory
 	 */
 	private String setUpUser(String userDir) {
-		String user = userDir + FileHelper.FILESEPARATOR + _currentUser;
+		String user = userDir + FileHelper.FILE_SEPARATOR + _currentUser;
 		FileHelper.makeDirectory(user);
 		return user;
 	}
@@ -85,7 +85,7 @@ public class GameFiles {
 	 * Used to randomise the categories that the user will be given for questioning.
 	 */
 	public void randomiseCategories() {
-		List<Integer> randomFiles = FileHelper.makeRandomList(5, FileHelper.countFilesInDirectory(PracticeFiles._categoryFolder));
+		List<Integer> randomFiles = FileHelper.makeRandomList(5, FileHelper.countFilesInDirectory(PracticeFiles.getCategoryFolder()));
 		createAndFillRandomFiles(randomFiles);
 	}
 
@@ -97,7 +97,7 @@ public class GameFiles {
 	private void createAndFillRandomFiles(List<Integer> randomFiles) {
 		int currentNumberOfGameFiles = FileHelper.countFilesInDirectory(_userCategories);
 		int count = 1;
-		File categoriesDir = new File(PracticeFiles._categoryFolder);
+		File categoriesDir = new File(PracticeFiles.getCategoryFolder());
 		
 		if (categoriesDir.exists()) {
 			if (categoriesDir.isDirectory()) {
@@ -107,7 +107,8 @@ public class GameFiles {
 					} else if (randomFiles.contains(count)) {
 						String fileName = file.getName();
 						_categoryCollection.add(new Category(fileName));
-						String copyFileName = _userCategories + FileHelper.FILESEPARATOR + fileName;
+						String copyFileName = _userCategories + FileHelper.FILE_SEPARATOR + fileName;
+
 						File copyFile = new File(copyFileName);
 						
 						List<Integer> randomQuestions = FileHelper.makeRandomList(5, FileHelper.countLinesinFile(file));

@@ -1,7 +1,7 @@
 package application.controllers.helper;
 
-import application.controllers.SceneManager;
-import application.controllers.SceneManager.Scenes;
+import application.helper.SceneManager;
+import application.helper.SceneManager.Scenes;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;

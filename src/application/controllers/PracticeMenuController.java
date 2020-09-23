@@ -1,11 +1,11 @@
 package application.controllers;
 
 import java.util.List;
-
-import application.controllers.SceneManager.Scenes;
 import application.controllers.helper.PracticeCategoryButton;
-import application.model.helper.Category;
-import application.model.practice.PracticeModel;
+import application.helper.SceneManager;
+import application.helper.SceneManager.Scenes;
+import application.models.helper.Category;
+import application.models.practice.PracticeModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;

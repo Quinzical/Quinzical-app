@@ -1,4 +1,4 @@
-package application.model.helper;
+package application.models.helper;
 
 public class Category {
 	
