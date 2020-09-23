@@ -34,7 +34,7 @@ public class PracticeMenuController {
         _practiceModel.setUpPracticeModule();
         _categories = _practiceModel.getPracticeCategories();
         for (Category category : _categories) {
-            PracticeCategoryButton btn = new PracticeCategoryButton(category.getCategoryName());
+            PracticeCategoryButton btn = new PracticeCategoryButton(category);
             _categoriesPane.getChildren().add(btn);
             TilePane.setMargin(btn, new Insets(10, 10, 10, 10));
         }

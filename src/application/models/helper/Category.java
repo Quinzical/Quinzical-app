@@ -1,5 +1,11 @@
 package application.models.helper;
 
+/**
+ * This class is used to represent a single Category
+ * 
+ * @author Maggie Pedersen
+ * @author Cheng-Zhen Yang
+ */
 public class Category {
 	
 	private String _categoryName;
@@ -7,8 +13,13 @@ public class Category {
 	public Category(String categoryName) {
 		_categoryName = categoryName;
 	}
-	
-	public String getCategoryName() {
+    
+    @Override
+	public String toString() {
 		return _categoryName;
-	}
+    }
+    
+    public String getFilename() {
+        return _categoryName.replace(' ', '-');
+    }
 }

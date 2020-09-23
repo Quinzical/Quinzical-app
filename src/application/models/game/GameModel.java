@@ -61,7 +61,7 @@ public class GameModel {
 	 * @param questionValue the value of the question
 	 * @return String       the question to be displayed to the user
 	 */
-	public String getGameQuestion(String category, String questionValue) {
+	public String getGameQuestion(Category category, String questionValue) {
 		return _questionQuery.retrieveQuestion(category, questionValue);
 	}
 	

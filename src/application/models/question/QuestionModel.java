@@ -1,6 +1,7 @@
 package application.models.question;
 
 import application.models.game.GameModel;
+import application.models.helper.Category;
 import application.models.practice.PracticeModel;
 
 /**
@@ -15,7 +16,7 @@ public class QuestionModel {
 	private static QuestionModel _instance;
 	
 	private boolean _practice;
-	private String _category;
+	private Category _category;
 	private String _questionValue;
 	private int _numberOfAttempts;
 	
@@ -48,7 +49,7 @@ public class QuestionModel {
 	 * 
 	 * @param category
 	 */
-	public void setCategory(String category) {
+	public void setCategory(Category category) {
 		_category = category;
 	}
 	

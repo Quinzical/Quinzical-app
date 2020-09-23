@@ -48,7 +48,7 @@ public class PracticeModel {
 	 * @param category the category chosen by the user
 	 * @return String  the question
 	 */
-	public String getPracticeQuestion(String category, int numberOfAttempts) {
+	public String getPracticeQuestion(Category category, int numberOfAttempts) {
 		return _questionQuery.retrieveQuestion(category, numberOfAttempts);
 	}
 

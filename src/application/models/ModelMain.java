@@ -1,6 +1,7 @@
 package application.models;
 
 import application.models.game.GameModel;
+import application.models.helper.Category;
 import application.models.practice.PracticeModel;
 import application.models.question.QuestionModel;
 
@@ -48,7 +49,7 @@ public class ModelMain {
 	 */
 	public String getQuestion() {
 		QuestionModel questionModel = QuestionModel.getInstance();
-		questionModel.setCategory("Geography");
+		questionModel.setCategory(new Category("Geography"));
 		questionModel.setNumberOfAttempts(2);
 		questionModel.setPractice(true);
 		questionModel.setQuestionValue("500");
