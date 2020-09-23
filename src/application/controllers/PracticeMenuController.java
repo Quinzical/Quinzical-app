@@ -1,8 +1,11 @@
 package application.controllers;
 
+import java.util.List;
 import application.controllers.helper.PracticeCategoryButton;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
+import application.models.helper.Category;
+import application.models.practice.PracticeModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -18,8 +21,7 @@ public class PracticeMenuController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
 
-    // TODO change to category object
-    private final String[] categories = { "Place", "People", "Test", "Category" };
+    private List<Category> _categories;
 
     @FXML
     private TilePane _categoriesPane;
@@ -28,9 +30,10 @@ public class PracticeMenuController {
      * initialize with PracticeMenu.fxml
      */
     public void initialize() {
-        // Temporary add buttons
-        for (String category : categories) {
-            PracticeCategoryButton btn = new PracticeCategoryButton(category);
+    	PracticeModel practiceModel = PracticeModel.getInstance();
+    	_categories = practiceModel.getPracticeCategories();
+        for (Category category : _categories) {
+            PracticeCategoryButton btn = new PracticeCategoryButton(category.getCategoryName());
             _categoriesPane.getChildren().add(btn);
             TilePane.setMargin(btn, new Insets(10, 10, 10, 10));
         }

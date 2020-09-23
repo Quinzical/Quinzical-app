@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import application.models.helper.Category;
 import application.helper.FileHelper;
 import application.models.practice.PracticeFiles;
 
@@ -21,6 +22,7 @@ public class GameFiles {
 
 	private static String _currentUser = "default";
 	private static String _userCategories;
+	private List<Category> _categoryCollection;
 	
 	public GameFiles() {
     }
@@ -104,7 +106,9 @@ public class GameFiles {
 						return;
 					} else if (randomFiles.contains(count)) {
 						String fileName = file.getName();
+						_categoryCollection.add(new Category(fileName));
 						String copyFileName = _userCategories + FileHelper.FILE_SEPARATOR + fileName;
+
 						File copyFile = new File(copyFileName);
 						
 						List<Integer> randomQuestions = FileHelper.makeRandomList(5, FileHelper.countLinesinFile(file));
@@ -134,5 +138,14 @@ public class GameFiles {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Method to return the practice categories. 
+	 * 
+	 * @return List<Category> a list containing all the current categories
+	 */
+	public List<Category> getCategories() {
+		return _categoryCollection;
 	}
 }
