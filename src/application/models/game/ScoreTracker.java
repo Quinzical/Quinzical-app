@@ -17,7 +17,7 @@ import application.helper.FileHelper;
  */
 public class ScoreTracker {
 
-	private final String _scoreFile = FileHelper.CURRENT_DIR + FileHelper.FILE_SEPARATOR + "data" + FileHelper.FILE_SEPARATOR + "users" + FileHelper.FILE_SEPARATOR + GameFiles.getUserCategories() + FileHelper.FILE_SEPARATOR + "score";
+	private final String _scoreFile = FileHelper.CURRENT_DIR + FileHelper.FILE_SEPARATOR + "data" + FileHelper.FILE_SEPARATOR + "users" + FileHelper.FILE_SEPARATOR + GameFiles.getUser() + FileHelper.FILE_SEPARATOR + "score";
 
 	public ScoreTracker() {
 	}

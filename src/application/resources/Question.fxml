@@ -14,9 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" styleClass="root" stylesheets="@application.css"
-    xmlns="http://javafx.com/javafx/11.0.1"
-    xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.QuestionController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" styleClass="root" stylesheets="@application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.QuestionController">
     <children>
         <HBox alignment="CENTER" VBox.vgrow="NEVER">
             <children>
@@ -39,7 +37,7 @@
                 <Insets top="10.0" />
             </VBox.margin>
         </HBox>
-        <Label fx:id="_questionLabel" text="This person lead New Zealand 2020" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+        <Label fx:id="_questionLabel" minHeight="-Infinity" text="If you want text in different styles, then, if using JavaFX 2, place multiple labels in a FlowPane or, if you are using Java 8+, place the labels in a TextFlow component." textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS">
             <font>
                 <Font name="System Bold" size="39.0" />
             </font>

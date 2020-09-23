@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 
 import application.helper.FileHelper;
+import application.models.helper.Category;
 import application.models.helper.QuestionHelper;
 
 /**
@@ -27,11 +28,11 @@ public class PracticeQuestionQuery {
 	 * @param numberOfAttempts the number of attempts the user has had on this particular question
 	 * @return String the question to be displayed to the user
 	 */
-	public String retrieveQuestion(String category, int numberOfAttempts) {
+	public String retrieveQuestion(Category category, int numberOfAttempts) {
 		//Replace spaces from category to hyphen if not already done
-		category = category.replace(' ', '-');
+		String categoryName = category.toString().replace(' ', '-');
 
-		String questionStr = PracticeFiles.getCategoryFolder() + FileHelper.FILE_SEPARATOR + category + ".txt";
+		String questionStr = PracticeFiles.getCategoryFolder() + FileHelper.FILE_SEPARATOR + categoryName + ".txt";
 		File questionFile = new File(questionStr);
 
 		return generateRandomQuestion(FileHelper.countLinesinFile(questionFile), questionFile);

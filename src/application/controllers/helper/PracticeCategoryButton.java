@@ -2,6 +2,8 @@ package application.controllers.helper;
 
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
+import application.models.helper.Category;
+import application.models.question.QuestionModel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -20,8 +22,8 @@ public class PracticeCategoryButton extends Button {
      * 
      * @param name
      */
-    public PracticeCategoryButton(String name) {
-        super(name);
+    public PracticeCategoryButton(Category category) {
+        super(category.toString());
         // set size
         setPrefWidth(220);
         setPrefHeight(70);
@@ -32,7 +34,10 @@ public class PracticeCategoryButton extends Button {
         setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                // TODO add question model
+
+                QuestionModel _questionModel = QuestionModel.getInstance();
+                _questionModel.setPractice(true);
+                _questionModel.setCategory(category);
                 _sceneManager.switchScene(Scenes.QUESTION);
             }
         });

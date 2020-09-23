@@ -20,6 +20,7 @@ import javafx.scene.layout.TilePane;
 public class PracticeMenuController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
+    private final PracticeModel _practiceModel = PracticeModel.getInstance();
 
     private List<Category> _categories;
 
@@ -30,10 +31,10 @@ public class PracticeMenuController {
      * initialize with PracticeMenu.fxml
      */
     public void initialize() {
-    	PracticeModel practiceModel = PracticeModel.getInstance();
-    	_categories = practiceModel.getPracticeCategories();
+        _practiceModel.setUpPracticeModule();
+        _categories = _practiceModel.getPracticeCategories();
         for (Category category : _categories) {
-            PracticeCategoryButton btn = new PracticeCategoryButton(category.getCategoryName());
+            PracticeCategoryButton btn = new PracticeCategoryButton(category);
             _categoriesPane.getChildren().add(btn);
             TilePane.setMargin(btn, new Insets(10, 10, 10, 10));
         }

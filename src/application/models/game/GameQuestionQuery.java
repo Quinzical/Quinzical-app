@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 
 import application.helper.FileHelper;
+import application.models.helper.Category;
 import application.models.helper.QuestionHelper;
 
 /**
@@ -29,11 +30,11 @@ public class GameQuestionQuery {
 	 * @param questionValue
 	 * @return String the question to be returned
 	 */
-	public String retrieveQuestion(String category, String questionValue) {
+	public String retrieveQuestion(Category category, String questionValue) {
 		//Replace spaces from category to hyphen if not already done
-		category = category.replace(' ', '-');
+		String categoryName = category.getFilename();
 		
-		String questionStr = GameFiles.getUserCategories() + FileHelper.FILE_SEPARATOR + category + ".txt";
+		String questionStr = GameFiles.getUserCategories() + FileHelper.FILE_SEPARATOR + categoryName + ".txt";
 		File questionFile = new File(questionStr);
 		
 		return getQuestionFromFile(questionFile, questionValue);
