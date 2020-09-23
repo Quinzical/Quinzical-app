@@ -23,7 +23,8 @@ import javafx.stage.WindowEvent;
 public class SceneManager {
 
     // CONST
-    private final static String PATH = FileHelper.FILE_SEPARATOR + "application" + FileHelper.FILE_SEPARATOR + "resources" + FileHelper.FILE_SEPARATOR;
+    private final static String PATH = FileHelper.FILE_SEPARATOR + "application" + FileHelper.FILE_SEPARATOR
+            + "resources" + FileHelper.FILE_SEPARATOR;
 
     public enum Scenes {
         HOME_MENU("HomeMenu.fxml"), PRACTICE_MENU("PracticeMenu.fxml"), SETTINGS_MENU("SettingsMenu.fxml"),
@@ -71,7 +72,7 @@ public class SceneManager {
             }
         });
         rootStage.setTitle("Quinzical");
-        rootStage.getIcons().add(new Image(getPath("images/darklogo.png")));
+        rootStage.getIcons().add(new Image(getPath("images"+FileHelper.FILE_SEPARATOR+"darklogo.png")));
         rootStage.setWidth(1280);
         rootStage.setHeight(800);
         rootStage.setMinWidth(800);
@@ -120,6 +121,6 @@ public class SceneManager {
      * @return
      */
     private String getPath(String name) {
-        return PATH + name;
+        return (PATH + name).replace(FileHelper.FILE_SEPARATOR, "/");
     }
 }
