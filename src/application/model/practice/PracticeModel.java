@@ -72,9 +72,9 @@ public class PracticeModel {
 	}
 	
 	/**
-	 * Used to deliver a list of categories to the required controllers
+	 * Used to deliver a list of categories to the required controllers.
 	 * 
-	 * @return
+	 * @return List<Category> the current practice categories
 	 */
 	public List<Category> getPracticeCategories() {
 		return _practiceFiles.getCategories();

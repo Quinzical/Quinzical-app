@@ -1,5 +1,9 @@
 package application.model.game;
 
+import java.util.List;
+
+import application.model.helper.Category;
+
 /**
  * This class is used to delegate tasks to different classes who carry out tasks for the function of the games module based on what the user wants to do.
  *  
@@ -74,5 +78,14 @@ public class GameModel {
 			_score.addWinnings(questionValue);
 		}
 		return displayString;
+	}
+	
+	/**
+	 * Used to deliver a list of categories to the required controllers.
+	 * 
+	 * @return List<Category> the current game categories
+	 */
+	public List<Category> getGameCategories() {
+		return _gameFiles.getCategories();
 	}
 }
