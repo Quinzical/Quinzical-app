@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import application.models.helper.Category;
@@ -22,6 +23,7 @@ public class PracticeFiles {
 	private List<Category> _categoryCollection;
 
 	public PracticeFiles() {
+        _categoryCollection = new ArrayList<Category>();
 	}
 	
 	/**
