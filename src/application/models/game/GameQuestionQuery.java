@@ -1,4 +1,4 @@
-package application.model.game;
+package application.models.game;
 
 import java.io.File;
 import java.util.List;
@@ -33,7 +33,7 @@ public class GameQuestionQuery {
 		//Replace spaces from category to hyphen if not already done
 		category = category.replace(' ', '-');
 		
-		String questionStr = GameFiles.getUserCategories() + FileHelper.FILESEPARATOR + category + ".txt";
+		String questionStr = GameFiles.getUserCategories() + FileHelper.FILE_SEPARATOR + category + ".txt";
 		File questionFile = new File(questionStr);
 		
 		return getQuestionFromFile(questionFile, questionValue);
@@ -74,7 +74,8 @@ public class GameQuestionQuery {
 	 * @return String    a string based on how many attempts the user has had and the answer they supply
 	 */
 	public String checkGameAnswer(String userAnswer) {
-		boolean correct = QuestionHelper.checkQuestion(userAnswer, _currentAnswer);
+		QuestionHelper helper = QuestionHelper.getInstance();
+		boolean correct = helper.checkQuestion(userAnswer, _currentAnswer);
 		_correctAnswer = correct;
 		if (correct) {
 			return "Success!";

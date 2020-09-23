@@ -1,5 +1,7 @@
 package application.model.helper;
 
+import application.models.practice.PracticeModel;
+
 /**
  * This is class is used to aid in the handling of questions and answers. 
  * 
@@ -8,7 +10,21 @@ package application.model.helper;
  */
 public class QuestionHelper {
 
-	public QuestionHelper() {
+	private static QuestionHelper _instance;
+
+	private QuestionHelper() {
+	}
+	
+	/**
+	 * Used to return the single instance of this class.
+	 * 
+	 * @return PracticeModel
+	 */
+	public static QuestionHelper getInstance() {
+		if (_instance == null) {
+			_instance = new QuestionHelper();
+		}
+		return _instance;
 	}
 
 	/**
@@ -18,7 +34,7 @@ public class QuestionHelper {
 	 * @param correctAnswer
 	 * @return boolean true if the users answer is correct, false if the answer is incorrect
 	 */
-	public static boolean checkQuestion(String userAnswer, String correctAnswer) {
+	public boolean checkQuestion(String userAnswer, String correctAnswer) {
 		correctAnswer = trimAnswer(correctAnswer);
 		if(compareAnswers(userAnswer, correctAnswer)) {
 			return true;
@@ -54,7 +70,7 @@ public class QuestionHelper {
 	 * @param correctAnswer the correct answer
 	 * @return boolean      true if correct, false if incorrect
 	 */
-	private static boolean compareAnswers(String userAnswer, String correctAnswer) {
+	private boolean compareAnswers(String userAnswer, String correctAnswer) {
 		// Replace spaces between the answers with a letter to avoid any issues with multi-word answers
 		userAnswer = userAnswer.replace(' ', '_');
 		correctAnswer = correctAnswer.replace(' ', '_');

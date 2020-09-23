@@ -14,8 +14,8 @@ import java.util.List;
  * @author Cheng-Zhen Yang
  */
 public class FileHelper {
-	public final static String FILESEPARATOR = System.getProperty("file.separator");
-	public final static String CURRENTDIR = System.getProperty("user.dir");
+	public final static String FILE_SEPARATOR = System.getProperty("file.separator");
+	public final static String CURRENT_DIR = System.getProperty("user.dir");
 
 	/**
 	 * Make a directory.

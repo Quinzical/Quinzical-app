@@ -1,4 +1,4 @@
-package application.model.practice;
+package application.models.practice;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -16,21 +16,31 @@ import application.model.helper.FileHelper;
  */
 public class PracticeFiles {
 
-	public static String _categoryFolder;
+	private static String _categoryFolder;
 
 	public PracticeFiles() {
 	}
+	
+	/**
+     * Used to get the static practice category directory.
+     * 
+     * @return userCategories
+     */
+    public static String getCategoryFolder() {
+        return _categoryFolder;
+    }
+    
 
 	/**
 	 * Method to create directories for storing game files for the practice module.
 	 */
 	public void setUpPracticeModule() {
 		//Create subdirectory for game files if not already created
-		String gameData = FileHelper.CURRENTDIR + FileHelper.FILESEPARATOR + "data";
+		String gameData = FileHelper.CURRENT_DIR + FileHelper.FILE_SEPARATOR + "data";
 		FileHelper.makeDirectory(gameData);
 
 		//Create subdirectory for category files if not already created
-		_categoryFolder = gameData + FileHelper.FILESEPARATOR + "categories";
+		_categoryFolder = gameData + FileHelper.FILE_SEPARATOR + "categories";
 		FileHelper.makeDirectory(_categoryFolder);
 	}
 
@@ -38,7 +48,7 @@ public class PracticeFiles {
 	 * Method to copy categories and their relevant questions and answers into separate files from the quinzical file.
 	 */
 	public void copyCategories() {
-		String quinzical = FileHelper.CURRENTDIR + FileHelper.FILESEPARATOR + "quinzical" + ".txt";
+		String quinzical = FileHelper.CURRENT_DIR + FileHelper.FILE_SEPARATOR + "quinzical" + ".txt";
 		File quinzicalFile = new File(quinzical);
 		if (quinzicalFile.isFile()) {
 			try {
@@ -53,7 +63,7 @@ public class PracticeFiles {
 					//Replace spaces with hypens to name the files
 					if (count == 1) {
 						line = line.replace(' ', '-');
-						String copyName = _categoryFolder + FileHelper.FILESEPARATOR + line + ".txt";
+						String copyName = _categoryFolder + FileHelper.FILE_SEPARATOR + line + ".txt";
 						copyFile = new File(copyName);
 						out = new PrintWriter(copyFile);
 						count++;
