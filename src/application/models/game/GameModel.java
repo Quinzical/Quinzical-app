@@ -88,4 +88,12 @@ public class GameModel {
 	public List<Category> getGameCategories() {
 		return _gameFiles.getCategories();
 	}
+	
+	/**
+	 * Used to reset the game for the current user.
+	 */
+	public void resetGameModule() {
+		_gameFiles.resetGame();
+		_score.setUpScore();
+	}
 }

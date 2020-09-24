@@ -77,6 +77,11 @@ public class ModelMain {
 		main.startGame();
 		main.getQuestion();
 		main.checkUserAnswer("Rakiura");
+		main.resetGame();
+	}
+
+	private void resetGame() {
+		_gameModel.resetGameModule();
 	}
 
 }
