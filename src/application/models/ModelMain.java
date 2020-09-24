@@ -80,7 +80,10 @@ public class ModelMain {
 		main.resetGame();
 	}
 
-	private void resetGame() {
+	/**
+	 * Used to reset the games module if the user presses the 'reset button'. 
+	 */
+	public void resetGame() {
 		_gameModel.resetGameModule();
 	}
 

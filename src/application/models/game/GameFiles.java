@@ -78,8 +78,8 @@ public class GameFiles {
 	 * @param userDir the directory where the users files should be stored
 	 * @return String the user directory
 	 */
-	private String setUpUser(String userDir) {
-		_currentUserDir = userDir + FileHelper.FILE_SEPARATOR + _currentUser;
+	private String setUpUser(String usersDir) {
+		_currentUserDir = usersDir + FileHelper.FILE_SEPARATOR + _currentUser;
 		FileHelper.makeDirectory(_currentUserDir);
 		return _currentUserDir;
 	}
@@ -156,10 +156,10 @@ public class GameFiles {
 	 * Method to reset the game for the current user. 
 	 */
 	public void resetGame() {
+		ProcessBuilder pb = new ProcessBuilder().command("rm", "-r", _currentUserDir);
 		try {
-			String command = "rm -r" + _currentUserDir;
-			ProcessBuilder pb = new ProcessBuilder().command("bash", "-c", command);
-			pb.start();
+			Process process = pb.start();	
+			process.waitFor();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
