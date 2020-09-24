@@ -49,9 +49,9 @@ public class ModelMain {
 	 */
 	public String getQuestion() {
 		QuestionModel questionModel = QuestionModel.getInstance();
-		questionModel.setCategory(new Category("Geography"));
+		questionModel.setCategory(new Category("Fauna"));
 		questionModel.setNumberOfAttempts(2);
-		questionModel.setPractice(true);
+		questionModel.setPractice(false);
 		questionModel.setQuestionValue("500");
 		System.out.println(questionModel.getQuestion());
 		questionModel.getClue();
@@ -77,7 +77,6 @@ public class ModelMain {
 		main.startGame();
 		main.getQuestion();
 		main.checkUserAnswer("Rakiura");
-		main.resetGame();
 	}
 
 	/**
