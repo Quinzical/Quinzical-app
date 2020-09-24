@@ -114,9 +114,7 @@ public class GameQuestionQuery {
 			}
 			in.close();
 			out.close();
-			Boolean success = tempfile.renameTo(_questionFile);
-			System.out.println(_questionFile);
-			System.out.println(success);
+			tempfile.renameTo(_questionFile);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

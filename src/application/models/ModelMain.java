@@ -52,7 +52,7 @@ public class ModelMain {
 		questionModel.setCategory(new Category("Fauna"));
 		questionModel.setNumberOfAttempts(2);
 		questionModel.setPractice(false);
-		questionModel.setQuestionValue("500");
+		questionModel.setQuestionValue("400");
 		System.out.println(questionModel.getQuestion());
 		questionModel.getClue();
 		
