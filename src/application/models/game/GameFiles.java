@@ -22,9 +22,10 @@ import application.models.practice.PracticeFiles;
 public class GameFiles {
 
 	private static String _currentUser = "default";
+	private static String _currentUserDir;
 	private static String _userCategories;
 	private List<Category> _categoryCollection;
-	
+
 	public GameFiles() {
         _categoryCollection = new ArrayList<Category>();
     }
@@ -77,10 +78,10 @@ public class GameFiles {
 	 * @param userDir the directory where the users files should be stored
 	 * @return String the user directory
 	 */
-	private String setUpUser(String userDir) {
-		String user = userDir + FileHelper.FILE_SEPARATOR + _currentUser;
-		FileHelper.makeDirectory(user);
-		return user;
+	private String setUpUser(String usersDir) {
+		_currentUserDir = usersDir + FileHelper.FILE_SEPARATOR + _currentUser;
+		FileHelper.makeDirectory(_currentUserDir);
+		return _currentUserDir;
 	}
 
 	/**
@@ -149,5 +150,20 @@ public class GameFiles {
 	 */
 	public List<Category> getCategories() {
 		return _categoryCollection;
+	}
+	
+	/**
+	 * Method to reset the game for the current user. 
+	 */
+	public void resetGame() {
+		ProcessBuilder pb = new ProcessBuilder().command("rm", "-r", _currentUserDir);
+		try {
+			Process process = pb.start();	
+			process.waitFor();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		setUpGameModule();
+		randomiseCategories();
 	}
 }

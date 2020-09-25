@@ -1,6 +1,10 @@
 package application.models.game;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.List;
 
 import application.helper.FileHelper;
@@ -15,8 +19,11 @@ import application.models.helper.QuestionHelper;
  */
 public class GameQuestionQuery {
 	
-	String _currentQuestion = null;
-	String _currentAnswer = null;
+	private String _currentQuestion = null;
+	private String _currentAnswer = null;
+	private int _lineNumber;
+	
+	private File _questionFile;
 	
 	boolean _correctAnswer = false;
 
@@ -30,14 +37,14 @@ public class GameQuestionQuery {
 	 * @param questionValue
 	 * @return String the question to be returned
 	 */
-	public String retrieveQuestion(Category category, String questionValue) {
+	public String retrieveQuestion(Category category, String questionValue) {		
 		//Replace spaces from category to hyphen if not already done
 		String categoryName = category.getFilename();
 		
 		String questionStr = GameFiles.getUserCategories() + FileHelper.FILE_SEPARATOR + categoryName + ".txt";
-		File questionFile = new File(questionStr);
+		_questionFile = new File(questionStr);
 		
-		return getQuestionFromFile(questionFile, questionValue);
+		return getQuestionFromFile(_questionFile, questionValue);
 	}
 
 	/**
@@ -47,8 +54,8 @@ public class GameQuestionQuery {
 	 * @param questionFile      the file which contains the questions of a given category
 	 */
 	private String getQuestionFromFile(File questionFile, String questionValue) {
-		int lineNumber = Integer.valueOf(questionValue) / 100;
-		List<String> questionAndAnswer = FileHelper.getLineFromFile(questionFile, lineNumber);
+		_lineNumber = Integer.valueOf(questionValue) / 100;
+		List<String> questionAndAnswer = FileHelper.getLineFromFile(questionFile, _lineNumber);
 		setQuestionAndAnswer(questionAndAnswer);
 		return _currentQuestion;
 	}
@@ -77,11 +84,39 @@ public class GameQuestionQuery {
 	public String checkGameAnswer(String userAnswer) {
 		QuestionHelper helper = QuestionHelper.getInstance();
 		boolean correct = helper.checkQuestion(userAnswer, _currentAnswer);
+		deleteQuestionFromFile();
 		_correctAnswer = correct;
 		if (correct) {
 			return "Success!";
 		} else {
 			return "Incorrect!\n" + "The correct answer for the question " + _currentQuestion + "was:\n" + _currentAnswer;
+		}
+	}
+
+	/**
+	 * This method is used to delete questions from game files once they have been answered. 
+	 */
+	private void deleteQuestionFromFile() {
+		//Remove question
+		try {
+			File tempfile = new File(GameFiles.getUserCategories() + FileHelper.FILE_SEPARATOR + "temp.txt");
+
+			BufferedReader in = new BufferedReader(new FileReader(_questionFile));
+			PrintWriter out = new PrintWriter(new FileWriter(tempfile));
+			
+			int count = 1;
+			String line;
+			while((line = in.readLine()) != null) {
+				if(!(count == _lineNumber)) {
+					out.write(line + System.getProperty("line.separator"));
+				}
+				count++;
+			}
+			in.close();
+			out.close();
+			tempfile.renameTo(_questionFile);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
