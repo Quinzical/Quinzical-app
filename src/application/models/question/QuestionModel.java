@@ -90,9 +90,9 @@ public class QuestionModel {
 	 * Used to check the answers for the games or question model, based on what the user module is playing in.
 	 * 
 	 * @param userAnswer
-	 * @return String the message to be displayed to the user based on their answer
+	 * @return boolean true if the user gets it correct, false if they get it incorrect
 	 */
-	public String checkAnswer(String userAnswer) {
+	public boolean checkAnswer(String userAnswer) {
 		if (_practice) {
 			PracticeModel practiceModel = PracticeModel.getInstance();
 			return practiceModel.checkPracticeAnswer(userAnswer, _numberOfAttempts);

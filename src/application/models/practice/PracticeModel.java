@@ -56,9 +56,9 @@ public class PracticeModel {
 	 * Used to check whether the users answer for the current question is correct or not. 
 	 * 
 	 * @param userAnswer 
-	 * @return String the message based on how the user answers
+	 * @return boolean true if correct, false if incorrect
 	 */
-	public String checkPracticeAnswer(String userAnswer, int numberOfAttempts) {
+	public boolean checkPracticeAnswer(String userAnswer, int numberOfAttempts) {
 		return _questionQuery.checkPracticeAnswer(userAnswer, numberOfAttempts);
 	}
 	

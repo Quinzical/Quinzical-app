@@ -65,21 +65,12 @@ public class PracticeQuestionQuery {
 	 * Used to check the correctness of the users answer. 
 	 * 
 	 * @param userAnswer the answer supplied by the user
-	 * @return String    a string based on how many attempts the user has had and the answer they supply
+	 * @return boolean true if correct, false if incorrect
 	 */
-	public String checkPracticeAnswer(String userAnswer, int numberOfAttempts) {
+	public boolean checkPracticeAnswer(String userAnswer, int numberOfAttempts) {
 		QuestionHelper helper = QuestionHelper.getInstance();
-		boolean correct = helper.checkQuestion(userAnswer, _currentAnswer);
-		if (correct) {
-			System.out.println("Success!");
-			return "Success!";
-		} else if (numberOfAttempts < 3) {
-			System.out.println("Incorrect!");
-			return "Incorrect!";
-		} else {
-			System.out.println("Incorrect!\n" + "The correct answer for the question " + _currentQuestion + "was:\n" + _currentAnswer);
-			return "Incorrect!\n" + "The correct answer for the question " + _currentQuestion + "was:\n" + _currentAnswer;
-		}
+		return helper.checkQuestion(userAnswer, _currentAnswer);
+		
 	}
 
 	/**
