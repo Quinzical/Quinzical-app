@@ -95,4 +95,13 @@ public class GameModel {
 		_gameFiles.resetGame();
 		_score.setUpScore();
 	}
+
+	/**
+	 * Used to get the correct answer for the current question. 
+	 * 
+	 * @return String the current answer
+	 */
+	public String getGameAnswer() {
+		return _questionQuery.retrieveAnswer();
+	}
 }

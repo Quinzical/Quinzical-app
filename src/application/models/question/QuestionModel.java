@@ -18,7 +18,7 @@ public class QuestionModel {
 	private boolean _practice;
 	private Category _category;
 	private String _questionValue;
-	private int _numberOfAttempts;
+	private int _numberOfAttempts; 
 	
 	private QuestionModel() {
 	}
@@ -79,7 +79,7 @@ public class QuestionModel {
 	public String getQuestion() {
 		if (_practice) {
 			PracticeModel practiceModel = PracticeModel.getInstance();
-			return practiceModel.getPracticeQuestion(_category, _numberOfAttempts);
+			return practiceModel.getPracticeQuestion(_category);
 		} else {
 			GameModel gameModel = GameModel.getInstance();
 			return gameModel.getGameQuestion(_category, _questionValue);
@@ -95,7 +95,7 @@ public class QuestionModel {
 	public boolean checkAnswer(String userAnswer) {
 		if (_practice) {
 			PracticeModel practiceModel = PracticeModel.getInstance();
-			return practiceModel.checkPracticeAnswer(userAnswer, _numberOfAttempts);
+			return practiceModel.checkPracticeAnswer(userAnswer);
 		} else {
 			GameModel gameModel = GameModel.getInstance();
 			return gameModel.checkGameAnswer(userAnswer, _questionValue);
@@ -115,4 +115,20 @@ public class QuestionModel {
 		}
 		return null;
 	}
+	
+	/**
+	 * Returns the correct current answer.
+	 * 
+	 * @return String the correct answer for the current question. 
+	 */
+	public String getCorrectAnswer() {
+		if (_practice) {
+			PracticeModel practiceModel = PracticeModel.getInstance();
+			return practiceModel.getPracticeAnswer();
+		} else {
+			GameModel gameModel = GameModel.getInstance();
+			return gameModel.getGameAnswer();
+		}
+	}
+	
 }

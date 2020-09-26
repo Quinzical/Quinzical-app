@@ -25,10 +25,9 @@ public class PracticeQuestionQuery {
 	 * Used to retrieve a random question based on the category chosen by the user. 
 	 * 
 	 * @param category
-	 * @param numberOfAttempts the number of attempts the user has had on this particular question
 	 * @return String the question to be displayed to the user
 	 */
-	public String retrieveQuestion(Category category, int numberOfAttempts) {
+	public String retrieveQuestion(Category category) {
 		//Replace spaces from category to hyphen if not already done
 		String categoryName = category.toString().replace(' ', '-');
 
@@ -67,7 +66,7 @@ public class PracticeQuestionQuery {
 	 * @param userAnswer the answer supplied by the user
 	 * @return boolean true if correct, false if incorrect
 	 */
-	public boolean checkPracticeAnswer(String userAnswer, int numberOfAttempts) {
+	public boolean checkPracticeAnswer(String userAnswer) {
 		QuestionHelper helper = QuestionHelper.getInstance();
 		return helper.checkQuestion(userAnswer, _currentAnswer);
 		
@@ -80,5 +79,14 @@ public class PracticeQuestionQuery {
 	 */
 	public String getClueFromQuestion() {
 		return Character.toString(QuestionHelper.trimAnswer(_currentAnswer).charAt(0));
+	}
+	
+	/**
+	 * Used to get the correct answer for the current question. 
+	 * 
+	 * @return String the current answer
+	 */
+	public String retrieveAnswer() {
+		return _currentAnswer;
 	}
 }

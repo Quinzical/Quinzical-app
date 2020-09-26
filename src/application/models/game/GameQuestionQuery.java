@@ -116,11 +116,11 @@ public class GameQuestionQuery {
 	}
 
 	/**
-	 * Used to tell if the user got it correct or not.
+	 * Used to get the correct answer for the current question. 
 	 * 
-	 * @return boolean true if correct, false if incorrect
+	 * @return String the current answer
 	 */
-	public boolean wonOrNot() {
-		return _correctAnswer;
+	public String retrieveAnswer() {
+		return _currentAnswer;
 	}
 }
