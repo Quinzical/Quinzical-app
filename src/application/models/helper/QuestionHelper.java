@@ -1,7 +1,5 @@
 package application.models.helper;
 
-import application.models.practice.PracticeModel;
-
 /**
  * This is class is used to aid in the handling of questions and answers. 
  * 
