@@ -34,29 +34,10 @@
             <VBox.margin>
                 <Insets />
             </VBox.margin>
-        </HBox>
-        <HBox alignment="CENTER" maxWidth="600.0" prefHeight="60.0" prefWidth="200.0">
-            <children>
-                <Label minHeight="-Infinity" minWidth="-Infinity" styleClass="darkblue" text="Music" textFill="#004dff">
-                    <font>
-                        <Font size="40.0" />
-                    </font>
-                </Label>
-                <Slider fx:id="_musicSlider" maxWidth="500.0" prefWidth="500.0">
-                    <padding>
-                        <Insets left="10.0" right="10.0" />
-                    </padding>
-                </Slider>
-                <Label fx:id="_musicValue" alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxHeight="-Infinity" maxWidth="70.0" minHeight="-Infinity" minWidth="70.0" prefWidth="70.0" styleClass="darkblue" text="100">
-                    <font>
-                        <Font size="30.0" />
-                    </font>
-                </Label>
-            </children>
-            <padding>
-                <Insets left="5.0" right="5.0" />
-            </padding>
-        </HBox>
+         <padding>
+            <Insets bottom="75.0" />
+         </padding>
+        </HBox>     
         <HBox alignment="CENTER" maxWidth="600.0" prefHeight="60.0" prefWidth="200.0">
             <children>
                 <Label minHeight="-Infinity" minWidth="-Infinity" styleClass="darkblue" text="Speak" textFill="#004dff">
@@ -109,17 +90,15 @@
                         <Font size="24.0" />
                     </font>
                 </Button>
-                <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="60.0" prefWidth="200.0" styleClass="exit-button" text="Save" textAlignment="CENTER">
-                    <font>
-                        <Font size="24.0" />
-                    </font>
-                </Button>
                 <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="60.0" prefWidth="200.0" styleClass="exit-button" text="Back" textAlignment="CENTER">
                     <font>
                         <Font size="24.0" />
                     </font>
                 </Button>
             </children>
+         <padding>
+            <Insets bottom="20.0" />
+         </padding>
         </HBox>
     </children>
 </VBox>

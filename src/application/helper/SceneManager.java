@@ -130,4 +130,13 @@ public class SceneManager {
     private String getPath(String name) {
         return (PATH + name).replace(FileHelper.FILE_SEPARATOR, "/");
     }
+    
+    /**
+     * Used to return the previous scene 
+     * 
+     * @return Scenes the last scene displayed to the user
+     */
+    public Scenes getPreviousScene() {
+    	return _history.peek();
+    }
 }
