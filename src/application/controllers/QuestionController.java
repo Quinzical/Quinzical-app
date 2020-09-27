@@ -5,6 +5,7 @@ import java.util.concurrent.Executors;
 
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
+import application.models.helper.Category;
 import application.models.question.QuestionModel;
 import application.processes.Speak;
 import javafx.event.ActionEvent;
@@ -66,8 +67,18 @@ public class QuestionController {
 
     @FXML
     void handleSubmitButton(ActionEvent event) {
-        // TODO
-        back();
+        // TODO needs more to work properly not sure how to do the rest
+    	QuestionModel questionModel = QuestionModel.getInstance();
+    	if (_sceneManager.getPreviousScene() == Scenes.PRACTICE_MENU) {
+    		questionModel.setPractice(true);
+    		questionModel.setCategory(new Category(_categoryName.getText()));
+    	} else {
+    		questionModel.setPractice(false);
+    		questionModel.setCategory(new Category(_categoryName.getText()));
+    	}
+    	boolean correct = questionModel.checkAnswer(_answerTextField.getText());
+       
+    	back();
     }
 
     /**
