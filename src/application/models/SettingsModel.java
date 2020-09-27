@@ -27,7 +27,7 @@ public class SettingsModel {
 	 * 
      * @param sliderSpeed the speed between 0 and 100 that the user has selected on the view
      */
-    public static void setSpeed(int sliderSpeed) {
+    public static void setEspeakSpeed(int sliderSpeed) {
     	if (sliderSpeed == 50) {
     		_espeakSpeed = 260;
     	}
@@ -40,7 +40,7 @@ public class SettingsModel {
      * 
      * @return int
      */
-    public static int getSpeed() {
+    public static int getEspeakSpeed() {
     	return _espeakSpeed;
     }
     
@@ -49,7 +49,7 @@ public class SettingsModel {
      * 
      * @param sliderVolume
      */
-    public static void setVolume(int sliderVolume) {
+    public static void setEspeakVolume(int sliderVolume) {
     	_espeakVolume = 2 * sliderVolume;
     }
     
@@ -58,7 +58,7 @@ public class SettingsModel {
      * 
      * @return int
      */
-    public static int getVolume() {
+    public static int getEspeakVolume() {
     	return _espeakVolume;
     }
 

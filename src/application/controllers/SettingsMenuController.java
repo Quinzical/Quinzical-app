@@ -1,6 +1,7 @@
 package application.controllers;
 
 import application.helper.SceneManager;
+import application.models.SettingsModel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -17,6 +18,8 @@ import javafx.scene.control.Slider;
 public class SettingsMenuController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
+    
+    private final static int DEFAULT_VALUE = 50;
 
     @FXML
     private Slider _musicSlider;
@@ -37,7 +40,7 @@ public class SettingsMenuController {
     private Label _speedValue;
 
     /**
-     * initialize with SettingsMenu.fxml
+     * Initialize with SettingsMenu.fxml
      */
     public void initialize() {
         _musicSlider.valueProperty().addListener(new ChangeListener<Number>() {
@@ -49,12 +52,14 @@ public class SettingsMenuController {
         _speakSlider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 _speakValue.setText(String.valueOf(newValue.intValue()));
+                SettingsModel.setEspeakVolume(newValue.intValue());
             }
         });
 
         _speedSlider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 _speedValue.setText(String.valueOf(newValue.intValue()));
+                SettingsModel.setEspeakSpeed(newValue.intValue());
             }
         });
     }
@@ -66,7 +71,16 @@ public class SettingsMenuController {
 
     @FXML
     void handleResetButton(ActionEvent event) {
-        // TODO
+    	_musicValue.setText(String.valueOf(DEFAULT_VALUE));
+    	_speakValue.setText(String.valueOf(DEFAULT_VALUE));
+    	_speedValue.setText(String.valueOf(DEFAULT_VALUE));
+    	
+    	_musicSlider.setValue(DEFAULT_VALUE);
+    	_speakSlider.setValue(DEFAULT_VALUE);
+    	_speedSlider.setValue(DEFAULT_VALUE);
+    	
+    	SettingsModel.setEspeakVolume(DEFAULT_VALUE);
+    	SettingsModel.setEspeakSpeed(DEFAULT_VALUE);
     }
 
     @FXML

@@ -69,15 +69,14 @@ public class GameModel {
 	 * Used to check whether the users answer for the current question is correct or not. 
 	 * 
 	 * @param userAnswer 
-	 * @return String the message based on how the user answers
+	 * @return boolean true if correct, false if incorrect
 	 */
-	public String checkGameAnswer(String userAnswer, String questionValue) {
-		String displayString = _questionQuery.checkGameAnswer(userAnswer);
-		boolean correct = _questionQuery.wonOrNot();
+	public boolean checkGameAnswer(String userAnswer, String questionValue) {
+		boolean correct =  _questionQuery.checkGameAnswer(userAnswer);
 		if (correct) {
 			_score.addWinnings(questionValue);
 		}
-		return displayString;
+		return correct;
 	}
 	
 	/**
@@ -95,5 +94,14 @@ public class GameModel {
 	public void resetGameModule() {
 		_gameFiles.resetGame();
 		_score.setUpScore();
+	}
+
+	/**
+	 * Used to get the correct answer for the current question. 
+	 * 
+	 * @return String the current answer
+	 */
+	public String getGameAnswer() {
+		return _questionQuery.retrieveAnswer();
 	}
 }

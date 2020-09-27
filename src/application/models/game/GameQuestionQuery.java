@@ -79,18 +79,13 @@ public class GameQuestionQuery {
 	 * Used to check the correctness of the users answer. 
 	 * 
 	 * @param userAnswer the answer supplied by the user
-	 * @return String    a string based on how many attempts the user has had and the answer they supply
+	 * @return boolean   true if correct, false if incorrect
 	 */
-	public String checkGameAnswer(String userAnswer) {
+	public boolean checkGameAnswer(String userAnswer) {
 		QuestionHelper helper = QuestionHelper.getInstance();
 		boolean correct = helper.checkQuestion(userAnswer, _currentAnswer);
 		deleteQuestionFromFile();
-		_correctAnswer = correct;
-		if (correct) {
-			return "Success!";
-		} else {
-			return "Incorrect!\n" + "The correct answer for the question " + _currentQuestion + "was:\n" + _currentAnswer;
-		}
+		return correct;
 	}
 
 	/**
@@ -121,11 +116,11 @@ public class GameQuestionQuery {
 	}
 
 	/**
-	 * Used to tell if the user got it correct or not.
+	 * Used to get the correct answer for the current question. 
 	 * 
-	 * @return boolean true if correct, false if incorrect
+	 * @return String the current answer
 	 */
-	public boolean wonOrNot() {
-		return _correctAnswer;
+	public String retrieveAnswer() {
+		return _currentAnswer;
 	}
 }

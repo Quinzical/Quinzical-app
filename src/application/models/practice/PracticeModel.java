@@ -44,22 +44,21 @@ public class PracticeModel {
 	/**
 	 * Used to get a random practice question based on the chosen category. 
 	 * 
-	 * @param numberOfAttempts
 	 * @param category the category chosen by the user
 	 * @return String  the question
 	 */
-	public String getPracticeQuestion(Category category, int numberOfAttempts) {
-		return _questionQuery.retrieveQuestion(category, numberOfAttempts);
+	public String getPracticeQuestion(Category category) {
+		return _questionQuery.retrieveQuestion(category);
 	}
 
 	/**
 	 * Used to check whether the users answer for the current question is correct or not. 
 	 * 
 	 * @param userAnswer 
-	 * @return String the message based on how the user answers
+	 * @return boolean true if correct, false if incorrect
 	 */
-	public String checkPracticeAnswer(String userAnswer, int numberOfAttempts) {
-		return _questionQuery.checkPracticeAnswer(userAnswer, numberOfAttempts);
+	public boolean checkPracticeAnswer(String userAnswer) {
+		return _questionQuery.checkPracticeAnswer(userAnswer);
 	}
 	
 	/**
@@ -78,5 +77,14 @@ public class PracticeModel {
 	 */
 	public List<Category> getPracticeCategories() {
 		return _practiceFiles.getCategories();
+	}
+
+	/**
+	 * Used to get the correct answer for the current question. 
+	 * 
+	 * @return String the current answer
+	 */
+	public String getPracticeAnswer() {
+		return _questionQuery.retrieveAnswer();
 	}
 }

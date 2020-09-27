@@ -25,10 +25,9 @@ public class PracticeQuestionQuery {
 	 * Used to retrieve a random question based on the category chosen by the user. 
 	 * 
 	 * @param category
-	 * @param numberOfAttempts the number of attempts the user has had on this particular question
 	 * @return String the question to be displayed to the user
 	 */
-	public String retrieveQuestion(Category category, int numberOfAttempts) {
+	public String retrieveQuestion(Category category) {
 		//Replace spaces from category to hyphen if not already done
 		String categoryName = category.toString().replace(' ', '-');
 
@@ -65,21 +64,12 @@ public class PracticeQuestionQuery {
 	 * Used to check the correctness of the users answer. 
 	 * 
 	 * @param userAnswer the answer supplied by the user
-	 * @return String    a string based on how many attempts the user has had and the answer they supply
+	 * @return boolean true if correct, false if incorrect
 	 */
-	public String checkPracticeAnswer(String userAnswer, int numberOfAttempts) {
+	public boolean checkPracticeAnswer(String userAnswer) {
 		QuestionHelper helper = QuestionHelper.getInstance();
-		boolean correct = helper.checkQuestion(userAnswer, _currentAnswer);
-		if (correct) {
-			System.out.println("Success!");
-			return "Success!";
-		} else if (numberOfAttempts < 3) {
-			System.out.println("Incorrect!");
-			return "Incorrect!";
-		} else {
-			System.out.println("Incorrect!\n" + "The correct answer for the question " + _currentQuestion + "was:\n" + _currentAnswer);
-			return "Incorrect!\n" + "The correct answer for the question " + _currentQuestion + "was:\n" + _currentAnswer;
-		}
+		return helper.checkQuestion(userAnswer, _currentAnswer);
+		
 	}
 
 	/**
@@ -89,5 +79,14 @@ public class PracticeQuestionQuery {
 	 */
 	public String getClueFromQuestion() {
 		return Character.toString(QuestionHelper.trimAnswer(_currentAnswer).charAt(0));
+	}
+	
+	/**
+	 * Used to get the correct answer for the current question. 
+	 * 
+	 * @return String the current answer
+	 */
+	public String retrieveAnswer() {
+		return _currentAnswer;
 	}
 }

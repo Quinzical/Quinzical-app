@@ -49,8 +49,7 @@ public class ModelMain {
 	 */
 	public String getQuestion() {
 		QuestionModel questionModel = QuestionModel.getInstance();
-		questionModel.setCategory(new Category("Fauna"));
-		questionModel.setNumberOfAttempts(2);
+		questionModel.setCategory(new Category("Flora"));
 		questionModel.setPractice(false);
 		questionModel.setQuestionValue("400");
 		System.out.println(questionModel.getQuestion());
