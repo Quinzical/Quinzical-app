@@ -22,12 +22,6 @@ public class SettingsMenuController {
     private final static int DEFAULT_VALUE = 50;
 
     @FXML
-    private Slider _musicSlider;
-
-    @FXML
-    private Label _musicValue;
-
-    @FXML
     private Slider _speakSlider;
 
     @FXML
@@ -43,12 +37,6 @@ public class SettingsMenuController {
      * Initialize with SettingsMenu.fxml
      */
     public void initialize() {
-        _musicSlider.valueProperty().addListener(new ChangeListener<Number>() {
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                _musicValue.setText(String.valueOf(newValue.intValue()));
-            }
-        });
-
         _speakSlider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 _speakValue.setText(String.valueOf(newValue.intValue()));
@@ -71,21 +59,13 @@ public class SettingsMenuController {
 
     @FXML
     void handleResetButton(ActionEvent event) {
-    	_musicValue.setText(String.valueOf(DEFAULT_VALUE));
     	_speakValue.setText(String.valueOf(DEFAULT_VALUE));
     	_speedValue.setText(String.valueOf(DEFAULT_VALUE));
     	
-    	_musicSlider.setValue(DEFAULT_VALUE);
     	_speakSlider.setValue(DEFAULT_VALUE);
     	_speedSlider.setValue(DEFAULT_VALUE);
     	
     	SettingsModel.setEspeakVolume(DEFAULT_VALUE);
     	SettingsModel.setEspeakSpeed(DEFAULT_VALUE);
     }
-
-    @FXML
-    void handleSaveButton(ActionEvent event) {
-        // TODO
-    }
-
 }
