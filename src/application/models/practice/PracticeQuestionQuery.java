@@ -78,9 +78,7 @@ public class PracticeQuestionQuery {
 	 * @return String the clue
 	 */
 	public String getClueFromQuestion() {
-		String trimmedAnswer = QuestionHelper.trimAnswer(_currentAnswer);
-		
-	return null;
+		return Character.toString(QuestionHelper.trimAnswer(_currentAnswer).charAt(0));
 	}
 	
 	/**

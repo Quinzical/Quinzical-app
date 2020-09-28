@@ -53,9 +53,8 @@ public class QuestionHelper {
 				numberOfBrackets++;
 			}
 
-			if (numberOfBrackets == 2 && Character.isUpperCase(correctAnswer.charAt(i))) {
+			if ((numberOfBrackets == 2 && Character.isUpperCase(correctAnswer.charAt(i))) || (numberOfBrackets == 2 && Character.isDigit(correctAnswer.charAt(i)))) {
 				correctAnswer = correctAnswer.substring(i, correctAnswer.length());
-				System.out.println(correctAnswer);
 				return correctAnswer;
 			}
 		}
@@ -70,7 +69,12 @@ public class QuestionHelper {
 	 * @return boolean      true if correct, false if incorrect
 	 */
 	private boolean compareAnswers(String userAnswer, String correctAnswer) {
-		if (userAnswer.toLowerCase().contains(correctAnswer.toLowerCase())) {
+		if (userAnswer.toLowerCase().contains((correctAnswer.toLowerCase()))) {
+			int startingIndex = userAnswer.toLowerCase().indexOf(correctAnswer.toLowerCase());
+			int endIndex = startingIndex + correctAnswer.length() - 1;
+			if ((startingIndex != 0 && userAnswer.charAt(startingIndex - 1) != ' ') || (endIndex != userAnswer.length() - 1 && userAnswer.charAt(endIndex + 1) != ' ')) {
+				return false;
+			}
 			return true;
 		} else if (correctAnswer.contains("/")) {
 			try {
