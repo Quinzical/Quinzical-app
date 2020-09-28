@@ -12,7 +12,7 @@ public class QuestionHelper {
 
 	private QuestionHelper() {
 	}
-	
+
 	/**
 	 * Used to return the single instance of this class.
 	 * 
@@ -53,8 +53,9 @@ public class QuestionHelper {
 				numberOfBrackets++;
 			}
 
-			if (numberOfBrackets == 2) {
-				correctAnswer = correctAnswer.substring(i + 2, correctAnswer.length());
+			if (numberOfBrackets == 2 && Character.isUpperCase(correctAnswer.charAt(i))) {
+				correctAnswer = correctAnswer.substring(i, correctAnswer.length());
+				System.out.println(correctAnswer);
 				return correctAnswer;
 			}
 		}
@@ -69,28 +70,29 @@ public class QuestionHelper {
 	 * @return boolean      true if correct, false if incorrect
 	 */
 	private boolean compareAnswers(String userAnswer, String correctAnswer) {
-		// Replace spaces between the answers with a letter to avoid any issues with multi-word answers
-		userAnswer = userAnswer.replace(' ', '_');
-		correctAnswer = correctAnswer.replace(' ', '_');
-		
-		try {
-			String command = "echo " + "\"" + correctAnswer + "\"" + " | grep -i -w " + "\"" + userAnswer + "\"";
-			ProcessBuilder pb = new ProcessBuilder().command("bash", "-c", command);
-			Process process = pb.start();
+		if (userAnswer.toLowerCase().contains(correctAnswer.toLowerCase())) {
+			return true;
+		} else if (correctAnswer.contains("/")) {
+			try {
+				String command = "echo " + "\"" + correctAnswer + "\"" + " | grep -i -w " + "\"" + userAnswer + "\"";
 
-			int exitStatus = process.waitFor();
+				ProcessBuilder pb = new ProcessBuilder().command("bash", "-c", command);
+				Process process = pb.start();
 
-			if (exitStatus == 0) {
-				// The user got it correct
-				return true;
-			} else {
-				// The user did not get it right
-				return false;
+				int exitStatus = process.waitFor();
+
+				if (exitStatus == 0) {
+					// The user got it correct
+					return true;
+				} else {
+					// The user did not get it right
+					return false;
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-	            
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		} 
 		return false;
 	}
 }
