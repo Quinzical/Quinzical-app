@@ -109,7 +109,7 @@ public class GameFiles {
 						return;
 					} else if (randomFiles.contains(count)) {
 						String fileName = file.getName();
-						_categoryCollection.add(new Category(fileName));
+						_categoryCollection.add(new Category(fileName.replace(".txt", "")));
 						String copyFileName = _userCategories + FileHelper.FILE_SEPARATOR + fileName;
 
 						File copyFile = new File(copyFileName);

@@ -7,7 +7,7 @@ import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.helper.Category;
 import application.models.question.QuestionModel;
-import application.processes.Speak;
+import application.processes.SpeakProcess;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -27,7 +27,7 @@ public class QuestionController {
 
     // ExecutorService for running task and speak in the background
     private ExecutorService _team = Executors.newSingleThreadExecutor();
-    private Speak _speak;
+    private SpeakProcess _speak;
     private String _question;
 
     @FXML
@@ -41,8 +41,13 @@ public class QuestionController {
 
     public void initialize(){
         _question = _questionModel.getQuestion();
-        _questionLabel.setText(_question);
-        _speak = new Speak(_question);
+        if (_questionModel.getPractice()){
+            _questionLabel.setText(_question);
+        }else{
+            _questionLabel.setText("");
+        }
+        
+        _speak = new SpeakProcess(_question);
         _team.submit(_speak);
     }
 
@@ -56,7 +61,7 @@ public class QuestionController {
     void handlePlaybackButton(ActionEvent event) {
         // TODO
         _speak.cancel(true);
-        _speak = new Speak(_question);
+        _speak = new SpeakProcess(_question);
         _team.submit(_speak);
     }
 
