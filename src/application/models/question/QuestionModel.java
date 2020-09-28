@@ -33,6 +33,15 @@ public class QuestionModel {
 			_instance = new QuestionModel();
 		}
 		return _instance;
+    }
+    
+    /**
+	 * Used to indicate to the question model whether the question is being asked in the game or practice module.
+	 * 
+	 * @return practice
+	 */
+	public boolean getPractice() {
+		return _practice;
 	}
 	
 	/**

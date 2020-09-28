@@ -32,6 +32,9 @@ public class PracticeFiles {
      * @return userCategories
      */
     public static String getCategoryFolder() {
+        if (_categoryFolder == null) {
+            new PracticeFiles().setUpPracticeModule();
+        }
         return _categoryFolder;
     }
 

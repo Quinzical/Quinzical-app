@@ -16,7 +16,7 @@ public class SettingsModel {
     private static int _espeakVolume = 100;
     
     
-    public SettingsModel() {
+    private SettingsModel() {
     }
     
     /**
