@@ -8,7 +8,9 @@ package application.models;
  */
 public class SettingsModel {
 	
+	// Sets speed from range of 80 to 440. The default is 175. 
     private static int _espeakSpeed = 175;
+    
     private final static int MIN_SPEED = 80;
     private final static int MAX_SPEED = 440;
     
@@ -28,10 +30,7 @@ public class SettingsModel {
      * @param sliderSpeed the speed between 0 and 100 that the user has selected on the view
      */
     public static void setEspeakSpeed(int sliderSpeed) {
-    	if (sliderSpeed == 50) {
-    		_espeakSpeed = 260;
-    	}
-    	double percentage = sliderSpeed / 100;
+    	double percentage = (sliderSpeed / 100.0);
     	_espeakSpeed = (int) ((percentage * (MAX_SPEED - MIN_SPEED)) + MIN_SPEED);
     }
     
