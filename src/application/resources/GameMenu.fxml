@@ -8,6 +8,7 @@
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -67,29 +68,43 @@
                 <Font size="24.0" />
             </font>
             <VBox.margin>
-                <Insets bottom="50.0" left="50.0" right="50.0" top="20.0" />
+                <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
             </VBox.margin>
         </Button>
+      <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleResetButton" prefWidth="200.0" styleClass="setting-button" text="Reset Game" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="NEVER">
             <children>
-                <Button alignment="CENTER" maxHeight="66.0" maxWidth="66.0" minHeight="66.0" minWidth="66.0" mnemonicParsing="false" onAction="#handleSettingsButton" prefHeight="66.0" prefWidth="66.0" styleClass="setting-button" textAlignment="CENTER">
-                    <font>
+            <AnchorPane prefWidth="10000.0">
+               <children>
+                      <Button alignment="CENTER" maxHeight="66.0" maxWidth="66.0" minHeight="66.0" minWidth="66.0" mnemonicParsing="false" onAction="#handleSettingsButton" prefHeight="66.0" prefWidth="66.0" styleClass="setting-button" textAlignment="CENTER" AnchorPane.rightAnchor="0.0">
+                          <font>
+                              <Font size="24.0" />
+                          </font>
+                          <graphic>
+                              <ImageView fitHeight="70.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                      <Image url="@images/settings.png" />
+                                  </image>
+                                  <viewport>
+                                      <Rectangle2D />
+                                  </viewport>
+                                  <effect>
+                                      <Blend />
+                                  </effect>
+                              </ImageView>
+                          </graphic>
+                      </Button>
+                  <Button fx:id="_currentScore" alignment="CENTER" contentDisplay="RIGHT" maxHeight="66.0" maxWidth="66.0" minHeight="66.0" minWidth="-Infinity" mnemonicParsing="false" styleClass="setting-button" text="\$100" textAlignment="CENTER" AnchorPane.leftAnchor="0.0">
+                     <font>
                         <Font size="24.0" />
-                    </font>
-                    <graphic>
-                        <ImageView fitHeight="70.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@images/settings.png" />
-                            </image>
-                            <viewport>
-                                <Rectangle2D />
-                            </viewport>
-                            <effect>
-                                <Blend />
-                            </effect>
-                        </ImageView>
-                    </graphic>
-                </Button>
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
             </children>
             <VBox.margin>
                 <Insets bottom="20.0" right="20.0" />

@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 /**
  * This class is for Button styled for Practice Category Button on PracticeMenu
  *
+ * @author Maggie Pedersen
  * @Author Cheng-Zhen Yang
  */
 public class PracticeCategoryButton extends Button {

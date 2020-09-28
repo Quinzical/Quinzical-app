@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 /**
  * This class is for Button styled for Practice Category Button on PracticeMenu
  *
+ * @author Maggie Pedersen
  * @Author Cheng-Zhen Yang
  */
 public class GameCategoryButton extends Button {
@@ -40,6 +41,7 @@ public class GameCategoryButton extends Button {
                 _questionModel.setPractice(false);
                 _questionModel.setCategory(category);
                 _questionModel.setQuestionValue(value);
+                _sceneManager.unloadScene();
                 _sceneManager.switchScene(Scenes.QUESTION);
             }
         });

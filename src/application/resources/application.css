@@ -82,6 +82,7 @@
 
 .setting-button {
   -fx-background-repeat: repeat;
+  -fx-font-size: 24px;
   -fx-background-size: auto;
 }
 

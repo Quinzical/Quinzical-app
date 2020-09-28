@@ -10,9 +10,9 @@ import application.models.helper.Category;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import javafx.scene.control.Button;
 
 /**
  * This class is the GameMenu controller in a MVC design.
@@ -28,6 +28,9 @@ public class GameMenuController {
     private List<Category> _categories;
 
     @FXML
+    private Button _currentScore;
+
+    @FXML
     private GridPane _questionGrid;
 
     /**
@@ -36,7 +39,8 @@ public class GameMenuController {
     public void initialize() {
         _gameModel.setUpGameModule();
         _categories = _gameModel.getGameCategories();
-        System.out.println(_categories);
+        
+        _currentScore.setText("$"+_gameModel.getScore());
 
         for (int i = 0; i < 5; i++) {
             Label categoryLabel = new Label(_categories.get(i).toString());
@@ -62,6 +66,12 @@ public class GameMenuController {
     void handleSettingsButton(ActionEvent event) {
         // TODO
         _sceneManager.switchScene(Scenes.SETTINGS_MENU);
+    }
+
+    @FXML 
+    void handleResetButton(ActionEvent event){
+        //TODO
+        
     }
 
 }
