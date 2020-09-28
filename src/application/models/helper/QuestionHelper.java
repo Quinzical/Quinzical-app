@@ -12,7 +12,7 @@ public class QuestionHelper {
 
 	private QuestionHelper() {
 	}
-	
+
 	/**
 	 * Used to return the single instance of this class.
 	 * 
@@ -53,8 +53,8 @@ public class QuestionHelper {
 				numberOfBrackets++;
 			}
 
-			if (numberOfBrackets == 2) {
-				correctAnswer = correctAnswer.substring(i + 2, correctAnswer.length());
+			if ((numberOfBrackets == 2 && Character.isUpperCase(correctAnswer.charAt(i))) || (numberOfBrackets == 2 && Character.isDigit(correctAnswer.charAt(i)))) {
+				correctAnswer = correctAnswer.substring(i, correctAnswer.length());
 				return correctAnswer;
 			}
 		}
@@ -69,28 +69,34 @@ public class QuestionHelper {
 	 * @return boolean      true if correct, false if incorrect
 	 */
 	private boolean compareAnswers(String userAnswer, String correctAnswer) {
-		// Replace spaces between the answers with a letter to avoid any issues with multi-word answers
-		userAnswer = userAnswer.replace(' ', '_');
-		correctAnswer = correctAnswer.replace(' ', '_');
-		
-		try {
-			String command = "echo " + "\"" + correctAnswer + "\"" + " | grep -i -w " + "\"" + userAnswer + "\"";
-			ProcessBuilder pb = new ProcessBuilder().command("bash", "-c", command);
-			Process process = pb.start();
-
-			int exitStatus = process.waitFor();
-
-			if (exitStatus == 0) {
-				// The user got it correct
-				return true;
-			} else {
-				// The user did not get it right
+		if (userAnswer.toLowerCase().contains((correctAnswer.toLowerCase()))) {
+			int startingIndex = userAnswer.toLowerCase().indexOf(correctAnswer.toLowerCase());
+			int endIndex = startingIndex + correctAnswer.length() - 1;
+			if ((startingIndex != 0 && userAnswer.charAt(startingIndex - 1) != ' ') || (endIndex != userAnswer.length() - 1 && userAnswer.charAt(endIndex + 1) != ' ')) {
 				return false;
 			}
-	            
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+			return true;
+		} else if (correctAnswer.contains("/")) {
+			try {
+				String command = "echo " + "\"" + correctAnswer + "\"" + " | grep -i -w " + "\"" + userAnswer + "\"";
+
+				ProcessBuilder pb = new ProcessBuilder().command("bash", "-c", command);
+				Process process = pb.start();
+
+				int exitStatus = process.waitFor();
+
+				if (exitStatus == 0) {
+					// The user got it correct
+					return true;
+				} else {
+					// The user did not get it right
+					return false;
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} 
 		return false;
 	}
 }
