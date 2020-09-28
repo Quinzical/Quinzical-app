@@ -105,7 +105,7 @@ public class GameFiles {
 		if (categoriesDir.exists()) {
 			if (categoriesDir.isDirectory()) {
 				for (File file : categoriesDir.listFiles()) {
-					if (currentNumberOfGameFiles == 5) {
+					if (currentNumberOfGameFiles >= 5) {
 						return;
 					} else if (randomFiles.contains(count)) {
 						String fileName = file.getName();
