@@ -149,9 +149,23 @@ public class GameFiles {
 	 * @return List<Category> a list containing all the current categories
 	 */
 	public List<Category> getCategories() {
+		if(_categoryCollection.isEmpty()) {
+			getCategoriesFromDirectory();
+		}
 		return _categoryCollection;
 	}
 	
+	/**
+	 * Get the categories from a game save. 
+	 */
+	private void getCategoriesFromDirectory() {
+		File categoriesDir = new File(_userCategories);
+		for (File file : categoriesDir.listFiles()) {
+				String fileName = file.getName();
+				_categoryCollection.add(new Category(fileName));
+		}
+	}
+
 	/**
 	 * Method to reset the game for the current user. 
 	 */
