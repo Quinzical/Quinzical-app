@@ -155,6 +155,9 @@ public class GameFiles {
 		return _categoryCollection;
 	}
 	
+	/**
+	 * Get the categories from a game save. 
+	 */
 	private void getCategoriesFromDirectory() {
 		File categoriesDir = new File(_userCategories);
 		for (File file : categoriesDir.listFiles()) {
