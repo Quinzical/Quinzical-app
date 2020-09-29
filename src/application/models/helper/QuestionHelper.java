@@ -99,4 +99,23 @@ public class QuestionHelper {
 		} 
 		return false;
 	}
+
+	public String retrievePrompt(String correctAnswer) {
+		System.out.println(correctAnswer);
+		int numberOfBrackets = 0;
+		String prompt = null;
+		for (int i = 0; i <= correctAnswer.length(); i++) {
+			if (correctAnswer.charAt(i) == '(' || correctAnswer.charAt(i) == ')') {
+				numberOfBrackets++;
+			}
+
+			if (numberOfBrackets == 2) {
+				prompt = correctAnswer.substring(0, i);
+				prompt.replace(')', ' ');
+				prompt.replace('(', ' ');
+				prompt.trim();
+			}
+		}
+		return prompt;
+	}
 }

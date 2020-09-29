@@ -18,13 +18,13 @@ import application.models.helper.QuestionHelper;
  * @author Cheng-Zhen Yang
  */
 public class GameQuestionQuery {
-	
+
 	private String _currentQuestion = null;
 	private String _currentAnswer = null;
 	private int _lineNumber;
-	
+
 	private File _questionFile;
-	
+
 	boolean _correctAnswer = false;
 
 	public GameQuestionQuery() {
@@ -40,10 +40,10 @@ public class GameQuestionQuery {
 	public String retrieveQuestion(Category category, String questionValue) {		
 		//Replace spaces from category to hyphen if not already done
 		String categoryName = category.getFilename();
-		
+
 		String questionStr = GameFiles.getUserCategories() + FileHelper.FILE_SEPARATOR + categoryName + ".txt";
 		_questionFile = new File(questionStr);
-		
+
 		return getQuestionFromFile(_questionFile, questionValue);
 	}
 
@@ -68,13 +68,11 @@ public class GameQuestionQuery {
 	private void setQuestionAndAnswer(List<String> questionAndAnswer) {
 		_currentQuestion = questionAndAnswer.get(0);
 		_currentAnswer = questionAndAnswer.get(1);
-		
+
 		//Trim leading space on answer
 		_currentAnswer = _currentAnswer.trim();
-		System.out.println(_currentQuestion);
-		System.out.println(_currentAnswer);	
 	}
-	
+
 	/**
 	 * Used to check the correctness of the users answer. 
 	 * 
@@ -98,7 +96,7 @@ public class GameQuestionQuery {
 
 			BufferedReader in = new BufferedReader(new FileReader(_questionFile));
 			PrintWriter out = new PrintWriter(new FileWriter(tempfile));
-			
+
 			int count = 1;
 			String line;
 			while((line = in.readLine()) != null) {
@@ -122,5 +120,13 @@ public class GameQuestionQuery {
 	 */
 	public String retrieveAnswer() {
 		return _currentAnswer;
+	}
+
+	public String getPrompt() {
+		if(_currentAnswer != null) {
+			QuestionHelper helper = QuestionHelper.getInstance();
+			return helper.retrievePrompt(_currentAnswer);
+		}
+		return null;
 	}
 }

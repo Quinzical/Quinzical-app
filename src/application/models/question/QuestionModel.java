@@ -85,9 +85,9 @@ public class QuestionModel {
 	
 	public String getQuestionPrompt() {
 		if (_practice) {
-			return _practiceModel.getPrompt(_category);
+			return _practiceModel.getPrompt();
 		} else {
-			return _gameModel.getPrompt(_category, _questionValue);
+			return _gameModel.getPrompt();
 		}
 	}
 	/**

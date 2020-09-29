@@ -88,8 +88,7 @@ public class PracticeModel {
 		return _questionQuery.retrieveAnswer();
 	}
 
-	public String getPrompt(Category _category) {
-		// TODO Auto-generated method stub
-		return null;
+	public String getPrompt() {
+		return _questionQuery.getPrompt();
 	}
 }
