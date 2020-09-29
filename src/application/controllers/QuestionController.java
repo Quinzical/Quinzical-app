@@ -70,7 +70,7 @@ public class QuestionController {
         _answerTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             _infoLabel.setText("");
         });
-        _answerTextField.setText(_questionModel.getQuestionPrompt());
+        _answerTextField.setPromptText(_questionModel.getQuestionPrompt() + "...");
     }
 
     /**

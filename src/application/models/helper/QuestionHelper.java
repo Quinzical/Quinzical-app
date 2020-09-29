@@ -101,19 +101,24 @@ public class QuestionHelper {
 	}
 
 	public String retrievePrompt(String correctAnswer) {
-		System.out.println(correctAnswer);
 		int numberOfBrackets = 0;
+		int firstBracket = 0;
 		String prompt = null;
 		for (int i = 0; i <= correctAnswer.length(); i++) {
 			if (correctAnswer.charAt(i) == '(' || correctAnswer.charAt(i) == ')') {
+				if (numberOfBrackets == 0) {
+					firstBracket++;
+				}
 				numberOfBrackets++;
 			}
 
 			if (numberOfBrackets == 2) {
-				prompt = correctAnswer.substring(0, i);
+				prompt = correctAnswer.substring(firstBracket + 1, i);
+				prompt.trim();
 				prompt.replace(')', ' ');
 				prompt.replace('(', ' ');
-				prompt.trim();
+				System.out.println(prompt);
+				return prompt;
 			}
 		}
 		return prompt;
