@@ -104,4 +104,9 @@ public class GameModel {
 	public String getGameAnswer() {
 		return _questionQuery.retrieveAnswer();
 	}
+
+	public String getPrompt(Category _category, String _questionValue) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

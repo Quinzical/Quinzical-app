@@ -63,7 +63,7 @@ public class QuestionController {
         } else {
             _questionLabel.setText("");
         }
-        _attempt = 0;
+        _attempt = 1;
         _speak = new SpeakProcess(_question);
         _infoLabel.setText("");
         _team.submit(_speak);
@@ -114,16 +114,20 @@ public class QuestionController {
     @FXML
     void handleDontKnowButton(ActionEvent event) {
         if (_questionModel.getPractice()) {
-            _attempt = 2;
+            _attempt = 3;
             _questionModel.setNumberOfAttempts(_attempt);
-            speak("The first letter is " + _questionModel.getClue());
+            String clue = _questionModel.getClue();
+            speak("The first letter is " + clue);
+            _answerTextField.setText(clue);
             _infoLabel.setText("Clue");
-            _infoLabel.setStyle("-fx-text-fill: green;");
+            _infoLabel.setStyle("-fx-text-fill: green;");           
             _dontKnowButton.disableProperty();
         } else {
-            speak("The answer is " + _questionModel.getCorrectAnswer());
+        	String correctAnswer = _questionModel.getCorrectAnswer();
+            speak("The answer is " + correctAnswer);
             _infoLabel.setText("Correct");
             _infoLabel.setStyle("-fx-text-fill: green;");
+            _answerTextField.setText("Answer: " + correctAnswer);
             createBackButton();
         }
     }
@@ -169,6 +173,7 @@ public class QuestionController {
             if (_attempt > 2) {
                 // MNore than 3 attempts
                 speak(oldAnswer + " is Incorrect. The answer is " + correctAnswer);
+                _answerTextField.setText("Answer: " + correctAnswer);
                 createBackButton();
             } else if (_attempt == 2) {
                 // On the 3rd attempt
@@ -186,6 +191,7 @@ public class QuestionController {
             _questionModel.setNumberOfAttempts(_attempt);
         } else {
             speak(oldAnswer + " is Incorrect. The answer is " + correctAnswer);
+            _answerTextField.setText(correctAnswer);
             createBackButton();
         }
     }
