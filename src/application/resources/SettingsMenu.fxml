@@ -45,12 +45,12 @@
                         <Font size="40.0" />
                     </font>
                 </Label>
-                <Slider fx:id="_speakSlider" maxWidth="500.0" prefWidth="500.0">
+                <Slider fx:id="_speakSlider" maxWidth="500.0" prefWidth="500.0" value="50.0">
                     <padding>
                         <Insets left="10.0" right="10.0" />
                     </padding>
                 </Slider>
-                <Label fx:id="_speakValue" alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="70.0" minHeight="-Infinity" minWidth="70.0" prefWidth="70.0" styleClass="darkblue" text="100">
+                <Label fx:id="_speakValue" alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="70.0" minHeight="-Infinity" minWidth="70.0" prefWidth="70.0" styleClass="darkblue" text="50">
                     <font>
                         <Font size="30.0" />
                     </font>
@@ -67,12 +67,12 @@
                         <Font size="40.0" />
                     </font>
                 </Label>
-                <Slider fx:id="_speedSlider" maxWidth="500.0" prefWidth="500.0">
+                <Slider fx:id="_speedSlider" maxWidth="500.0" prefWidth="500.0" value="26.0">
                     <padding>
                         <Insets left="10.0" right="10.0" />
                     </padding>
                 </Slider>
-                <Label fx:id="_speedValue" alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="70.0" minHeight="-Infinity" minWidth="70.0" prefWidth="70.0" styleClass="darkblue" text="100">
+                <Label fx:id="_speedValue" alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="70.0" minHeight="-Infinity" minWidth="70.0" prefWidth="70.0" styleClass="darkblue" text="26">
                     <font>
                         <Font size="30.0" />
                     </font>

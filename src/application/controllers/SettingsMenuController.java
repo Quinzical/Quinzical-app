@@ -19,7 +19,10 @@ public class SettingsMenuController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
     
-    private final static int DEFAULT_VALUE = 50;
+    private final static int DEFAULT_VOLUME = 50;
+    
+    // Equates to espeak speed of 175 wpm, the default setting
+    private final static int DEFAULT_SPEED = 26;
 
     @FXML
     private Slider _speakSlider;
@@ -59,13 +62,13 @@ public class SettingsMenuController {
 
     @FXML
     void handleResetButton(ActionEvent event) {
-    	_speakValue.setText(String.valueOf(DEFAULT_VALUE));
-    	_speedValue.setText(String.valueOf(DEFAULT_VALUE));
+    	_speakValue.setText(String.valueOf(DEFAULT_VOLUME));
+    	_speedValue.setText(String.valueOf(DEFAULT_SPEED));
     	
-    	_speakSlider.setValue(DEFAULT_VALUE);
-    	_speedSlider.setValue(DEFAULT_VALUE);
+    	_speakSlider.setValue(DEFAULT_VOLUME);
+    	_speedSlider.setValue(DEFAULT_SPEED);
     	
-    	SettingsModel.setEspeakVolume(DEFAULT_VALUE);
-    	SettingsModel.setEspeakSpeed(DEFAULT_VALUE);
+    	SettingsModel.setEspeakVolume(DEFAULT_VOLUME);
+    	SettingsModel.setEspeakSpeed(DEFAULT_SPEED);
     }
 }

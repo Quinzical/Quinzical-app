@@ -23,7 +23,7 @@ public class SpeakProcess extends Task<Void> {
     public SpeakProcess(String speak) {
         int speed = SettingsModel.getEspeakSpeed();
         int volume = SettingsModel.getEspeakVolume();
-        _pb = new ProcessBuilder("espeak", speak, "-s", String.valueOf(speed), "-a", String.valueOf(volume));
+        _pb = new ProcessBuilder("espeak",  "-s", String.valueOf(speed), "-a", String.valueOf(volume), speak);
     }
 
     /**
