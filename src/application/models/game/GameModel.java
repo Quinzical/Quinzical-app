@@ -42,6 +42,7 @@ public class GameModel {
 	 */
 	public void setUpGameModule() {
 		//Set up files for game module
+		FileHelper.setUpGame();
 		_gameFiles.setUpGameModule();
 		_gameFiles.randomiseCategories();
 		
@@ -63,8 +64,8 @@ public class GameModel {
 	 * @param questionValue the value of the question
 	 * @return String       the question to be displayed to the user
 	 */
-	public String getGameQuestion(Category category, String questionValue) {
-		return _questionQuery.retrieveQuestion(category, questionValue);
+	public String getGameQuestion(Category category) {
+		return _questionQuery.retrieveQuestion(category);
     }
     
     /**

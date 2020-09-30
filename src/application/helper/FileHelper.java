@@ -21,6 +21,15 @@ public class FileHelper {
     public final static String LINE_SEPARATOR = System.getProperty("line.separator");
 	public final static String CURRENT_DIR = System.getProperty("user.dir");
 
+	public static void setUpGame() {
+		//Create subdirectory for game files if not already created
+				String gameData = FileHelper.CURRENT_DIR + FileHelper.FILE_SEPARATOR + "data";
+				FileHelper.makeDirectory(gameData);
+
+				//Create subdirectory for category files if not already created
+				String categories = gameData + FileHelper.FILE_SEPARATOR + "categories";
+				FileHelper.makeDirectory(categories);
+	}
 	/**
 	 * Make a directory.
 	 * 

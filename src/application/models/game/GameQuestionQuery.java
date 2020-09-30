@@ -37,14 +37,14 @@ public class GameQuestionQuery {
 	 * @param questionValue
 	 * @return String the question to be returned
 	 */
-	public String retrieveQuestion(Category category, String questionValue) {		
+	public String retrieveQuestion(Category category) {		
 		//Replace spaces from category to hyphen if not already done
 		String categoryName = category.getFilename();
 		
 		String questionStr = GameFiles.getUserCategories() + FileHelper.FILE_SEPARATOR + categoryName;
 		_questionFile = new File(questionStr);
 
-		return getQuestionFromFile(_questionFile, questionValue);
+		return getQuestionFromFile(_questionFile);
 	}
 
 	/**
@@ -53,8 +53,8 @@ public class GameQuestionQuery {
 	 * @param numberOfQuestions the number of questions in a given category
 	 * @param questionFile      the file which contains the questions of a given category
 	 */
-	private String getQuestionFromFile(File questionFile, String questionValue) {
-		_lineNumber = Integer.valueOf(questionValue) / 100;
+	private String getQuestionFromFile(File questionFile) {
+		_lineNumber = 1;
 		List<String> questionAndAnswer = FileHelper.getLineFromFile(questionFile, _lineNumber);
 		setQuestionAndAnswer(questionAndAnswer);
 		return _currentQuestion;
