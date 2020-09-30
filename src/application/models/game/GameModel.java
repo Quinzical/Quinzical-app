@@ -1,6 +1,5 @@
 package application.models.game;
 
-import java.io.File;
 import java.util.List;
 
 import application.helper.FileHelper;
@@ -42,6 +41,7 @@ public class GameModel {
 	 */
 	public void setUpGameModule() {
 		//Set up files for game module
+		FileHelper.setUpGame();
 		_gameFiles.setUpGameModule();
 		_gameFiles.randomiseCategories();
 		
@@ -118,5 +118,9 @@ public class GameModel {
 
 	public String getPrompt() {
 		return _questionQuery.getPrompt();
+	}
+	
+	public void deleteQuestion() {
+		_questionQuery.deleteQuestionFromFile();
 	}
 }

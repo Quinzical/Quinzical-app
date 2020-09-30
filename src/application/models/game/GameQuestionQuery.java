@@ -88,7 +88,7 @@ public class GameQuestionQuery {
 	/**
 	 * This method is used to delete questions from game files once they have been answered. 
 	 */
-	private void deleteQuestionFromFile() {
+	public void deleteQuestionFromFile() {
 		//Remove question
 		try {
 			File tempfile = new File(GameFiles.getUserCategories() + FileHelper.FILE_SEPARATOR + "temp.txt");

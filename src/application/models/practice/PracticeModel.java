@@ -2,6 +2,7 @@ package application.models.practice;
 
 import java.util.List;
 
+import application.helper.FileHelper;
 import application.models.helper.Category;
 
 /**
@@ -37,7 +38,7 @@ public class PracticeModel {
 	 * Used to set up the practice module by calling the correct functions from supplementary classes.
 	 */
 	public void setUpPracticeModule() {
-		_practiceFiles.setUpPracticeModule();
+		FileHelper.setUpGame();
 		_practiceFiles.copyCategories();
 	}
 	

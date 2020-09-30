@@ -19,7 +19,7 @@ import application.helper.FileHelper;
  */
 public class PracticeFiles {
 
-	private static String _categoryFolder;
+	private final static String _categoryFolder = FileHelper.CURRENT_DIR + FileHelper.FILE_SEPARATOR + "data" + FileHelper.FILE_SEPARATOR + "categories";
 	private List<Category> _categoryCollection;
 
 	public PracticeFiles() {
@@ -32,24 +32,8 @@ public class PracticeFiles {
      * @return userCategories
      */
     public static String getCategoryFolder() {
-        if (_categoryFolder == null) {
-            new PracticeFiles().setUpPracticeModule();
-        }
         return _categoryFolder;
     }
-
-	/**
-	 * Method to create directories for storing game files for the practice module.
-	 */
-	public void setUpPracticeModule() {
-		//Create subdirectory for game files if not already created
-		String gameData = FileHelper.CURRENT_DIR + FileHelper.FILE_SEPARATOR + "data";
-		FileHelper.makeDirectory(gameData);
-
-		//Create subdirectory for category files if not already created
-		_categoryFolder = gameData + FileHelper.FILE_SEPARATOR + "categories";
-		FileHelper.makeDirectory(_categoryFolder);
-	}
 
 	/**
 	 * Method to copy categories and their relevant questions and answers into separate files from the quinzical file.

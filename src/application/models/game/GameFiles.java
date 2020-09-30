@@ -11,7 +11,6 @@ import java.util.List;
 
 import application.models.helper.Category;
 import application.helper.FileHelper;
-import application.models.practice.PracticeFiles;
 
 /**
  * This class is used to set up the necessary files for the games module. This includes setting up files to account for the need of different users in the project. 
@@ -89,7 +88,7 @@ public class GameFiles {
 	 * Used to randomise the categories that the user will be given for questioning.
 	 */
 	public void randomiseCategories() {
-		List<Integer> randomFiles = FileHelper.makeRandomList(5, 1, FileHelper.countFilesInDirectory(PracticeFiles.getCategoryFolder()));
+		List<Integer> randomFiles = FileHelper.makeRandomList(5, 1, FileHelper.countCategories());
 		createAndFillRandomFiles(randomFiles);
 	}
 
