@@ -1,6 +1,5 @@
 package application.models.game;
 
-import java.io.File;
 import java.util.List;
 
 import application.helper.FileHelper;
