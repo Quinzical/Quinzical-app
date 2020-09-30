@@ -60,11 +60,10 @@ public class GameModel {
 	 * Used to get a game question based on the chosen category and the value of the question. 
 	 * 
 	 * @param category      the category chosen by the user
-	 * @param questionValue the value of the question
 	 * @return String       the question to be displayed to the user
 	 */
-	public String getGameQuestion(Category category, String questionValue) {
-		return _questionQuery.retrieveQuestion(category, questionValue);
+	public String getGameQuestion(Category category) {
+		return _questionQuery.retrieveQuestion(category);
     }
     
     /**

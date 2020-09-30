@@ -99,7 +99,7 @@ public class QuestionModel {
 		if (_practice) {
 			return _practiceModel.getPracticeQuestion(_category);
 		} else {
-			return _gameModel.getGameQuestion(_category, _questionValue);
+			return _gameModel.getGameQuestion(_category);
 		}
 	}
 	
