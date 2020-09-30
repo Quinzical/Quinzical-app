@@ -193,7 +193,19 @@ public class GameFiles {
 			String fileName = file.getName();
 			_categoryCollection.add(new Category(fileName));
 		}
-	}
+    }
+    
+    /**
+     * Used to get number of questions left in a category
+     * 
+     * @param category      the category chosen
+     * @return int          the number of questions left
+     */
+    public int getCategoriesQuestionNum(Category category) {
+        File categoryFile = new File(_userCategories + FileHelper.FILE_SEPARATOR + category.getFilename());
+        return FileHelper.countLinesinFile(categoryFile);
+    }
+	
 
 	/**
 	 * Method to reset the game for the current user. 

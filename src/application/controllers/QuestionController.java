@@ -3,8 +3,6 @@ package application.controllers;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import javax.swing.text.DefaultStyledDocument.ElementSpec;
-
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.question.QuestionModel;
@@ -171,26 +169,32 @@ public class QuestionController {
             createBackButton();
         } else if (_questionModel.getPractice()) {
             // Handle practice mode with multiple attempts
-            if (_attempt > 2) {
-                // MNore than 3 attempts
+            if (_attempt > 1) {
+                // More than 3 attempts
+                _infoLabel.setText("Incorrect");
+                _infoLabel.setStyle("-fx-text-fill: red;");
                 speak(oldAnswer + " is Incorrect. The answer is " + correctAnswer);
                 _answerTextField.setText("Answer: " + correctAnswer);
                 createBackButton();
-            } else if (_attempt == 2) {
+            } else if (_attempt == 1) {
                 // On the 3rd attempt
                 String clue = _questionModel.getClue();
+                _infoLabel.setText("Clue is '"+_questionModel.getClue()+"'");
+                _infoLabel.setStyle("-fx-text-fill: black;");
                 speak(oldAnswer + " is Incorrect. The first letter is " + clue);
                 _answerTextField.setText(clue);
             } else {
+                _infoLabel.setText("Incorrect, Please Try Again");
+                _infoLabel.setStyle("-fx-text-fill: red;");
                 speak(oldAnswer + " is Incorrect.");
                 _answerTextField.setText("");
             }
-            _infoLabel.setText("Incorrect");
-            _infoLabel.setStyle("-fx-text-fill: red;");
             // Increment attempt and set turns
             _attempt += 1;
             _questionModel.setNumberOfAttempts(_attempt);
         } else {
+            _infoLabel.setStyle("-fx-text-fill: red;");
+            _infoLabel.setText("Incorrect");
             speak(oldAnswer + " is Incorrect. The answer is " + correctAnswer);
             _answerTextField.setText(correctAnswer);
             createBackButton();

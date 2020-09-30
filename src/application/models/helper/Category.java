@@ -11,7 +11,7 @@ public class Category {
     private String _categoryName;
 
     public Category(String categoryName) {
-        _categoryName = categoryName;
+        _categoryName = categoryName.replace(".txt", "").replace('-', ' ');
     }
 
     /**
@@ -30,6 +30,6 @@ public class Category {
      * @return filename
      */
     public String getFilename() {
-        return _categoryName.replace(' ', '-');
+        return _categoryName.replace(' ', '-') + ".txt";
     }
 }

@@ -1,7 +1,9 @@
 package application.models.game;
 
+import java.io.File;
 import java.util.List;
 
+import application.helper.FileHelper;
 import application.models.helper.Category;
 
 /**
@@ -63,7 +65,17 @@ public class GameModel {
 	 */
 	public String getGameQuestion(Category category, String questionValue) {
 		return _questionQuery.retrieveQuestion(category, questionValue);
-	}
+    }
+    
+    /**
+     * Used to get number of questions left in a category
+     * 
+     * @param category      the category chosen
+     * @return int          the number of questions left
+     */
+    public int getCategoriesQuestionNumber(Category category) {
+        return _gameFiles.getCategoriesQuestionNum(category);
+    }
 	
 	/**
 	 * Used to check whether the users answer for the current question is correct or not. 

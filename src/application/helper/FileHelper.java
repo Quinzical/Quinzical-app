@@ -17,7 +17,8 @@ import application.models.helper.Category;
  * @author Cheng-Zhen Yang
  */
 public class FileHelper {
-	public final static String FILE_SEPARATOR = System.getProperty("file.separator");
+    public final static String FILE_SEPARATOR = System.getProperty("file.separator");
+    public final static String LINE_SEPARATOR = System.getProperty("line.separator");
 	public final static String CURRENT_DIR = System.getProperty("user.dir");
 
 	/**
@@ -82,9 +83,8 @@ public class FileHelper {
 		if (file.exists()) {
 			try {
 				BufferedReader in = new BufferedReader(new FileReader(file));
-				String line;
 				
-				while((line = in.readLine()) != null) {
+				while(in.readLine() != null) {
 					linecount++;
 				}
 				in.close();

@@ -51,7 +51,7 @@ public class ScoreTracker {
 			File tempfile = new File("temp.txt");
 			File scoreFile = new File(_scoreFile);
 			PrintWriter out = new PrintWriter(new FileWriter(tempfile));
-			out.write(currentScore + System.getProperty("line.separator"));
+			out.write(currentScore + FileHelper.LINE_SEPARATOR);
 			out.close();
 			tempfile.renameTo(scoreFile);
 		} catch (IOException e) {

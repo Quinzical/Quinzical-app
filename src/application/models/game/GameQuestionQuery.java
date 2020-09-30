@@ -40,8 +40,8 @@ public class GameQuestionQuery {
 	public String retrieveQuestion(Category category, String questionValue) {		
 		//Replace spaces from category to hyphen if not already done
 		String categoryName = category.getFilename();
-
-		String questionStr = GameFiles.getUserCategories() + FileHelper.FILE_SEPARATOR + categoryName + ".txt";
+		
+		String questionStr = GameFiles.getUserCategories() + FileHelper.FILE_SEPARATOR + categoryName;
 		_questionFile = new File(questionStr);
 
 		return getQuestionFromFile(_questionFile, questionValue);
@@ -101,7 +101,7 @@ public class GameQuestionQuery {
 			String line;
 			while((line = in.readLine()) != null) {
 				if(!(count == _lineNumber)) {
-					out.write(line + System.getProperty("line.separator"));
+					out.write(line + FileHelper.LINE_SEPARATOR);
 				}
 				count++;
 			}
