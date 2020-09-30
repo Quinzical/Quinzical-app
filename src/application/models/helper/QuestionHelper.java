@@ -107,7 +107,7 @@ public class QuestionHelper {
 		for (int i = 0; i <= correctAnswer.length(); i++) {
 			if (correctAnswer.charAt(i) == '(' || correctAnswer.charAt(i) == ')') {
 				if (numberOfBrackets == 0) {
-					firstBracket++;
+					firstBracket = i;
 				}
 				numberOfBrackets++;
 			}
