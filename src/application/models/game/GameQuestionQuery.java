@@ -34,7 +34,6 @@ public class GameQuestionQuery {
 	 * Return the question to the model. 
 	 * 
 	 * @param category
-	 * @param questionValue
 	 * @return String the question to be returned
 	 */
 	public String retrieveQuestion(Category category) {		
