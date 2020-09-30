@@ -89,4 +89,12 @@ public class PracticeQuestionQuery {
 	public String retrieveAnswer() {
 		return _currentAnswer;
 	}
+
+	public String getPrompt() {
+		if(_currentAnswer != null) {
+			QuestionHelper helper = QuestionHelper.getInstance();
+			return helper.retrievePrompt(_currentAnswer);
+		}
+		return null;
+	}
 }

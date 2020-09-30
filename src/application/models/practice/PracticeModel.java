@@ -87,4 +87,8 @@ public class PracticeModel {
 	public String getPracticeAnswer() {
 		return _questionQuery.retrieveAnswer();
 	}
+
+	public String getPrompt() {
+		return _questionQuery.getPrompt();
+	}
 }

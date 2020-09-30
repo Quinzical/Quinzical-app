@@ -104,4 +104,8 @@ public class GameModel {
 	public String getGameAnswer() {
 		return _questionQuery.retrieveAnswer();
 	}
+
+	public String getPrompt() {
+		return _questionQuery.getPrompt();
+	}
 }

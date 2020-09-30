@@ -74,7 +74,7 @@
             </Label>
          </children>
       </AnchorPane>
-        <TextField fx:id="_answerTextField" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1157.0" promptText="Who is..." styleClass="question-field" VBox.vgrow="ALWAYS">
+        <TextField fx:id="_answerTextField" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1157.0" styleClass="question-field" VBox.vgrow="ALWAYS">
             <font>
                 <Font size="36.0" />
             </font>

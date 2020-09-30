@@ -4,8 +4,11 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+
+import application.models.helper.Category;
 
 /**
  * This class is used to avoid code reuse by having helper functions for setting up files.
@@ -39,10 +42,10 @@ public class FileHelper {
 	 * 
 	 * @return List<Integer> a list of random numbers
 	 */
-	public static List<Integer> makeRandomList(int sizeOfList, int maxNumber) {
+	public static List<Integer> makeRandomList(int sizeOfList, int minNumber, int maxNumber) {
 		List<Integer> randomList = new ArrayList<Integer>();
 		for (int i = 0; i < sizeOfList; i++) {
-			int randomValue = 1 + (int)(Math.random() * ((maxNumber - 1) + 1));
+			int randomValue = minNumber + (int)(Math.random() * ((maxNumber - minNumber) + 1));
 			if (randomList.contains(randomValue)) {
 				i--;
 			} else {

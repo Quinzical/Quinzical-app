@@ -15,6 +15,9 @@ public class QuestionModel {
 
 	private static QuestionModel _instance;
 	
+	private PracticeModel _practiceModel = PracticeModel.getInstance();
+	private GameModel _gameModel = GameModel.getInstance();
+	
 	private boolean _practice;
 	private Category _category;
 	private String _questionValue;
@@ -80,6 +83,13 @@ public class QuestionModel {
 		_questionValue = value;
 	}
 	
+	public String getQuestionPrompt() {
+		if (_practice) {
+			return _practiceModel.getPrompt();
+		} else {
+			return _gameModel.getPrompt();
+		}
+	}
 	/**
 	 * Returns a question.
 	 * 
@@ -87,11 +97,9 @@ public class QuestionModel {
 	 */
 	public String getQuestion() {
 		if (_practice) {
-			PracticeModel practiceModel = PracticeModel.getInstance();
-			return practiceModel.getPracticeQuestion(_category);
+			return _practiceModel.getPracticeQuestion(_category);
 		} else {
-			GameModel gameModel = GameModel.getInstance();
-			return gameModel.getGameQuestion(_category, _questionValue);
+			return _gameModel.getGameQuestion(_category, _questionValue);
 		}
 	}
 	
@@ -103,11 +111,9 @@ public class QuestionModel {
 	 */
 	public boolean checkAnswer(String userAnswer) {
 		if (_practice) {
-			PracticeModel practiceModel = PracticeModel.getInstance();
-			return practiceModel.checkPracticeAnswer(userAnswer);
+			return _practiceModel.checkPracticeAnswer(userAnswer);
 		} else {
-			GameModel gameModel = GameModel.getInstance();
-			return gameModel.checkGameAnswer(userAnswer, _questionValue);
+			return _gameModel.checkGameAnswer(userAnswer, _questionValue);
 		}
 	}
 	
@@ -117,10 +123,8 @@ public class QuestionModel {
 	 * @return String the clue to be displayed to the user
 	 */
 	public String getClue() {
-		if (_practice && _numberOfAttempts == 2) {
-			PracticeModel practiceModel = PracticeModel.getInstance();
-			System.out.println(practiceModel.getClue());
-			return practiceModel.getClue();
+		if (_practice && _numberOfAttempts >= 2) {
+			return _practiceModel.getClue();
 		}
 		return null;
 	}
@@ -132,11 +136,9 @@ public class QuestionModel {
 	 */
 	public String getCorrectAnswer() {
 		if (_practice) {
-			PracticeModel practiceModel = PracticeModel.getInstance();
-			return practiceModel.getPracticeAnswer();
+			return _practiceModel.getPracticeAnswer();
 		} else {
-			GameModel gameModel = GameModel.getInstance();
-			return gameModel.getGameAnswer();
+			return _gameModel.getGameAnswer();
 		}
 	}
 	

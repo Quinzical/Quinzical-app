@@ -99,4 +99,25 @@ public class QuestionHelper {
 		} 
 		return false;
 	}
+
+	public String retrievePrompt(String correctAnswer) {
+		int numberOfBrackets = 0;
+		int firstBracket = 0;
+		String prompt = null;
+		for (int i = 0; i <= correctAnswer.length(); i++) {
+			if (correctAnswer.charAt(i) == '(' || correctAnswer.charAt(i) == ')') {
+				if (numberOfBrackets == 0) {
+					firstBracket++;
+				}
+				numberOfBrackets++;
+			}
+
+			if (numberOfBrackets == 2) {
+				prompt = correctAnswer.substring(firstBracket + 1, i);
+				prompt.trim();
+				return prompt;
+			}
+		}
+		return prompt;
+	}
 }
