@@ -4,11 +4,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-
-import application.models.helper.Category;
 
 /**
  * This class is used to avoid code reuse by having helper functions for setting up files.
@@ -17,18 +14,18 @@ import application.models.helper.Category;
  * @author Cheng-Zhen Yang
  */
 public class FileHelper {
-    public final static String FILE_SEPARATOR = System.getProperty("file.separator");
-    public final static String LINE_SEPARATOR = System.getProperty("line.separator");
+	public final static String FILE_SEPARATOR = System.getProperty("file.separator");
+	public final static String LINE_SEPARATOR = System.getProperty("line.separator");
 	public final static String CURRENT_DIR = System.getProperty("user.dir");
 
 	public static void setUpGame() {
 		//Create subdirectory for game files if not already created
-				String gameData = FileHelper.CURRENT_DIR + FileHelper.FILE_SEPARATOR + "data";
-				FileHelper.makeDirectory(gameData);
+		String gameData = FileHelper.CURRENT_DIR + FileHelper.FILE_SEPARATOR + "data";
+		FileHelper.makeDirectory(gameData);
 
-				//Create subdirectory for category files if not already created
-				String categories = gameData + FileHelper.FILE_SEPARATOR + "categories";
-				FileHelper.makeDirectory(categories);
+		//Create subdirectory for category files if not already created
+		String categories = gameData + FileHelper.FILE_SEPARATOR + "categories";
+		FileHelper.makeDirectory(categories);
 	}
 	/**
 	 * Make a directory.
@@ -66,6 +63,44 @@ public class FileHelper {
 	}
 
 	/**
+	 * Used to count the number of categories in quinzical file
+	 * 
+	 * @param directory the directory where files should 
+	 * @return
+	 */
+	public static int countCategories() {
+		String quinzical = FileHelper.CURRENT_DIR + FileHelper.FILE_SEPARATOR + "quinzical" + ".txt";
+		File quinzicalFile = new File(quinzical);
+		int categoryCount = 0;
+		
+		if (quinzicalFile.isFile()) {
+			try {
+				BufferedReader in = new BufferedReader(new FileReader(quinzicalFile));
+				
+				int count = 1;
+				String line = null;
+				
+				while((line = in.readLine()) != null) {
+					//Replace spaces with hypens to name the files
+					if (count == 1) {
+						count++;
+						categoryCount++;
+					} else if (line.isEmpty()) {
+						count = 1;
+					} else { 
+						count++;
+					}
+				}
+				in.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
+		return categoryCount;
+	}
+
+	/**
 	 * Used to count the number of files in a directory
 	 * 
 	 * @param directory the directory where files should 
@@ -77,8 +112,8 @@ public class FileHelper {
 			if (dir.isDirectory()) {
 				return dir.listFiles().length;
 			}
-        }
-        return 0;
+		}
+		return 0;
 	}
 
 	/**
@@ -92,7 +127,7 @@ public class FileHelper {
 		if (file.exists()) {
 			try {
 				BufferedReader in = new BufferedReader(new FileReader(file));
-				
+
 				while(in.readLine() != null) {
 					linecount++;
 				}
@@ -103,7 +138,7 @@ public class FileHelper {
 		}
 		return linecount;
 	}
-	
+
 	public static List<String> getLineFromFile(File file, int desiredLine) {
 		List<String> questionAndAnswer = new ArrayList<String>();
 		String currentQuestion = null;
