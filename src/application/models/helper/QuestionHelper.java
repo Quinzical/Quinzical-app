@@ -115,9 +115,6 @@ public class QuestionHelper {
 			if (numberOfBrackets == 2) {
 				prompt = correctAnswer.substring(firstBracket + 1, i);
 				prompt.trim();
-				prompt.replace(')', ' ');
-				prompt.replace('(', ' ');
-				System.out.println(prompt);
 				return prompt;
 			}
 		}

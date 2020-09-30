@@ -88,15 +88,5 @@ public class ModelMain {
     public static void main(String[] args) {
         ModelMain main = ModelMain.getInstance();
         main.startGame();
-        main.getQuestion();
-        main.checkUserAnswer("Rakiura");
     }
-
-    /**
-     * Used to reset the games module if the user presses the 'reset button'.
-     */
-    public void resetGame() {
-        _gameModel.resetGameModule();
-    }
-
 }
