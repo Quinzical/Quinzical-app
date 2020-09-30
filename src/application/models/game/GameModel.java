@@ -119,4 +119,8 @@ public class GameModel {
 	public String getPrompt() {
 		return _questionQuery.getPrompt();
 	}
+	
+	public void deleteQuestion() {
+		_questionQuery.deleteQuestionFromFile();
+	}
 }

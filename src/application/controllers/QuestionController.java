@@ -5,6 +5,7 @@ import java.util.concurrent.Executors;
 
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
+import application.models.game.GameModel;
 import application.models.question.QuestionModel;
 import application.processes.SpeakProcess;
 import javafx.event.ActionEvent;
@@ -127,6 +128,7 @@ public class QuestionController {
             _infoLabel.setText("Correct");
             _infoLabel.setStyle("-fx-text-fill: green;");
             _answerTextField.setText("Answer: " + correctAnswer);
+            GameModel.getInstance().deleteQuestion();
             createBackButton();
         }
     }
