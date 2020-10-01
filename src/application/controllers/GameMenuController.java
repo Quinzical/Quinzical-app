@@ -42,27 +42,22 @@ public class GameMenuController {
 
 		_currentScore.setText("$"+_gameModel.getScore());
 
-		if(_gameModel.remainingQuestions()) {
-			for (int i = 0; i < 5; i++) {
-				Category category = _categories.get(i);
-				Label categoryLabel = new Label(category.toString());
-				categoryLabel.setStyle("-fx-font-size:24");
-				GridPane.setHalignment(categoryLabel, HPos.CENTER);
-				_questionGrid.add(categoryLabel, i, 0);
-				int questionNum = _gameModel.getCategoriesQuestionNumber(category);
+		for (int i = 0; i < 5; i++) {
+			Category category = _categories.get(i);
+			Label categoryLabel = new Label(category.toString());
+			categoryLabel.setStyle("-fx-font-size:24");
+			GridPane.setHalignment(categoryLabel, HPos.CENTER);
+			_questionGrid.add(categoryLabel, i, 0);
+			int questionNum = _gameModel.getCategoriesQuestionNumber(category);
 
-				for (int j = 1; j < 6; j++) {
-					GameCategoryButton btn = new GameCategoryButton(_categories.get(i), String.valueOf(j * 100));
-					if (questionNum != 6-j) {
-						btn.setDisable(true);
-					}
-					GridPane.setHalignment(btn, HPos.CENTER);
-					_questionGrid.add(btn, i, j);
+			for (int j = 1; j < 6; j++) {
+				GameCategoryButton btn = new GameCategoryButton(_categories.get(i), String.valueOf(j * 100));
+				if (questionNum != 6-j) {
+					btn.setDisable(true);
 				}
+				GridPane.setHalignment(btn, HPos.CENTER);
+				_questionGrid.add(btn, i, j);
 			}
-		} else {
-			_sceneManager.unloadScene();
-			_sceneManager.switchScene(Scenes.REWARD_SCREEN);
 		}
 	}
 

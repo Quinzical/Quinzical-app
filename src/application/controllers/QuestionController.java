@@ -103,7 +103,11 @@ public class QuestionController {
      */
     private void back() {
         _sceneManager.unloadScene();
-        _sceneManager.backScene();
+		if(GameModel.getInstance().remainingQuestions()) {
+			_sceneManager.backScene();
+		}  else {
+			_sceneManager.switchScene(Scenes.REWARD_SCREEN);
+		}
     }
 
     /**
