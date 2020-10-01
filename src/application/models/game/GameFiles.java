@@ -150,6 +150,12 @@ public class GameFiles {
 		}
 	}
 
+	/**
+	 * Used to select five random questions from the chosen category. 
+	 * 
+	 * @param copyFile
+	 * @param fileLines
+	 */
 	private void selectLines(File copyFile, List<String> fileLines) {
 		List<Integer> randomLines = FileHelper.makeRandomList(5, 0, fileLines.size() - 1);
 		String line;
@@ -219,5 +225,29 @@ public class GameFiles {
 		}
 		setUpGameModule();
 		randomiseCategories();
+	}
+
+	/**
+	 * Returns false if no remaining questions, true if there are remaing questions. 
+	 * @return
+	 */
+	public boolean remainingQuestions() {
+		int emptyFiles = 0;
+		File userDir = new File(_userCategories);
+		if (userDir.exists()) {
+			if (userDir.isDirectory()) {
+				for (File file : userDir.listFiles()) {
+					if(file.length() == 0) {
+						emptyFiles++;
+					}
+				}
+			}
+		}
+		
+		if (emptyFiles == 5) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 }
