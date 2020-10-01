@@ -26,7 +26,7 @@ public class GameFiles {
 	
 	private List<Category> _categoryCollection;
 	
-	private final static String _userCategories = FileHelper.CURRENT_DIR + FileHelper.FILE_SEPARATOR + "data" + FileHelper.FILE_SEPARATOR + "users" + FileHelper.FILE_SEPARATOR + "categories";
+	private final static String _userCategories = FileHelper.CURRENT_DIR + FileHelper.FILE_SEPARATOR + "data" + FileHelper.FILE_SEPARATOR + "users" + FileHelper.FILE_SEPARATOR + _currentUser + FileHelper.FILE_SEPARATOR + "categories";
 
 	public GameFiles() {
 		_categoryCollection = new ArrayList<Category>();
