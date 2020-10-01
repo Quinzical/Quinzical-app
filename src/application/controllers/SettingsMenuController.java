@@ -18,9 +18,9 @@ import javafx.scene.control.Slider;
 public class SettingsMenuController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
-    
+
     private final static int DEFAULT_VOLUME = 50;
-    
+
     // Equates to espeak speed of 175 wpm, the default setting
     private final static int DEFAULT_SPEED = 26;
 
@@ -55,20 +55,30 @@ public class SettingsMenuController {
         });
     }
 
+    /**
+	 * Used to handle back to original scene before settings
+	 * 
+	 * @param event
+	 */
     @FXML
-    void handleBackButton(ActionEvent event) {
+    private void handleBackButton(ActionEvent event) {
         _sceneManager.backScene();
     }
 
+    /**
+	 * Used to handle reset settings button, to reset settings
+	 * 
+	 * @param event
+	 */
     @FXML
-    void handleResetButton(ActionEvent event) {
-    	_speakValue.setText(String.valueOf(DEFAULT_VOLUME));
-    	_speedValue.setText(String.valueOf(DEFAULT_SPEED));
-    	
-    	_speakSlider.setValue(DEFAULT_VOLUME);
-    	_speedSlider.setValue(DEFAULT_SPEED);
-    	
-    	SettingsModel.setEspeakVolume(DEFAULT_VOLUME);
-    	SettingsModel.setEspeakSpeed(DEFAULT_SPEED);
+    private void handleResetButton(ActionEvent event) {
+        _speakValue.setText(String.valueOf(DEFAULT_VOLUME));
+        _speedValue.setText(String.valueOf(DEFAULT_SPEED));
+
+        _speakSlider.setValue(DEFAULT_VOLUME);
+        _speedSlider.setValue(DEFAULT_SPEED);
+
+        SettingsModel.setEspeakVolume(DEFAULT_VOLUME);
+        SettingsModel.setEspeakSpeed(DEFAULT_SPEED);
     }
 }

@@ -2,6 +2,7 @@ package application.controllers;
 
 import java.util.List;
 
+import application.controllers.helper.ConfirmAlert;
 import application.controllers.helper.GameCategoryButton;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
@@ -22,61 +23,80 @@ import javafx.scene.layout.GridPane;
  */
 public class GameMenuController {
 
-	private final SceneManager _sceneManager = SceneManager.getInstance();
-	private final GameModel _gameModel = GameModel.getInstance();
+    private final SceneManager _sceneManager = SceneManager.getInstance();
+    private final GameModel _gameModel = GameModel.getInstance();
 
-	private List<Category> _categories;
+    private List<Category> _categories;
 
-	@FXML
-	private Button _currentScore;
+    @FXML
+    private Button _currentScore;
 
-	@FXML
-	private GridPane _questionGrid;
+    @FXML
+    private GridPane _questionGrid;
 
-	/**
-	 * initialize with GameMenu.fxml
+    /**
+     * initialize with GameMenu.fxml
+     */
+    public void initialize() {
+        _gameModel.setUpGameModule();
+        _categories = _gameModel.getGameCategories();
+
+        _currentScore.setText("$" + _gameModel.getScore());
+
+        for (int i = 0; i < 5; i++) {
+            Category category = _categories.get(i);
+            Label categoryLabel = new Label(category.toString());
+            categoryLabel.setStyle("-fx-font-size:24");
+            GridPane.setHalignment(categoryLabel, HPos.CENTER);
+            _questionGrid.add(categoryLabel, i, 0);
+            int questionNum = _gameModel.getCategoriesQuestionNumber(category);
+
+            for (int j = 1; j < 6; j++) {
+                GameCategoryButton btn = new GameCategoryButton(_categories.get(i), String.valueOf(j * 100));
+                if (questionNum != 6 - j) {
+                    btn.setDisable(true);
+                }
+                GridPane.setHalignment(btn, HPos.CENTER);
+                _questionGrid.add(btn, i, j);
+            }
+        }
+    }
+
+    /**
+	 * Used to handle back to main menu button
+	 * 
+	 * @param event
 	 */
-	public void initialize() {
-		_gameModel.setUpGameModule();
-		_categories = _gameModel.getGameCategories();
+    @FXML
+    private void handleBackButton(ActionEvent event) {
+        _sceneManager.backScene();
+    }
 
-		_currentScore.setText("$"+_gameModel.getScore());
+    /**
+	 * Used to handle setting button
+	 * 
+	 * @param event
+	 */
+    @FXML
+    private void handleSettingsButton(ActionEvent event) {
+        _sceneManager.switchScene(Scenes.SETTINGS_MENU);
+    }
 
-		for (int i = 0; i < 5; i++) {
-			Category category = _categories.get(i);
-			Label categoryLabel = new Label(category.toString());
-			categoryLabel.setStyle("-fx-font-size:24");
-			GridPane.setHalignment(categoryLabel, HPos.CENTER);
-			_questionGrid.add(categoryLabel, i, 0);
-			int questionNum = _gameModel.getCategoriesQuestionNumber(category);
-
-			for (int j = 1; j < 6; j++) {
-				GameCategoryButton btn = new GameCategoryButton(_categories.get(i), String.valueOf(j * 100));
-				if (questionNum != 6-j) {
-					btn.setDisable(true);
-				}
-				GridPane.setHalignment(btn, HPos.CENTER);
-				_questionGrid.add(btn, i, j);
-			}
-		}
-	}
-
-	@FXML
-	void handleBackButton(ActionEvent event) {
-		// TODO
-		_sceneManager.backScene();
-	}
-
-	@FXML
-	void handleSettingsButton(ActionEvent event) {
-		// TODO
-		_sceneManager.switchScene(Scenes.SETTINGS_MENU);
-	}
-
-	@FXML 
-	void handleResetButton(ActionEvent event){
-		//TODO
-
-	}
+    /**
+	 * Used to handle game reset button
+	 * 
+	 * @param event
+	 */
+    @FXML
+    private void handleResetButton(ActionEvent event) {
+        new ConfirmAlert("Reset the Game") {
+            @Override
+            protected void handleConfirm() {
+                _gameModel.resetGameModule();
+                _questionGrid.getChildren().clear();
+                initialize();
+            }
+        };
+    }
 
 }

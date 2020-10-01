@@ -64,6 +64,7 @@ public class QuestionController {
         }
         _attempt = 1;
         _speak = new SpeakProcess(_question);
+        _categoryName.setText(_questionModel.getCategory().toString());
         _infoLabel.setText("");
         _team.submit(_speak);
         _answerTextField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -103,11 +104,11 @@ public class QuestionController {
      */
     private void back() {
         _sceneManager.unloadScene();
-		if(GameModel.getInstance().remainingQuestions()) {
-			_sceneManager.backScene();
-		}  else {
-			_sceneManager.switchScene(Scenes.REWARD_SCREEN);
-		}
+        if (GameModel.getInstance().remainingQuestions()) {
+            _sceneManager.backScene();
+        } else {
+            _sceneManager.switchScene(Scenes.REWARD_SCREEN);
+        }
     }
 
     /**
@@ -116,7 +117,7 @@ public class QuestionController {
      * @param event
      */
     @FXML
-    void handleDontKnowButton(ActionEvent event) {
+    private void handleDontKnowButton(ActionEvent event) {
         if (_questionModel.getPractice()) {
             _attempt = 3;
             _questionModel.setNumberOfAttempts(_attempt);
@@ -124,10 +125,10 @@ public class QuestionController {
             speak("The first letter is " + clue);
             _answerTextField.setText(clue);
             _infoLabel.setText("Clue");
-            _infoLabel.setStyle("-fx-text-fill: green;");           
+            _infoLabel.setStyle("-fx-text-fill: green;");
             _dontKnowButton.disableProperty();
         } else {
-        	String correctAnswer = _questionModel.getCorrectAnswer();
+            String correctAnswer = _questionModel.getCorrectAnswer();
             speak("The answer is " + correctAnswer);
             _infoLabel.setText("Correct");
             _infoLabel.setStyle("-fx-text-fill: green;");
@@ -143,7 +144,7 @@ public class QuestionController {
      * @param event
      */
     @FXML
-    void handlePlaybackButton(ActionEvent event) {
+    private void handlePlaybackButton(ActionEvent event) {
         speak(_question);
     }
 
@@ -153,7 +154,7 @@ public class QuestionController {
      * @param event
      */
     @FXML
-    void handleSettingsButton(ActionEvent event) {
+    private void handleSettingsButton(ActionEvent event) {
         _sceneManager.switchScene(Scenes.SETTINGS_MENU);
     }
 
@@ -163,7 +164,7 @@ public class QuestionController {
      * @param event
      */
     @FXML
-    void handleSubmitButton(ActionEvent event) {
+    private void handleSubmitButton(ActionEvent event) {
         String oldAnswer = _answerTextField.getText();
         String correctAnswer = _questionModel.getCorrectAnswer();
         boolean correct = _questionModel.checkAnswer(oldAnswer);
@@ -175,17 +176,17 @@ public class QuestionController {
             createBackButton();
         } else if (_questionModel.getPractice()) {
             // Handle practice mode with multiple attempts
-            if (_attempt > 1) {
+            if (_attempt > 2) {
                 // More than 3 attempts
                 _infoLabel.setText("Incorrect");
                 _infoLabel.setStyle("-fx-text-fill: red;");
                 speak(oldAnswer + " is Incorrect. The answer is " + correctAnswer);
                 _answerTextField.setText("Answer: " + correctAnswer);
                 createBackButton();
-            } else if (_attempt == 1) {
+            } else if (_attempt == 2) {
                 // On the 3rd attempt
                 String clue = _questionModel.getClue();
-                _infoLabel.setText("Clue is '"+_questionModel.getClue()+"'");
+                _infoLabel.setText("Clue is '" + _questionModel.getClue() + "'");
                 _infoLabel.setStyle("-fx-text-fill: black;");
                 speak(oldAnswer + " is Incorrect. The first letter is " + clue);
                 _answerTextField.setText(clue);

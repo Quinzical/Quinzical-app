@@ -54,7 +54,16 @@ public class QuestionModel {
 	 */
 	public void setPractice(boolean practiceOrNot) {
 		_practice = practiceOrNot;
-	}
+    }
+    
+    /**
+     * Used to get the category for both the games and practice module.
+     * 
+     * @return category
+     */
+    public Category getCategory(){
+        return _category;
+    }
 	
 	/**
 	 * Used to set the category for both the games and practice module.

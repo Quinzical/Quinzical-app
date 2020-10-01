@@ -1,6 +1,8 @@
 
 package application.processes;
 
+import java.io.IOException;
+
 import application.models.SettingsModel;
 import javafx.concurrent.Task;
 
@@ -30,7 +32,7 @@ public class SpeakProcess extends Task<Void> {
      * Run in process in background with cancelled option.
      */
     @Override
-    protected Void call() throws Exception {
+    protected Void call() throws IOException {
         Process process = _pb.start();
 
         // if cancelled, destroy process

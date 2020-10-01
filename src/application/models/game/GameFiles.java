@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import application.models.helper.Category;
+import application.controllers.helper.ExceptionAlert;
 import application.helper.FileHelper;
 
 /**
@@ -88,6 +89,7 @@ public class GameFiles {
 	 * Used to randomise the categories that the user will be given for questioning.
 	 */
 	public void randomiseCategories() {
+        _categoryCollection = new ArrayList<Category>();
 		List<Integer> randomFiles = FileHelper.makeRandomList(5, 1, FileHelper.countCategories());
 		createAndFillRandomFiles(randomFiles);
 	}
@@ -144,6 +146,7 @@ public class GameFiles {
 					}
 					in.close();
 				} catch (IOException e) {
+                    new ExceptionAlert(e);
 					e.printStackTrace();
 				}
 			}
@@ -170,7 +173,7 @@ public class GameFiles {
 				}
 				out.close();
 			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
+                new ExceptionAlert(e);
 				e.printStackTrace();
 			}
 		}
@@ -220,7 +223,11 @@ public class GameFiles {
 		try {
 			Process process = pb.start();	
 			process.waitFor();
-		} catch (Exception e) {
+		} catch (IOException e) {
+            new ExceptionAlert(e);
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+            new ExceptionAlert(e);
 			e.printStackTrace();
 		}
 		setUpGameModule();

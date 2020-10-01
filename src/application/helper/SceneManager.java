@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
+import application.controllers.helper.ExceptionAlert;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -72,7 +73,7 @@ public class SceneManager {
             }
         });
         rootStage.setTitle("Quinzical");
-        rootStage.getIcons().add(new Image(getPath("images"+FileHelper.FILE_SEPARATOR+"darklogo.png")));
+        rootStage.getIcons().add(new Image(getPath("images" + FileHelper.FILE_SEPARATOR + "darklogo.png")));
         rootStage.setWidth(1280);
         rootStage.setHeight(800);
         rootStage.setMinWidth(800);
@@ -85,13 +86,15 @@ public class SceneManager {
      * Used to switch current scene to new scene using Scenes enums.
      *
      * @param name Scenes enum
+     * @throws RuntimeException
      */
-    public void switchScene(Scenes scene) {
+    public void switchScene(Scenes scene) throws RuntimeException {
         Scene next = _scenes.computeIfAbsent(scene, k -> {
             try {
                 Parent root = FXMLLoader.load(getClass().getResource(getPath(k.filename)));
                 return new Scene(root, 1280, 800);
             } catch (IOException ex) {
+                new ExceptionAlert(ex);
                 throw new RuntimeException(ex);
             }
         });
@@ -122,21 +125,21 @@ public class SceneManager {
     }
 
     /**
-     * Used to return root path
-     * 
-     * @param name
-     * @return
-     */
-    private String getPath(String name) {
-        return (PATH + name).replace(FileHelper.FILE_SEPARATOR, "/");
-    }
-    
-    /**
-     * Used to return the previous scene 
+     * Used to return the previous scene
      * 
      * @return Scenes the last scene displayed to the user
      */
     public Scenes getPreviousScene() {
-    	return _history.peek();
+        return _history.peek();
+    }
+
+    /**
+     * Used to return static root path for javafx files
+     * 
+     * @param name
+     * @return
+     */
+    public static String getPath(String name) {
+        return (PATH + name).replace(FileHelper.FILE_SEPARATOR, "/");
     }
 }

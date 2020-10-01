@@ -5,8 +5,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
+import application.controllers.helper.ExceptionAlert;
 
 /**
  * This class is used to avoid code reuse by having helper functions for setting up files.
@@ -94,6 +95,7 @@ public class FileHelper {
 				}
 				in.close();
 			} catch (IOException e) {
+                new ExceptionAlert(e);
 				e.printStackTrace();
 			}
 
@@ -134,13 +136,20 @@ public class FileHelper {
 				}
 				in.close();
 			} catch (IOException e) {
+                new ExceptionAlert(e);
 				e.printStackTrace();
 			}
 		}
 		return linecount;
 	}
 
-	public static List<String> getLineFromFile(File file, int desiredLine) {
+    /**
+     * Used to getLineFromFile
+     * 
+     * @param file the file from which to get lines from
+     * @param desiredLine the desired line to get
+     */
+	public static List<String> getLineFromFile(File file, int desiredLine) throws ArrayIndexOutOfBoundsException {
 		List<String> questionAndAnswer = new ArrayList<String>();
 		String currentQuestion = null;
 		String currentAnswer = null;
@@ -151,20 +160,22 @@ public class FileHelper {
 				String line;
 				while((line = in.readLine()) != null) {
 					if (count == desiredLine) {
-						String[] separated = line.split("\\.");
+						String[] separated = line.split("\\\\");
 						currentQuestion = separated[0];
 						currentAnswer = separated[1];
 					}
 					count++;
 				}			
-				in.close();
+                in.close();
+
+                questionAndAnswer.add(currentQuestion);
+                questionAndAnswer.add(currentAnswer);
+                return questionAndAnswer;
 			} catch (IOException e) {
+                new ExceptionAlert(e);
 				e.printStackTrace();
 			}
-			questionAndAnswer.add(currentQuestion);
-			questionAndAnswer.add(currentAnswer);
-			return questionAndAnswer;
 		}
-		return null;
+		return questionAndAnswer;
 	}
 }

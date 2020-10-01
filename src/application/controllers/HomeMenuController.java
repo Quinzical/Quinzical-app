@@ -1,5 +1,6 @@
 package application.controllers;
 
+import application.controllers.helper.ConfirmAlert;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.game.GameModel;
@@ -22,8 +23,13 @@ public class HomeMenuController {
 	 * @param event
 	 */
 	@FXML
-	void handleExitButton(ActionEvent event) {
-		_sceneManager.close();
+	private void handleExitButton(ActionEvent event) {
+        new ConfirmAlert("Quit the Game"){
+            @Override 
+            protected void handleConfirm() {
+                _sceneManager.close();
+            }
+        };
 	}
 
 	/**
@@ -32,7 +38,7 @@ public class HomeMenuController {
 	 * @param event
 	 */
 	@FXML
-	void handlePlayButton(ActionEvent event) {
+    private void handlePlayButton(ActionEvent event) {
 		if(GameModel.getInstance().remainingQuestions()) {
 			_sceneManager.switchScene(Scenes.GAME_MENU);
 		} else {
@@ -46,7 +52,7 @@ public class HomeMenuController {
 	 * @param event
 	 */
 	@FXML
-	void handlePracticeButton(ActionEvent event) {
+	private void handlePracticeButton(ActionEvent event) {
 		_sceneManager.switchScene(Scenes.PRACTICE_MENU);
 	}
 
@@ -56,7 +62,7 @@ public class HomeMenuController {
 	 * @param event
 	 */
 	@FXML
-	void handleSettingsButton(ActionEvent event) {
+    private void handleSettingsButton(ActionEvent event) {
 		_sceneManager.switchScene(Scenes.SETTINGS_MENU);
 	}
 

@@ -1,7 +1,11 @@
 package application.models.helper;
 
+import java.io.IOException;
+
+import application.controllers.helper.ExceptionAlert;
+
 /**
- * This is class is used to aid in the handling of questions and answers. 
+ * This is class is used to aid in the handling of questions and answers.
  * 
  * @author Maggie Pedersen
  * @author Cheng-Zhen Yang
@@ -93,7 +97,11 @@ public class QuestionHelper {
 					return false;
 				}
 
-			} catch (Exception e) {
+			} catch (IOException e) {
+                new ExceptionAlert(e);
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+                new ExceptionAlert(e);
 				e.printStackTrace();
 			}
 		} 

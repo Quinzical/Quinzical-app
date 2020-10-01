@@ -46,7 +46,7 @@ public class PracticeMenuController {
      * @param event
      */
     @FXML
-    void handleBackButton(ActionEvent event) {
+    private void handleBackButton(ActionEvent event) {
         _sceneManager.switchScene(Scenes.HOME_MENU);
     }
 
@@ -56,7 +56,7 @@ public class PracticeMenuController {
      * @param event
      */
     @FXML
-    void handleSettingsButton(ActionEvent event) {
+    private void handleSettingsButton(ActionEvent event) {
         _sceneManager.switchScene(Scenes.SETTINGS_MENU);
     }
 

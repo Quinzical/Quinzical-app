@@ -1,8 +1,12 @@
 package application.controllers;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.game.GameModel;
+import application.processes.SpeakProcess;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -15,50 +19,69 @@ import javafx.scene.control.Label;
  * @author Cheng-Zhen Yang
  */
 public class RewardScreenController {
-	
-	private final SceneManager _sceneManager = SceneManager.getInstance();
-	
-	@FXML
-	private Label _userScore;
-	
-	@FXML
+
+    private final SceneManager _sceneManager = SceneManager.getInstance();
+    private final GameModel _gameModel = GameModel.getInstance();
+
+    // ExecutorService for running task and speak in the background
+    private ExecutorService _team = Executors.newSingleThreadExecutor();
+    private SpeakProcess _speak;
+
+    @FXML
+    private Label _userScore;
+
+    @FXML
     private Button _menuButton;
 
-	@FXML
+    @FXML
     private Button _playAgainButton;
-	
-	/**
+
+    /**
      * Used to initialize RewardScreenController.
      */
     public void initialize() {
-    	GameModel gameModel = GameModel.getInstance();
-    	int score = gameModel.getScore();
-    	_userScore.setText("$" + Integer.toString(score));
+        GameModel gameModel = GameModel.getInstance();
+        int score = gameModel.getScore();
+        _userScore.setText("$" + Integer.toString(score));
+        _speak = new SpeakProcess(
+                "Congratulations, you completed the Game Module! Your final score was " + Integer.toString(score));
+        _team.submit(_speak);
     }
-    
+
     /**
      * Used to handle main menu button.
      * 
      * @param event
      */
     @FXML
-    void handleMenuButton(ActionEvent event) {
+    private void handleMenuButton(ActionEvent event) {
+        _speak.cancel(true);
+        _sceneManager.unloadScene();
         _sceneManager.switchScene(Scenes.HOME_MENU);
     }
-    
+
     /**
      * Used to handle play again menu button.
      * 
      * @param event
      */
     @FXML
-    void handlePlayAgainButton(ActionEvent event) {
-        _sceneManager.switchScene(Scenes.GAME_MENU); 
+    private void handlePlayAgainButton(ActionEvent event) {
+        _speak.cancel(true);
+        _sceneManager.unloadScene();
+        _gameModel.resetGameModule();
+        _sceneManager.switchScene(Scenes.GAME_MENU);
     }
-    
+
+    /**
+     * Used to handle setting button
+     * 
+     * @param event
+     */
     @FXML
-	void handleSettingsButton(ActionEvent event) {
-		// TODO
-		_sceneManager.switchScene(Scenes.SETTINGS_MENU);
-	}
+    private void handleSettingsButton(ActionEvent event) {
+        _speak.cancel(true);
+        _sceneManager.unloadScene();
+        _sceneManager.switchScene(Scenes.SETTINGS_MENU);
+    }
 }

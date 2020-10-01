@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import application.controllers.helper.ExceptionAlert;
 import application.helper.FileHelper;
 
 /**
@@ -34,6 +35,7 @@ public class ScoreTracker {
 				out.close();
 			}
 		} catch (IOException e) {
+            new ExceptionAlert(e);
 			e.printStackTrace();
 		}
 	}
@@ -55,6 +57,7 @@ public class ScoreTracker {
 			out.close();
 			tempfile.renameTo(scoreFile);
 		} catch (IOException e) {
+            new ExceptionAlert(e);
 			e.printStackTrace();
 		}
 	}
@@ -71,6 +74,7 @@ public class ScoreTracker {
 			score = in.readLine();
 			in.close();
 		} catch (IOException e) {
+            new ExceptionAlert(e);
 			e.printStackTrace();
 		}
 		int currentScore = Integer.parseInt(score);

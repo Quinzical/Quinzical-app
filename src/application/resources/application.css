@@ -19,8 +19,8 @@
 /****************** Text Fields ******************/
 
 .question-field {
-    -fx-prompt-text-fill: #5271ff;
-    -fx-background-color: transparent;
+  -fx-prompt-text-fill: #5271ff;
+  -fx-background-color: transparent;
 }
 
 .question-field .text-area .scroll-pane {
@@ -73,7 +73,7 @@
 }
 
 .round-button {
-    -fx-background-radius: 30px;
+  -fx-background-radius: 30px;
 }
 
 .button:hover {

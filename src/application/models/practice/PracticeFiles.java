@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import application.models.helper.Category;
+import application.controllers.helper.ExceptionAlert;
 import application.helper.FileHelper;
 
 /**
@@ -70,6 +71,7 @@ public class PracticeFiles {
 				in.close();
 				out.close();
 			} catch (IOException e) {
+                new ExceptionAlert(e);
 				e.printStackTrace();
 			}
 		}
