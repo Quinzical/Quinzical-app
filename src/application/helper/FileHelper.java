@@ -152,7 +152,6 @@ public class FileHelper {
 				while((line = in.readLine()) != null) {
 					if (count == desiredLine) {
 						String[] separated = line.split("\\.");
-						System.out.println(Arrays.toString(separated));
 						currentQuestion = separated[0];
 						currentAnswer = separated[1];
 					}
