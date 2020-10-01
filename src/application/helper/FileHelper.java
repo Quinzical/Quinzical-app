@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -150,13 +151,13 @@ public class FileHelper {
 				String line;
 				while((line = in.readLine()) != null) {
 					if (count == desiredLine) {
-						String[] separated = line.split(".");
+						String[] separated = line.split("\\.");
+						System.out.println(Arrays.toString(separated));
 						currentQuestion = separated[0];
 						currentAnswer = separated[1];
-
 					}
-				}
-				count++;
+					count++;
+				}			
 				in.close();
 			} catch (IOException e) {
 				e.printStackTrace();
