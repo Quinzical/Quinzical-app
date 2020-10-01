@@ -55,5 +55,10 @@ public class RewardScreenController {
     void handlePlayAgainButton(ActionEvent event) {
         _sceneManager.switchScene(Scenes.GAME_MENU); 
     }
-
+    
+    @FXML
+	void handleSettingsButton(ActionEvent event) {
+		// TODO
+		_sceneManager.switchScene(Scenes.SETTINGS_MENU);
+	}
 }

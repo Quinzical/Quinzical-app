@@ -61,6 +61,7 @@ public class GameMenuController {
 				}
 			}
 		} else {
+			_sceneManager.unloadScene();
 			_sceneManager.switchScene(Scenes.REWARD_SCREEN);
 		}
 	}

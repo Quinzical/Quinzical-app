@@ -23,8 +23,10 @@ public class GameFiles {
 
 	private static String _currentUser = "default";
 	private static String _currentUserDir;
-	private static String _userCategories;
+	
 	private List<Category> _categoryCollection;
+	
+	private final static String _userCategories = FileHelper.CURRENT_DIR + FileHelper.FILE_SEPARATOR + "data" + FileHelper.FILE_SEPARATOR + "users" + FileHelper.FILE_SEPARATOR + "categories";
 
 	public GameFiles() {
 		_categoryCollection = new ArrayList<Category>();
@@ -65,10 +67,9 @@ public class GameFiles {
 		String user = FileHelper.CURRENT_DIR + FileHelper.FILE_SEPARATOR + "data" + FileHelper.FILE_SEPARATOR + "users";
 		FileHelper.makeDirectory(user);
 
-		String currentDir = setUpUser(user);
+		setUpUser(user);
 
 		//Create subdirectory for category files if not already created
-		_userCategories = currentDir + FileHelper.FILE_SEPARATOR + "categories";
 		FileHelper.makeDirectory(_userCategories);
 	}
 
@@ -78,10 +79,9 @@ public class GameFiles {
 	 * @param userDir the directory where the users files should be stored
 	 * @return String the user directory
 	 */
-	private String setUpUser(String usersDir) {
+	private void setUpUser(String usersDir) {
 		_currentUserDir = usersDir + FileHelper.FILE_SEPARATOR + _currentUser;
 		FileHelper.makeDirectory(_currentUserDir);
-		return _currentUserDir;
 	}
 
 	/**
