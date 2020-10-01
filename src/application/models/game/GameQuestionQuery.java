@@ -121,6 +121,11 @@ public class GameQuestionQuery {
 		return _currentAnswer;
 	}
 
+	/**
+	 * Used to return the prompt from a question answer. i.e. What is
+	 * 
+	 * @return
+	 */
 	public String getPrompt() {
 		if(_currentAnswer != null) {
 			QuestionHelper helper = QuestionHelper.getInstance();

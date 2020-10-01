@@ -23,8 +23,10 @@ public class GameFiles {
 
 	private static String _currentUser = "default";
 	private static String _currentUserDir;
-	private static String _userCategories;
+	
 	private List<Category> _categoryCollection;
+	
+	private final static String _userCategories = FileHelper.CURRENT_DIR + FileHelper.FILE_SEPARATOR + "data" + FileHelper.FILE_SEPARATOR + "users" + FileHelper.FILE_SEPARATOR + _currentUser + FileHelper.FILE_SEPARATOR + "categories";
 
 	public GameFiles() {
 		_categoryCollection = new ArrayList<Category>();
@@ -65,10 +67,9 @@ public class GameFiles {
 		String user = FileHelper.CURRENT_DIR + FileHelper.FILE_SEPARATOR + "data" + FileHelper.FILE_SEPARATOR + "users";
 		FileHelper.makeDirectory(user);
 
-		String currentDir = setUpUser(user);
+		setUpUser(user);
 
 		//Create subdirectory for category files if not already created
-		_userCategories = currentDir + FileHelper.FILE_SEPARATOR + "categories";
 		FileHelper.makeDirectory(_userCategories);
 	}
 
@@ -78,10 +79,9 @@ public class GameFiles {
 	 * @param userDir the directory where the users files should be stored
 	 * @return String the user directory
 	 */
-	private String setUpUser(String usersDir) {
+	private void setUpUser(String usersDir) {
 		_currentUserDir = usersDir + FileHelper.FILE_SEPARATOR + _currentUser;
 		FileHelper.makeDirectory(_currentUserDir);
-		return _currentUserDir;
 	}
 
 	/**
@@ -150,6 +150,12 @@ public class GameFiles {
 		}
 	}
 
+	/**
+	 * Used to select five random questions from the chosen category. 
+	 * 
+	 * @param copyFile
+	 * @param fileLines
+	 */
 	private void selectLines(File copyFile, List<String> fileLines) {
 		List<Integer> randomLines = FileHelper.makeRandomList(5, 0, fileLines.size() - 1);
 		String line;
@@ -219,5 +225,29 @@ public class GameFiles {
 		}
 		setUpGameModule();
 		randomiseCategories();
+	}
+
+	/**
+	 * Returns false if no remaining questions, true if there are remaing questions. 
+	 * @return
+	 */
+	public boolean remainingQuestions() {
+		int emptyFiles = 0;
+		File userDir = new File(_userCategories);
+		if (userDir.exists()) {
+			if (userDir.isDirectory()) {
+				for (File file : userDir.listFiles()) {
+					if(file.length() == 0) {
+						emptyFiles++;
+					}
+				}
+			}
+		}
+		
+		if (emptyFiles == 5) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 }

@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -72,14 +73,14 @@ public class FileHelper {
 		String quinzical = FileHelper.CURRENT_DIR + FileHelper.FILE_SEPARATOR + "quinzical" + ".txt";
 		File quinzicalFile = new File(quinzical);
 		int categoryCount = 0;
-		
+
 		if (quinzicalFile.isFile()) {
 			try {
 				BufferedReader in = new BufferedReader(new FileReader(quinzicalFile));
-				
+
 				int count = 1;
 				String line = null;
-				
+
 				while((line = in.readLine()) != null) {
 					//Replace spaces with hypens to name the files
 					if (count == 1) {
@@ -150,28 +151,20 @@ public class FileHelper {
 				String line;
 				while((line = in.readLine()) != null) {
 					if (count == desiredLine) {
-						String[] separated = line.split(",");
-						currentAnswer = separated[separated.length - 1];
-
-						//Clear question before changing it 
-						currentQuestion = null;
-						for(int i = 0; i <= separated.length - 2; i++) {
-							if (currentQuestion != null) {
-								currentQuestion = currentQuestion + "," + separated[i];
-							} else {
-								currentQuestion = separated[i];
-							}
-						}
+						String[] separated = line.split("\\.");
+						currentQuestion = separated[0];
+						currentAnswer = separated[1];
 					}
 					count++;
-				}
+				}			
 				in.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			questionAndAnswer.add(currentQuestion);
+			questionAndAnswer.add(currentAnswer);
+			return questionAndAnswer;
 		}
-		questionAndAnswer.add(currentQuestion);
-		questionAndAnswer.add(currentAnswer);
-		return questionAndAnswer;
+		return null;
 	}
 }

@@ -116,11 +116,28 @@ public class GameModel {
 		return _questionQuery.retrieveAnswer();
 	}
 
+	/**
+	 * Gets the prompt from a question i.e. "What is".
+	 * 
+	 * @return String the prompt
+	 */
 	public String getPrompt() {
 		return _questionQuery.getPrompt();
 	}
 	
+	/**
+	 * Deletes question from file.
+	 */
 	public void deleteQuestion() {
 		_questionQuery.deleteQuestionFromFile();
+	}
+
+	/**
+	 * Used to check if there are remaining questions in the game module. 
+	 * 
+	 * @return boolean
+	 */
+	public boolean remainingQuestions() {
+		return _gameFiles.remainingQuestions();
 	}
 }
