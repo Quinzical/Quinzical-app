@@ -14,6 +14,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 /**
  * This class is the Question controller in a MVC design.
@@ -69,6 +71,14 @@ public class QuestionController {
         _team.submit(_speak);
         _answerTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             _infoLabel.setText("");
+        });
+                _answerTextField.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                if (keyEvent.getCode() == KeyCode.ENTER) {
+                    handleSubmitButton(new ActionEvent());
+                }
+            }
         });
         _answerTextField.setPromptText(_questionModel.getQuestionPrompt() + "...");
     }

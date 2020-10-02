@@ -40,8 +40,8 @@ public class RewardScreenController {
      * Used to initialize RewardScreenController.
      */
     public void initialize() {
-        GameModel gameModel = GameModel.getInstance();
-        int score = gameModel.getScore();
+        _gameModel.setUpGameModule();
+        int score = _gameModel.getScore();
         _userScore.setText("$" + Integer.toString(score));
         _speak = new SpeakProcess(
                 "Congratulations, you completed the Game Module! Your final score was " + Integer.toString(score));

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
+import application.controllers.helper.ConfirmAlert;
 import application.controllers.helper.ExceptionAlert;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -69,7 +70,12 @@ public class SceneManager {
         rootStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(final WindowEvent t) {
-                // Save game?
+            	new ConfirmAlert("Quit the Game") {
+                    @Override
+                    protected void handleConfirm() {
+                        rootStage.close();
+                    }
+                };
             }
         });
         rootStage.setTitle("Quinzical");
