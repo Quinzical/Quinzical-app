@@ -176,5 +176,43 @@ QuestionModels - singleton
 * Next meeting: Monday evening (28/09/2020).
 * Final testing on last meeting before the deadline, probably next friday.
 
+---
+
+### Meeting 5: 28/09/2020
+#### Meeting Plan
+##### TODO
+* SettingsMenu
+ * Settings don’t change volume
+* Question
+ * Category doesn’t change
+ * Who is/What is doesn’t change
+ * Clue remove ‘the’
+ * add back button practice module //not necessary
+* GameMenu
+ * BUG: first load doesn’t work
+ * add reset game
+ * force user to choose lowest value
+ * Add a reward screen for the user, showing their score and ask if they want to play again (another option is exit i assume) and the score is set to 0. 
+* Reward
 
 
+#### Next meeting plan
+* Next meeting: Friday afternoon (2/10/2020).
+* Sort out all final details.
+
+---
+
+### Meeting 5: 2/10/2020
+#### Meeting Plan
+##### TODO
+* Compile application
+*  README - how to run
+* Update wiki add today's meeting
+* add alert to closing stage
+* Bug hunting
+* Reformat files/comments
+* Slideshow and draft script for Monday meeting
+
+#### Next meeting plan
+* Next meeting: Monday afternoon (5/10/2020).
+* Sort out presentation and begin project.
