@@ -4,7 +4,6 @@ data/
 # Java
 .mtj.tmp/
 *.class
-*.jar
 *.war
 *.ear
 *.nar
