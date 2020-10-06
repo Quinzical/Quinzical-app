@@ -40,9 +40,17 @@ public class SettingsMenuController {
      * Initialize with SettingsMenu.fxml
      */
     public void initialize() {
+        _speakValue.setStyle("-fx-text-fill: #a9ecff;");
+        _speedValue.setStyle("-fx-text-fill: #a9ecff;");
+        
         _speakSlider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 _speakValue.setText(String.valueOf(newValue.intValue()));
+                if (newValue.intValue() == DEFAULT_VOLUME) {
+                    _speakValue.setStyle("-fx-text-fill: #a9ecff;");
+                }else{
+                    _speakValue.setStyle("-fx-text-fill: #a9b8ff;");
+                }
                 SettingsModel.setEspeakVolume(newValue.intValue());
             }
         });
@@ -50,30 +58,38 @@ public class SettingsMenuController {
         _speedSlider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 _speedValue.setText(String.valueOf(newValue.intValue()));
+                if (newValue.intValue() == DEFAULT_SPEED) {
+                    _speedValue.setStyle("-fx-text-fill: #a9ecff;");
+                }else{
+                    _speedValue.setStyle("-fx-text-fill: #a9b8ff;");
+                }
                 SettingsModel.setEspeakSpeed(newValue.intValue());
             }
         });
     }
 
     /**
-	 * Used to handle back to original scene before settings
-	 * 
-	 * @param event
-	 */
+     * Used to handle back to original scene before settings
+     * 
+     * @param event
+     */
     @FXML
     private void handleBackButton(ActionEvent event) {
         _sceneManager.backScene();
     }
 
     /**
-	 * Used to handle reset settings button, to reset settings
-	 * 
-	 * @param event
-	 */
+     * Used to handle reset settings button, to reset settings
+     * 
+     * @param event
+     */
     @FXML
     private void handleResetButton(ActionEvent event) {
         _speakValue.setText(String.valueOf(DEFAULT_VOLUME));
         _speedValue.setText(String.valueOf(DEFAULT_SPEED));
+
+        _speakValue.setStyle("-fx-text-fill: #a9ecff;");
+        _speedValue.setStyle("-fx-text-fill: #a9ecff;");
 
         _speakSlider.setValue(DEFAULT_VOLUME);
         _speedSlider.setValue(DEFAULT_SPEED);
