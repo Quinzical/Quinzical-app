@@ -16,9 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" styleClass="root" stylesheets="@application.css"
-    xmlns="http://javafx.com/javafx/11.0.1"
-    xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.PracticeMenuController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" styleClass="root" stylesheets="@application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.PracticeMenuController">
     <children>
         <HBox alignment="CENTER" VBox.vgrow="NEVER">
             <children>

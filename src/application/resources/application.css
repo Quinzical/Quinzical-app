@@ -59,6 +59,15 @@
   -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 3, 0, 0, 0);
 }
 
+
+.purple.label .text {
+  -fx-fill: #a9b8ff;
+  -fx-stroke: #5271ff;
+  -fx-font-weight: bold;
+  -fx-font-size: 30px;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 3, 0, 0, 0);
+}
+
 .shadow {
   -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 0);
 }
@@ -96,4 +105,14 @@
 
 .exit-button {
   -fx-font-size: 24px;
+}
+
+/****************** Text area ******************/
+
+.text-area {
+    text-area-background: #5ecacf;
+}
+
+.text-area .content {
+    -fx-background-color: text-area-background;
 }

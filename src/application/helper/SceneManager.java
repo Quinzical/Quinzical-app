@@ -30,7 +30,8 @@ public class SceneManager {
 
     public enum Scenes {
         HOME_MENU("HomeMenu.fxml"), PRACTICE_MENU("PracticeMenu.fxml"), SETTINGS_MENU("SettingsMenu.fxml"),
-        QUESTION("Question.fxml"), GAME_MENU("GameMenu.fxml"), REWARD_SCREEN("RewardScreen.fxml");
+        QUESTION("Question.fxml"), GAME_MENU("GameMenu.fxml"), REWARD_SCREEN("RewardScreen.fxml"), LOGIN_SCREEN("LoginScreen.fxml"),
+        LEADERBOARD("LeaderboardScreen.fxml"), CATEGORY_CHOOSER("CategoryChooser.fxml"), HELP_SCREEN("HelpScreen.fxml");
 
         private final String filename;
 
@@ -83,7 +84,7 @@ public class SceneManager {
         rootStage.setWidth(1280);
         rootStage.setHeight(800);
         rootStage.setMinWidth(800);
-        rootStage.setMinHeight(600);
+        rootStage.setMinHeight(700);
         rootStage.show();
         _rootStage = rootStage;
     }

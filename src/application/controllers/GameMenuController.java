@@ -99,4 +99,23 @@ public class GameMenuController {
         };
     }
 
+    /**
+     * Used to handle Leaderboard button
+     *
+     * @param event
+     */
+    @FXML
+    private void handleLeaderboardButton(ActionEvent event) {
+    	_sceneManager.switchScene(SceneManager.Scenes.LEADERBOARD);
+    }
+    
+    /**
+     * Used to handle Help button
+     *
+     * @param event
+     */
+    @FXML
+    private void handleHelpButton(ActionEvent event) {
+    	_sceneManager.switchScene(SceneManager.Scenes.HELP_SCREEN);
+    }
 }

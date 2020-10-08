@@ -66,4 +66,34 @@ public class HomeMenuController {
 		_sceneManager.switchScene(Scenes.SETTINGS_MENU);
 	}
 
+	/**
+	 * Used to handle logout button
+	 *
+	 * @param event
+	 */
+	@FXML
+	private void handleLogoutButton(ActionEvent event) {
+		// TODO
+	}
+
+	/**
+	 * Used to handle Leaderboard button
+	 *
+	 * @param event
+	 */
+	@FXML
+	private void handleLeaderboardButton(ActionEvent event) {
+		_sceneManager.switchScene(SceneManager.Scenes.LEADERBOARD);
+	}
+	
+	/**
+	 * Used to handle help button
+	 *
+	 * @param event
+	 */
+	@FXML
+	private void handleHelpButton(ActionEvent event) {
+		_sceneManager.switchScene(SceneManager.Scenes.HELP_SCREEN);
+	}
+
 }
