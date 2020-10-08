@@ -5,7 +5,7 @@ import java.util.concurrent.Executors;
 
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
-import application.models.game.GameModel;
+import application.models.game.GameModelText;
 import application.processes.SpeakProcess;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,7 +21,7 @@ import javafx.scene.control.Label;
 public class RewardScreenController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
-    private final GameModel _gameModel = GameModel.getInstance();
+    private final GameModelText _gameModel = GameModelText.getInstance();
 
     // ExecutorService for running task and speak in the background
     private ExecutorService _team = Executors.newSingleThreadExecutor();
@@ -44,7 +44,8 @@ public class RewardScreenController {
         int score = _gameModel.getScore();
         _userScore.setText("$" + Integer.toString(score));
         _speak = new SpeakProcess(
-                "Congratulations, you completed the Game Module! Your final score was " + Integer.toString(score));
+                "Congratulations, you completed the Game Module! Your final score was "
+                + Integer.toString(score));
         _team.submit(_speak);
     }
 
@@ -54,7 +55,7 @@ public class RewardScreenController {
      * @param event
      */
     @FXML
-    private void handleMenuButton(ActionEvent event) {
+    private void handleMenuButton(final ActionEvent event) {
         _speak.cancel(true);
         _sceneManager.unloadScene();
         _sceneManager.switchScene(Scenes.HOME_MENU);
@@ -66,7 +67,7 @@ public class RewardScreenController {
      * @param event
      */
     @FXML
-    private void handlePlayAgainButton(ActionEvent event) {
+    private void handlePlayAgainButton(final ActionEvent event) {
         _speak.cancel(true);
         _sceneManager.unloadScene();
         _gameModel.resetGameModule();
@@ -79,7 +80,7 @@ public class RewardScreenController {
      * @param event
      */
     @FXML
-    private void handleSettingsButton(ActionEvent event) {
+    private void handleSettingsButton(final ActionEvent event) {
         _speak.cancel(true);
         _sceneManager.unloadScene();
         _sceneManager.switchScene(Scenes.SETTINGS_MENU);

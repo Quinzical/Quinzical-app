@@ -12,35 +12,40 @@ import javafx.scene.control.Button;
  * This class is for Button styled for Practice Category Button on PracticeMenu
  *
  * @author Maggie Pedersen
- * @Author Cheng-Zhen Yang
+ * @author Cheng-Zhen Yang
  */
 public class GameCategoryButton extends Button {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
 
+    private static final int DEFAULT_WIDTH = 145;
+    private static final int DEFAULT_HEIGHT = 30;
+    private static final double CHANGE_WIDTH = 0.15;
+
     /**
      * Used to setup GameCategoryButton
      * 
      * @param category
-     * @param string
+     * @param value
      */
-    public GameCategoryButton(Category category, String value) {
-        super("$"+value);
+    public GameCategoryButton(final Category category, final String value) {
+        super("$" + value);
         // set size
-        setPrefWidth(145 + Integer.valueOf(value)*0.15);
-        setPrefHeight(30);
+        setPrefWidth(DEFAULT_WIDTH + Integer.valueOf(value) * CHANGE_WIDTH);
+        setPrefHeight(DEFAULT_HEIGHT);
         // set font
-        setStyle("-fx-font-size:16; -fx-padding: 0 10 0 10; -fx-border-insets: 0 10 0 10; -fx-background-insets: 0 10 0 10;");
+        setStyle("-fx-font-size:16; -fx-padding: 0 10 0 10; -fx-border-insets: 0 10 0 10;"
+                + " -fx-background-insets: 0 10 0 10;");
 
         // handle button on press
         setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent actionEvent) {
+            public void handle(final ActionEvent actionEvent) {
 
-                QuestionModel _questionModel = QuestionModel.getInstance();
-                _questionModel.setPractice(false);
-                _questionModel.setCategory(category);
-                _questionModel.setQuestionValue(value);
+                QuestionModel questionModel = QuestionModel.getInstance();
+                questionModel.setPractice(false);
+                questionModel.setCategory(category);
+                questionModel.setQuestionValue(value);
                 _sceneManager.unloadScene();
                 _sceneManager.switchScene(Scenes.QUESTION);
             }

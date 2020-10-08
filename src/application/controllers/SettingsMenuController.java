@@ -19,10 +19,10 @@ public class SettingsMenuController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
 
-    private final static int DEFAULT_VOLUME = 50;
+    private static final int DEFAULT_VOLUME = 50;
 
     // Equates to espeak speed of 175 wpm, the default setting
-    private final static int DEFAULT_SPEED = 26;
+    private static final int DEFAULT_SPEED = 26;
 
     @FXML
     private Slider _speakSlider;
@@ -42,13 +42,13 @@ public class SettingsMenuController {
     public void initialize() {
         _speakValue.setStyle("-fx-text-fill: #a9ecff;");
         _speedValue.setStyle("-fx-text-fill: #a9ecff;");
-        
+
         _speakSlider.valueProperty().addListener(new ChangeListener<Number>() {
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+            public void changed(final ObservableValue<? extends Number> observable, final Number oldValue, final Number newValue) {
                 _speakValue.setText(String.valueOf(newValue.intValue()));
                 if (newValue.intValue() == DEFAULT_VOLUME) {
                     _speakValue.setStyle("-fx-text-fill: #a9ecff;");
-                }else{
+                } else {
                     _speakValue.setStyle("-fx-text-fill: #a9b8ff;");
                 }
                 SettingsModel.setEspeakVolume(newValue.intValue());
@@ -56,11 +56,11 @@ public class SettingsMenuController {
         });
 
         _speedSlider.valueProperty().addListener(new ChangeListener<Number>() {
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+            public void changed(final ObservableValue<? extends Number> observable, final Number oldValue, final Number newValue) {
                 _speedValue.setText(String.valueOf(newValue.intValue()));
                 if (newValue.intValue() == DEFAULT_SPEED) {
                     _speedValue.setStyle("-fx-text-fill: #a9ecff;");
-                }else{
+                } else {
                     _speedValue.setStyle("-fx-text-fill: #a9b8ff;");
                 }
                 SettingsModel.setEspeakSpeed(newValue.intValue());
@@ -74,7 +74,7 @@ public class SettingsMenuController {
      * @param event
      */
     @FXML
-    private void handleBackButton(ActionEvent event) {
+    private void handleBackButton(final ActionEvent event) {
         _sceneManager.backScene();
     }
 
@@ -84,7 +84,7 @@ public class SettingsMenuController {
      * @param event
      */
     @FXML
-    private void handleResetButton(ActionEvent event) {
+    private void handleResetButton(final ActionEvent event) {
         _speakValue.setText(String.valueOf(DEFAULT_VOLUME));
         _speedValue.setText(String.valueOf(DEFAULT_SPEED));
 

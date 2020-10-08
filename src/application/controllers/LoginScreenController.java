@@ -14,43 +14,39 @@ import javafx.scene.control.TextField;
  */
 public class LoginScreenController {
 
-	private final SceneManager _sceneManager = SceneManager.getInstance();
-	
-	@FXML
-	private TextField _usernameField;
+    private final SceneManager _sceneManager = SceneManager.getInstance();
 
-	@FXML
-	private void handleLoginButton() {
-		// TODO
-	}
+    @FXML
+    private TextField _usernameField;
 
-	@FXML
-	private void handleRegisterButton() {
-		// TODO
-	}
-	
-	/**
-	 * Used to handle setting button
-	 * 
-	 * @param event
-	 */
-	@FXML
-	private void handleSettingsButton() {
-		_sceneManager.switchScene(Scenes.SETTINGS_MENU);
-	}
-	
-	/**
-	 * Used to handle exit button
-	 * 
-	 * @param event
-	 */
-	@FXML
-	private void handleExitButton() {
-		new ConfirmAlert("Quit the Game"){
-			@Override 
-			protected void handleConfirm() {
-				_sceneManager.close();
-			}
-		};
-	}
+    @FXML
+    private void handleLoginButton() {
+        // TODO
+    }
+
+    @FXML
+    private void handleRegisterButton() {
+        // TODO
+    }
+
+    /**
+     * Used to handle setting button
+     */
+    @FXML
+    private void handleSettingsButton() {
+        _sceneManager.switchScene(Scenes.SETTINGS_MENU);
+    }
+
+    /**
+     * Used to handle exit button
+     */
+    @FXML
+    private void handleExitButton() {
+        new ConfirmAlert("Quit the Game") {
+            @Override
+            protected void handleConfirm() {
+                _sceneManager.close();
+            }
+        };
+    }
 }

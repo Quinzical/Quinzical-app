@@ -12,33 +12,36 @@ import javafx.scene.control.Button;
  * This class is for Button styled for Practice Category Button on PracticeMenu
  *
  * @author Maggie Pedersen
- * @Author Cheng-Zhen Yang
+ * @author Cheng-Zhen Yang
  */
 public class PracticeCategoryButton extends Button {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
+
+    private static final int DEFAULT_WIDTH = 220;
+    private static final int DEFAULT_HEIGHT = 70;
 
     /**
      * Used to setup PracticeCategoryButton
      * 
      * @param category
      */
-    public PracticeCategoryButton(Category category) {
+    public PracticeCategoryButton(final Category category) {
         super(category.toString());
         // set size
-        setPrefWidth(220);
-        setPrefHeight(70);
+        setPrefWidth(DEFAULT_WIDTH);
+        setPrefHeight(DEFAULT_HEIGHT);
         // set font
         setStyle("-fx-font-size:20");
 
         // handle button on press
         setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent actionEvent) {
+            public void handle(final ActionEvent actionEvent) {
 
-                QuestionModel _questionModel = QuestionModel.getInstance();
-                _questionModel.setPractice(true);
-                _questionModel.setCategory(category);
+                QuestionModel questionModel = QuestionModel.getInstance();
+                questionModel.setPractice(true);
+                questionModel.setCategory(category);
                 _sceneManager.switchScene(Scenes.QUESTION);
             }
         });

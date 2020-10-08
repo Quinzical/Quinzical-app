@@ -1,6 +1,5 @@
 package application.controllers.helper;
 
-import application.helper.FileHelper;
 import application.helper.SceneManager;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
@@ -12,14 +11,14 @@ public class ExceptionAlert extends Alert {
      * 
      * @param exception
      */
-    public ExceptionAlert(Exception exception) {
+    public ExceptionAlert(final Exception exception) {
         super(AlertType.ERROR);
         setTitle("Qunizical");
         setHeaderText("An Exception has occured");
         setContentText(exception.toString());
         // Add Icon
         Stage stage = (Stage) getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image(SceneManager.getPath("images"+FileHelper.FILE_SEPARATOR+"darklogo.png")));
+        stage.getIcons().add(new Image(SceneManager.getPath(SceneManager.LOGO)));
 
         show();
     }

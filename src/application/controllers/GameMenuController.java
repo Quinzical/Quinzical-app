@@ -7,6 +7,7 @@ import application.controllers.helper.GameCategoryButton;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.game.GameModel;
+import application.models.game.GameModelText;
 import application.models.helper.Category;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,7 +25,11 @@ import javafx.scene.layout.GridPane;
 public class GameMenuController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
-    private final GameModel _gameModel = GameModel.getInstance();
+    private final GameModel _gameModel = GameModelText.getInstance();
+
+    private static final int COLUMNS = 5;
+    private static final int ROWS = 6;
+    private static final int SCORE_INCREMENT = 100;
 
     private List<Category> _categories;
 
@@ -43,7 +48,7 @@ public class GameMenuController {
 
         _currentScore.setText("$" + _gameModel.getScore());
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < COLUMNS; i++) {
             Category category = _categories.get(i);
             Label categoryLabel = new Label(category.toString());
             categoryLabel.setStyle("-fx-font-size:24");
@@ -51,9 +56,10 @@ public class GameMenuController {
             _questionGrid.add(categoryLabel, i, 0);
             int questionNum = _gameModel.getCategoriesQuestionNumber(category);
 
-            for (int j = 1; j < 6; j++) {
-                GameCategoryButton btn = new GameCategoryButton(_categories.get(i), String.valueOf(j * 100));
-                if (questionNum != 6 - j) {
+            for (int j = 1; j < ROWS; j++) {
+                GameCategoryButton btn = new GameCategoryButton(_categories.get(i),
+                        String.valueOf(j * SCORE_INCREMENT));
+                if (questionNum != ROWS - j) {
                     btn.setDisable(true);
                 }
                 GridPane.setHalignment(btn, HPos.CENTER);
@@ -63,32 +69,32 @@ public class GameMenuController {
     }
 
     /**
-	 * Used to handle back to main menu button
-	 * 
-	 * @param event
-	 */
+     * Used to handle back to main menu button
+     * 
+     * @param event
+     */
     @FXML
-    private void handleBackButton(ActionEvent event) {
+    private void handleBackButton(final ActionEvent event) {
         _sceneManager.backScene();
     }
 
     /**
-	 * Used to handle setting button
-	 * 
-	 * @param event
-	 */
+     * Used to handle setting button
+     * 
+     * @param event
+     */
     @FXML
-    private void handleSettingsButton(ActionEvent event) {
+    private void handleSettingsButton(final ActionEvent event) {
         _sceneManager.switchScene(Scenes.SETTINGS_MENU);
     }
 
     /**
-	 * Used to handle game reset button
-	 * 
-	 * @param event
-	 */
+     * Used to handle game reset button
+     * 
+     * @param event
+     */
     @FXML
-    private void handleResetButton(ActionEvent event) {
+    private void handleResetButton(final ActionEvent event) {
         new ConfirmAlert("Reset the Game") {
             @Override
             protected void handleConfirm() {
@@ -105,17 +111,17 @@ public class GameMenuController {
      * @param event
      */
     @FXML
-    private void handleLeaderboardButton(ActionEvent event) {
-    	_sceneManager.switchScene(SceneManager.Scenes.LEADERBOARD);
+    private void handleLeaderboardButton(final ActionEvent event) {
+        _sceneManager.switchScene(SceneManager.Scenes.LEADERBOARD);
     }
-    
+
     /**
      * Used to handle Help button
      *
      * @param event
      */
     @FXML
-    private void handleHelpButton(ActionEvent event) {
-    	_sceneManager.switchScene(SceneManager.Scenes.HELP_SCREEN);
+    private void handleHelpButton(final ActionEvent event) {
+        _sceneManager.switchScene(SceneManager.Scenes.HELP_SCREEN);
     }
 }

@@ -5,7 +5,7 @@ import java.util.concurrent.Executors;
 
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
-import application.models.game.GameModel;
+import application.models.game.GameModelText;
 import application.models.question.QuestionModel;
 import application.processes.SpeakProcess;
 import javafx.event.ActionEvent;
@@ -33,6 +33,8 @@ public class QuestionController {
     private ExecutorService _team = Executors.newSingleThreadExecutor();
     private SpeakProcess _speak;
     private String _question;
+
+    private static final int DEFAULT_ATTEMPTS = 3;
 
     private int _attempt;
 
@@ -72,9 +74,9 @@ public class QuestionController {
         _answerTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             _infoLabel.setText("");
         });
-                _answerTextField.setOnKeyPressed(new EventHandler<KeyEvent>() {
+        _answerTextField.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
-            public void handle(KeyEvent keyEvent) {
+            public void handle(final KeyEvent keyEvent) {
                 if (keyEvent.getCode() == KeyCode.ENTER) {
                     handleSubmitButton(new ActionEvent());
                 }
@@ -88,7 +90,7 @@ public class QuestionController {
      * 
      * @param text
      */
-    private void speak(String text) {
+    private void speak(final String text) {
         _speak.cancel(true);
         _speak = new SpeakProcess(text);
         _team.submit(_speak);
@@ -102,7 +104,7 @@ public class QuestionController {
         _submitButton.setText("Back");
         _submitButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event) {
+            public void handle(final ActionEvent event) {
                 _speak.cancel(true);
                 back();
             }
@@ -114,7 +116,7 @@ public class QuestionController {
      */
     private void back() {
         _sceneManager.unloadScene();
-        if (GameModel.getInstance().remainingQuestions()) {
+        if (GameModelText.getInstance().remainingQuestions()) {
             _sceneManager.backScene();
         } else {
             _sceneManager.switchScene(Scenes.REWARD_SCREEN);
@@ -127,9 +129,9 @@ public class QuestionController {
      * @param event
      */
     @FXML
-    private void handleDontKnowButton(ActionEvent event) {
+    private void handleDontKnowButton(final ActionEvent event) {
         if (_questionModel.getPractice()) {
-            _attempt = 3;
+            _attempt = DEFAULT_ATTEMPTS;
             _questionModel.setNumberOfAttempts(_attempt);
             String clue = _questionModel.getClue();
             speak("The first letter is " + clue);
@@ -143,7 +145,7 @@ public class QuestionController {
             _infoLabel.setText("Correct");
             _infoLabel.setStyle("-fx-text-fill: green;");
             _answerTextField.setText("Answer: " + correctAnswer);
-            GameModel.getInstance().deleteQuestion();
+            GameModelText.getInstance().deleteQuestion();
             createBackButton();
         }
     }
@@ -154,7 +156,7 @@ public class QuestionController {
      * @param event
      */
     @FXML
-    private void handlePlaybackButton(ActionEvent event) {
+    private void handlePlaybackButton(final ActionEvent event) {
         speak(_question);
     }
 
@@ -164,7 +166,7 @@ public class QuestionController {
      * @param event
      */
     @FXML
-    private void handleSettingsButton(ActionEvent event) {
+    private void handleSettingsButton(final ActionEvent event) {
         _sceneManager.switchScene(Scenes.SETTINGS_MENU);
     }
 
@@ -174,7 +176,7 @@ public class QuestionController {
      * @param event
      */
     @FXML
-    private void handleSubmitButton(ActionEvent event) {
+    private void handleSubmitButton(final ActionEvent event) {
         String oldAnswer = _answerTextField.getText();
         String correctAnswer = _questionModel.getCorrectAnswer();
         boolean correct = _questionModel.checkAnswer(oldAnswer);

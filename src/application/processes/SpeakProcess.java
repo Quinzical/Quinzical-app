@@ -22,10 +22,10 @@ public class SpeakProcess extends Task<Void> {
      * 
      * @param speak
      */
-    public SpeakProcess(String speak) {
+    public SpeakProcess(final String speak) {
         int speed = SettingsModel.getEspeakSpeed();
         int volume = SettingsModel.getEspeakVolume();
-        _pb = new ProcessBuilder("espeak",  "-s", String.valueOf(speed), "-a", String.valueOf(volume), speak);
+        _pb = new ProcessBuilder("espeak", "-s", String.valueOf(speed), "-a", String.valueOf(volume), speak);
     }
 
     /**

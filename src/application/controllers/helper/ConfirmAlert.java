@@ -2,7 +2,6 @@ package application.controllers.helper;
 
 import java.util.Optional;
 
-import application.helper.FileHelper;
 import application.helper.SceneManager;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -15,14 +14,14 @@ public abstract class ConfirmAlert extends Alert {
      * 
      * @param text
      */
-    public ConfirmAlert(String text) {
+    public ConfirmAlert(final String text) {
         super(AlertType.CONFIRMATION);
         setTitle("Qunizical");
         setHeaderText(text);
         setContentText("Are you ok with this?");
         // Add Icon
         Stage stage = (Stage) getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image(SceneManager.getPath("images"+FileHelper.FILE_SEPARATOR+"darklogo.png")));
+        stage.getIcons().add(new Image(SceneManager.getPath(SceneManager.LOGO)));
 
         // Show Alert
         Optional<ButtonType> result = showAndWait();

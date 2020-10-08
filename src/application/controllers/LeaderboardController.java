@@ -18,14 +18,14 @@ public class LeaderboardController {
     public void initialize() {
         // TODO
     }
-    
+
     /**
      * Used to handle back button
      *
      * @param event
      */
     @FXML
-    private void handleBackButton(ActionEvent event) {
+    private void handleBackButton(final ActionEvent event) {
         _sceneManager.switchScene(SceneManager.Scenes.HOME_MENU);
     }
 
@@ -35,7 +35,7 @@ public class LeaderboardController {
      * @param event
      */
     @FXML
-    private void handleSettingsButton(ActionEvent event) {
+    private void handleSettingsButton(final ActionEvent event) {
         _sceneManager.switchScene(SceneManager.Scenes.SETTINGS_MENU);
     }
 }

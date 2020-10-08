@@ -10,7 +10,12 @@ public class Category {
 
     private String _categoryName;
 
-    public Category(String categoryName) {
+    /**
+     * Create an category with category name
+     * 
+     * @param categoryName
+     */
+    public Category(final String categoryName) {
         _categoryName = categoryName.replace(".txt", "").replace('-', ' ');
     }
 

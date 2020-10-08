@@ -6,6 +6,7 @@ import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.helper.Category;
 import application.models.practice.PracticeModel;
+import application.models.practice.PracticeModelText;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -20,7 +21,9 @@ import javafx.scene.layout.TilePane;
 public class PracticeMenuController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
-    private final PracticeModel _practiceModel = PracticeModel.getInstance();
+    private final PracticeModel _practiceModel = PracticeModelText.getInstance();
+
+    private static final Insets TILEPANE_INSETS = new Insets(10, 10, 10, 10);
 
     private List<Category> _categories;
 
@@ -36,7 +39,7 @@ public class PracticeMenuController {
         for (Category category : _categories) {
             PracticeCategoryButton btn = new PracticeCategoryButton(category);
             _categoriesPane.getChildren().add(btn);
-            TilePane.setMargin(btn, new Insets(10, 10, 10, 10));
+            TilePane.setMargin(btn, TILEPANE_INSETS);
         }
     }
 
@@ -46,7 +49,7 @@ public class PracticeMenuController {
      * @param event
      */
     @FXML
-    private void handleBackButton(ActionEvent event) {
+    private void handleBackButton(final ActionEvent event) {
         _sceneManager.switchScene(Scenes.HOME_MENU);
     }
 
@@ -56,7 +59,7 @@ public class PracticeMenuController {
      * @param event
      */
     @FXML
-    private void handleSettingsButton(ActionEvent event) {
+    private void handleSettingsButton(final ActionEvent event) {
         _sceneManager.switchScene(Scenes.SETTINGS_MENU);
     }
 

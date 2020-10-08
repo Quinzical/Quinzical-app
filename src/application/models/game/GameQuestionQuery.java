@@ -28,8 +28,9 @@ public class GameQuestionQuery {
 
     private File _questionFile;
 
-    boolean _correctAnswer = false;
-
+    /**
+     * Used to create GameQuestionQuery instance
+     */
     public GameQuestionQuery() {
     }
 
@@ -39,7 +40,7 @@ public class GameQuestionQuery {
      * @param category
      * @return String the question to be returned
      */
-    public String retrieveQuestion(Category category) {
+    public String retrieveQuestion(final Category category) {
         // Replace spaces from category to hyphen if not already done
         String categoryName = category.getFilename();
 
@@ -52,11 +53,10 @@ public class GameQuestionQuery {
     /**
      * Get desired question from the users files.
      * 
-     * @param numberOfQuestions the number of questions in a given category
-     * @param questionFile      the file which contains the questions of a given
-     *                          category
+     * @param questionFile the file which contains the questions from category
+     * @return question
      */
-    private String getQuestionFromFile(File questionFile) {
+    private String getQuestionFromFile(final File questionFile) {
         _lineNumber = 1;
         try {
             List<String> questionAndAnswer = FileHelper.getLineFromFile(questionFile, _lineNumber);
@@ -76,7 +76,7 @@ public class GameQuestionQuery {
      *                          the second element is the answer
      * @throws IndexOutOfBoundsException
      */
-    private void setQuestionAndAnswer(List<String> questionAndAnswer) {
+    private void setQuestionAndAnswer(final List<String> questionAndAnswer) {
         _currentQuestion = questionAndAnswer.get(0);
         _currentAnswer = questionAndAnswer.get(1);
 
@@ -90,7 +90,7 @@ public class GameQuestionQuery {
      * @param userAnswer the answer supplied by the user
      * @return boolean true if correct, false if incorrect
      */
-    public boolean checkGameAnswer(String userAnswer) {
+    public boolean checkGameAnswer(final String userAnswer) {
         QuestionHelper helper = QuestionHelper.getInstance();
         boolean correct = helper.checkQuestion(userAnswer, _currentAnswer);
         deleteQuestionFromFile();
@@ -138,7 +138,7 @@ public class GameQuestionQuery {
     /**
      * Used to return the prompt from a question answer. i.e. What is
      * 
-     * @return
+     * @return prompt
      */
     public String getPrompt() {
         if (_currentAnswer != null) {

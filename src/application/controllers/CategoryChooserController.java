@@ -15,7 +15,6 @@ public class CategoryChooserController {
     @FXML
     private TilePane _chosenCategoriesPane;
 
-
     /**
      * initialize with CategoryChooser.fxml
      */
@@ -29,7 +28,7 @@ public class CategoryChooserController {
      * @param event
      */
     @FXML
-    private void handleBackButton(ActionEvent event) {
+    private void handleBackButton(final ActionEvent event) {
         _sceneManager.switchScene(SceneManager.Scenes.HOME_MENU);
     }
 
@@ -39,8 +38,8 @@ public class CategoryChooserController {
      * @param event
      */
     @FXML
-    private void handleLeaderboardButton(ActionEvent event) {
-    	_sceneManager.switchScene(SceneManager.Scenes.LEADERBOARD);
+    private void handleLeaderboardButton(final ActionEvent event) {
+        _sceneManager.switchScene(SceneManager.Scenes.LEADERBOARD);
     }
 
     /**
@@ -49,7 +48,7 @@ public class CategoryChooserController {
      * @param event
      */
     @FXML
-    private void handleSettingsButton(ActionEvent event) {
+    private void handleSettingsButton(final ActionEvent event) {
         _sceneManager.switchScene(SceneManager.Scenes.SETTINGS_MENU);
     }
 }
