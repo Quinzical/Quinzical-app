@@ -36,6 +36,12 @@ public final class FileHelper {
     public static final String CURRENT_DIR = System.getProperty("user.dir");
 
     /**
+     * SQL data file
+     */
+    public static final String SQLITE_DB_FILE = FileHelper.CURRENT_DIR + FileHelper.FILE_SEPARATOR + "data"
+            + FileHelper.FILE_SEPARATOR + "data.db";
+
+    /**
      * Setup game data files
      */
     public static void setUpGame() {
@@ -174,7 +180,8 @@ public final class FileHelper {
      * @return List of lines from the file
      * @throws ArrayIndexOutOfBoundsException
      */
-    public static List<String> getLineFromFile(final File file, final int desiredLine) throws ArrayIndexOutOfBoundsException {
+    public static List<String> getLineFromFile(final File file, final int desiredLine)
+            throws ArrayIndexOutOfBoundsException {
         List<String> questionAndAnswer = new ArrayList<String>();
         String currentQuestion = null;
         String currentAnswer = null;
@@ -202,5 +209,16 @@ public final class FileHelper {
             }
         }
         return questionAndAnswer;
+    }
+
+    /**
+     * Check if a file exist at path
+     * 
+     * @param filePathString
+     * @return file exist
+     */
+    public static boolean checkIfFileExist(final String filePathString) {
+        File f = new File(filePathString);
+        return f.exists() && !f.isDirectory();
     }
 }

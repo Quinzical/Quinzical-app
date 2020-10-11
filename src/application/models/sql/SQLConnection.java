@@ -1,9 +1,18 @@
 package application.models.sql;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import application.helper.FileHelper;
+import application.models.helper.QuestionHelper;
+import application.models.sql.db.CategoryDB;
+import application.models.sql.db.QuestionDB;
 
 /**
  * This class is the SQLConnection singleton
@@ -12,12 +21,19 @@ import java.sql.Statement;
  * @author Cheng-Zhen Yang
  */
 public final class SQLConnection {
-    private static SQLConnection _instance;
-
-    private static final String SQLITE_DB_FILE = "./data/data.db";
+    private static SQLConnection _instance = new SQLConnection();
 
     private SQLConnection() {
-        createTables();
+        try {
+            if (!FileHelper.checkIfFileExist(FileHelper.SQLITE_DB_FILE)) {
+                createTables();
+                loadQuestionDataFile();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -26,9 +42,6 @@ public final class SQLConnection {
      * @return SQLConnection
      */
     public static SQLConnection getInstance() {
-        if (_instance == null) {
-            _instance = new SQLConnection();
-        }
         return _instance;
     }
 
@@ -63,8 +76,35 @@ public final class SQLConnection {
     /**
      * Used to load quinzical.txt to SQL DB
      */
-    private void loadDataFile() {
-        // TODO
+    private void loadQuestionDataFile() throws SQLException, IOException {
+        String quinzical = FileHelper.CURRENT_DIR + FileHelper.FILE_SEPARATOR + "quinzical" + ".txt";
+        File quinzicalFile = new File(quinzical);
+        if (quinzicalFile.isFile()) {
+            BufferedReader in = new BufferedReader(new FileReader(quinzicalFile));
+
+            String line = null;
+            int categoryID = 0;
+            CategoryDB categoryDB = new CategoryDB();
+            QuestionDB questionDB = new QuestionDB();
+
+            while ((line = in.readLine()) != null) {
+                // Replace spaces with hypens to name the files
+                if (categoryID == 0) {
+                    categoryID = categoryDB.insert(line);
+                } else if (line.isEmpty()) {
+                    categoryID = 0;
+                } else {
+                    String[] separated = line.split("\\\\");
+                    QuestionHelper helper = QuestionHelper.getInstance();
+                    int questionID = questionDB.insert(categoryID, separated[0], helper.retrievePrompt(separated[1]));
+                    String[] answers = separated[1].substring(separated[1].lastIndexOf(")") + 2).split("/");
+                    for (String answer : answers) {
+                        questionDB.insertAnswer(questionID, answer);
+                    }
+                }
+            }
+            in.close();
+        }
     }
 
     /**
@@ -73,8 +113,8 @@ public final class SQLConnection {
      * @return Connection
      * @throws SQLException
      */
-    public Connection createConnection() throws SQLException {
-        String connString = String.format("jdbc:sqlite:%s", SQLITE_DB_FILE);
+    public static Connection createConnection() throws SQLException {
+        String connString = String.format("jdbc:sqlite:%s", FileHelper.SQLITE_DB_FILE);
         return DriverManager.getConnection(connString);
     }
 
@@ -83,7 +123,7 @@ public final class SQLConnection {
      * 
      * @param connection
      */
-    public void closeConnection(final Connection connection) {
+    public static void closeConnection(final Connection connection) {
         try {
             if (connection != null) {
                 connection.close();

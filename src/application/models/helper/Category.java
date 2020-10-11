@@ -9,6 +9,7 @@ package application.models.helper;
 public class Category {
 
     private String _categoryName;
+    private int _categoryID;
 
     /**
      * Create an category with category name
@@ -20,6 +21,17 @@ public class Category {
     }
 
     /**
+     * Create an category with category name and category id
+     * 
+     * @param categoryName
+     * @param categoryID
+     */
+    public Category(final String categoryName, final int categoryID) {
+        _categoryName = categoryName;
+        _categoryID = categoryID;
+    }
+
+    /**
      * Used to get category display name
      * 
      * @return display name
@@ -27,6 +39,15 @@ public class Category {
     @Override
     public String toString() {
         return _categoryName;
+    }
+
+    /**
+     * Used to get categoryID
+     * 
+     * @return id
+     */
+    public int getCategoryID() {
+        return _categoryID;
     }
 
     /**

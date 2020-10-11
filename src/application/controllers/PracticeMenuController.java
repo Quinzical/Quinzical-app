@@ -6,7 +6,7 @@ import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.helper.Category;
 import application.models.practice.PracticeModel;
-import application.models.practice.PracticeModelText;
+import application.models.practice.PracticeModelSQL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -21,7 +21,7 @@ import javafx.scene.layout.TilePane;
 public class PracticeMenuController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
-    private final PracticeModel _practiceModel = PracticeModelText.getInstance();
+    private final PracticeModel _practiceModel = PracticeModelSQL.getInstance();
 
     private static final Insets TILEPANE_INSETS = new Insets(10, 10, 10, 10);
 

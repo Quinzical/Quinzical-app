@@ -76,7 +76,7 @@ public final class QuestionHelper {
      * @param correctAnswer the correct answer
      * @return boolean true if correct, false if incorrect
      */
-    private boolean compareAnswers(final String userAnswer, final String correctAnswer) {
+    public boolean compareAnswers(final String userAnswer, final String correctAnswer) {
         if (userAnswer.toLowerCase().contains((correctAnswer.toLowerCase()))) {
             int startingIndex = userAnswer.toLowerCase().indexOf(correctAnswer.toLowerCase());
             int endIndex = startingIndex + correctAnswer.length() - 1;
