@@ -37,10 +37,6 @@ public class GameQuestionController {
 
     private TimerThread _timer;
 
-    private static final int DEFAULT_ATTEMPTS = 3;
-
-    private int _attempt;
-
     @FXML
     private Label _categoryName;
 
@@ -72,7 +68,6 @@ public class GameQuestionController {
         } else {
             _questionLabel.setText("");
         }
-        _attempt = 1;
 
         _dontKnowButton.setDisable(true);
         _submitButton.setDisable(true);
@@ -112,9 +107,22 @@ public class GameQuestionController {
     }
 
     /**
+     * Used to disable TextField Enter
+     */
+    private void disableEnter() {
+        _answerTextField.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(final KeyEvent keyEvent) {
+                // Do Nothing
+            }
+        });
+    }
+
+    /**
      * Used to initalise Back button to be shown after completing attempts
      */
     private void createBackButton() {
+        disableEnter();
         _dontKnowButton.setDisable(true);
         _submitButton.setText("Back");
         _submitButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -146,16 +154,7 @@ public class GameQuestionController {
     @FXML
     private void handleDontKnowButton(final ActionEvent event) {
         _timer.stopThread();
-        if (_questionModel.getPractice()) {
-            _attempt = DEFAULT_ATTEMPTS;
-            _questionModel.setNumberOfAttempts(_attempt);
-            String clue = _questionModel.getClue();
-            speak("The first letter is " + clue);
-            _answerTextField.setText(clue);
-            _infoLabel.setText("Clue");
-            _infoLabel.setStyle("-fx-text-fill: green;");
-            _dontKnowButton.disableProperty();
-        } else {
+        if (!_questionModel.getPractice()) {
             String correctAnswer = _questionModel.getCorrectAnswer();
             speak("The answer is " + correctAnswer);
             _infoLabel.setText("Correct");
@@ -205,31 +204,6 @@ public class GameQuestionController {
             _infoLabel.setText("Correct");
             _infoLabel.setStyle("-fx-text-fill: green;");
             createBackButton();
-        } else if (_questionModel.getPractice()) {
-            // Handle practice mode with multiple attempts
-            if (_attempt > 2) {
-                // More than 3 attempts
-                _infoLabel.setText("Incorrect");
-                _infoLabel.setStyle("-fx-text-fill: red;");
-                speak(oldAnswer + " is Incorrect. The answer is " + correctAnswer);
-                _answerTextField.setText("Answer: " + correctAnswer);
-                createBackButton();
-            } else if (_attempt == 2) {
-                // On the 3rd attempt
-                String clue = _questionModel.getClue();
-                _infoLabel.setText("Clue is '" + _questionModel.getClue() + "'");
-                _infoLabel.setStyle("-fx-text-fill: black;");
-                speak(oldAnswer + " is Incorrect. The first letter is " + clue);
-                _answerTextField.setText(clue);
-            } else {
-                _infoLabel.setText("Incorrect, Please Try Again");
-                _infoLabel.setStyle("-fx-text-fill: red;");
-                speak(oldAnswer + " is Incorrect.");
-                _answerTextField.setText("");
-            }
-            // Increment attempt and set turns
-            _attempt += 1;
-            _questionModel.setNumberOfAttempts(_attempt);
         } else {
             _infoLabel.setStyle("-fx-text-fill: red;");
             _infoLabel.setText("Incorrect");

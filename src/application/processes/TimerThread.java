@@ -25,7 +25,7 @@ public class TimerThread extends Thread {
     private QuestionTimer _questionTimer;
 
     /**
-     * Create TimerThread with questionpages
+     * Create TimerThread with question pages
      * 
      * @param speak
      * @param timerLabel

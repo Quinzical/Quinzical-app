@@ -18,7 +18,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 /**
- * This class is the Practice Module Question controller in a MVC design.
+ * This class is the Question controller in a MVC design.
  * 
  * @author Maggie Pedersen
  * @author Cheng-Zhen Yang
@@ -63,8 +63,6 @@ public class PracticeQuestionController {
         _question = _questionModel.getQuestion();
         if (_questionModel.getPractice()) {
             _questionLabel.setText(_question);
-        } else {
-            _questionLabel.setText("");
         }
         _attempt = 1;
         _speak = new SpeakProcess(_question);
@@ -152,14 +150,6 @@ public class PracticeQuestionController {
             _infoLabel.setText("Clue");
             _infoLabel.setStyle("-fx-text-fill: green;");
             _dontKnowButton.disableProperty();
-        } else {
-            String correctAnswer = _questionModel.getCorrectAnswer();
-            speak("The answer is " + correctAnswer);
-            _infoLabel.setText("Correct");
-            _infoLabel.setStyle("-fx-text-fill: green;");
-            _answerTextField.setText("Answer: " + correctAnswer);
-            GameModelText.getInstance().deleteQuestion();
-            createBackButton();
         }
     }
 
@@ -225,13 +215,6 @@ public class PracticeQuestionController {
             // Increment attempt and set turns
             _attempt += 1;
             _questionModel.setNumberOfAttempts(_attempt);
-        } else {
-            _infoLabel.setStyle("-fx-text-fill: red;");
-            _infoLabel.setText("Incorrect");
-            speak(oldAnswer + " is Incorrect. The answer is " + correctAnswer);
-
-            _answerTextField.setText(correctAnswer);
-            createBackButton();
         }
     }
 }
