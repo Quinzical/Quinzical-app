@@ -1,10 +1,11 @@
 
 package application.processes;
 
-import java.io.IOException;
-
 import application.models.SettingsModel;
+
 import javafx.concurrent.Task;
+
+import java.io.IOException;
 
 /**
  * Speak the input from the constructor. The task is run in the background using

@@ -18,12 +18,12 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 /**
- * This class is the Question controller in a MVC design.
+ * This class is the Practice Module Question controller in a MVC design.
  * 
  * @author Maggie Pedersen
  * @author Cheng-Zhen Yang
  */
-public class QuestionController {
+public class PracticeQuestionController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
 

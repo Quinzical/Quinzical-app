@@ -3,14 +3,14 @@ package application.controllers;
 import application.helper.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 
 public class LeaderboardController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
 
     @FXML
-    private GridPane _leaderGrid;
+    private VBox _leaderVBox;
 
     /**
      * initialize with LeaderboardScreen.fxml

@@ -22,11 +22,13 @@ public class LoginScreenController {
     @FXML
     private void handleLoginButton() {
         // TODO
+        _sceneManager.switchScene(Scenes.HOME_MENU);
     }
 
     @FXML
     private void handleRegisterButton() {
         // TODO
+        _sceneManager.switchScene(Scenes.HOME_MENU);
     }
 
     /**

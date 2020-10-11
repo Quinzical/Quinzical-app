@@ -47,7 +47,7 @@ public class GameCategoryButton extends Button {
                 questionModel.setCategory(category);
                 questionModel.setQuestionValue(value);
                 _sceneManager.unloadScene();
-                _sceneManager.switchScene(Scenes.QUESTION);
+                _sceneManager.switchScene(Scenes.GAME_QUESTION);
             }
         });
     }

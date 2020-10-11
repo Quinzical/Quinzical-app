@@ -50,8 +50,10 @@ public final class SceneManager {
         PRACTICE_MENU("PracticeMenu.fxml"),
         /** Settings Menu scene */
         SETTINGS_MENU("SettingsMenu.fxml"),
-        /** Question scene */
-        QUESTION("Question.fxml"),
+        /** Practice Module Question scene */
+        PRACTICE_QUESTION("PracticeQuestion.fxml"),
+        /** Game Module Question scene */
+        GAME_QUESTION("GameQuestion.fxml"),
         /** Game Menu scene */
         GAME_MENU("GameMenu.fxml"),
         /** Reward Screen scene */

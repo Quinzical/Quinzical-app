@@ -42,7 +42,7 @@ public class PracticeCategoryButton extends Button {
                 QuestionModel questionModel = QuestionModel.getInstance();
                 questionModel.setPractice(true);
                 questionModel.setCategory(category);
-                _sceneManager.switchScene(Scenes.QUESTION);
+                _sceneManager.switchScene(Scenes.PRACTICE_QUESTION);
             }
         });
     }

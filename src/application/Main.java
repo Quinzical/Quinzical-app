@@ -8,15 +8,15 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     /**
-     * Used to start the application
+     * Used to start the application with Login Screen
      * 
      * @param primaryStage stage
      */
     @Override
-    public void start(final Stage primaryStage) throws Exception {
+    public final void start(final Stage primaryStage) throws Exception {
         SceneManager sceneManager = SceneManager.getInstance();
         sceneManager.init(primaryStage);
-        sceneManager.switchScene(Scenes.HOME_MENU);
+        sceneManager.switchScene(Scenes.LOGIN_SCREEN);
     }
 
     /**
