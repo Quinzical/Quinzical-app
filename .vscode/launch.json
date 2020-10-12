@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - MainModel",
+            "request": "launch",
+            "mainClass": "application.models.MainModel",
+            "projectName": "assignment-3-and-project-team-44"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
+            "vmArgs": "--module-path /Users/scorpionknifes/Desktop/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.media,javafx.base,javafx.fxml",
+            "mainClass": "application.Main",
+            "projectName": "assignment-3-and-project-team-44"
+        }
+    ]
+}

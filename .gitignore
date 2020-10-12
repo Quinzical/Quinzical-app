@@ -25,7 +25,6 @@ local.properties
 .factorypath
 
 # Visual Studio Code
-.vscode/
 .code-workspace
 
 ## IntelliJ
