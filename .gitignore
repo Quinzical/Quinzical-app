@@ -26,6 +26,7 @@ local.properties
 
 # Visual Studio Code
 .code-workspace
+.vscode/
 
 ## IntelliJ
 out/
