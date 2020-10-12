@@ -7,7 +7,7 @@ import application.controllers.helper.GameCategoryButton;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.game.GameModel;
-import application.models.game.GameModelText;
+import application.models.game.sql.GameModelSQL;
 import application.models.helper.Category;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,7 +25,7 @@ import javafx.scene.layout.GridPane;
 public class GameMenuController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
-    private final GameModel _gameModel = GameModelText.getInstance();
+    private final GameModel _gameModel = GameModelSQL.getInstance();
 
     private static final int COLUMNS = 5;
     private static final int ROWS = 6;

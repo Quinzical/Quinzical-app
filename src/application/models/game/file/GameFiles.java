@@ -1,4 +1,4 @@
-package application.models.game;
+package application.models.game.file;
 
 import java.io.BufferedReader;
 import java.io.File;

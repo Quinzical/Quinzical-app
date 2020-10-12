@@ -1,9 +1,9 @@
 package application.models.question;
 
-import application.models.game.GameModelText;
+import application.models.game.sql.GameModelSQL;
 import application.models.helper.Category;
 import application.models.practice.PracticeModel;
-import application.models.practice.PracticeModelSQL;
+import application.models.practice.sql.PracticeModelSQL;
 
 /**
  * This class is used to delegate tasks to different classes who carry out tasks
@@ -18,7 +18,7 @@ public final class QuestionModel {
     private static QuestionModel _instance;
 
     private PracticeModel _practiceModel = PracticeModelSQL.getInstance();
-    private GameModelText _gameModel = GameModelText.getInstance();
+    private GameModelSQL _gameModel = GameModelSQL.getInstance();
 
     private boolean _practice;
     private Category _category;

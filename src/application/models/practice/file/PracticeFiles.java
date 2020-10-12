@@ -1,4 +1,4 @@
-package application.models.practice;
+package application.models.practice.file;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -13,7 +13,8 @@ import application.controllers.helper.ExceptionAlert;
 import application.helper.FileHelper;
 
 /**
- * This class is used to set up the necessary files for the games module.
+ * This class is used to delegate tasks to different classes who carry out tasks
+ * for the function of the practice module based on what the user wants to do.
  * 
  * @author Maggie Pedersen
  * @author Cheng-Zhen Yang

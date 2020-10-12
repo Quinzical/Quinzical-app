@@ -1,4 +1,4 @@
-package application.models.practice;
+package application.models.practice.sql;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -6,6 +6,7 @@ import java.util.List;
 
 import application.models.helper.Category;
 import application.models.helper.QuestionHelper;
+import application.models.practice.PracticeModel;
 import application.models.sql.data.CategoryData;
 import application.models.sql.data.QuestionData;
 import application.models.sql.db.CategoryDB;
@@ -17,7 +18,6 @@ import application.models.sql.db.QuestionDB;
  * 
  * @author Maggie Pedersen
  * @author Cheng-Zhen Yang
- *
  */
 public final class PracticeModelSQL implements PracticeModel {
 

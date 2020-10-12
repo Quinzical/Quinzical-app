@@ -5,7 +5,8 @@ import java.util.concurrent.Executors;
 
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
-import application.models.game.GameModelText;
+import application.models.game.GameModel;
+import application.models.game.sql.GameModelSQL;
 import application.processes.SpeakProcess;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,7 +22,7 @@ import javafx.scene.control.Label;
 public class RewardScreenController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
-    private final GameModelText _gameModel = GameModelText.getInstance();
+    private final GameModel _gameModel = GameModelSQL.getInstance();
 
     // ExecutorService for running task and speak in the background
     private ExecutorService _team = Executors.newSingleThreadExecutor();

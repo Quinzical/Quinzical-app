@@ -1,9 +1,10 @@
-package application.models.practice;
+package application.models.practice.file;
 
 import java.util.List;
 
 import application.helper.FileHelper;
 import application.models.helper.Category;
+import application.models.practice.PracticeModel;
 
 /**
  * This class is used to delegate tasks to different classes who carry out tasks

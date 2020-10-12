@@ -5,7 +5,7 @@ import java.util.concurrent.Executors;
 
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
-import application.models.game.GameModelText;
+import application.models.game.file.GameModelText;
 import application.models.question.QuestionModel;
 import application.processes.SpeakProcess;
 import javafx.event.ActionEvent;

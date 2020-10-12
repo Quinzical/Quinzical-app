@@ -51,11 +51,11 @@ public final class SQLConnection {
             connection = createConnection();
             Statement statement = connection.createStatement();
             statement.executeUpdate(
-                    "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR, international BOOLEAN);");
+                    "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR, completed INTEGER);");
             statement.executeUpdate(
-                    "CREATE TABLE IF NOT EXISTS game_sessions (id INTEGER PRIMARY KEY AUTOINCREMENT, user_id INTEGER, categories VARCHAR, score INTEGER);");
+                    "CREATE TABLE IF NOT EXISTS game_sessions (id INTEGER PRIMARY KEY AUTOINCREMENT, user_id INTEGER, categories VARCHAR, questions VARCHAR, score INTEGER);");
             statement.executeUpdate(
-                    "CREATE TABLE IF NOT EXISTS results (id INTEGER PRIMARY KEY AUTOINCREMENT, game_session_id INTEGER, category_id INTEGER, question_id INTEGER, score INTEGER, correct BOOLEAN);");
+                    "CREATE TABLE IF NOT EXISTS attempts (id INTEGER PRIMARY KEY AUTOINCREMENT, game_session_id INTEGER, category_id INTEGER, question_id INTEGER, score INTEGER, correct BOOLEAN);");
             statement.executeUpdate(
                     "CREATE TABLE IF NOT EXISTS categories (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR);");
             statement.executeUpdate(

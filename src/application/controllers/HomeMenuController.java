@@ -3,7 +3,7 @@ package application.controllers;
 import application.controllers.helper.ConfirmAlert;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
-import application.models.game.GameModelText;
+import application.models.game.file.GameModelText;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 

@@ -62,9 +62,37 @@ public class CategoryDB {
     }
 
     /**
+     * Used to get a categories by an array of categoryID
+     * 
+     * @param ids
+     * @return category
+     * @throws SQLException
+     */
+    public List<CategoryData> query(final int[] ids) throws SQLException {
+        List<CategoryData> categories = new ArrayList<CategoryData>();
+
+        Connection conn = SQLConnection.createConnection();
+        String sql = "SELECT id, name FROM categories WHERE id IN (?,?,?,?,?)";
+
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        for (int i = 1; i < 5 + 1; i++) {
+            pstmt.setInt(i, ids[i - 1]);
+        }
+        ResultSet rs = pstmt.executeQuery();
+
+        while (rs.next()) {
+            categories.add(new CategoryData(rs.getInt("id"), rs.getString("name")));
+        }
+
+        SQLConnection.closeConnection(conn);
+        return categories;
+    }
+
+    /**
      * Used to get all categories
      * 
      * @return List of category
+     * @throws SQLException
      */
     public List<CategoryData> query() throws SQLException {
         List<CategoryData> categories = new ArrayList<CategoryData>();
@@ -72,12 +100,13 @@ public class CategoryDB {
         Connection conn = SQLConnection.createConnection();
         String sql = "SELECT id, name FROM categories";
 
-        Statement stmt  = conn.createStatement();
-        ResultSet rs    = stmt.executeQuery(sql);
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(sql);
         while (rs.next()) {
             categories.add(new CategoryData(rs.getInt("id"), rs.getString("name")));
         }
 
+        SQLConnection.closeConnection(conn);
         return categories;
     }
 }

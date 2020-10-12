@@ -2,6 +2,7 @@ package application.models.game;
 
 import java.util.List;
 
+import application.controllers.helper.GameStateData;
 import application.models.helper.Category;
 
 /**
@@ -60,6 +61,13 @@ public interface GameModel {
      * @return List<Category> the current game categories
      */
     List<Category> getGameCategories();
+
+    /**
+     * Used to get detailed Game State only supports SQL
+     * 
+     * @return GameStateData
+     */
+    GameStateData getGameStateData();
 
     /**
      * Used to reset the game for the current user.

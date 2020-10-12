@@ -1,8 +1,10 @@
-package application.models.game;
+package application.models.game.file;
 
 import java.util.List;
 
+import application.controllers.helper.GameStateData;
 import application.helper.FileHelper;
+import application.models.game.GameModel;
 import application.models.helper.Category;
 
 /**
@@ -104,6 +106,15 @@ public final class GameModelText implements GameModel {
      */
     public List<Category> getGameCategories() {
         return _gameFiles.getCategories();
+    }
+
+    /**
+     * Used to get detailed Game State only supports SQL
+     * 
+     * @return GameStateData
+     */
+    public GameStateData getGameStateData() {
+        return new GameStateData();
     }
 
     /**

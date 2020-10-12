@@ -6,7 +6,7 @@ import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.helper.Category;
 import application.models.practice.PracticeModel;
-import application.models.practice.PracticeModelSQL;
+import application.models.practice.sql.PracticeModelSQL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
