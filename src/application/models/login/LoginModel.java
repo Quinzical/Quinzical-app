@@ -1,5 +1,11 @@
 package application.models.login;
 
+import java.sql.SQLException;
+
+import application.models.sql.data.UserData;
+import application.models.sql.db.GameSessionDB;
+import application.models.sql.db.UserDB;
+
 /**
  * This class is used to manage and store login data, this class also prepares
  * game sessions when load
@@ -15,6 +21,9 @@ public final class LoginModel {
     private String _username;
     private int _userID;
     private int _gameSessionID;
+
+    private UserDB _userDB = new UserDB();
+    private GameSessionDB _gameSessionDB = new GameSessionDB();
 
     private LoginModel() {
     }
@@ -67,10 +76,52 @@ public final class LoginModel {
 
     /**
      * Used to set gameSessionID when reseting
+     * 
      * @param gameSessionID
      */
     public void setGameSessionID(final int gameSessionID) {
         _gameSessionID = gameSessionID;
     }
 
+    /**
+     * Used to login user if they exist
+     * 
+     * @param username the username of the person trying to login
+     * @return boolean
+     * @throws SQLException
+     */
+    public boolean loginUser(final String username) throws SQLException {
+        UserData user = _userDB.checkUser(username);
+
+        if (user != null) {
+            setUser(user.getName(), user.getID(), _gameSessionDB.getGameSessionID(user.getID()));
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Used to login user if they exist
+     * 
+     * @param username the username of the person trying to login
+     * @return boolean
+     * @throws SQLException
+     */
+    public boolean checkUserExists(final String username) throws SQLException {
+        UserData user = _userDB.checkUser(username);
+        return user != null;
+    }
+
+    /**
+     * Used to add a new user to the database.
+     * 
+     * @param username
+     * @throws SQLException
+     */
+    public void registerUser(final String username) throws SQLException {
+        int id = _userDB.insert(username);
+        // Insert "0,0,0,0,0" for categories as the user has just been registered.
+        _gameSessionDB.insert(id, "0,0,0,0,0");
+    }
 }

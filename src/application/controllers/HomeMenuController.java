@@ -4,8 +4,10 @@ import application.controllers.helper.ConfirmAlert;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.game.file.GameModelText;
+import application.models.login.LoginModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 
 /**
  * This class is the HomeMenu controller in a MVC design.
@@ -16,6 +18,16 @@ import javafx.fxml.FXML;
 public class HomeMenuController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
+
+    @FXML
+    private Label _usernameLabel;
+
+    /**
+     * initialize with LoginScreenController.fxml
+     */
+    public void initialize() {
+        _usernameLabel.setText(LoginModel.getInstance().getUsername());
+    }
 
     /**
      * Used to handle exit button

@@ -85,21 +85,19 @@ public class UserDB {
      * Used to check if user exists
      * 
      * @param username
-     * @return User
+     * @return UserData
      * @throws SQLException
      */
-    public UserData loginUser(final String username) throws SQLException {
+    public UserData checkUser(final String username) throws SQLException {
         Connection conn = SQLConnection.createConnection();
-        String sql = "SELECT * FROM users WHERE users.name IN (?)";
+        String sql = "SELECT * FROM users WHERE name=?";
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setString(1, username);
         ResultSet rs = pstmt.executeQuery();
-        SQLConnection.closeConnection(conn);
 
         UserData user = null;
         if (rs.next()) {
             user = new UserData(rs.getInt("id"), rs.getString("name"), rs.getBoolean("completed"));
-            System.out.println("hello");
         }
 
         pstmt.close();

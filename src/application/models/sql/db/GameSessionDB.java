@@ -152,4 +152,31 @@ public class GameSessionDB {
         SQLConnection.closeConnection(conn);
         return id;
     }
+
+    /**
+     * Used to get gameSessionID for the current user.
+     * 
+     * @param userID
+     * @return int gameSessionID for a particular user
+     */
+    public int getGameSessionID(final int userID) throws SQLException {
+        Connection conn = SQLConnection.createConnection();
+        String sql = "SELECT * FROM game_sessions WHERE user_id=?";
+
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, Integer.toString(userID));
+        ResultSet rs = pstmt.executeQuery();
+
+        GameSessionData session = null;
+        if (rs.next()) {
+            session = new GameSessionData(rs.getInt("id"), rs.getInt("user_id"), rs.getString("categories"),
+                    rs.getString("questions"), rs.getInt("score"));
+        }
+
+        pstmt.close();
+        rs.close();
+        SQLConnection.closeConnection(conn);
+
+        return session.getID();
+    }
 }
