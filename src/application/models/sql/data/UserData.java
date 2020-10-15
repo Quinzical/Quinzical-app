@@ -1,5 +1,11 @@
 package application.models.sql.data;
 
+/**
+ * UserData used to store User data from SQL Database
+ * 
+ * @author Maggie Pedersen
+ * @author Cheng-Zhen Yang
+ */
 public class UserData {
     private int _id;
     private String _name;

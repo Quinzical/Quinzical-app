@@ -4,6 +4,12 @@ import application.helper.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
+/**
+ * This class is the Help Screen controller in a MVC design.
+ * 
+ * @author Maggie Pedersen
+ * @author Cheng-Zhen Yang
+ */
 public class HelpScreenController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();

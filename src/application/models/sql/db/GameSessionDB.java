@@ -12,6 +12,12 @@ import application.controllers.helper.GameStateData;
 import application.models.sql.SQLConnection;
 import application.models.sql.data.GameSessionData;
 
+/**
+ * GameSessionDB used to handle Game Session SQL Database
+ * 
+ * @author Maggie Pedersen
+ * @author Cheng-Zhen Yang
+ */
 public class GameSessionDB {
     /**
      * Used to insert a user to database

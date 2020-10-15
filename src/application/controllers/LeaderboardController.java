@@ -5,6 +5,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.VBox;
 
+/**
+ * This class is the Leaderboard Controller in a MVC design.
+ * 
+ * @author Maggie Pedersen
+ * @author Cheng-Zhen Yang
+ */
 public class LeaderboardController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();

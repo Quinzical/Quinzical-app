@@ -1,5 +1,11 @@
 package application.models.sql.data;
 
+/**
+ * CategoryData used to store Category data from SQL Database
+ * 
+ * @author Maggie Pedersen
+ * @author Cheng-Zhen Yang
+ */
 public class CategoryData {
     private int _id;
     private String _name;

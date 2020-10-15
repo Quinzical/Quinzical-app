@@ -1,5 +1,11 @@
 package application.models.sql.data;
 
+/**
+ * QuestionData used to store Question data from SQL Database
+ * 
+ * @author Maggie Pedersen
+ * @author Cheng-Zhen Yang
+ */
 public class QuestionData {
     private int _id;
     private int _categoryID;

@@ -5,6 +5,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+/**
+ * This class is for WarningAlert for Warning Message on Alert
+ *
+ * @author Maggie Pedersen
+ * @author Cheng-Zhen Yang
+ */
 public class WarningAlert extends Alert {
     /**
      * Create ConfirmAlert that displays a window to confirm.

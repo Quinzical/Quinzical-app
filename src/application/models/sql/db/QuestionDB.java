@@ -11,6 +11,12 @@ import java.util.List;
 import application.models.sql.SQLConnection;
 import application.models.sql.data.QuestionData;
 
+/**
+ * QuestionDB used to handle Questions in SQL Database
+ * 
+ * @author Maggie Pedersen
+ * @author Cheng-Zhen Yang
+ */
 public class QuestionDB {
     /**
      * Used to insert a question to database

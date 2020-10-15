@@ -11,6 +11,12 @@ import java.util.List;
 import application.models.sql.SQLConnection;
 import application.models.sql.data.UserData;
 
+/**
+ * UserDB used to handle Users SQL Database
+ * 
+ * @author Maggie Pedersen
+ * @author Cheng-Zhen Yang
+ */
 public class UserDB {
     /**
      * Used to insert a user to database

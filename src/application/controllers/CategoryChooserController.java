@@ -18,6 +18,12 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 
+/**
+ * This class is the Category Chooser controller in a MVC design.
+ * 
+ * @author Maggie Pedersen
+ * @author Cheng-Zhen Yang
+ */
 public class CategoryChooserController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();

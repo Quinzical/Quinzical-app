@@ -5,6 +5,12 @@ import application.helper.SceneManager.Scenes;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+/**
+ * This class is tha Main class for Quinzical
+ *
+ * @author Maggie Pedersen
+ * @author Cheng-Zhen Yang
+ */
 public class Main extends Application {
 
     /**

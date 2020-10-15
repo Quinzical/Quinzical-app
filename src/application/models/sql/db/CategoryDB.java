@@ -11,6 +11,12 @@ import java.util.List;
 import application.models.sql.SQLConnection;
 import application.models.sql.data.CategoryData;
 
+/**
+ * CategoryDB used to handle Category SQL Database
+ * 
+ * @author Maggie Pedersen
+ * @author Cheng-Zhen Yang
+ */
 public class CategoryDB {
     /**
      * Used to insert a category to database

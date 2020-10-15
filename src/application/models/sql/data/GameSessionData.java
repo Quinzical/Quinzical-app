@@ -2,6 +2,12 @@ package application.models.sql.data;
 
 import java.util.Arrays;
 
+/**
+ * GameSessionData used to store Game Session data from SQL Database
+ * 
+ * @author Maggie Pedersen
+ * @author Cheng-Zhen Yang
+ */
 public class GameSessionData {
     private int _id;
     private int _userID;

@@ -5,6 +5,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+/**
+ * This class is for ExceptionAlert for Exceptions on Alert
+ *
+ * @author Maggie Pedersen
+ * @author Cheng-Zhen Yang
+ */
 public class ExceptionAlert extends Alert {
     /**
      * Create ExceptionAlert that displays a error alert with an exception

@@ -8,6 +8,12 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+/**
+ * This class is for ConfirmAlert for Confirm Button on Alert
+ *
+ * @author Maggie Pedersen
+ * @author Cheng-Zhen Yang
+ */
 public abstract class ConfirmAlert extends Alert {
     /**
      * Create ConfirmAlert that displays a window to confirm.
