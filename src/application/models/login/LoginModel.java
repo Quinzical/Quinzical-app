@@ -95,6 +95,7 @@ public final class LoginModel {
 
         if (user != null) {
             setUser(user.getName(), user.getID(), _gameSessionDB.getGameSessionID(user.getID()));
+            _gameSessionID = _gameSessionDB.getGameSessionID(user.getID());
             return true;
         } else {
             return false;

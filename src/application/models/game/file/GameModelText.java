@@ -145,8 +145,10 @@ public final class GameModelText implements GameModel {
 
     /**
      * Deletes question from file.
+     * 
+     * @param questionValue
      */
-    public void deleteQuestion() {
+    public void deleteQuestion(final String questionValue) {
         _questionQuery.deleteQuestionFromFile();
     }
 

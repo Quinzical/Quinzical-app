@@ -27,15 +27,28 @@ public class GameCategoryButton extends Button {
      * 
      * @param category
      * @param value
+     * @param state    0=incorrect, 1=correct
      */
-    public GameCategoryButton(final Category category, final String value) {
+    public GameCategoryButton(final Category category, final String value, final int state) {
         super("$" + value);
         // set size
         setPrefWidth(DEFAULT_WIDTH + Integer.valueOf(value) * CHANGE_WIDTH);
         setPrefHeight(DEFAULT_HEIGHT);
-        // set font
+        // set color and style
+        String color;
+        switch (state) {
+            case 0:
+                color = "-fx-background-color: #ff8c8c;";
+                break;
+            case 1:
+                color = "-fx-background-color: #4efc60;";
+                break;
+            default:
+                color = "-fx-background-color: #e3d188;";
+                break;
+        }
         setStyle("-fx-font-size:16; -fx-padding: 0 10 0 10; -fx-border-insets: 0 10 0 10;"
-                + " -fx-background-insets: 0 10 0 10;");
+                + " -fx-background-insets: 0 10 0 10;" + color);
 
         // handle button on press
         setOnAction(new EventHandler<ActionEvent>() {

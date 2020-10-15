@@ -2,12 +2,12 @@ package application.models.game.sql;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import application.controllers.helper.GameStateData;
 import application.models.game.GameModel;
 import application.models.helper.Category;
-import application.models.helper.QuestionHelper;
 import application.models.login.LoginModel;
 import application.models.sql.data.CategoryData;
 import application.models.sql.data.QuestionData;
@@ -31,10 +31,9 @@ public final class GameModelSQL implements GameModel {
     private QuestionDB _questionDB = new QuestionDB();
     private CategoryDB _categoryDB = new CategoryDB();
 
-    //TODO change gamestate without going though db query
-    private GameStateData _gameStateData;
-
     private int _questionID;
+    private int _categoryID;
+    private int _score;
 
     private GameModelSQL() {
     }
@@ -83,6 +82,7 @@ public final class GameModelSQL implements GameModel {
         try {
             QuestionData question = _questionDB.randomQuestion(category.getCategoryID());
             _questionID = question.getID();
+            _categoryID = category.getCategoryID();
             return question.getQuestion();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -115,17 +115,32 @@ public final class GameModelSQL implements GameModel {
      * @return boolean true if correct, false if incorrect
      */
     public boolean checkGameAnswer(final String userAnswer, final String questionValue) {
-        QuestionHelper helper = QuestionHelper.getInstance();
+        _score = Integer.valueOf(questionValue);
+        boolean correct = false;
         try {
             List<String> answers = _questionDB.getAnswers(_questionID);
-            for (String answer : answers) {
-                boolean check = helper.compareAnswers(userAnswer, answer);
-                if (check) {
-                    return check;
-                }
-            }
+            correct = compareAnswers(answers, userAnswer);
+            _gameSessionDB.insertAttempt(_login.getGameSessionID(), _categoryID, _questionID, _score, correct);
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+        return correct;
+    }
+
+    /**
+     * Compare userAnswers to answer in a list
+     * 
+     * @param answers
+     * @param userAnswer
+     * @return boolean true if correct, false if incorrect
+     */
+    private boolean compareAnswers(final List<String> answers, final String userAnswer) {
+        String user = userAnswer.toLowerCase().replace(" ", "").replace("the", "");
+        for (String answer : answers) {
+            answer = answer.toLowerCase().replace(" ", "").replace("the", "");
+            if (answer.equals(user)) {
+                return true;
+            }
         }
         return false;
     }
@@ -140,7 +155,7 @@ public final class GameModelSQL implements GameModel {
         try {
             int[] ids = new int[5];
             _login.getGameSessionID();
-            String[] stringID = _gameSessionDB.query(_login.getGameSessionID()).getCategories().split(",");
+            String[] stringID = _gameSessionDB.query(_login.getGameSessionID()).getCategories();
             for (int i = 0; i < stringID.length; i++) {
                 ids[i] = Integer.valueOf(stringID[i]);
             }
@@ -161,7 +176,7 @@ public final class GameModelSQL implements GameModel {
      */
     public GameStateData getGameStateData() {
         try {
-            String[] categories = _gameSessionDB.query(_login.getGameSessionID()).getCategories().split(",");
+            String[] categories = _gameSessionDB.query(_login.getGameSessionID()).getCategories();
             return _gameSessionDB.getGameState(convertArrayToInt(categories), _login.getGameSessionID());
         } catch (SQLException e) {
             e.printStackTrace();
@@ -174,7 +189,7 @@ public final class GameModelSQL implements GameModel {
      */
     public void resetGameModule() {
         try {
-            //TODO temporary reseting to category 1,2,3,4,5
+            // TODO temporary reseting to category 1,2,3,4,5
             int id = _gameSessionDB.insert(_login.getUserID(), "1,2,3,4,5");
             _login.setGameSessionID(id);
         } catch (SQLException e) {
@@ -214,9 +229,16 @@ public final class GameModelSQL implements GameModel {
 
     /**
      * Deletes question from file.
+     * 
+     * @param questionValue
      */
-    public void deleteQuestion() {
-        // TODO
+    public void deleteQuestion(final String questionValue) {
+        _score = Integer.valueOf(questionValue);
+        try {
+            _gameSessionDB.insertAttempt(_login.getGameSessionID(), _categoryID, _questionID, _score, false);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -226,11 +248,12 @@ public final class GameModelSQL implements GameModel {
      */
     public boolean remainingQuestions() {
         try {
-            return _gameSessionDB.query(_login.getGameSessionID()).getQuestions() != "4,4,4,4,4";
+            return !Arrays.equals(_gameSessionDB.query(_login.getGameSessionID()).getQuestions(),
+                    new String[] { "5", "5", "5", "5", "5" });
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
+        return true;
     }
 
     /**

@@ -4,6 +4,7 @@ import java.util.List;
 
 import application.controllers.helper.ConfirmAlert;
 import application.controllers.helper.GameCategoryButton;
+import application.controllers.helper.GameStateData;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.game.GameModel;
@@ -45,6 +46,7 @@ public class GameMenuController {
     public void initialize() {
         _gameModel.setUpGameModule();
         _categories = _gameModel.getGameCategories();
+        GameStateData state = _gameModel.getGameStateData();
 
         _currentScore.setText("$" + _gameModel.getScore());
 
@@ -57,8 +59,12 @@ public class GameMenuController {
             int questionNum = _gameModel.getCategoriesQuestionNumber(category);
 
             for (int j = 1; j < ROWS; j++) {
-                GameCategoryButton btn = new GameCategoryButton(_categories.get(i),
-                        String.valueOf(j * SCORE_INCREMENT));
+                int btnState = -1;
+                if (questionNum < ROWS - j) {
+                    btnState = state.getCategoryState(i)[j - 1];
+                }
+                GameCategoryButton btn = new GameCategoryButton(_categories.get(i), String.valueOf(j * SCORE_INCREMENT),
+                        btnState);
                 if (questionNum != ROWS - j) {
                     btn.setDisable(true);
                 }

@@ -155,7 +155,7 @@ public class QuestionDB {
         ResultSet rs = pstmt.executeQuery();
 
         List<String> answers = new ArrayList<String>();
-        if (rs.next()) {
+        while (rs.next()) {
             answers.add(rs.getString("answer"));
         }
 

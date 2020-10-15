@@ -3,7 +3,8 @@ package application.controllers;
 import application.controllers.helper.ConfirmAlert;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
-import application.models.game.file.GameModelText;
+import application.models.game.GameModel;
+import application.models.game.sql.GameModelSQL;
 import application.models.login.LoginModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,6 +19,7 @@ import javafx.scene.control.Label;
 public class HomeMenuController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
+    private GameModel _gameModel = GameModelSQL.getInstance();
 
     @FXML
     private Label _usernameLabel;
@@ -51,7 +53,7 @@ public class HomeMenuController {
      */
     @FXML
     private void handlePlayButton(final ActionEvent event) {
-        if (GameModelText.getInstance().remainingQuestions()) {
+        if (_gameModel.remainingQuestions()) {
             _sceneManager.switchScene(Scenes.GAME_MENU);
         } else {
             _sceneManager.switchScene(Scenes.REWARD_SCREEN);

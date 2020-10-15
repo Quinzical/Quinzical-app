@@ -90,8 +90,10 @@ public interface GameModel {
 
     /**
      * Deletes question from file.
+     * 
+     * @param questionValue
      */
-    void deleteQuestion();
+    void deleteQuestion(String questionValue);
 
     /**
      * Used to check if there are remaining questions in the game module.

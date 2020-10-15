@@ -89,6 +89,28 @@ public class GameSessionDB {
     }
 
     /**
+     * Used to update a game session by gameSessionID
+     * 
+     * @param data GameSessionData
+     * @throws SQLException
+     */
+    public void update(final GameSessionData data) throws SQLException {
+        Connection conn = SQLConnection.createConnection();
+        String sql = "UPDATE game_sessions SET user_id=?, categories=?, questions=?, score=? WHERE id=?";
+
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+
+        pstmt.setInt(1, data.getUserID());
+        pstmt.setString(2, data.getCategoriesString());
+        pstmt.setString(3, data.getQuestionsString());
+        pstmt.setInt(4, data.getScore());
+        pstmt.setInt(5, data.getID());
+
+        pstmt.executeUpdate();
+        SQLConnection.closeConnection(conn);
+    }
+
+    /**
      * Generates GameStateData from sql db which includes question attempts
      * 
      * @param categories
@@ -104,9 +126,8 @@ public class GameSessionDB {
 
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setInt(1, gameSessionID);
-        pstmt.executeUpdate();
 
-        ResultSet rs = pstmt.getGeneratedKeys();
+        ResultSet rs = pstmt.executeQuery();
         while (rs.next()) {
             for (int i = 0; i < categories.length; i++) {
                 if (categories[i] == rs.getInt("category_id")) {
@@ -115,7 +136,7 @@ public class GameSessionDB {
                 }
             }
         }
-
+        System.out.println(state[0][0]);
         return new GameStateData(state);
     }
 
@@ -134,20 +155,27 @@ public class GameSessionDB {
             final boolean correct) throws SQLException {
         int id = 0;
         Connection conn = SQLConnection.createConnection();
-        String sql = "INSERT INTO attempts(id, game_session_id, category_id, question_id, score, correct) VALUES(?,?,?,?,0)";
+        String sql = "INSERT INTO attempts(game_session_id, category_id, question_id, score, correct) VALUES(?,?,?,?,?)";
 
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setInt(1, gameSessionID);
         pstmt.setInt(2, categoryID);
         pstmt.setInt(3, questionID);
         pstmt.setInt(4, score);
-        pstmt.setBoolean(4, correct);
+        pstmt.setBoolean(5, correct);
         pstmt.executeUpdate();
 
         ResultSet rs = pstmt.getGeneratedKeys();
         if (rs.next()) {
             id = rs.getInt(1);
         }
+
+        GameSessionData gameSession = query(gameSessionID);
+        if (correct) {
+            gameSession.setScore(gameSession.getScore() + score);
+        }
+        gameSession.setCategoriesQuestionNumber(categoryID, correct);
+        update(gameSession);
 
         SQLConnection.closeConnection(conn);
         return id;
@@ -161,7 +189,7 @@ public class GameSessionDB {
      */
     public int getGameSessionID(final int userID) throws SQLException {
         Connection conn = SQLConnection.createConnection();
-        String sql = "SELECT * FROM game_sessions WHERE user_id=?";
+        String sql = "SELECT * FROM game_sessions WHERE user_id=? ORDER BY id DESC";
 
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setString(1, Integer.toString(userID));

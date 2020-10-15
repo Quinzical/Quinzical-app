@@ -89,6 +89,15 @@ public final class QuestionModel {
     }
 
     /**
+     * Used to get the current question value for use in games module.
+     * 
+     * @return question value
+     */
+    public String getQuestionValue() {
+        return _questionValue;
+    }
+
+    /**
      * Used to set the current question value for use in the games module.
      * 
      * @param value
