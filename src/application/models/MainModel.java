@@ -1,6 +1,6 @@
 package application.models;
 
-import application.models.sql.SQLConnection;
+import application.models.api.Leaderboard;
 
 /**
  * MainModel used for testing
@@ -15,7 +15,10 @@ public class MainModel {
      * @param args
      */
     public static void main(final String[] args) {
-        SQLConnection.getInstance();
+        Leaderboard _leaderboard = new Leaderboard();
+        System.out.println(_leaderboard.getLeaderboard());
+
+        System.out.println(_leaderboard.postLeaderboard("test3", "1,2,4,5,6", 200));
     }
 }
 //CHECKSTYLE:ON
