@@ -91,12 +91,14 @@
         <module name="JavadocMethod"/>
         <module name="JavadocType"/>
         <module name="JavadocVariable">
-            <property name="scope" value="public"/>
+            <property name="scope" value="package"/>
         </module>
         <module name="JavadocStyle">
             <property name="checkFirstSentence" value="false"/>
         </module>
         <module name="MissingJavadocMethod"/>
+        <module name="MissingJavadocPackage"/>
+        <module name="MissingJavadocType"/>
 
         <!-- Checks for Naming Conventions.                -->
         <!-- See https://checkstyle.org/config_naming.html -->
