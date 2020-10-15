@@ -11,6 +11,7 @@ public class UserData {
     private String _name;
     private boolean _international;
     private int _gameSessionID;
+    private int _internationalScore;
 
     /**
      * Create User DB Object
@@ -19,12 +20,15 @@ public class UserData {
      * @param name
      * @param international
      * @param gameSessionID
+     * @param internationalScore
      */
-    public UserData(final int id, final String name, final boolean international, final int gameSessionID) {
+    public UserData(final int id, final String name, final boolean international, final int gameSessionID,
+            final int internationalScore) {
         _id = id;
         _name = name;
         _international = international;
         _gameSessionID = gameSessionID;
+        _internationalScore = internationalScore;
     }
 
     /**
@@ -53,5 +57,12 @@ public class UserData {
      */
     public int getGameSessionID() {
         return _gameSessionID;
+    }
+
+    /**
+     * @return int return the _internationScore
+     */
+    public int getInternationalScore() {
+        return _internationalScore;
     }
 }

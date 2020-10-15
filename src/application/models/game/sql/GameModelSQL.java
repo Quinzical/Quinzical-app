@@ -16,6 +16,7 @@ import application.models.sql.data.QuestionData;
 import application.models.sql.db.CategoryDB;
 import application.models.sql.db.GameSessionDB;
 import application.models.sql.db.QuestionDB;
+import application.models.sql.db.UserDB;
 
 /**
  * This class is used to delegate tasks to different classes who carry out tasks
@@ -192,6 +193,13 @@ public final class GameModelSQL implements GameModel {
      * Used to reset the game for the current user.
      */
     public void resetGameModule() {
+        try {
+            UserDB userDB = new UserDB();
+            userDB.setInternationalScore(_login.getUserID(), 0);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         _login.setGameSessionID(0);
         _sceneManager.unloadScene();
         _sceneManager.switchScene(Scenes.CATEGORY_CHOOSER);

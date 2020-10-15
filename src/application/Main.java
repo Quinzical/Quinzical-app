@@ -23,7 +23,7 @@ public class Main extends Application {
     public final void start(final Stage primaryStage) throws Exception {
         SceneManager sceneManager = SceneManager.getInstance();
         sceneManager.init(primaryStage);
-        sceneManager.switchScene(Scenes.LOGIN_SCREEN);
+        sceneManager.switchScene(Scenes.SPLASH_SCREEN);
     }
 
     /**

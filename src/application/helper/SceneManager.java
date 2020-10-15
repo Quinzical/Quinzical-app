@@ -44,6 +44,8 @@ public final class SceneManager {
 
     /** Enum for each scene with a filename and name */
     public enum Scenes {
+        /** Splash Scene */
+        SPLASH_SCREEN("SplashScreen.fxml"),
         /** Home Menu scene */
         HOME_MENU("HomeMenu.fxml"),
         /** Practice Menu scene */

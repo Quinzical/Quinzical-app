@@ -123,6 +123,8 @@ public class InternationalQuestionController {
             speak(correctAnswer + " is Correct");
             _infoLabel.setText("Correct");
             _infoLabel.setStyle("-fx-text-fill: green;");
+            _internationalModel.addInternationalScore(_internationalModel.getInternationalValue());
+            _currentScore.setText("$" + Integer.toString(_internationalModel.getInternationalScore()));
 
         } else {
             speak(oldAnswer + " is Incorrect. The answer s " + correctAnswer);

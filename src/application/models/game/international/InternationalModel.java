@@ -5,12 +5,15 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.sql.SQLException;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import application.controllers.helper.ExceptionAlert;
 import application.models.helper.QuestionHelper;
+import application.models.login.LoginModel;
+import application.models.sql.db.UserDB;
 
 /**
  * This class is used to delegate tasks to different classes who carry out tasks
@@ -29,12 +32,13 @@ public final class InternationalModel {
     private static final String RANDOM = "/api/random";
 
     private HttpClient _client = HttpClient.newHttpClient();
+    private UserDB _userDB = new UserDB();
+    private LoginModel _login = LoginModel.getInstance();
 
     private String _currentQuestion;
     private String _currentAnswer;
     private int _currentValue;
     private String _currentCategory;
-    private int _currentScore = 0;
 
     private InternationalModel() {
     }
@@ -116,18 +120,27 @@ public final class InternationalModel {
      * @return score
      */
     public int getInternationalScore() {
-        // TODO
+        try {
+            return _userDB.query(_login.getUserID()).getInternationalScore();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return 0;
     }
 
     /**
      * Add score from international section.
      * 
-     * @return score
+     * @param score
      */
-    public int addInternationalScore() {
+    public void addInternationalScore(final int score) {
         // TODO - also add button for displaying the score on model.g
-        return 0;
+        try {
+            int currentScore = _userDB.query(_login.getUserID()).getInternationalScore();
+            _userDB.setInternationalScore(_login.getUserID(), currentScore + score);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -154,7 +167,7 @@ public final class InternationalModel {
      * @return String the answer to the current question
      */
     public int getInternationalValue() {
-        return _currentScore;
+        return _currentValue;
     }
 
     /**

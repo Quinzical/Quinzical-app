@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import application.helper.FileHelper;
+import application.models.helper.FileHashCheck;
 import application.models.helper.QuestionHelper;
 import application.models.sql.db.CategoryDB;
 import application.models.sql.db.QuestionDB;
@@ -24,10 +25,16 @@ public final class SQLConnection {
     private static SQLConnection _instance = new SQLConnection();
 
     private SQLConnection() {
+        String gameData = FileHelper.CURRENT_DIR + FileHelper.FILE_SEPARATOR + "data";
+        FileHelper.makeDirectory(gameData);
         try {
+            FileHashCheck checker = new FileHashCheck();
             if (!FileHelper.checkIfFileExist(FileHelper.SQLITE_DB_FILE)) {
                 createTables();
                 loadQuestionDataFile();
+            } else if (checker.checkChange()) {
+                System.out.println("Change has been detected, Reloading questions");
+                reloadQuestions();
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -51,7 +58,7 @@ public final class SQLConnection {
             connection = createConnection();
             Statement statement = connection.createStatement();
             statement.executeUpdate(
-                    "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR, completed INTEGER, game_session_id INTEGER);");
+                    "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR, completed INTEGER, game_session_id INTEGER, international_score INTEGER);");
             statement.executeUpdate(
                     "CREATE TABLE IF NOT EXISTS game_sessions (id INTEGER PRIMARY KEY AUTOINCREMENT, user_id INTEGER, categories VARCHAR, questions VARCHAR, score INTEGER);");
             statement.executeUpdate(
@@ -67,6 +74,26 @@ public final class SQLConnection {
         } catch (SQLException e) {
             // if the error message is "out of memory",
             // it probably means no database file is found
+            System.err.println(e.getMessage());
+        } finally {
+            closeConnection(connection);
+        }
+    }
+
+    /**
+     * WARNING Truncates categories and questions
+     */
+    private void reloadQuestions() {
+        Connection connection = null;
+        try {
+            connection = createConnection();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("DELETE FROM categories;");
+            statement.executeUpdate("DELETE FROM sqlite_sequence WHERE name='categories';");
+            statement.executeUpdate("DELETE FROM questions;");
+            statement.executeUpdate("DELETE FROM sqlite_sequence WHERE name='questions';");
+            loadQuestionDataFile();
+        } catch (SQLException | IOException e) {
             System.err.println(e.getMessage());
         } finally {
             closeConnection(connection);
