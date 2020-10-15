@@ -81,7 +81,7 @@ public class GameMenuController {
      */
     @FXML
     private void handleBackButton(final ActionEvent event) {
-        _sceneManager.backScene();
+        _sceneManager.switchScene(Scenes.HOME_MENU);
     }
 
     /**
@@ -106,7 +106,6 @@ public class GameMenuController {
             protected void handleConfirm() {
                 _gameModel.resetGameModule();
                 _questionGrid.getChildren().clear();
-                initialize();
             }
         };
     }

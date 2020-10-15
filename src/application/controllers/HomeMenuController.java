@@ -19,6 +19,7 @@ import javafx.scene.control.Label;
 public class HomeMenuController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
+    private final LoginModel _login = LoginModel.getInstance();
     private GameModel _gameModel = GameModelSQL.getInstance();
 
     @FXML
@@ -53,7 +54,9 @@ public class HomeMenuController {
      */
     @FXML
     private void handlePlayButton(final ActionEvent event) {
-        if (_gameModel.remainingQuestions()) {
+        if (_login.getGameSessionID() == 0) {
+            _sceneManager.switchScene(Scenes.CATEGORY_CHOOSER);
+        } else if (_gameModel.remainingQuestions()) {
             _sceneManager.switchScene(Scenes.GAME_MENU);
         } else {
             _sceneManager.switchScene(Scenes.REWARD_SCREEN);

@@ -20,7 +20,7 @@ public final class LoginModel {
 
     private String _username;
     private int _userID;
-    private int _gameSessionID;
+    private int _gameSessionID = 0;
 
     private UserDB _userDB = new UserDB();
     private GameSessionDB _gameSessionDB = new GameSessionDB();
@@ -80,7 +80,12 @@ public final class LoginModel {
      * @param gameSessionID
      */
     public void setGameSessionID(final int gameSessionID) {
-        _gameSessionID = gameSessionID;
+        try {
+            _userDB.setGameSessionID(_userID, gameSessionID);
+            _gameSessionID = gameSessionID;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -94,8 +99,8 @@ public final class LoginModel {
         UserData user = _userDB.checkUser(username);
 
         if (user != null) {
-            setUser(user.getName(), user.getID(), _gameSessionDB.getGameSessionID(user.getID()));
-            _gameSessionID = _gameSessionDB.getGameSessionID(user.getID());
+            setUser(user.getName(), user.getID(), user.getGameSessionID());
+            _gameSessionID = user.getGameSessionID();
             return true;
         } else {
             return false;

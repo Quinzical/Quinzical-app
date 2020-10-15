@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import application.controllers.helper.GameStateData;
+import application.helper.SceneManager;
+import application.helper.SceneManager.Scenes;
 import application.models.game.GameModel;
 import application.models.helper.Category;
 import application.models.login.LoginModel;
@@ -25,6 +27,8 @@ import application.models.sql.db.QuestionDB;
  */
 public final class GameModelSQL implements GameModel {
     private static GameModelSQL _instance;
+
+    private final SceneManager _sceneManager = SceneManager.getInstance();
 
     private LoginModel _login = LoginModel.getInstance();
     private GameSessionDB _gameSessionDB = new GameSessionDB();
@@ -188,13 +192,9 @@ public final class GameModelSQL implements GameModel {
      * Used to reset the game for the current user.
      */
     public void resetGameModule() {
-        try {
-            // TODO temporary reseting to category 1,2,3,4,5
-            int id = _gameSessionDB.insert(_login.getUserID(), "1,2,3,4,5");
-            _login.setGameSessionID(id);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        _login.setGameSessionID(0);
+        _sceneManager.unloadScene();
+        _sceneManager.switchScene(Scenes.CATEGORY_CHOOSER);
     }
 
     /**

@@ -44,10 +44,10 @@ public class GameCategoryButton extends Button {
                 color = "-fx-background-color: #4efc60;";
                 break;
             default:
-                color = "-fx-background-color: #e3d188;";
+                color = "";
                 break;
         }
-        setStyle("-fx-font-size:16; -fx-padding: 0 10 0 10; -fx-border-insets: 0 10 0 10;"
+        setStyle("-fx-font-size:16; -fx-padding: 10 10 10 10; -fx-border-insets: 0 10 0 10;"
                 + " -fx-background-insets: 0 10 0 10;" + color);
 
         // handle button on press

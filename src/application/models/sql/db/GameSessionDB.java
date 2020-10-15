@@ -136,7 +136,6 @@ public class GameSessionDB {
                 }
             }
         }
-        System.out.println(state[0][0]);
         return new GameStateData(state);
     }
 
