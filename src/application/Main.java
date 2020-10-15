@@ -2,6 +2,7 @@ package application;
 
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
+import application.models.sql.SQLConnection;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -31,6 +32,7 @@ public class Main extends Application {
      * @param args arguments for main
      */
     public static void main(final String[] args) {
+        SQLConnection.getInstance();
         launch();
     }
 }

@@ -54,6 +54,8 @@ public final class SceneManager {
         PRACTICE_QUESTION("PracticeQuestion.fxml"),
         /** Game Module Question scene */
         GAME_QUESTION("GameQuestion.fxml"),
+        /** Game Module Question scene */
+        INTERNATIONAL_QUESTION("InternationalQuestion.fxml"),
         /** Game Menu scene */
         GAME_MENU("GameMenu.fxml"),
         /** Reward Screen scene */
@@ -62,6 +64,8 @@ public final class SceneManager {
         LOGIN_SCREEN("LoginScreen.fxml"),
         /** Leaderboard scene */
         LEADERBOARD("LeaderboardScreen.fxml"),
+        /** International Leaderboard scene */
+        INTERNATIONAL_LEADERBOARD("InternationalLeaderboard.fxml"),
         /** Category chooser scene */
         CATEGORY_CHOOSER("CategoryChooser.fxml"),
         /** Help Screen scene */
@@ -99,10 +103,12 @@ public final class SceneManager {
         rootStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(final WindowEvent t) {
+                t.consume();
                 new ConfirmAlert("Quit the Game") {
                     @Override
                     protected void handleConfirm() {
                         rootStage.close();
+                        System.exit(0);
                     }
                 };
             }
@@ -157,6 +163,7 @@ public final class SceneManager {
      */
     public void close() {
         _rootStage.close();
+        System.exit(0);
     }
 
     /**

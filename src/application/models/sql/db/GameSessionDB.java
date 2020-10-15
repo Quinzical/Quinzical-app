@@ -210,6 +210,9 @@ public class GameSessionDB {
         rs.close();
         SQLConnection.closeConnection(conn);
 
+        if (session == null) {
+            return 0;
+        }
         return session.getID();
     }
 }

@@ -30,39 +30,6 @@
                 </Label>
          </children>
       </HBox>
-      <HBox alignment="CENTER" maxHeight="250.0" maxWidth="1263.0" prefHeight="296.0" prefWidth="1263.0">
-         <VBox.margin>
-            <Insets left="20.0" right="20.0" />
-         </VBox.margin>
-         <children>
-            <AnchorPane maxHeight="250.0" maxWidth="1263.0" prefHeight="300.0" prefWidth="1263.0">
-               <children>
-                    <HBox alignment="CENTER" layoutX="-17.0" layoutY="275.0" prefHeight="159.0" prefWidth="1280.0" spacing="75.0" AnchorPane.topAnchor="0.0">
-                        <children>
-                            <Button alignment="CENTER" mnemonicParsing="false" onAction="#handlePracticeButton" prefHeight="100.0" prefWidth="360.0" styleClass="practice-button" text="Practice" textAlignment="CENTER">
-                                <font>
-                                    <Font size="36.0" />
-                                </font>
-                            </Button>
-                            <Button alignment="CENTER" mnemonicParsing="false" onAction="#handlePlayButton" prefHeight="100.0" prefWidth="360.0" styleClass="play-button" text="Play" textAlignment="CENTER">
-                                <font>
-                                    <Font size="36.0" />
-                                </font>
-                            </Button>
-                        </children>
-                        <padding>
-                            <Insets left="50.0" right="50.0" />
-                        </padding>
-                    </HBox>
-                    <Button alignment="CENTER" layoutX="494.0" layoutY="159.0" mnemonicParsing="false" onAction="#handleExitButton" prefHeight="60.0" prefWidth="275.0" styleClass="exit-button" text="Exit" textAlignment="CENTER">
-                        <font>
-                            <Font size="24.0" />
-                        </font>
-                    </Button>
-               </children>
-            </AnchorPane>
-         </children>
-      </HBox>
       <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="5.0">
          <children>
             <Label text="Logged in as:">
@@ -80,23 +47,61 @@
             <Insets bottom="10.0" top="10.0" />
          </VBox.margin>
       </HBox>
-      <HBox alignment="CENTER" spacing="50.0">
+      <HBox alignment="CENTER" maxHeight="400.0" maxWidth="1263.0" prefHeight="300.0" prefWidth="1263.0">
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" />
+         </VBox.margin>
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleLogoutButton" prefHeight="40.0" prefWidth="140.0" styleClass="exit-button" text="Logout" textAlignment="CENTER">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleHelpButton" prefHeight="40.0" prefWidth="140.0" styleClass="exit-button" text="Help" textAlignment="CENTER">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
+            <AnchorPane maxHeight="300.0" maxWidth="1263.0" prefHeight="250.0" prefWidth="1263.0">
+               <children>
+                    <HBox alignment="CENTER" layoutX="1.0" prefHeight="159.0" prefWidth="1263.0" spacing="50.0" AnchorPane.topAnchor="0.0">
+                        <children>
+                            <Button alignment="CENTER" mnemonicParsing="false" onAction="#handlePracticeButton" prefHeight="100.0" prefWidth="360.0" styleClass="practice-button" text="Practice" textAlignment="CENTER">
+                                <font>
+                                    <Font size="36.0" />
+                                </font>
+                            </Button>
+                            <Button alignment="CENTER" mnemonicParsing="false" onAction="#handlePlayButton" prefHeight="100.0" prefWidth="360.0" styleClass="play-button" text="Play" textAlignment="CENTER">
+                                <font>
+                                    <Font size="36.0" />
+                                </font>
+                            </Button>
+                        </children>
+                        <padding>
+                            <Insets left="50.0" right="50.0" />
+                        </padding>
+                    </HBox>
+                    <Button fx:id="_internationalButton" alignment="CENTER" layoutX="495.0" layoutY="150.0" mnemonicParsing="false" onAction="#handleInternationalButton" prefHeight="60.0" prefWidth="275.0" styleClass="exit-button" text="International Section" textAlignment="CENTER">
+                        <font>
+                            <Font size="24.0" />
+                        </font>
+                    </Button>
+                  <HBox alignment="CENTER" layoutX="373.0" layoutY="239.0" spacing="20.0" AnchorPane.bottomAnchor="14.0">
+                     <children>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleLogoutButton" prefHeight="40.0" prefWidth="160.0" styleClass="exit-button" text="Logout" textAlignment="CENTER">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleHelpButton" prefHeight="40.0" prefWidth="160.0" styleClass="exit-button" text="Help" textAlignment="CENTER">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleExitButton" prefHeight="40.0" prefWidth="160.0" styleClass="exit-button" text="Exit" textAlignment="CENTER">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
          </children>
       </HBox>
-      <AnchorPane prefHeight="115.0" prefWidth="1240.0">
+      <AnchorPane prefHeight="90.0" prefWidth="1240.0">
          <children>
-                <Button alignment="CENTER" layoutX="1153.0" layoutY="17.0" maxHeight="66.0" maxWidth="66.0" minHeight="66.0" minWidth="66.0" mnemonicParsing="false" onAction="#handleSettingsButton" prefHeight="66.0" prefWidth="66.0" styleClass="setting-button" textAlignment="CENTER" AnchorPane.rightAnchor="21.0">
+                <Button alignment="CENTER" layoutX="1152.0" layoutY="12.0" maxHeight="66.0" maxWidth="66.0" minHeight="66.0" minWidth="66.0" mnemonicParsing="false" onAction="#handleSettingsButton" prefHeight="66.0" prefWidth="66.0" styleClass="setting-button" textAlignment="CENTER" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="20.0">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -114,14 +119,14 @@
                         </ImageView>
                     </graphic>
                 </Button>
-            <Button alignment="CENTER" layoutX="14.0" layoutY="17.0" mnemonicParsing="false" onAction="#handleLeaderboardButton" prefHeight="50.0" prefWidth="210.0" styleClass="exit-button" text="Leaderboard" textAlignment="CENTER" AnchorPane.leftAnchor="20.0">
+            <Button alignment="CENTER" layoutX="14.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleLeaderboardButton" prefHeight="50.0" prefWidth="210.0" styleClass="exit-button" text="Leaderboard" textAlignment="CENTER" AnchorPane.leftAnchor="20.0">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
          </children>
          <VBox.margin>
-            <Insets left="20.0" right="20.0" />
+            <Insets bottom="20.0" left="20.0" right="20.0" />
          </VBox.margin>
       </AnchorPane>
     </children>

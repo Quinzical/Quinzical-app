@@ -61,8 +61,7 @@ public final class QuestionHelper {
 
             if ((numberOfBrackets == 2 && Character.isUpperCase(correctAnswer.charAt(i)))
                     || (numberOfBrackets == 2 && Character.isDigit(correctAnswer.charAt(i)))) {
-                String trimmedAnswer = correctAnswer.substring(i, correctAnswer.length());
-                return trimmedAnswer;
+                return correctAnswer.substring(i, correctAnswer.length());
             }
         }
         return correctAnswer;

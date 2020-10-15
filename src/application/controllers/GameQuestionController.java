@@ -82,10 +82,6 @@ public class GameQuestionController {
 
         _timer = new TimerThread(_speak, _timerLabel, _dontKnowButton, _submitButton, _answerTextField);
         _timer.start();
-
-        _answerTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-            _infoLabel.setText("");
-        });
         _answerTextField.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(final KeyEvent keyEvent) {
@@ -159,9 +155,9 @@ public class GameQuestionController {
         if (!_questionModel.getPractice()) {
             String correctAnswer = _questionModel.getCorrectAnswer();
             speak("The answer is " + correctAnswer);
-            _infoLabel.setText("Correct");
+            _infoLabel.setText("The correct answer was:");
             _infoLabel.setStyle("-fx-text-fill: green;");
-            _answerTextField.setText("Answer: " + correctAnswer);
+            _answerTextField.setText(correctAnswer);
             _gameModel.deleteQuestion(_questionModel.getQuestionValue());
             createBackButton();
         }
@@ -207,10 +203,10 @@ public class GameQuestionController {
             _infoLabel.setStyle("-fx-text-fill: green;");
             createBackButton();
         } else {
-            _infoLabel.setStyle("-fx-text-fill: red;");
             _infoLabel.setText("Incorrect");
+            _infoLabel.setStyle("-fx-text-fill: red;");
             speak(oldAnswer + " is Incorrect. The answer is " + correctAnswer);
-            _answerTextField.setText(correctAnswer);
+            _answerTextField.setText("Answer: " + correctAnswer);
             createBackButton();
         }
     }

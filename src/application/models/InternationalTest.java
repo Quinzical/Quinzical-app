@@ -3,13 +3,13 @@ package application.models;
 import application.models.api.Leaderboard;
 
 /**
- * MainModel used for testing
+ * InternationalTest used for testing
  * 
  * @author Maggie Pedersen
  * @author Cheng-Zhen Yang
  */
 //CHECKSTYLE:OFF
-public class MainModel {
+public class InternationalTest {
     /**
      * Run to test sql
      * @param args

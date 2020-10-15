@@ -17,7 +17,7 @@
 
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" styleClass="root" stylesheets="@application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.PracticeQuestionController">
     <children>
-        <HBox alignment="CENTER" VBox.vgrow="NEVER">
+        <HBox alignment="CENTER">
             <children>
                 <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="header">
                     <image>
@@ -79,7 +79,7 @@
                 <Font size="36.0" />
             </font>
         </TextField>
-      <Pane prefHeight="100.0" prefWidth="200.0" />
+      <Pane prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
             <children>
                 <Button fx:id="_dontKnowButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleDontKnowButton" prefHeight="60.0" prefWidth="275.0" styleClass="exit-button" text="Don't Know" textAlignment="CENTER">

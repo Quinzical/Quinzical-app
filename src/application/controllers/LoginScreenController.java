@@ -39,6 +39,7 @@ public class LoginScreenController {
         try {
             userExists = _loginModel.loginUser(username);
         } catch (SQLException e) {
+            e.printStackTrace();
             new ExceptionAlert(e);
         }
 
@@ -63,6 +64,7 @@ public class LoginScreenController {
         try {
             userExists = _loginModel.checkUserExists(username);
         } catch (SQLException e) {
+            e.printStackTrace();
             new ExceptionAlert(e);
         }
 
@@ -74,6 +76,7 @@ public class LoginScreenController {
         try {
             _loginModel.registerUser(username);
         } catch (SQLException e) {
+            e.printStackTrace();
             new ExceptionAlert(e);
         }
 

@@ -68,9 +68,6 @@ public class PracticeQuestionController {
         _categoryName.setText(_questionModel.getCategory().toString());
         _infoLabel.setText("");
         _team.submit(_speak);
-        _answerTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-            _infoLabel.setText("");
-        });
         _answerTextField.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(final KeyEvent keyEvent) {

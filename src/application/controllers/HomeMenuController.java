@@ -8,6 +8,7 @@ import application.models.game.sql.GameModelSQL;
 import application.models.login.LoginModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 /**
@@ -25,11 +26,15 @@ public class HomeMenuController {
     @FXML
     private Label _usernameLabel;
 
+    @FXML
+    private Button _internationalButton;
+
     /**
      * initialize with LoginScreenController.fxml
      */
     public void initialize() {
         _usernameLabel.setText(LoginModel.getInstance().getUsername());
+        // TODO disable only if not unlocked
     }
 
     /**
@@ -74,6 +79,16 @@ public class HomeMenuController {
     }
 
     /**
+     * Used to handle help button
+     *
+     * @param event
+     */
+    @FXML
+    private void handleInternationalButton(final ActionEvent event) {
+        _sceneManager.switchScene(Scenes.INTERNATIONAL_QUESTION);
+    }
+
+    /**
      * Used to handle setting button
      * 
      * @param event
@@ -94,16 +109,6 @@ public class HomeMenuController {
     }
 
     /**
-     * Used to handle Leaderboard button
-     *
-     * @param event
-     */
-    @FXML
-    private void handleLeaderboardButton(final ActionEvent event) {
-        _sceneManager.switchScene(SceneManager.Scenes.LEADERBOARD);
-    }
-
-    /**
      * Used to handle help button
      *
      * @param event
@@ -113,4 +118,13 @@ public class HomeMenuController {
         _sceneManager.switchScene(SceneManager.Scenes.HELP_SCREEN);
     }
 
+    /**
+     * Used to handle Leaderboard button
+     *
+     * @param event
+     */
+    @FXML
+    private void handleLeaderboardButton(final ActionEvent event) {
+        _sceneManager.switchScene(SceneManager.Scenes.LEADERBOARD);
+    }
 }
