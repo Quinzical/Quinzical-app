@@ -271,4 +271,27 @@ public final class GameModelSQL implements GameModel {
         }
         return ids;
     }
+
+    /**
+     * Used to check if two category is completed
+     * 
+     * @return boolean if two category is completed
+     */
+    public boolean checkInternational() {
+        int count = 0;
+        try {
+            String[] questions = _gameSessionDB.query(_login.getGameSessionID()).getQuestions();
+            for (String question : questions) {
+                if (question.equals("5")) {
+                    if (count >= 1) {
+                        return true;
+                    }
+                    count++;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

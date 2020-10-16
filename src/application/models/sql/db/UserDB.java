@@ -97,7 +97,7 @@ public class UserDB {
      * @param unlock
      * @throws SQLException
      */
-    public void setCompleted(final int id, final boolean unlock) throws SQLException {
+    public void setUnlock(final int id, final boolean unlock) throws SQLException {
         Connection conn = SQLConnection.createConnection();
         String sql = "UPDATE users SET unlock=? WHERE id=?";
 

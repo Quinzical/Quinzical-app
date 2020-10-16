@@ -101,4 +101,11 @@ public interface GameModel {
      * @return boolean
      */
     boolean remainingQuestions();
+
+    /**
+     * Used to check if international section should be enabled
+     * 
+     * @return boolean
+     */
+    boolean checkInternational();
 }

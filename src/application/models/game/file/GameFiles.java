@@ -262,4 +262,19 @@ public class GameFiles {
 
         return emptyFiles != NUMBER_OF_QUESTIONS;
     }
+
+    /**
+     * Returns the number of remaining categories
+     * 
+     * @return int if there are questions remaining
+     */
+    public int remainingCategories() {
+        File userDir = new File(USER_CATEGORIES);
+        if (userDir.exists()) {
+            if (userDir.isDirectory()) {
+                return userDir.listFiles().length;
+            }
+        }
+        return 0;
+    }
 }

@@ -5,11 +5,13 @@ import java.util.List;
 import application.controllers.helper.ConfirmAlert;
 import application.controllers.helper.GameCategoryButton;
 import application.controllers.helper.GameStateData;
+import application.controllers.helper.SuccessAlert;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.game.GameModel;
 import application.models.game.sql.GameModelSQL;
 import application.models.helper.Category;
+import application.models.login.LoginModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
@@ -27,6 +29,7 @@ public class GameMenuController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
     private final GameModel _gameModel = GameModelSQL.getInstance();
+    private final LoginModel _login = LoginModel.getInstance();
 
     private static final int COLUMNS = 5;
     private static final int ROWS = 6;
@@ -72,6 +75,13 @@ public class GameMenuController {
                 _questionGrid.add(btn, i, j);
             }
         }
+
+        if (!_login.checkInternational()) {
+            if (_gameModel.checkInternational()) {
+                new SuccessAlert("International Section", "International section has been unlocked on the home menu");
+                _login.enableInternational();
+            }
+        }
     }
 
     /**
@@ -81,6 +91,7 @@ public class GameMenuController {
      */
     @FXML
     private void handleBackButton(final ActionEvent event) {
+        _sceneManager.unloadScene(Scenes.HOME_MENU);
         _sceneManager.switchScene(Scenes.HOME_MENU);
     }
 

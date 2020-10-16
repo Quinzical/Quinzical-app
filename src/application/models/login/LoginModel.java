@@ -45,7 +45,7 @@ public final class LoginModel {
      * @param username
      * @param userID
      * @param gameSessionID
-     * @param unlock for international
+     * @param unlock        for international
      */
     public void setUser(final String username, final int userID, final int gameSessionID, final boolean unlock) {
         _username = username;
@@ -131,7 +131,8 @@ public final class LoginModel {
     }
 
     /**
-     * Used to check for international sections@
+     * Used to check for international sections
+     * 
      * @return check if International is enabled
      */
     public boolean checkInternational() {
@@ -139,10 +140,14 @@ public final class LoginModel {
     }
 
     /**
-     * Used to check for international sections@
-     * @return check if International is enabled
+     * Used to enable for international sections
      */
-    public boolean checkInternational() {
-        return _unlock;
+    public void enableInternational() {
+        _unlock = true;
+        try {
+            _userDB.setUnlock(_userID, true);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

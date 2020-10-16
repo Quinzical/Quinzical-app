@@ -161,6 +161,15 @@ public final class SceneManager {
     }
 
     /**
+     * Used to unload a particular scene
+     * 
+     * @param scene
+     */
+    public void unloadScene(final Scenes scene) {
+        _scenes.remove(scene);
+    }
+
+    /**
      * Used to close stage/window
      */
     public void close() {

@@ -37,7 +37,7 @@ public class HomeMenuController {
 
         // TODO disable only if not unlocked
         if (!_login.checkInternational()) {
-            //_internationalButton.setDisable(true);
+            _internationalButton.setDisable(true);
         }
     }
 

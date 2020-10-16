@@ -4,14 +4,13 @@ import java.sql.SQLException;
 
 import application.controllers.helper.ConfirmAlert;
 import application.controllers.helper.ExceptionAlert;
+import application.controllers.helper.SuccessAlert;
 import application.controllers.helper.WarningAlert;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.login.LoginModel;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 
 /**
  * This class is the LoginScreen controller in a MVC design.
@@ -80,11 +79,7 @@ public class LoginScreenController {
             new ExceptionAlert(e);
         }
 
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Success!");
-        alert.setHeaderText("The username " + username + " has been successfully registered!");
-        alert.setContentText("You may now login.");
-        alert.showAndWait();
+        new SuccessAlert("The username " + username + " has been successfully registered!", "You may now login.");
     }
 
     /**

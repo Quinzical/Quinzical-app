@@ -160,4 +160,13 @@ public final class GameModelText implements GameModel {
     public boolean remainingQuestions() {
         return _gameFiles.remainingQuestions();
     }
+
+    /**
+     * Used to check if two category is completed
+     * 
+     * @return boolean
+     */
+    public boolean checkInternational() {
+        return (_gameFiles.remainingCategories() <= 3);
+    }
 }
