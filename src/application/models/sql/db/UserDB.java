@@ -28,7 +28,7 @@ public class UserDB {
     public int insert(final String name) throws SQLException {
         int id = 0;
         Connection conn = SQLConnection.createConnection();
-        String sql = "INSERT INTO users(name,completed,game_session_id,international_score) VALUES(?,0,0,0)";
+        String sql = "INSERT INTO users(name,unlock,game_session_id,international_score) VALUES(?,0,0,0)";
 
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setString(1, name);
@@ -52,7 +52,7 @@ public class UserDB {
      */
     public UserData query(final int id) throws SQLException {
         Connection conn = SQLConnection.createConnection();
-        String sql = "SELECT id, name, completed, game_session_id, international_score FROM users WHERE id=?";
+        String sql = "SELECT id, name, unlock, game_session_id, international_score FROM users WHERE id=?";
 
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setInt(1, id);
@@ -60,7 +60,7 @@ public class UserDB {
 
         UserData user = null;
         if (rs.next()) {
-            user = new UserData(rs.getInt("id"), rs.getString("name"), rs.getBoolean("completed"),
+            user = new UserData(rs.getInt("id"), rs.getString("name"), rs.getBoolean("unlock"),
                     rs.getInt("game_session_id"), rs.getInt("international_score"));
         }
 
@@ -78,12 +78,12 @@ public class UserDB {
         List<UserData> users = new ArrayList<UserData>();
 
         Connection conn = SQLConnection.createConnection();
-        String sql = "SELECT id, name, completed, game_session_id, international_score FROM users";
+        String sql = "SELECT id, name, unlock, game_session_id, international_score FROM users";
 
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(sql);
         while (rs.next()) {
-            users.add(new UserData(rs.getInt("id"), rs.getString("name"), rs.getBoolean("completed"),
+            users.add(new UserData(rs.getInt("id"), rs.getString("name"), rs.getBoolean("unlock"),
                     rs.getInt("game_session_id"), rs.getInt("international_score")));
         }
 
@@ -91,18 +91,18 @@ public class UserDB {
     }
 
     /**
-     * Used to update completed for user
+     * Used to update unlock for user
      * 
      * @param id
-     * @param completed
+     * @param unlock
      * @throws SQLException
      */
-    public void setCompleted(final int id, final boolean completed) throws SQLException {
+    public void setCompleted(final int id, final boolean unlock) throws SQLException {
         Connection conn = SQLConnection.createConnection();
-        String sql = "UPDATE users SET completed=? WHERE id=?";
+        String sql = "UPDATE users SET unlock=? WHERE id=?";
 
         PreparedStatement pstmt = conn.prepareStatement(sql);
-        pstmt.setBoolean(1, completed);
+        pstmt.setBoolean(1, unlock);
         pstmt.setInt(2, id);
         pstmt.execute();
     }
@@ -150,14 +150,14 @@ public class UserDB {
      */
     public UserData checkUser(final String username) throws SQLException {
         Connection conn = SQLConnection.createConnection();
-        String sql = "SELECT * FROM users WHERE name=?";
+        String sql = "SELECT id, name, unlock, game_session_id, international_score FROM users WHERE name=?";
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setString(1, username);
         ResultSet rs = pstmt.executeQuery();
 
         UserData user = null;
         if (rs.next()) {
-            user = new UserData(rs.getInt("id"), rs.getString("name"), rs.getBoolean("completed"),
+            user = new UserData(rs.getInt("id"), rs.getString("name"), rs.getBoolean("unlock"),
                     rs.getInt("game_session_id"), rs.getInt("international_score"));
         }
 

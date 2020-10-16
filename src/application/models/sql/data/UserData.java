@@ -9,7 +9,7 @@ package application.models.sql.data;
 public class UserData {
     private int _id;
     private String _name;
-    private boolean _international;
+    private boolean _unlock;
     private int _gameSessionID;
     private int _internationalScore;
 
@@ -18,17 +18,18 @@ public class UserData {
      * 
      * @param id
      * @param name
-     * @param international
+     * @param unlock
      * @param gameSessionID
      * @param internationalScore
      */
-    public UserData(final int id, final String name, final boolean international, final int gameSessionID,
+    public UserData(final int id, final String name, final boolean unlock, final int gameSessionID,
             final int internationalScore) {
         _id = id;
         _name = name;
-        _international = international;
+        _unlock = unlock;
         _gameSessionID = gameSessionID;
         _internationalScore = internationalScore;
+        _unlock = unlock;
     }
 
     /**
@@ -48,8 +49,8 @@ public class UserData {
     /**
      * @return boolean return the _international
      */
-    public Boolean getInternational() {
-        return _international;
+    public Boolean getUnlock() {
+        return _unlock;
     }
 
     /**

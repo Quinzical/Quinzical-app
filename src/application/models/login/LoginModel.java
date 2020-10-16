@@ -21,6 +21,7 @@ public final class LoginModel {
     private String _username;
     private int _userID;
     private int _gameSessionID = 0;
+    private boolean _unlock;
 
     private UserDB _userDB = new UserDB();
     private GameSessionDB _gameSessionDB = new GameSessionDB();
@@ -46,11 +47,13 @@ public final class LoginModel {
      * @param username
      * @param userID
      * @param gameSessionID
+     * @param unlock for international
      */
-    public void setUser(final String username, final int userID, final int gameSessionID) {
+    public void setUser(final String username, final int userID, final int gameSessionID, final boolean unlock) {
         _username = username;
         _userID = userID;
         _gameSessionID = gameSessionID;
+        _unlock = unlock;
     }
 
     /**
@@ -99,7 +102,7 @@ public final class LoginModel {
         UserData user = _userDB.checkUser(username);
 
         if (user != null) {
-            setUser(user.getName(), user.getID(), user.getGameSessionID());
+            setUser(user.getName(), user.getID(), user.getGameSessionID(), user.getUnlock());
             _gameSessionID = user.getGameSessionID();
             return true;
         } else {
@@ -129,5 +132,13 @@ public final class LoginModel {
         int id = _userDB.insert(username);
         // Insert "0,0,0,0,0" for categories as the user has just been registered.
         _gameSessionDB.insert(id, "0,0,0,0,0");
+    }
+
+    /**
+     * Used to check for international sections@
+     * @return check if International is enabled
+     */
+    public boolean checkInternational() {
+        return _unlock;
     }
 }

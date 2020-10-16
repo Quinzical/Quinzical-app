@@ -33,8 +33,12 @@ public class HomeMenuController {
      * initialize with LoginScreenController.fxml
      */
     public void initialize() {
-        _usernameLabel.setText(LoginModel.getInstance().getUsername());
+        _usernameLabel.setText(_login.getUsername());
+
         // TODO disable only if not unlocked
+        if (!_login.checkInternational()) {
+            //_internationalButton.setDisable(true);
+        }
     }
 
     /**
