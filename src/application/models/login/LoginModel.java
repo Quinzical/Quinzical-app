@@ -3,7 +3,6 @@ package application.models.login;
 import java.sql.SQLException;
 
 import application.models.sql.data.UserData;
-import application.models.sql.db.GameSessionDB;
 import application.models.sql.db.UserDB;
 
 /**
@@ -24,7 +23,6 @@ public final class LoginModel {
     private boolean _unlock;
 
     private UserDB _userDB = new UserDB();
-    private GameSessionDB _gameSessionDB = new GameSessionDB();
 
     private LoginModel() {
     }
@@ -129,9 +127,15 @@ public final class LoginModel {
      * @throws SQLException
      */
     public void registerUser(final String username) throws SQLException {
-        int id = _userDB.insert(username);
-        // Insert "0,0,0,0,0" for categories as the user has just been registered.
-        _gameSessionDB.insert(id, "0,0,0,0,0");
+        _userDB.insert(username);
+    }
+
+    /**
+     * Used to check for international sections@
+     * @return check if International is enabled
+     */
+    public boolean checkInternational() {
+        return _unlock;
     }
 
     /**

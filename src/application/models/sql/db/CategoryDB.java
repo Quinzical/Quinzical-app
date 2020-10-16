@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import application.models.sql.SQLConnection;
@@ -74,8 +75,8 @@ public class CategoryDB {
      * @return category
      * @throws SQLException
      */
-    public List<CategoryData> query(final int[] ids) throws SQLException {
-        List<CategoryData> categories = new ArrayList<CategoryData>();
+    public HashMap<Integer, CategoryData> query(final int[] ids) throws SQLException {
+        HashMap<Integer, CategoryData> categories = new HashMap<Integer, CategoryData>();
 
         Connection conn = SQLConnection.createConnection();
         String sql = "SELECT id, name FROM categories WHERE id IN (?,?,?,?,?)";
@@ -87,7 +88,7 @@ public class CategoryDB {
         ResultSet rs = pstmt.executeQuery();
 
         while (rs.next()) {
-            categories.add(new CategoryData(rs.getInt("id"), rs.getString("name")));
+            categories.put(Integer.valueOf(rs.getInt("id")), new CategoryData(rs.getInt("id"), rs.getString("name")));
         }
 
         SQLConnection.closeConnection(conn);

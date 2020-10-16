@@ -3,6 +3,7 @@ package application.models.game.sql;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import application.controllers.helper.GameStateData;
@@ -163,9 +164,10 @@ public final class GameModelSQL implements GameModel {
             for (int i = 0; i < stringID.length; i++) {
                 ids[i] = Integer.valueOf(stringID[i]);
             }
-            List<CategoryData> data = _categoryDB.query(ids);
-            for (CategoryData category : data) {
-                categories.add(new Category(category.getName(), category.getID()));
+            HashMap<Integer, CategoryData> data = _categoryDB.query(ids);
+            for (int i = 0; i < stringID.length; i++) {
+                ids[i] = Integer.valueOf(stringID[i]);
+                categories.add(new Category(data.get(ids[i]).getName(), data.get(ids[i]).getID()));
             }
         } catch (SQLException e) {
             e.printStackTrace();
