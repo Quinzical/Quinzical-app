@@ -1,8 +1,14 @@
 package application.controllers;
 
+import java.util.List;
+
+import application.controllers.helper.LeaderboardPosition;
 import application.helper.SceneManager;
+import application.models.api.LeaderboardEntry;
+import application.models.api.LeaderboardModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 /**
@@ -15,14 +21,30 @@ public class LeaderboardController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
 
+    private final LeaderboardModel _leaderboard = LeaderboardModel.getInstance();
+
+    private static final Double DEFAULT_SPACING = 10.0;
+
     @FXML
     private VBox _leaderVBox;
+
+    @FXML
+    private Label _headerText;
 
     /**
      * initialize with LeaderboardScreen.fxml
      */
     public void initialize() {
-        // TODO
+        _leaderVBox.setSpacing(DEFAULT_SPACING);
+        _headerText.setText(_leaderboard.getHeader());
+        List<LeaderboardEntry> leaders = _leaderboard.getLeaderboard();
+
+        int position = 1;
+        for (LeaderboardEntry entry : leaders) {
+            LeaderboardPosition boardPosition = new LeaderboardPosition(entry, position);
+            position++;
+            _leaderVBox.getChildren().add(boardPosition.getComponent());
+        }
     }
 
     /**
@@ -32,6 +54,7 @@ public class LeaderboardController {
      */
     @FXML
     private void handleBackButton(final ActionEvent event) {
+        _sceneManager.unloadScene();
         _sceneManager.switchScene(SceneManager.Scenes.HOME_MENU);
     }
 

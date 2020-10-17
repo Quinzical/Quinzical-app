@@ -23,9 +23,9 @@
                         <Image url="@images/darklogo.png" />
                     </image>
                 </ImageView>
-                <Label prefHeight="118.0" prefWidth="399.0" text="Leaderboard">
+                <Label fx:id="_headerText">
                     <font>
-                        <Font size="70.0" />
+                        <Font size="65.0" />
                     </font>
                     <styleClass>
                         <String fx:value="outline" />
@@ -34,23 +34,26 @@
                 </Label>
          </children>
          <VBox.margin>
-            <Insets left="20.0" right="20.0" />
+            <Insets left="20.0" right="20.0" top="10.0" />
          </VBox.margin>
       </HBox>
-      <HBox alignment="CENTER">
+      <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
          <VBox.margin>
             <Insets left="20.0" right="20.0" top="20.0" />
          </VBox.margin>
          <children>
-            <ScrollPane styleClass="background">
+            <ScrollPane hbarPolicy="NEVER" prefHeight="534.0" prefWidth="500.0" styleClass="background">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="515.0" prefWidth="610.0" styleClass="background">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="535.0" prefWidth="482.0" styleClass="background">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
                      <children>
-                        <VBox fx:id="_leaderVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <VBox fx:id="_leaderVBox" alignment="TOP_CENTER" prefHeight="515.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                      </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
                   </AnchorPane>
                </content>
                <HBox.margin>
@@ -61,9 +64,9 @@
       </HBox>
       <HBox prefHeight="59.0" prefWidth="1280.0">
          <children>
-            <AnchorPane prefHeight="60.0" prefWidth="1240.0">
+            <AnchorPane prefHeight="60.0" prefWidth="1240.0" HBox.hgrow="ALWAYS">
                <children>
-                      <Button alignment="CENTER" layoutX="1200.0" layoutY="84.0" maxHeight="66.0" maxWidth="66.0" minHeight="66.0" minWidth="66.0" mnemonicParsing="false" onAction="#handleSettingsButton" prefHeight="66.0" prefWidth="66.0" styleClass="setting-button" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                      <Button alignment="CENTER" layoutX="1174.0" layoutY="24.0" maxHeight="66.0" maxWidth="66.0" minHeight="66.0" minWidth="66.0" mnemonicParsing="false" onAction="#handleSettingsButton" prefHeight="66.0" prefWidth="66.0" styleClass="setting-button" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                           <font>
                               <Font size="24.0" />
                           </font>
@@ -81,7 +84,7 @@
                               </ImageView>
                           </graphic>
                       </Button>
-                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="47.0" prefWidth="149.0" styleClass="setting-button" text="Menu" textAlignment="CENTER" AnchorPane.leftAnchor="0.0">
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="47.0" prefWidth="149.0" styleClass="setting-button" text="Menu" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -92,6 +95,9 @@
                </HBox.margin>
             </AnchorPane>
          </children>
+         <VBox.margin>
+            <Insets bottom="20.0" />
+         </VBox.margin>
       </HBox>
     </children>
 </VBox>

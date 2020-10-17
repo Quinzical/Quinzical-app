@@ -5,6 +5,7 @@ import java.util.List;
 import application.controllers.helper.ConfirmAlert;
 import application.controllers.helper.GameCategoryButton;
 import application.controllers.helper.GameStateData;
+import application.controllers.helper.LeaderboardAlert;
 import application.controllers.helper.SuccessAlert;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
@@ -128,7 +129,7 @@ public class GameMenuController {
      */
     @FXML
     private void handleLeaderboardButton(final ActionEvent event) {
-        _sceneManager.switchScene(SceneManager.Scenes.LEADERBOARD);
+        new LeaderboardAlert();
     }
 
     /**

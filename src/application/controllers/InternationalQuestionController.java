@@ -3,6 +3,7 @@ package application.controllers;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import application.controllers.helper.LeaderboardAlert;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.game.international.InternationalModel;
@@ -95,7 +96,7 @@ public class InternationalQuestionController {
      */
     @FXML
     private void handleLeaderboardButton(final ActionEvent event) {
-        _sceneManager.switchScene(SceneManager.Scenes.INTERNATIONAL_LEADERBOARD);
+        new LeaderboardAlert();
     }
 
     /**
@@ -125,7 +126,6 @@ public class InternationalQuestionController {
             _infoLabel.setStyle("-fx-text-fill: green;");
             _internationalModel.addInternationalScore(_internationalModel.getInternationalValue());
             _currentScore.setText("$" + Integer.toString(_internationalModel.getInternationalScore()));
-
         } else {
             speak(oldAnswer + " is Incorrect. The answer s " + correctAnswer);
             _infoLabel.setText("Incorrect");
