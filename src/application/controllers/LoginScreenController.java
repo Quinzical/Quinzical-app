@@ -35,6 +35,7 @@ public class LoginScreenController {
 
         String username = _usernameField.getText().trim();
         boolean userExists = false;
+        
         try {
             userExists = _loginModel.loginUser(username);
         } catch (SQLException e) {
