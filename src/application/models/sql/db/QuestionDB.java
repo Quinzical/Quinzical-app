@@ -98,6 +98,34 @@ public class QuestionDB {
     }
 
     /**
+     * Used to get a random question by categoryID and gameSessionID
+     * 
+     * @param categoryID
+     * @param gameSessionID
+     * @return question
+     * @throws SQLException
+     */
+    public QuestionData randomQuestion(final int categoryID, final int gameSessionID) throws SQLException {
+        Connection conn = SQLConnection.createConnection();
+        String sql = "SELECT * FROM questions as q LEFT JOIN attempts as a ON q.id = a.question_id AND a.game_session_id=? WHERE q.category_id=? AND a.id IS NULL ORDER BY RANDOM() LIMIT 1";
+
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(1, gameSessionID);
+        pstmt.setInt(2, categoryID);
+
+        ResultSet rs = pstmt.executeQuery();
+
+        QuestionData question = null;
+        if (rs.next()) {
+            question = new QuestionData(rs.getInt("id"), rs.getInt("category_id"), rs.getString("question"),
+                    rs.getString("qualifier"));
+        }
+
+        SQLConnection.closeConnection(conn);
+        return question;
+    }
+
+    /**
      * Used to get all questions
      * 
      * @return List of questions
