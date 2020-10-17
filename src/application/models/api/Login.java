@@ -1,5 +1,19 @@
 package application.models.api;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.net.http.HttpRequest.BodyPublishers;
+import java.net.http.HttpResponse.BodyHandlers;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import application.controllers.helper.WarningAlert;
+
 /**
  * Leaderboard used to call REST API for Login Information
  * 
@@ -7,25 +21,39 @@ package application.models.api;
  * @author Cheng-Zhen Yang
  */
 public class Login {
+    private static final String ENDPOINT = "https://quinzical-api.herokuapp.com";
+    private static final String LOGIN = "/login";
+    private static final String REGISTER = "/register";
+
+    private static final int INCORRECT_LOGIN = 401;
+    private static final int INTERNAL_ERROR = 500;
+
+    private HttpClient _client = HttpClient.newHttpClient();
 
     /**
      * Used to post a login to api
      * 
      * @return id (mongodb id)
      */
-    public LoginEntry postLogin() {
-        LoginEntry login = null;
+    public String postLogin(final String username, final String password) {
         try {
-            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(ENDPOINT + LEADERBOARD)).GET().build();
+            JSONObject json = new JSONObject();
+            json.put("username", username);
+            json.put("password", password);
+
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(ENDPOINT + LOGIN))
+                    .header("Content-Type", "application/json").POST(BodyPublishers.ofString(json.toString())).build();
             HttpResponse<String> response = _client.send(request, BodyHandlers.ofString());
 
-            JSONArray array = new JSONArray(response.body());
-
-            for (int i = 0; i < array.length(); i++) {
-                JSONObject item = array.getJSONObject(i);
-                entries.add(new LeaderboardEntry(item.getString("username"), item.getString("categories"),
-                        item.getInt("score")));
+            if (response.statusCode() == INCORRECT_LOGIN) {
+                new WarningAlert("Incorrect login details.");
+                return "";
+            } else if (response.statusCode() == INTERNAL_ERROR) {
+                new WarningAlert("An internal error has occurred");
+                return "";
             }
+            JSONObject data = new JSONObject(response.body());
+            return data.getString("id");
         } catch (JSONException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -33,7 +61,7 @@ public class Login {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return entries;
+        return "";
     }
 
     /**
@@ -44,14 +72,13 @@ public class Login {
      * @param score
      * @return id (mongodb id)
      */
-    public String postLeaderboard(final String username, final String categories, final int score) {
+    public String postLeaderboard(final String username, final String password) {
         try {
             JSONObject json = new JSONObject();
-            json.put("score", score);
-            json.put("categories", categories);
             json.put("username", username);
+            json.put("password", password);
 
-            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(ENDPOINT + LEADERBOARD))
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(ENDPOINT + REGISTER))
                     .header("Content-Type", "application/json").POST(BodyPublishers.ofString(json.toString())).build();
             HttpResponse<String> response = _client.send(request, BodyHandlers.ofString());
 
