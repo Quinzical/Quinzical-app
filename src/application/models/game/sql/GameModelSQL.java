@@ -56,13 +56,6 @@ public final class GameModelSQL implements GameModel {
     }
 
     /**
-     * Used to set up the game module by calling the correct functions from
-     * supplementary classes.
-     */
-    public void setUpGameModule() {
-    }
-
-    /**
      * Get score from file to display to the user.
      * 
      * @return score

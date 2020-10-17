@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import application.controllers.helper.ExceptionAlert;
+import application.models.login.LoginModel;
 import application.models.sql.data.GameSessionData;
 import application.models.sql.data.UserData;
 import application.models.sql.db.GameSessionDB;
@@ -92,10 +93,31 @@ public final class LeaderboardModel {
                 }
 
                 if (user != null) {
-                    entries.add(new LeaderboardEntry(user.getName(), gameData.getCategoriesString(), gameData.getScore()));
+                    entries.add(
+                            new LeaderboardEntry(user.getName(), gameData.getCategoriesString(), gameData.getScore()));
                 }
             }
         }
         return entries;
+    }
+
+    /**
+     * Used to post to leaderboard.
+     */
+    public void postLeaderboard() {
+        LoginModel login = LoginModel.getInstance();
+
+        int gameSessionID = login.getGameSessionID();
+        GameSessionDB gameSessionDB = new GameSessionDB();
+        GameSessionData gameData = null;
+
+        try {
+            gameData = gameSessionDB.query(gameSessionID);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        _leaderboard.postLeaderboard(login.getUsername(), gameData.getCategoriesString(), gameData.getScore());
     }
 }
