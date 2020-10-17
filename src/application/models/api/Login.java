@@ -1,14 +1,20 @@
 package application.models.api;
 
+/**
+ * Leaderboard used to call REST API for Login Information
+ * 
+ * @author Maggie Pedersen
+ * @author Cheng-Zhen Yang
+ */
 public class Login {
-    
+
     /**
      * Used to post a login to api
      * 
      * @return id (mongodb id)
      */
-    public List<LeaderboardEntry> postLogin() {
-        List<LeaderboardEntry> entries = new ArrayList<LeaderboardEntry>();
+    public LoginEntry postLogin() {
+        LoginEntry login = null;
         try {
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create(ENDPOINT + LEADERBOARD)).GET().build();
             HttpResponse<String> response = _client.send(request, BodyHandlers.ofString());
