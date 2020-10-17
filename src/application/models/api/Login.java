@@ -26,6 +26,8 @@ public class Login {
     private static final String REGISTER = "/register";
 
     private static final int INCORRECT_LOGIN = 401;
+    private static final int SHORT_PASSWORD = 402;
+    private static final int DUPLICATE_USERNAME = 403;
     private static final int INTERNAL_ERROR = 500;
 
     private HttpClient _client = HttpClient.newHttpClient();
@@ -49,7 +51,7 @@ public class Login {
                 new WarningAlert("Incorrect login details.");
                 return "";
             } else if (response.statusCode() == INTERNAL_ERROR) {
-                new WarningAlert("An internal error has occurred");
+                new WarningAlert("An internal error has occurred.");
                 return "";
             }
             JSONObject data = new JSONObject(response.body());
@@ -64,15 +66,14 @@ public class Login {
         return "";
     }
 
+
     /**
-     * Used to post an entry to the leaderboard
      * 
      * @param username
-     * @param categories
-     * @param score
+     * @param password
      * @return id (mongodb id)
      */
-    public String postLeaderboard(final String username, final String password) {
+    public String postRegister(final String username, final String password) {
         try {
             JSONObject json = new JSONObject();
             json.put("username", username);
@@ -82,8 +83,19 @@ public class Login {
                     .header("Content-Type", "application/json").POST(BodyPublishers.ofString(json.toString())).build();
             HttpResponse<String> response = _client.send(request, BodyHandlers.ofString());
 
-            System.out.println(response.body());
-            System.out.println(json.toString());
+            if (response.statusCode() == INCORRECT_LOGIN) {
+                new WarningAlert("Username is empty.");
+                return "";
+            } else if (response.statusCode() == INTERNAL_ERROR) {
+                new WarningAlert("An internal error has occurred.");
+                return "";
+            } else if (response.statusCode() == SHORT_PASSWORD) {
+                new WarningAlert("Password is empty or too short.");
+                return "";
+            } else if (response.statusCode() == DUPLICATE_USERNAME) {
+                new WarningAlert("This username is already registered.");
+                return "";
+            }
             JSONObject data = new JSONObject(response.body());
             return data.getString("id");
         } catch (JSONException e) {

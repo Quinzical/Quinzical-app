@@ -50,9 +50,9 @@ public class LoginScreenController {
 
         String id = globalLogin(username, password);
 
-        if(id != "") {
+        if (id != "") {
             _sceneManager.unloadScene();
-        _sceneManager.switchScene(Scenes.HOME_MENU);
+            _sceneManager.switchScene(Scenes.HOME_MENU);
         }
     }
 
@@ -64,12 +64,14 @@ public class LoginScreenController {
         }
 
         String username = _usernameField.getText().trim();
-        boolean userExists = localRegister(username);
-        if (!userExists) {
-            return;
-        }
+        String password = _passwordField.getText().trim();
 
-        new SuccessAlert("The username " + username + " has been successfully registered!", "You may now login.");
+        String id = globalRegister(username, password);
+
+        if (id != "") {
+            localRegister(username);
+            new SuccessAlert("The username " + username + " has been successfully registered!", "You may now login.");
+        }
     }
 
     /**
@@ -140,8 +142,27 @@ public class LoginScreenController {
         return true;
     }
 
-    private String globalLogin(String username, String password) {
+    /**
+     * Used to login globally on Quinzical api
+     * 
+     * @param username
+     * @param password
+     * @return String id
+     */
+    private String globalLogin(final String username, final String password) {
         Login login = new Login();
         return login.postLogin(username, password);
+    }
+
+    /**
+     * Used to register globally on Quinzical api
+     * 
+     * @param username
+     * @param password
+     * @return String id
+     */
+    private String globalRegister(final String username, final String password) {
+        Login login = new Login();
+        return login.postRegister(username, password);
     }
 }
