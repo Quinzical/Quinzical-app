@@ -78,7 +78,7 @@ public final class GameModelSQL implements GameModel {
      */
     public String getGameQuestion(final Category category) {
         try {
-            QuestionData question = _questionDB.randomQuestion(category.getCategoryID());
+            QuestionData question = _questionDB.randomQuestion(category.getCategoryID(), _login.getGameSessionID());
             _questionID = question.getID();
             _categoryID = category.getCategoryID();
             return question.getQuestion();
