@@ -58,17 +58,17 @@ public final class Leaderboard {
     /**
      * Used to post an entry to the leaderboard
      * 
-     * @param username
+     * @param mongoID
      * @param categories
      * @param score
      * @return id (mongodb id)
      */
-    public String postLeaderboard(final String username, final String categories, final int score) {
+    public String postLeaderboard(final String mongoID, final String categories, final int score) {
         try {
             JSONObject json = new JSONObject();
             json.put("score", score);
             json.put("categories", categories);
-            json.put("username", username);
+            json.put("user_id", mongoID);
 
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create(ENDPOINT + LEADERBOARD))
                     .header("Content-Type", "application/json").POST(BodyPublishers.ofString(json.toString())).build();

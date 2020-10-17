@@ -49,6 +49,7 @@ public class LoginScreenController {
         }
 
         String id = globalLogin(username, password);
+        _loginModel.setMongoID(id);
 
         if (id != "") {
             _sceneManager.unloadScene();
@@ -67,6 +68,7 @@ public class LoginScreenController {
         String password = _passwordField.getText().trim();
 
         String id = globalRegister(username, password);
+        _loginModel.setMongoID(id);
 
         if (id != "") {
             localRegister(username);

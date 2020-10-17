@@ -117,7 +117,6 @@ public final class LeaderboardModel {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
-        _leaderboard.postLeaderboard(login.getUsername(), gameData.getCategoriesString(), gameData.getScore());
+        _leaderboard.postLeaderboard(login.getMongoID(), gameData.getCategoriesString(), gameData.getScore());
     }
 }

@@ -36,13 +36,6 @@ public class LeaderboardController {
      * initialize with LeaderboardScreen.fxml
      */
     public void initialize() {
-        try {
-            _leaderboard.postLeaderboard();
-        } catch (NullPointerException e) {
-            new WarningAlert("The leaderboard is not availiable as there are no players who have played a game.");
-            _sceneManager.switchScene(SceneManager.Scenes.HOME_MENU);
-        }
-
         _leaderVBox.setSpacing(DEFAULT_SPACING);
         _headerText.setText(_leaderboard.getHeader());
         List<LeaderboardEntry> leaders = _leaderboard.getLeaderboard();

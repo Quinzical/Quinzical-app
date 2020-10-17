@@ -48,7 +48,12 @@ public class LeaderboardAlert extends Alert {
                 _sceneManager.switchScene(SceneManager.Scenes.LEADERBOARD);
             } else if (choice == buttonTypeGlobal) {
                 _leaderboard.setGlobal(true);
-                _sceneManager.switchScene(SceneManager.Scenes.LEADERBOARD);
+                try {
+                    _leaderboard.postLeaderboard();
+                    _sceneManager.switchScene(SceneManager.Scenes.LEADERBOARD);
+                } catch (NullPointerException e) {
+                    new WarningAlert("The leaderboard is not availiable as there are no players who have played a game.");
+                }
             }
         }
     }
