@@ -47,6 +47,7 @@ public class LoginScreenController {
             return;
         }
 
+        _sceneManager.unloadScene();
         _sceneManager.switchScene(Scenes.HOME_MENU);
     }
 

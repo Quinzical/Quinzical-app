@@ -134,7 +134,6 @@ public final class InternationalModel {
      * @param score
      */
     public void addInternationalScore(final int score) {
-        // TODO - also add button for displaying the score on model.g
         try {
             int currentScore = _userDB.query(_login.getUserID()).getInternationalScore();
             _userDB.setInternationalScore(_login.getUserID(), currentScore + score);

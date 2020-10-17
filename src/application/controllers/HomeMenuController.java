@@ -1,6 +1,7 @@
 package application.controllers;
 
 import application.controllers.helper.ConfirmAlert;
+import application.controllers.helper.LeaderboardAlert;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.game.GameModel;
@@ -79,6 +80,7 @@ public class HomeMenuController {
      */
     @FXML
     private void handlePracticeButton(final ActionEvent event) {
+        _sceneManager.unloadScene();
         _sceneManager.switchScene(Scenes.PRACTICE_MENU);
     }
 
@@ -89,6 +91,7 @@ public class HomeMenuController {
      */
     @FXML
     private void handleInternationalButton(final ActionEvent event) {
+        _sceneManager.unloadScene();
         _sceneManager.switchScene(Scenes.INTERNATIONAL_QUESTION);
     }
 
@@ -99,6 +102,7 @@ public class HomeMenuController {
      */
     @FXML
     private void handleSettingsButton(final ActionEvent event) {
+        _sceneManager.unloadScene();
         _sceneManager.switchScene(Scenes.SETTINGS_MENU);
     }
 
@@ -109,6 +113,7 @@ public class HomeMenuController {
      */
     @FXML
     private void handleLogoutButton(final ActionEvent event) {
+        _sceneManager.unloadScene();
         _sceneManager.switchScene(SceneManager.Scenes.LOGIN_SCREEN);
     }
 
@@ -119,6 +124,7 @@ public class HomeMenuController {
      */
     @FXML
     private void handleHelpButton(final ActionEvent event) {
+        _sceneManager.unloadScene();
         _sceneManager.switchScene(SceneManager.Scenes.HELP_SCREEN);
     }
 
@@ -129,6 +135,6 @@ public class HomeMenuController {
      */
     @FXML
     private void handleLeaderboardButton(final ActionEvent event) {
-        _sceneManager.switchScene(SceneManager.Scenes.LEADERBOARD);
+        new LeaderboardAlert();
     }
 }

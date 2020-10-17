@@ -193,8 +193,37 @@ public class GameSessionDB {
      * @return int gameSessionID for a particular user
      */
     public int getGameSessionID(final int userID) throws SQLException {
+        GameSessionData session = idQuery(userID);
+        if (session == null) {
+            return 0;
+        }
+        return session.getID();
+    }
+
+    /**
+     * Used to get score for the current user.
+     * 
+     * @param userID
+     * @return score
+     */
+    public int getScore(final int userID) throws SQLException {
+        GameSessionData session = idQuery(userID);
+        if (session == null) {
+            return 0;
+        }
+        return session.getScore();
+    }
+
+    /**
+     * Used to find the game session of a particular userID
+     * 
+     * @param userID
+     * @return id
+     * @throws SQLException
+     */
+    private GameSessionData idQuery(final int userID) throws SQLException {
         Connection conn = SQLConnection.createConnection();
-        String sql = "SELECT * FROM game_sessions WHERE user_id=? ORDER BY id DESC";
+        String sql = "SELECT * FROM game_sessions WHERE user_id=? ORDER BY score DESC";
 
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setString(1, Integer.toString(userID));
@@ -205,14 +234,34 @@ public class GameSessionDB {
             session = new GameSessionData(rs.getInt("id"), rs.getInt("user_id"), rs.getString("categories"),
                     rs.getString("questions"), rs.getInt("score"));
         }
-
         pstmt.close();
         rs.close();
         SQLConnection.closeConnection(conn);
+        return session;
+    }
 
-        if (session == null) {
-            return 0;
+    /**
+     * Used to get an ordered list of the current game sessions
+     * 
+     * @return gamesessiondata
+     * @throws SQLException
+     */
+    public List<GameSessionData> getLeaderboardList() throws SQLException {
+        List<GameSessionData> users = new ArrayList<GameSessionData>();
+
+        Connection conn = SQLConnection.createConnection();
+        String sql = "SELECT * FROM game_sessions ORDER BY score DESC";
+
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(sql);
+        while (rs.next()) {
+            users.add(new GameSessionData(rs.getInt("id"), rs.getInt("user_id"), rs.getString("categories"),
+                    rs.getString("questions"), rs.getInt("score")));
         }
-        return session.getID();
+
+        stmt.close();
+        rs.close();
+        SQLConnection.closeConnection(conn);
+        return users;
     }
 }

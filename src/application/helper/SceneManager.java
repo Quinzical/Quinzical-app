@@ -66,8 +66,6 @@ public final class SceneManager {
         LOGIN_SCREEN("LoginScreen.fxml"),
         /** Leaderboard scene */
         LEADERBOARD("LeaderboardScreen.fxml"),
-        /** International Leaderboard scene */
-        INTERNATIONAL_LEADERBOARD("InternationalLeaderboard.fxml"),
         /** Category chooser scene */
         CATEGORY_CHOOSER("CategoryChooser.fxml"),
         /** Help Screen scene */
