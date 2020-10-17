@@ -3,7 +3,6 @@ package application.controllers;
 import java.util.List;
 
 import application.controllers.helper.LeaderboardPosition;
-import application.controllers.helper.WarningAlert;
 import application.helper.SceneManager;
 import application.models.api.LeaderboardEntry;
 import application.models.api.LeaderboardModel;
@@ -56,7 +55,7 @@ public class LeaderboardController {
     @FXML
     private void handleBackButton(final ActionEvent event) {
         _sceneManager.unloadScene();
-        _sceneManager.switchScene(SceneManager.Scenes.HOME_MENU);
+        _sceneManager.backScene();
     }
 
     /**

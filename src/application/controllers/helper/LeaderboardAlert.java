@@ -52,7 +52,7 @@ public class LeaderboardAlert extends Alert {
                     _leaderboard.postLeaderboard();
                     _sceneManager.switchScene(SceneManager.Scenes.LEADERBOARD);
                 } catch (NullPointerException e) {
-                    new WarningAlert("The leaderboard is not availiable as there are no players who have played a game.");
+                    new WarningAlert("The leaderboard is not availiable as there are no global players who have finished a game.");
                 }
             }
         }

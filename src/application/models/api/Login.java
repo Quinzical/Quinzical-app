@@ -8,7 +8,6 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse.BodyHandlers;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -35,6 +34,8 @@ public class Login {
     /**
      * Used to post a login to api
      * 
+     * @param username
+     * @param password
      * @return id (mongodb id)
      */
     public String postLogin(final String username, final String password) {
