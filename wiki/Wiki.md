@@ -235,7 +235,7 @@ QuestionModels - singleton
 *   Colour theme black and yellow buttons are easy to read
 *   Target user - adult
 *   Show responsiveness using GIF
-*  code design
+*  Code design
 *   data structure by user - future proofing for final project
 *   MVC - one per scene - easy to remove single scene (no dependency)
 *   SceneManager loader for faster load time
@@ -370,7 +370,7 @@ QuestionModels - singleton
 * Local login - users - id, api_id, username
 * Submit multiple 
 * Insert, query, leaderboard all online
-* Offline mode? - practice module
+* Offline mode? Only able to play practice module
 
 ##### Login
 * Username - no spaces
