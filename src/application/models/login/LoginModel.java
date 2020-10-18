@@ -21,7 +21,7 @@ public final class LoginModel {
     private int _userID;
     private int _gameSessionID = 0;
     private boolean _unlock;
-    private String _mongoID;
+    private String _mongoID = "";
     private String _jwtToken;
 
     private UserDB _userDB = new UserDB();

@@ -75,8 +75,8 @@ public final class SplashModel {
         switch (_page) {
             case SQL:
                 _team.submit(() -> SQLConnection.getInstance());
-                _team.submit(new AutoLogin());
                 _team.submit(new APILoader());
+                _team.submit(new AutoLogin());
                 break;
             case INTERNATIONAL:
                 _team.submit(() -> InternationalModel.getInstance().retrieveQuestion());

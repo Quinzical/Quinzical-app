@@ -9,6 +9,8 @@ import application.controllers.helper.WarningAlert;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.api.Login;
+import application.models.api.LoginEntry;
+import application.models.helper.JWTStore;
 import application.models.login.LoginModel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -61,16 +63,22 @@ public class LoginScreenController {
 
         String username = _usernameField.getText().trim();
         String password = _passwordField.getText().trim();
-        boolean userExists = localLogin(username);
-        if (!userExists) {
-            new WarningAlert("Invalid username. Register it or try again.");
+
+        LoginEntry entry = globalLogin(username, password);
+        if (entry == null) {
             return;
         }
+        _loginModel.setMongoID(entry.getUserID());
 
-        String id = globalLogin(username, password);
-        _loginModel.setMongoID(id);
+        if (entry.getUserID() != "") {
 
-        if (id != "") {
+            boolean userExists = localLogin(username);
+            if (!userExists) {
+                localRegister(username);
+                localLogin(username);
+            }
+            JWTStore jwtStore = new JWTStore();
+            jwtStore.setJWT(entry.getJwtToken());
             _sceneManager.unloadScene();
             _sceneManager.switchScene(Scenes.HOME_MENU);
         }
@@ -86,10 +94,15 @@ public class LoginScreenController {
         String username = _usernameField.getText().trim();
         String password = _passwordField.getText().trim();
 
-        String id = globalRegister(username, password);
-        _loginModel.setMongoID(id);
+        LoginEntry entry = globalRegister(username, password);
+        if (entry == null) {
+            return;
+        }
+        _loginModel.setMongoID(entry.getUserID());
 
-        if (id != "") {
+        if (entry.getUserID() != "") {
+            JWTStore jwtStore = new JWTStore();
+            jwtStore.setJWT(entry.getJwtToken());
             localRegister(username);
             new SuccessAlert("The username " + username + " has been successfully registered!", "You may now login.");
         }
@@ -137,7 +150,7 @@ public class LoginScreenController {
      * @param username
      * @return boolean
      */
-    private boolean localLogin(final String username) {
+    public boolean localLogin(final String username) {
         boolean userExists = false;
 
         try {
@@ -155,7 +168,7 @@ public class LoginScreenController {
      * @param username
      * @return boolean
      */
-    private boolean localRegister(final String username) {
+    public boolean localRegister(final String username) {
         boolean userExists = false;
         try {
             userExists = _loginModel.checkUserExists(username);
@@ -185,9 +198,9 @@ public class LoginScreenController {
      * @param password
      * @return String id
      */
-    private String globalLogin(final String username, final String password) {
+    private LoginEntry globalLogin(final String username, final String password) {
         Login login = new Login();
-        return login.postLogin(username, password).getUserID();
+        return login.postLogin(username, password);
     }
 
     /**
@@ -197,8 +210,8 @@ public class LoginScreenController {
      * @param password
      * @return String id
      */
-    private String globalRegister(final String username, final String password) {
+    private LoginEntry globalRegister(final String username, final String password) {
         Login login = new Login();
-        return login.postRegister(username, password).getUserID();
+        return login.postRegister(username, password);
     }
 }

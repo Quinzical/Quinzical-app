@@ -14,6 +14,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import application.models.helper.JWTStore;
+
 /**
  * Leaderboard used to call REST API for Global Leaderboard Information
  * 
@@ -66,10 +68,11 @@ public final class Leaderboard {
             JSONObject json = new JSONObject();
             json.put("score", score);
             json.put("categories", categories);
-            json.put("user_id", mongoID);
 
+            JWTStore jwtStore = new JWTStore();
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create(ENDPOINT + LEADERBOARD))
-                    .header("Content-Type", "application/json").POST(BodyPublishers.ofString(json.toString())).build();
+                    .header("Content-Type", "application/json").header("Authorization", "Bearer " + jwtStore.getJWT())
+                    .POST(BodyPublishers.ofString(json.toString())).build();
             HttpResponse<String> response = _client.send(request, BodyHandlers.ofString());
 
             JSONObject data = new JSONObject(response.body());

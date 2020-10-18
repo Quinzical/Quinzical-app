@@ -5,6 +5,7 @@ import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.game.GameModel;
 import application.models.game.sql.GameModelSQL;
+import application.models.helper.JWTStore;
 import application.models.login.LoginModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -94,6 +95,8 @@ public class HomeMenuController {
     private void handleLogoutButton(final ActionEvent event) {
         _sceneManager.unloadAllScenes();
         _sceneManager.switchScene(SceneManager.Scenes.LOGIN_SCREEN);
+        JWTStore jwtStore = new JWTStore();
+        jwtStore.setJWT("");
     }
 
     /**

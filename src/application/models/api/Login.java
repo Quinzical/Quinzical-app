@@ -35,15 +35,17 @@ public class Login {
     /**
      * Used to getSelf from api
      * 
+     * @param jwtToken
      * @return LoginEntry
      */
-    public LoginEntry getSelf() {
+    public LoginEntry getSelf(final String jwtToken) {
         try {
-            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(ENDPOINT + SELF)).GET().build();
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(ENDPOINT + SELF))
+                    .header("Authorization", "Bearer " + jwtToken).GET().build();
             HttpResponse<String> response = _client.send(request, BodyHandlers.ofString());
             JSONObject body = new JSONObject(response.body());
             System.out.println(body);
-            return new LoginEntry(body.getString("username"), body.getString("_id"));
+            return new LoginEntry(body.getString("username"), body.getString("_id"), jwtToken);
         } catch (JSONException e) {
             e.printStackTrace();
         } catch (IOException | InterruptedException e) {
@@ -77,7 +79,7 @@ public class Login {
                 return null;
             }
             JSONObject data = new JSONObject(response.body());
-            return new LoginEntry(data.getString("username"), data.getString("id"));
+            return new LoginEntry(data.getString("username"), data.getString("id"), data.getString("bearer"));
         } catch (JSONException e) {
             e.printStackTrace();
         } catch (IOException | InterruptedException e) {
@@ -117,7 +119,7 @@ public class Login {
                 return null;
             }
             JSONObject data = new JSONObject(response.body());
-            return new LoginEntry(data.getString("username"), data.getString("id"));
+            return new LoginEntry(data.getString("username"), data.getString("id"), data.getString("bearer"));
         } catch (JSONException e) {
             e.printStackTrace();
         } catch (IOException | InterruptedException e) {
