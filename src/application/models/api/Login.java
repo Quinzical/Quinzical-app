@@ -23,6 +23,7 @@ public class Login {
     private static final String ENDPOINT = "https://quinzical-api.herokuapp.com";
     private static final String LOGIN = "/login";
     private static final String REGISTER = "/register";
+    private static final String SELF = "/self";
 
     private static final int INCORRECT_LOGIN = 401;
     private static final int SHORT_PASSWORD = 402;
@@ -32,13 +33,33 @@ public class Login {
     private HttpClient _client = HttpClient.newHttpClient();
 
     /**
+     * Used to getSelf from api
+     * 
+     * @return LoginEntry
+     */
+    public LoginEntry getSelf() {
+        try {
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(ENDPOINT + SELF)).GET().build();
+            HttpResponse<String> response = _client.send(request, BodyHandlers.ofString());
+            JSONObject body = new JSONObject(response.body());
+            System.out.println(body);
+            return new LoginEntry(body.getString("username"), body.getString("_id"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
      * Used to post a login to api
      * 
      * @param username
      * @param password
-     * @return id (mongodb id)
+     * @return LoginEntry
      */
-    public String postLogin(final String username, final String password) {
+    public LoginEntry postLogin(final String username, final String password) {
         try {
             JSONObject json = new JSONObject();
             json.put("username", username);
@@ -50,31 +71,29 @@ public class Login {
 
             if (response.statusCode() == INCORRECT_LOGIN) {
                 new WarningAlert("Incorrect login details.");
-                return "";
+                return null;
             } else if (response.statusCode() == INTERNAL_ERROR) {
                 new WarningAlert("An internal error has occurred.");
-                return "";
+                return null;
             }
             JSONObject data = new JSONObject(response.body());
-            return data.getString("id");
+            return new LoginEntry(data.getString("username"), data.getString("id"));
         } catch (JSONException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
-        return "";
+        return null;
     }
 
-
     /**
+     * Used to register a new user
      * 
      * @param username
      * @param password
-     * @return id (mongodb id)
+     * @return LoginEntry
      */
-    public String postRegister(final String username, final String password) {
+    public LoginEntry postRegister(final String username, final String password) {
         try {
             JSONObject json = new JSONObject();
             json.put("username", username);
@@ -86,26 +105,24 @@ public class Login {
 
             if (response.statusCode() == INCORRECT_LOGIN) {
                 new WarningAlert("Username is empty.");
-                return "";
+                return null;
             } else if (response.statusCode() == INTERNAL_ERROR) {
                 new WarningAlert("An internal error has occurred.");
-                return "";
+                return null;
             } else if (response.statusCode() == SHORT_PASSWORD) {
                 new WarningAlert("Password is empty or too short.");
-                return "";
+                return null;
             } else if (response.statusCode() == DUPLICATE_USERNAME) {
                 new WarningAlert("This username is already registered.");
-                return "";
+                return null;
             }
             JSONObject data = new JSONObject(response.body());
-            return data.getString("id");
+            return new LoginEntry(data.getString("username"), data.getString("id"));
         } catch (JSONException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
-        return "";
+        return null;
     }
 }

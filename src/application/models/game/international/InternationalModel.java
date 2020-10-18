@@ -12,10 +12,8 @@ import org.json.JSONObject;
 
 import application.controllers.helper.ExceptionAlert;
 import application.models.helper.QuestionHelper;
-import application.models.login.LoginModel;
 import application.models.sql.data.GameSessionData;
 import application.models.sql.db.GameSessionDB;
-import application.models.sql.db.UserDB;
 
 /**
  * This class is used to delegate tasks to different classes who carry out tasks

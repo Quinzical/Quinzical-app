@@ -30,6 +30,12 @@ public class LoginScreenController {
     @FXML
     private TextField _passwordField;
 
+    /**
+     * initialize with LoginScreen.fxml
+     */
+    public void initialize() {
+    }
+
     @FXML
     private void handleLoginButton() {
         if (_usernameField.getText().isEmpty()) {
@@ -153,7 +159,7 @@ public class LoginScreenController {
      */
     private String globalLogin(final String username, final String password) {
         Login login = new Login();
-        return login.postLogin(username, password);
+        return login.postLogin(username, password).getUserID();
     }
 
     /**
@@ -165,6 +171,6 @@ public class LoginScreenController {
      */
     private String globalRegister(final String username, final String password) {
         Login login = new Login();
-        return login.postRegister(username, password);
+        return login.postRegister(username, password).getUserID();
     }
 }

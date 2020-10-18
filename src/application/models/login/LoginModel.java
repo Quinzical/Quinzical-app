@@ -22,6 +22,7 @@ public final class LoginModel {
     private int _gameSessionID = 0;
     private boolean _unlock;
     private String _mongoID;
+    private String _jwtToken;
 
     private UserDB _userDB = new UserDB();
 
@@ -168,5 +169,23 @@ public final class LoginModel {
      */
     public void setMongoID(final String mongoID) {
         _mongoID = mongoID;
+    }
+
+    /**
+     * Used to return the jwt token for the current session
+     * 
+     * @return String
+     */
+    public String getJwtToken() {
+        return _jwtToken;
+    }
+
+    /**
+     * Used to set the jwt token for the current session
+     * 
+     * @param jwtToken
+     */
+    public void setJwtToken(final String jwtToken) {
+        _jwtToken = jwtToken;
     }
 }

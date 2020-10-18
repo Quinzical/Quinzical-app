@@ -10,7 +10,7 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 
 /**
- * This process is designed to load DB.
+ * This process is designed to wait for server to start on heroku.
  *
  * @author Maggie Pedersen
  * @author Cheng-Zhen Yang
@@ -22,13 +22,13 @@ public class APILoader extends Task<Void> {
     private HttpClient _client = HttpClient.newHttpClient();
 
     /**
-     * Construct process for loading SQL database
+     * Construct process for loading heroku to cold boot
      */
     public APILoader() {
     }
 
     /**
-     * Run in process in background with cancelled option.
+     * Run in process in background.
      */
     @Override
     protected Void call() throws IOException, InterruptedException {

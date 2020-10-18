@@ -3,7 +3,6 @@ package application.controllers.helper;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.helper.Category;
-import application.models.question.QuestionModel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;

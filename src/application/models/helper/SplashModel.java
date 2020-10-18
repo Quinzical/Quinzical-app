@@ -7,9 +7,9 @@ import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.api.LeaderboardModel;
 import application.models.game.international.InternationalModel;
-import application.models.login.LoginModel;
 import application.models.sql.SQLConnection;
 import application.processes.APILoader;
+import application.processes.AutoLogin;
 import javafx.concurrent.Task;
 
 /**
@@ -75,7 +75,7 @@ public final class SplashModel {
         switch (_page) {
             case SQL:
                 _team.submit(() -> SQLConnection.getInstance());
-                _team.submit(() -> LoginModel.getInstance());
+                _team.submit(new AutoLogin());
                 _team.submit(new APILoader());
                 break;
             case INTERNATIONAL:
