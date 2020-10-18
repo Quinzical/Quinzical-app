@@ -1,4 +1,4 @@
-# Wiki for team-44 assignment three
+# Wiki for team-44 Assignment Three, Four and Project
 ## This wiki contains meeting notes from Zoom meetings that were held twice weekly over the course of this assignment construction
 ---
 ### Meeting 1: 07/09/2020
@@ -142,7 +142,7 @@ QuestionModels - singleton
 
 ---
 
-### Meeting 4: 21/09/2020
+### Meeting 5: 25/09/2020
 #### Meeting Plan
 ##### TODO
 * Wiki
@@ -178,7 +178,7 @@ QuestionModels - singleton
 
 ---
 
-### Meeting 5: 28/09/2020
+### Meeting 6: 28/09/2020
 #### Meeting Plan
 ##### TODO
 * SettingsMenu
@@ -202,7 +202,7 @@ QuestionModels - singleton
 
 ---
 
-### Meeting 5: 2/10/2020
+### Meeting 7: 2/10/2020
 #### Meeting Plan
 ##### TODO
 * Compile application
@@ -216,3 +216,168 @@ QuestionModels - singleton
 #### Next meeting plan
 * Next meeting: Monday afternoon (5/10/2020).
 * Sort out presentation and begin project.
+
+---
+
+### Meeting 8: 5/10/2020
+#### Meeting Plan
+##### Presentation
+* Background needs work
+* Use git GIFs to show branches, commits etc
+* Replace our common vision with team agreement
+* Show team agreement
+* Git, agile etc
+
+* Design choices:
+*  GUI design 
+*   NZ themed
+*    Logo is another subtle nod to NZ
+*   Colour theme black and yellow buttons are easy to read
+*   Target user - adult
+*   Show responsiveness using GIF
+*  code design
+*   data structure by user - future proofing for final project
+*   MVC - one per scene - easy to remove single scene (no dependency)
+*   SceneManager loader for faster load time
+*   Packages makes our code easier to manage
+*   Github PR code is of higher quality as each persons code gets reviewed
+
+* Live Demo
+*  Show main features, games and practice module
+*  CZ to do the live demo
+
+* GIFs to make:
+*  Team agreement
+*  Git branching
+*  Feedback design
+*  Finishing the game with reward screen
+*  Package structure
+*  Responsive GUI
+
+* Test run on zoom before presentation
+
+##### Final project
+* The ability to add more Clues and Answers to the database
+* Help on how to use the different features of the tool
+* User choosing 5 categories 
+*  So multiple users can compare their performance
+* Email nasser for firebase or sql based on what he says
+* International question section 
+* Custom exceptions?
+
+
+#### Next meeting plan
+* Next meeting: Wednesday afternoon (7/10/2020).
+*  Practice presentation
+* Get presentation slides ready
+* Script on google docs
+* Email to nasser
+
+---
+
+### Meeting 9: 7/10/20
+#### Meeting Plan
+* Check script
+* Do presentation run
+* Time the presentation
+
+##### SQL
+* REST API - javascript, nodejs, mongodb, heroku, CI/CD, mongodb atlas
+* Backend will have leaderboard, additional questions
+* Post score into backend - leaderboard (table)
+* Get the leaderboard table
+* Put (add questions) to question bank (table)
+* Get query question bank 
+*Wrote out tables*
+
+
+#### Next meeting plan
+* Next meeting: Friday afternoon (9/10/2020)
+* Setup sqlite package
+* Create new scenes
+* Create rest api repo
+* 9:45am  presentation on Friday
+* 2 hr 40 min meeting, well done
+
+---
+
+### Meeting 10: 9/10/20
+#### Meeting Plan
+* Meeting was carried out while waiting for our presentation, we created the rest api
+* Maggie learnt what monogDB is
+
+
+#### Next meeting plan
+* Next meeting: Monday morning (12/10/2020)
+
+---
+
+### Meeting 11: 12/10/20
+#### Meeting Plan
+* Need scene for adding pages for adding question/categories
+* Leaderboard
+* Completed - category every question has been attempted
+* You have unlocked the international section, go out to the main menu to play
+* End of the game after the five categories have been completed
+
+
+#### Next meeting plan
+* Next meeting: Thursday afternoon (15/10/2020)
+* Repeated question fix 
+* Test SQL speed
+
+---
+
+### Meeting 12: 15/10/20
+#### Meeting Plan
+* Pair programming for 2.5 hours
+
+
+#### Next meeting plan
+* Next meeting: Satruday afternoon (17/10/2020)
+* Add login
+* Add leaderboard
+
+---
+
+### Meeting 13: 17/10/2020
+#### Meeting Plan
+* Do rest api over zoom
+* Cheng-Zhen guided Maggie through the process, good teacher
+
+##### TODO
+* Fix question answer (what is)
+*  Goes incorrect if you put what is etc before the answer
+* Adding questions
+* Add UI for user to add questions
+*  Drop down for prompt
+*  Multiple answers
+*  Maybe add to cloud if we have time
+* Fix getting the same question in a category
+* International Section
+*  Delete users fields, add unlock
+*  Add international button into game module view
+*  International score would effect game score
+*  Limited number of attempts for international section?
+*  Score is the same as game_session
+* Chart - javafx
+* User Manual (docs)
+* User Login API
+*  ID
+*  Username - no spaces
+*  Password - at least 6 letters?
+* Add timeout/server check before login 
+* Local login - users - id, api_id, username
+* Submit multiple 
+* Insert, query, leaderboard all online
+* Offline mode? - practice module
+
+##### Login
+* Username - no spaces
+* Password - at least 6 letters?
+* Add timeout/server check before login 
+* Local login though db 
+
+#### Next meeting plan
+* Next meeting: Tuesday afternoon (20/10/2020)
+* Do finishing touches before A4 submission
