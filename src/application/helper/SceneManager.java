@@ -71,7 +71,9 @@ public final class SceneManager {
         /** Help Screen scene */
         HELP_SCREEN("HelpScreen.fxml"),
         /** Edit Menu scene */
-        EDIT_MENU("EditMenu.fxml");
+        EDIT_MENU("EditMenu.fxml"),
+        /** Offline menu scene */
+        OFFLINE("Offline.fxml");
 
         private final String _filename;
 

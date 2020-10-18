@@ -92,14 +92,20 @@
             <Insets />
          </VBox.margin>
       </HBox>
-        <Button fx:id="_exit" alignment="CENTER" mnemonicParsing="false" onAction="#handleExitButton" prefHeight="25.0" prefWidth="175.0" styleClass="exit-button" text="Exit" textAlignment="CENTER">
-            <font>
-                <Font size="24.0" />
-            </font>
-            <VBox.margin>
-                <Insets />
-            </VBox.margin>
-        </Button>
+      <HBox alignment="CENTER" spacing="25.0">
+         <children>
+            <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#handleOfflineButton" prefHeight="25.0" prefWidth="175.0" styleClass="exit-button" text="Play Offline" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+              <Button fx:id="_exit" alignment="CENTER" mnemonicParsing="false" onAction="#handleExitButton" prefHeight="25.0" prefWidth="175.0" styleClass="exit-button" text="Exit" textAlignment="CENTER">
+                  <font>
+                      <Font size="24.0" />
+                  </font>
+              </Button>
+         </children>
+      </HBox>
         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
             <children>
             <AnchorPane prefHeight="86.0" prefWidth="1213.0">

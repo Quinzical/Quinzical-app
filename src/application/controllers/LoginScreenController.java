@@ -120,6 +120,17 @@ public class LoginScreenController {
         };
     }
 
+
+    /**
+     * Used to handle offline button
+     * 
+     * @param event
+     */
+    @FXML
+    private void handleOfflineButton(final ActionEvent event) {
+        _sceneManager.switchScene(Scenes.OFFLINE);
+    }
+
     /**
      * Used to login to local DB
      * 
