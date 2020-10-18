@@ -51,6 +51,12 @@
   -fx-stroke-width: 2px;
 }
 
+.login.label .text {
+  -fx-font-size: 30px;
+  -fx-font-weight: bold;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 3, 0, 0, 0);
+}
+
 .darkblue.label .text {
   -fx-fill: #a9b8ff;
   -fx-stroke: #5271ff;

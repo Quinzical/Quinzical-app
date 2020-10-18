@@ -130,13 +130,13 @@ public class InternationalQuestionController {
             speak(correctAnswer + " is Correct");
             _infoLabel.setText("Correct");
             _infoLabel.setStyle("-fx-text-fill: green;");
-            _internationalModel.addInternationalScore( _login.getGameSessionID(), _internationalModel.getInternationalValue());
+            _internationalModel.addInternationalScore(_login.getGameSessionID(), _internationalModel.getInternationalValue());
             _currentScore.setText("$" + Integer.toString(_gameModel.getScore()));
         } else {
             speak(oldAnswer + " is Incorrect. The answer s " + correctAnswer);
             _infoLabel.setText("Incorrect");
             _infoLabel.setStyle("-fx-text-fill: red;");
-            _internationalModel.addInternationalScore( _login.getGameSessionID(), -_internationalModel.getInternationalValue());
+            _internationalModel.addInternationalScore(_login.getGameSessionID(), -_internationalModel.getInternationalValue());
             if (_gameModel.getScore() < _internationalModel.getInternationalValue()) {
                 _submitButton.setDisable(true);
             }

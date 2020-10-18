@@ -10,8 +10,13 @@ import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.api.Login;
 import application.models.login.LoginModel;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+
 
 /**
  * This class is the LoginScreen controller in a MVC design.
@@ -34,10 +39,18 @@ public class LoginScreenController {
      * initialize with LoginScreen.fxml
      */
     public void initialize() {
+        _passwordField.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(final KeyEvent keyEvent) {
+                if (keyEvent.getCode() == KeyCode.ENTER) {
+                    handleLoginButton(new ActionEvent());
+                }
+            }
+        });
     }
 
     @FXML
-    private void handleLoginButton() {
+    private void handleLoginButton(final ActionEvent event) {
         if (_usernameField.getText().isEmpty()) {
             new WarningAlert("Please enter a username.");
             return;
@@ -64,7 +77,7 @@ public class LoginScreenController {
     }
 
     @FXML
-    private void handleRegisterButton() {
+    private void handleRegisterButton(final ActionEvent event) {
         if (_usernameField.getText().isEmpty()) {
             new WarningAlert("Please enter a username.");
             return;
@@ -84,17 +97,21 @@ public class LoginScreenController {
 
     /**
      * Used to handle setting button
+     * 
+     * @param event
      */
     @FXML
-    private void handleSettingsButton() {
+    private void handleSettingsButton(final ActionEvent event) {
         _sceneManager.switchScene(Scenes.SETTINGS_MENU);
     }
 
     /**
      * Used to handle exit button
+     * 
+     * @param event
      */
     @FXML
-    private void handleExitButton() {
+    private void handleExitButton(final ActionEvent event) {
         new ConfirmAlert("Quit the Game") {
             @Override
             protected void handleConfirm() {
