@@ -22,7 +22,7 @@
                         <Image url="@images/darklogo.png" />
                     </image>
                 </ImageView>
-                <Label prefHeight="117.0" prefWidth="411.0" text="Quinzical">
+                <Label text="Quinzical">
                     <styleClass>
                         <String fx:value="outline" />
                         <String fx:value="header" />
