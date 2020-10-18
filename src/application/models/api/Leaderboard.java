@@ -75,12 +75,11 @@ public final class Leaderboard {
             HttpResponse<String> response = _client.send(request, BodyHandlers.ofString());
 
             JSONObject data = new JSONObject(response.body());
+            System.out.println(response.body());
             return data.getString("id");
         } catch (JSONException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
         return "";

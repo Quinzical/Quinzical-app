@@ -34,8 +34,6 @@ public final class InternationalModel {
     private static final String RANDOM = "/api/random";
 
     private HttpClient _client = HttpClient.newHttpClient();
-    private UserDB _userDB = new UserDB();
-    private LoginModel _login = LoginModel.getInstance();
 
     private String _currentQuestion;
     private String _currentAnswer;
@@ -167,19 +165,18 @@ public final class InternationalModel {
         return _correct;
     }
 
-    public void addInternationalScore(int gameSessionID, int score) {
+    /**
+     * Add international score
+     * 
+     * @param gameSessionID
+     * @param score
+     */
+    public void addInternationalScore(final int gameSessionID, final int score) {
         GameSessionDB gameSessionDB = new GameSessionDB();
         GameSessionData gameSession = null;
         try {
             gameSession = gameSessionDB.query(gameSessionID);
-        } catch (SQLException e1) {
-            new ExceptionAlert(e1);
-            e1.printStackTrace();
-        }
-        if (_correct) {
             gameSession.setScore(gameSession.getScore() + score);
-        }
-        try {
             gameSessionDB.update(gameSession);
         } catch (SQLException e) {
             new ExceptionAlert(e);

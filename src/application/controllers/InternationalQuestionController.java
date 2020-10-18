@@ -65,14 +65,14 @@ public class InternationalQuestionController {
      * Used to initialize InternalQuestionController and speak question
      */
     public void initialize() {
-        _currentScore.setText("$" + Integer.toString(GameModelSQL.getInstance().getScore()));
+        _currentScore.setText("$" + Integer.toString(_gameModel.getScore()));
         String question = _internationalModel.getInternationalQuestion();
 
         _questionLabel.setText(question);
 
         _speak = new SpeakProcess(question);
         _categoryName.setText(_internationalModel.getInternationalCategory());
-        _infoLabel.setText("");
+        _infoLabel.setText("Worth $" + Integer.toString(_internationalModel.getInternationalValue()));
         _team.submit(_speak);
         _answerTextField.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
@@ -136,6 +136,11 @@ public class InternationalQuestionController {
             speak(oldAnswer + " is Incorrect. The answer s " + correctAnswer);
             _infoLabel.setText("Incorrect");
             _infoLabel.setStyle("-fx-text-fill: red;");
+            _internationalModel.addInternationalScore( _login.getGameSessionID(), -_internationalModel.getInternationalValue());
+            if (_gameModel.getScore() < _internationalModel.getInternationalValue()) {
+                _submitButton.setDisable(true);
+            }
+            _currentScore.setText("$" + Integer.toString(_gameModel.getScore()));
             _answerTextField.setText("Answer: " + correctAnswer);
         }
         createNextQuestionButton();
@@ -215,7 +220,7 @@ public class InternationalQuestionController {
      * Used to go back to scene
      */
     private void back() {
-        _sceneManager.backSceneTwice();
+        _sceneManager.unloadScene();
         _sceneManager.switchScene(Scenes.GAME_MENU);
     }
 

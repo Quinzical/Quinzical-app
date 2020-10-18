@@ -67,8 +67,6 @@ public final class LeaderboardModel {
 
     /**
      * Loads the current leaderboard
-     * 
-     * @return List<LeaderboardEntry>
      */
     public void loadLeaderboard() {
         _entries = new ArrayList<LeaderboardEntry>();
@@ -104,6 +102,8 @@ public final class LeaderboardModel {
 
     /**
      * Used to get current leaderboard
+     * 
+     * @return List<LeaderboardEntry>
      */
     public List<LeaderboardEntry> getLeaderboard() {
         return _entries;

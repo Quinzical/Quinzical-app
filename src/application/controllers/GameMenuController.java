@@ -153,6 +153,14 @@ public class GameMenuController {
      */
     @FXML
     private void handleInternationalButton(final ActionEvent event) {
+        if (_gameModel.getScore() < 0) {
+            new ConfirmAlert("You must have a score 0 or higher to attempt an international question.") {
+                @Override
+                protected void handleConfirm() {
+                }
+            };
+            return;
+        }
         SplashModel.getInstance().setNextScene(Scenes.INTERNATIONAL_QUESTION, Pages.INTERNATIONAL);
         _sceneManager.unloadScene();
         _sceneManager.switchScene(Scenes.SPLASH_SCREEN);

@@ -42,6 +42,12 @@
             <font>
                 <Font name="System Bold" size="39.0" />
             </font>
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding>
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" />
+         </VBox.margin>
         </Label>
         <Button alignment="CENTER" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#handlePlaybackButton" prefHeight="50.0" prefWidth="50.0" textAlignment="CENTER">
             <font>
