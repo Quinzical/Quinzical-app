@@ -52,7 +52,6 @@ public class LoginScreenController {
         _loginModel.setMongoID(id);
 
         if (id != "") {
-            System.out.println(id);
             _sceneManager.unloadScene();
             _sceneManager.switchScene(Scenes.HOME_MENU);
         }
