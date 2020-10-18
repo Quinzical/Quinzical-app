@@ -1,5 +1,6 @@
 package application.models.question;
 
+import application.models.game.GameModel;
 import application.models.game.sql.GameModelSQL;
 import application.models.helper.Category;
 import application.models.practice.PracticeModel;
@@ -18,7 +19,7 @@ public final class QuestionModel {
     private static QuestionModel _instance;
 
     private PracticeModel _practiceModel = PracticeModelSQL.getInstance();
-    private GameModelSQL _gameModel = GameModelSQL.getInstance();
+    private GameModel _gameModel = GameModelSQL.getInstance();
 
     private boolean _practice;
     private Category _category;

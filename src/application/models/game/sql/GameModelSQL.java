@@ -12,6 +12,7 @@ import application.helper.SceneManager.Scenes;
 import application.models.api.LeaderboardModel;
 import application.models.game.GameModel;
 import application.models.helper.Category;
+import application.models.helper.QuestionHelper;
 import application.models.login.LoginModel;
 import application.models.sql.data.CategoryData;
 import application.models.sql.data.QuestionData;
@@ -114,34 +115,17 @@ public final class GameModelSQL implements GameModel {
      * @return boolean true if correct, false if incorrect
      */
     public boolean checkGameAnswer(final String userAnswer, final String questionValue) {
+        QuestionHelper helper = QuestionHelper.getInstance();
         _score = Integer.valueOf(questionValue);
         boolean correct = false;
         try {
             List<String> answers = _questionDB.getAnswers(_questionID);
-            correct = compareAnswers(answers, userAnswer);
+            correct = helper.compareAnswers(answers, helper.removePrompt(userAnswer));
             _gameSessionDB.insertAttempt(_login.getGameSessionID(), _categoryID, _questionID, _score, correct);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return correct;
-    }
-
-    /**
-     * Compare userAnswers to answer in a list
-     * 
-     * @param answers
-     * @param userAnswer
-     * @return boolean true if correct, false if incorrect
-     */
-    private boolean compareAnswers(final List<String> answers, final String userAnswer) {
-        String user = userAnswer.toLowerCase().replace(" ", "").replace("the", "");
-        for (String answer : answers) {
-            answer = answer.toLowerCase().replace(" ", "").replace("the", "");
-            if (answer.equals(user)) {
-                return true;
-            }
-        }
-        return false;
     }
 
     /**

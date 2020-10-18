@@ -78,12 +78,7 @@ public final class PracticeModelSQL implements PracticeModel {
         QuestionHelper helper = QuestionHelper.getInstance();
         try {
             List<String> answers = _questionDB.getAnswers(_questionID);
-            for (String answer : answers) {
-                boolean check = helper.compareAnswers(userAnswer, answer);
-                if (check) {
-                    return check;
-                }
-            }
+            return helper.compareAnswers(answers, helper.removePrompt(userAnswer));
         } catch (SQLException e) {
             e.printStackTrace();
         }

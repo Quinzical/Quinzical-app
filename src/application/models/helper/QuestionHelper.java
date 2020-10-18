@@ -1,6 +1,7 @@
 package application.models.helper;
 
 import java.io.IOException;
+import java.util.List;
 
 import application.controllers.helper.ExceptionAlert;
 
@@ -13,6 +14,13 @@ import application.controllers.helper.ExceptionAlert;
 public final class QuestionHelper {
 
     private static QuestionHelper _instance;
+
+    private static final String[] PROMPTS = new String[]{
+        "what is",
+        "what are",
+        "who is",
+        "who are",
+    };
 
     private QuestionHelper() {
     }
@@ -40,7 +48,7 @@ public final class QuestionHelper {
      */
     public boolean checkQuestion(final String userAnswer, final String correctAnswer) {
         String trimmedAnswer = trimAnswer(correctAnswer);
-        if (compareAnswers(userAnswer, trimmedAnswer)) {
+        if (compareAnswer(userAnswer, trimmedAnswer)) {
             return true;
         }
         return false;
@@ -75,7 +83,7 @@ public final class QuestionHelper {
      * @param correctAnswer the correct answer
      * @return boolean true if correct, false if incorrect
      */
-    public boolean compareAnswers(final String userAnswer, final String correctAnswer) {
+    public boolean compareAnswer(final String userAnswer, final String correctAnswer) {
         if (userAnswer.toLowerCase().contains((correctAnswer.toLowerCase()))) {
             int startingIndex = userAnswer.toLowerCase().indexOf(correctAnswer.toLowerCase());
             int endIndex = startingIndex + correctAnswer.length() - 1;
@@ -106,6 +114,24 @@ public final class QuestionHelper {
     }
 
     /**
+     * Compare userAnswers to answer in a list
+     * 
+     * @param answers
+     * @param userAnswer
+     * @return boolean true if correct, false if incorrect
+     */
+    public boolean compareAnswers(final List<String> answers, final String userAnswer) {
+        String user = userAnswer.toLowerCase().replace(" ", "").replace("the", "");
+        for (String answer : answers) {
+            answer = answer.toLowerCase().replace(" ", "").replace("the", "");
+            if (answer.equals(user)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Used to retrieve question prompt
      * 
      * @param correctAnswer
@@ -130,5 +156,19 @@ public final class QuestionHelper {
             }
         }
         return prompt;
+    }
+
+    /**
+     * Used to remove prompt from user answers
+     * 
+     * @param answer
+     * @return trimmed answer
+     */
+    public String removePrompt(final String answer) {
+        String trimmed = answer.toLowerCase().trim();
+        for (String prompt: PROMPTS) {
+            trimmed = trimmed.replace(prompt, "").trim();
+        }
+        return trimmed;
     }
 }

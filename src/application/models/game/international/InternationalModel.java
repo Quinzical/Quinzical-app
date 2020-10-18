@@ -159,7 +159,7 @@ public final class InternationalModel {
      */
     public boolean checkInternationalAnswer(final String userAnswer) {
         QuestionHelper helper = QuestionHelper.getInstance();
-        _correct = helper.compareAnswers(userAnswer, _currentAnswer);
+        _correct = helper.compareAnswer(userAnswer, _currentAnswer);
         return _correct;
     }
 
