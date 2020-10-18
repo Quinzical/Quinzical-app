@@ -4,6 +4,7 @@ import java.util.List;
 
 import application.controllers.helper.LeaderboardPosition;
 import application.helper.SceneManager;
+import application.helper.SceneManager.Scenes;
 import application.models.api.LeaderboardEntry;
 import application.models.api.LeaderboardModel;
 import javafx.event.ActionEvent;
@@ -54,6 +55,7 @@ public class LeaderboardController {
      */
     @FXML
     private void handleBackButton(final ActionEvent event) {
+        _sceneManager.unloadScene(Scenes.LEADERBOARD);
         _sceneManager.backSceneTwice();
     }
 

@@ -44,7 +44,6 @@ public class Login {
                     .header("Authorization", "Bearer " + jwtToken).GET().build();
             HttpResponse<String> response = _client.send(request, BodyHandlers.ofString());
             JSONObject body = new JSONObject(response.body());
-            System.out.println(body);
             return new LoginEntry(body.getString("username"), body.getString("_id"), jwtToken);
         } catch (JSONException e) {
             e.printStackTrace();

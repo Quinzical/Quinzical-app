@@ -55,8 +55,6 @@ public class APILoader extends Task<Void> {
     @Override
     protected void succeeded() {
         if (_statusCode != OK) {
-            System.out.println("test");
-
             Alert alert = new Alert(AlertType.WARNING);
             alert.setTitle("Quinzical");
             alert.setHeaderText("Server Connection has failed");

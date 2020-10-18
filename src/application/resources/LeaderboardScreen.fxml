@@ -84,7 +84,7 @@
                               </ImageView>
                           </graphic>
                       </Button>
-                  <Button alignment="CENTER" contentDisplay="CENTER" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="47.0" prefWidth="149.0" styleClass="setting-button" text="Menu" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="47.0" prefWidth="149.0" styleClass="setting-button" text="Back" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
                      <font>
                         <Font size="24.0" />
                      </font>

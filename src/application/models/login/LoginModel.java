@@ -154,6 +154,18 @@ public final class LoginModel {
     }
 
     /**
+     * Used to disable for international sections
+     */
+    public void disableInternational() {
+        _unlock = false;
+        try {
+            _userDB.setUnlock(_userID, false);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * Used to return the mongo id for the current user
      * 
      * @return String

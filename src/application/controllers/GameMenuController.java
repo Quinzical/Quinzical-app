@@ -53,9 +53,6 @@ public class GameMenuController {
      * initialize with GameMenu.fxml
      */
     public void initialize() {
-        if (!_login.checkInternational()) {
-            _internationalButton.setDisable(true);
-        }
         _categories = _gameModel.getGameCategories();
         GameStateData state = _gameModel.getGameStateData();
         _currentScore.setText("$" + _gameModel.getScore());
@@ -84,8 +81,12 @@ public class GameMenuController {
         }
 
         if (!_login.checkInternational() && _gameModel.checkInternational()) {
-            new SuccessAlert("International Section", "International section has been unlocked on the home menu");
+            new SuccessAlert("International Section", "International section has been unlocked");
             _login.enableInternational();
+        }
+
+        if (!_login.checkInternational()) {
+            _internationalButton.setDisable(true);
         }
     }
 

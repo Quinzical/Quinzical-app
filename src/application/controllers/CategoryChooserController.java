@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import application.controllers.helper.CategoryButton;
+import application.controllers.helper.LeaderboardAlert;
 import application.helper.SceneManager;
 import application.models.helper.Category;
 import application.models.login.LoginModel;
@@ -125,7 +126,7 @@ public class CategoryChooserController {
      */
     @FXML
     private void handleLeaderboardButton(final ActionEvent event) {
-        _sceneManager.switchScene(SceneManager.Scenes.LEADERBOARD);
+        new LeaderboardAlert();
     }
 
     /**

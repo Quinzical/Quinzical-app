@@ -191,6 +191,7 @@ public final class GameModelSQL implements GameModel {
         LeaderboardModel leaderboard = LeaderboardModel.getInstance();
         leaderboard.postLeaderboard();
         _login.setGameSessionID(0);
+        _login.disableInternational();
         _sceneManager.unloadScene();
         _sceneManager.switchScene(Scenes.CATEGORY_CHOOSER);
     }
