@@ -43,50 +43,66 @@
                 <Font size="54.0" />
             </font>
         </Label>
-      <ScrollPane maxWidth="755.0" VBox.vgrow="ALWAYS">
+      <ScrollPane fitToWidth="true" maxWidth="1.7976931348623157E308" minWidth="600.0" VBox.vgrow="ALWAYS">
          <content>
-            <AnchorPane maxHeight="1190.0" maxWidth="740.0">
+            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                <children>
-                  <TextArea editable="false" layoutX="148.0" layoutY="68.0" minHeight="0.0" minWidth="0.0" prefHeight="280.0" prefWidth="740.0" text="The game module is where you can test yourself against other player. Each question is worth a &#10;certain value between 100 and 500. &#10;Using the game module:&#10;- Upon opening the game module, you are able to select five categories from the list avaiable. &#10;- After choosing a category, you will be given 5 random questions from each category. &#10;- The question will only be spoken, after this you will have 30 seconds to answer the question.&#10;- You have one attempt to get it correct. &#10;- Pressing 'Don't Know' gives you the answer, but the question will be marked as incorrect.&#10;- The correct answer will be displayed on the screen if you get it incorrect.&#10;- After answering all questions in two categories, the international question section will become &#10;unlocked. " AnchorPane.leftAnchor="0.0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextArea>
-                  <TextArea editable="false" layoutX="264.0" layoutY="425.0" minHeight="0.0" minWidth="0.0" prefHeight="369.0" prefWidth="740.0" text="The practice module is where you can test yourself on questions in the Quinzical app. There is no &#10;scoring. &#10;Using the practice module:&#10;- Upon opening the practice module, you are able to select a category from the list avaiable. &#10;- After choosing a category, you will be given a random question from that category. &#10;- The question will be spoken and displayed on the screen.&#10;- You have three attempts to get it correct. &#10;- If you reach the third attempt, a clue will be given, in the form of the first letter of the answer. &#10;- Pressing 'Don't Know' automatically takes you to that third attempt. &#10;- The correct answer will be displayed on the screen if you get it incorrect." AnchorPane.leftAnchor="0.0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextArea>
-                  <Label layoutX="257.0" layoutY="372.0" prefHeight="45.0" prefWidth="230.0" styleClass="purple" text="Practice Module" AnchorPane.leftAnchor="257.0" AnchorPane.rightAnchor="253.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="268.0" layoutY="23.0" prefHeight="45.0" prefWidth="207.0" styleClass="purple" text="Game Module" AnchorPane.leftAnchor="268.0" AnchorPane.rightAnchor="265.0">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                  </Label>
-                  <TextArea editable="false" layoutX="265.0" layoutY="871.0" minHeight="0.0" minWidth="0.0" prefHeight="150.0" prefWidth="740.0" text="The settings menu allows you to change basic features. &#10;- Change the speed of the text to speech by moving the 'Speed' slider.&#10;- Change the volume by moving the 'Speak' slider. &#10;" AnchorPane.leftAnchor="0.0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextArea>
-                  <Label layoutX="314.0" layoutY="829.0" prefHeight="45.0" prefWidth="118.0" styleClass="purple" text="Settings">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="283.0" layoutY="1053.0" prefHeight="45.0" prefWidth="179.0" styleClass="purple" text="Leaderboard">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                  </Label>
-                  <TextArea editable="false" layoutX="261.0" layoutY="1102.0" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="740.0" text="There are two leaderboards, local and global.&#10;The local leaderboard displays users current scores at any point in the game compared to &#10;other users on the current device. &#10;The global leaderboard displays users highest scores from a game module after they have finished a game. &#10;You must reset the game before you can see your score. It compares scores across every &#10;device where quinzical has been played. &#10;&#10;" AnchorPane.leftAnchor="0.0">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </TextArea>
+                  <VBox AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label styleClass="purple" text="Practice Module">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextArea editable="false" minHeight="300.0" minWidth="-Infinity" text="The game module is where you can test yourself against other player. Each question is worth a &#10;certain value between 100 and 500. &#10;Using the game module:&#10;- Upon opening the game module, you are able to select five categories from the list avaiable. &#10;- After choosing a category, you will be given 5 random questions from each category. &#10;- The question will only be spoken, after this you will have 30 seconds to answer the question.&#10;- You have one attempt to get it correct. &#10;- Pressing 'Don't Know' gives you the answer, but the question will be marked as incorrect.&#10;- The correct answer will be displayed on the screen if you get it incorrect.&#10;- After answering all questions in two categories, the international question section will become &#10;unlocked. " VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </TextArea>
+                        <Label styleClass="purple" text="Game Module">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextArea editable="false" minHeight="-Infinity" minWidth="-Infinity" text="The practice module is where you can test yourself on questions in the Quinzical app. There is no &#10;scoring. &#10;Using the practice module:&#10;- Upon opening the practice module, you are able to select a category from the list avaiable. &#10;- After choosing a category, you will be given a random question from that category. &#10;- The question will be spoken and displayed on the screen.&#10;- You have three attempts to get it correct. &#10;- If you reach the third attempt, a clue will be given, in the form of the first letter of the answer. &#10;- Pressing 'Don't Know' automatically takes you to that third attempt. &#10;- The correct answer will be displayed on the screen if you get it incorrect." VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </TextArea>
+                        <Label styleClass="purple" text="Settings">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextArea editable="false" text="The settings menu allows you to change basic features. &#10;- Change the speed of the text to speech by moving the 'Speed' slider.&#10;- Change the volume by moving the 'Speak' slider. &#10;" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </TextArea>
+                        <Label styleClass="purple" text="Leaderboard">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextArea editable="false" text="There are two leaderboards, local and global.&#10;The local leaderboard displays users current scores at any point in the game compared to &#10;other users on the current device. &#10;The global leaderboard displays users highest scores from a game module after they have finished a game. &#10;You must reset the game before you can see your score. It compares scores across every &#10;device where quinzical has been played. &#10;&#10;" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </VBox>
                </children>
             </AnchorPane>
          </content>
@@ -95,7 +111,7 @@
             <String fx:value="background" />
          </styleClass>
          <VBox.margin>
-            <Insets left="10.0" right="10.0" />
+            <Insets left="200.0" right="200.0" />
          </VBox.margin>
       </ScrollPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">

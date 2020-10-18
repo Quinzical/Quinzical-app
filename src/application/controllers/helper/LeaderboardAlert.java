@@ -50,6 +50,8 @@ public class LeaderboardAlert extends Alert {
                 _leaderboard.setGlobal(false);
             } else if (choice == buttonTypeGlobal) {
                 _leaderboard.setGlobal(true);
+            } else {
+                return;
             }
             SplashModel.getInstance().setNextScene(Scenes.LEADERBOARD, Pages.LEADERBOARD);
             _sceneManager.switchScene(SceneManager.Scenes.SPLASH_SCREEN);

@@ -122,7 +122,6 @@ public final class LeaderboardModel {
         try {
             gameData = gameSessionDB.query(gameSessionID);
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         _leaderboard.postLeaderboard(login.getMongoID(), gameData.getCategoriesString(), gameData.getScore());

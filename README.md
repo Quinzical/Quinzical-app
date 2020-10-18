@@ -8,33 +8,48 @@ Quinzical is a quiz platform written in java and designed for players to test th
 
 - New Zealand themed
 - TTS for reading aloud questions using [espeak](http://espeak.sourceforge.net/)
-- Autosaving game state and score
+- SQLite database
+- Cloud based User login/register using REST API backend
 - Responsive UI design with [fxml](https://openjfx.io/javadoc/12/javafx.fxml/javafx/fxml/doc-files/introduction_to_fxml.html)
 - Settings menu to change volume and TTS speed
+- Github workflows to check code style and lint
+
+##### Coming Soon
+
+- Multiplayer Quinzical
 
 ### Images
-|   ![](/images/HomeMenu.png)   | ![](/images/GameMenu.png) |
-| :---------------------------: | :-----------------------: |
-| ![](/images/PracticeMenu.png) | ![](/images/Question.png) |
+| ![](/images/LoginScreen.png)  | ![](/images/HomeMenu.png)     |
+| :---------------------------: | :---------------------------: |
+| ![](/images/GameMenu.png)     | ![](/images/PracticeMenu.png) |
+| ![](/images/Leaderboard.png)  | ![](/images/Question.png)     |
 
 ## How to Run
+
+Check our server status [here](https://quinzical-api.herokuapp.com/)
 
 ### Requirements
 
 - Linux or Unix system (designed for ubuntu)
 - [espeak](http://espeak.sourceforge.net/) installed (for TTS support)
 - [JavaFX 11](https://openjfx.io/) sdk installed
-- Java installed (Java 11 recommended)
+- Java installed (Java 14 recommended)
+
+##### Recommendations
+
+- Eclipse IDE
+- Checkstyle installed and use [checkstyle.xml](/checkstyle.xml)
+- Eclipse formatter setup using [eclipse-formatter.xml](/eclipse-formatter.xml)
 
 ### Run Quinzical
 
-Run bash script when using 206 VM
+Run bash script when using 206 VM2
 ```bash
 $ ./Quinzical.sh # or bash Quinzical.sh
 ```
-Run on .jar by add arguments (replace `/home/se2062020/javafx-sdk-11.0.2/lib` to javafx sdk)
+Run on .jar by add arguments (replace `/usr/share/java/lib` to javafx sdk)
 ```bash
-java --module-path /home/se2062020/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.media,javafx.base,javafx.fxml -jar Quinizical.jar
+java --module-path /usr/share/java/lib --add-modules javafx.controls-11,javafx.media-11,javafx.base-11,javafx.fxml-11 -jar Quinzical.jar
 ```
 
 ## Documentation
@@ -47,13 +62,14 @@ The workspace contains two folders by default, where:
     - `application`: application package
         - `controllers`: controllers for views
         - `helper`: helpers shared in multiple packages
-        - `models`: models for controllers
+        - `models`: models for controllers. includes sql and api
         - `processes`: background processes
         - `resources`: resources includes fxml, css and images
 - `data`: the folder to maintain data
-    - `users`: for multiple users
-        - `default`: current default user
-    - `categories`: processed quinzical.txt
+    - `data.db`: sqlite file
+    - `hash.txt`: checksum is used to check if quinzical.txt is changed
+    - `auth.txt`: saves jwt token for auto login
+    
         
 #### Questions
 Questions are in the [file](/quinzical.txt) ```quinzical.txt``` in the format:
@@ -70,7 +86,4 @@ This is the Māori word for stomach\ (What is) Puku
 
 
 #### User Data
-User data is stored into a folder called ```./data/user/default```. (designed for multiple users TODO)
-- ```./data/user/default/score.txt``` stores the score in a single line
-- ```./data/user/default/category/CATEGORY.txt``` stores unanswered questions using category as filename.
-
+Local userdata is stored in sqlite and on cloud using the [endpoint](https://quinzical-api.herokuapp.com/)
