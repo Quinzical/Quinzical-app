@@ -36,10 +36,10 @@ public final class SplashModel {
     public enum Pages {
         /** International */
         INTERNATIONAL(),
-        /** SQL */
-        SQL(),
         /** Leaderboard */
-        LEADERBOARD();
+        LEADERBOARD(),
+        /** SQL */
+        SQL();
 
         Pages() {
         }
@@ -82,7 +82,6 @@ public final class SplashModel {
                 _team.submit(() -> InternationalModel.getInstance().retrieveQuestion());
                 break;
             case LEADERBOARD:
-                System.out.println("ok");
                 _team.submit(() -> LeaderboardModel.getInstance().loadLeaderboard());
                 break;
             default:

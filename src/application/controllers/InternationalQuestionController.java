@@ -6,7 +6,12 @@ import java.util.concurrent.Executors;
 import application.controllers.helper.LeaderboardAlert;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
+import application.models.game.GameModel;
 import application.models.game.international.InternationalModel;
+import application.models.game.sql.GameModelSQL;
+import application.models.helper.SplashModel;
+import application.models.helper.SplashModel.Pages;
+import application.models.login.LoginModel;
 import application.processes.SpeakProcess;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -28,6 +33,8 @@ public class InternationalQuestionController {
     private final SceneManager _sceneManager = SceneManager.getInstance();
 
     private final InternationalModel _internationalModel = InternationalModel.getInstance();
+    private final GameModel _gameModel = GameModelSQL.getInstance();
+    private final LoginModel _login = LoginModel.getInstance();
 
     // ExecutorService for running task and speak in the background
     private ExecutorService _team = Executors.newSingleThreadExecutor();
@@ -58,7 +65,7 @@ public class InternationalQuestionController {
      * Used to initialize InternalQuestionController and speak question
      */
     public void initialize() {
-        _currentScore.setText("$" + Integer.toString(_internationalModel.getInternationalScore()));
+        _currentScore.setText("$" + Integer.toString(GameModelSQL.getInstance().getScore()));
         String question = _internationalModel.getInternationalQuestion();
 
         _questionLabel.setText(question);
@@ -123,8 +130,8 @@ public class InternationalQuestionController {
             speak(correctAnswer + " is Correct");
             _infoLabel.setText("Correct");
             _infoLabel.setStyle("-fx-text-fill: green;");
-            _internationalModel.addInternationalScore(_internationalModel.getInternationalValue());
-            _currentScore.setText("$" + Integer.toString(_internationalModel.getInternationalScore()));
+            _internationalModel.addInternationalScore( _login.getGameSessionID(), _internationalModel.getInternationalValue());
+            _currentScore.setText("$" + Integer.toString(_gameModel.getScore()));
         } else {
             speak(oldAnswer + " is Incorrect. The answer s " + correctAnswer);
             _infoLabel.setText("Incorrect");
@@ -208,14 +215,16 @@ public class InternationalQuestionController {
      * Used to go back to scene
      */
     private void back() {
-        _sceneManager.switchScene(Scenes.HOME_MENU);
+        _sceneManager.backSceneTwice();
+        _sceneManager.switchScene(Scenes.GAME_MENU);
     }
 
     /**
      * Used to go to the next question
      */
     private void reload() {
+        SplashModel.getInstance().setNextScene(Scenes.INTERNATIONAL_QUESTION, Pages.INTERNATIONAL);
         _sceneManager.unloadScene();
-        _sceneManager.switchScene(Scenes.INTERNATIONAL_QUESTION);
+        _sceneManager.switchScene(Scenes.SPLASH_SCREEN);
     }
 }

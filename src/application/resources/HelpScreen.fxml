@@ -82,7 +82,7 @@
                         <Font size="30.0" />
                      </font>
                   </Label>
-                  <TextArea editable="false" layoutX="261.0" layoutY="1102.0" minHeight="0.0" minWidth="0.0" prefHeight="62.0" prefWidth="740.0" text="The leaderboard displays the top ten users with the highest scores. &#10;" AnchorPane.leftAnchor="0.0">
+                  <TextArea editable="false" layoutX="261.0" layoutY="1102.0" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="740.0" text="There are two leaderboards, local and global.&#10;The local leaderboard displays users current scores at any point in the game compared to &#10;other users on the current device. &#10;The global leaderboard displays users highest scores from a game module after they have finished a game. &#10;You must reset the game before you can see your score. It compares scores across every &#10;device where quinzical has been played. &#10;&#10;" AnchorPane.leftAnchor="0.0">
                      <font>
                         <Font size="14.0" />
                      </font>

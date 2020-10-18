@@ -13,6 +13,8 @@ import org.json.JSONObject;
 import application.controllers.helper.ExceptionAlert;
 import application.models.helper.QuestionHelper;
 import application.models.login.LoginModel;
+import application.models.sql.data.GameSessionData;
+import application.models.sql.db.GameSessionDB;
 import application.models.sql.db.UserDB;
 
 /**
@@ -39,6 +41,8 @@ public final class InternationalModel {
     private String _currentAnswer;
     private int _currentValue;
     private String _currentCategory;
+
+    private boolean _correct;
 
     private InternationalModel() {
     }
@@ -115,34 +119,6 @@ public final class InternationalModel {
     }
 
     /**
-     * Get score from international section.
-     * 
-     * @return score
-     */
-    public int getInternationalScore() {
-        try {
-            return _userDB.query(_login.getUserID()).getInternationalScore();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return 0;
-    }
-
-    /**
-     * Add score from international section.
-     * 
-     * @param score
-     */
-    public void addInternationalScore(final int score) {
-        try {
-            int currentScore = _userDB.query(_login.getUserID()).getInternationalScore();
-            _userDB.setInternationalScore(_login.getUserID(), currentScore + score);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
      * Used to get the randomised international question.
      * 
      * @return String the question to be displayed to the user
@@ -187,6 +163,27 @@ public final class InternationalModel {
      */
     public boolean checkInternationalAnswer(final String userAnswer) {
         QuestionHelper helper = QuestionHelper.getInstance();
-        return helper.compareAnswers(userAnswer, _currentAnswer);
+        _correct = helper.compareAnswers(userAnswer, _currentAnswer);
+        return _correct;
+    }
+
+    public void addInternationalScore(int gameSessionID, int score) {
+        GameSessionDB gameSessionDB = new GameSessionDB();
+        GameSessionData gameSession = null;
+        try {
+            gameSession = gameSessionDB.query(gameSessionID);
+        } catch (SQLException e1) {
+            new ExceptionAlert(e1);
+            e1.printStackTrace();
+        }
+        if (_correct) {
+            gameSession.setScore(gameSession.getScore() + score);
+        }
+        try {
+            gameSessionDB.update(gameSession);
+        } catch (SQLException e) {
+            new ExceptionAlert(e);
+            e.printStackTrace();
+        }
     }
 }

@@ -92,7 +92,7 @@ public class HomeMenuController {
      */
     @FXML
     private void handleLogoutButton(final ActionEvent event) {
-        _sceneManager.unloadScene();
+        _sceneManager.unloadAllScenes();
         _sceneManager.switchScene(SceneManager.Scenes.LOGIN_SCREEN);
     }
 

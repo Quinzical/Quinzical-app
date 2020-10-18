@@ -154,10 +154,31 @@ public final class SceneManager {
     }
 
     /**
+     * Used to switch back scene twice by popping current scene from the history
+     */
+    public void backSceneTwice() {
+        _history.pop();
+        if (_history.peek() == Scenes.SPLASH_SCREEN) {
+            _history.pop();
+        }
+        switchScene(_history.pop());
+    }
+
+
+    /**
      * Used to unload scene
      */
     public void unloadScene() {
         _scenes.remove(_history.peek());
+    }
+
+    /**
+     * Used to unload all scenes
+     */
+    public void unloadAllScenes() {
+        for (Scenes scenes : _history) {
+            _scenes.remove(scenes);
+        }
     }
 
     /**

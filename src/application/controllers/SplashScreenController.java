@@ -1,6 +1,5 @@
 package application.controllers;
 
-import application.helper.SceneManager;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;

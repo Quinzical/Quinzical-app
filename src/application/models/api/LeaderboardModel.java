@@ -25,7 +25,7 @@ public final class LeaderboardModel {
 
     private boolean _global = false;
 
-    private List<LeaderboardEntry> _entries = new ArrayList<LeaderboardEntry>();
+    private List<LeaderboardEntry> _entries;
 
     private LeaderboardModel() {
     }
@@ -66,9 +66,12 @@ public final class LeaderboardModel {
     }
 
     /**
-     * Loads the current leaderboard.
+     * Loads the current leaderboard
+     * 
+     * @return List<LeaderboardEntry>
      */
     public void loadLeaderboard() {
+        _entries = new ArrayList<LeaderboardEntry>();
         if (_global) {
             _entries = _leaderboard.getLeaderboard();
         } else {
@@ -100,9 +103,7 @@ public final class LeaderboardModel {
     }
 
     /**
-     * Returns the current leaderboard.
-     * 
-     * @return List<LeaderboardEntry>
+     * Used to get current leaderboard
      */
     public List<LeaderboardEntry> getLeaderboard() {
         return _entries;
