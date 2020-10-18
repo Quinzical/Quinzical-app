@@ -44,12 +44,18 @@ public class GameMenuController {
     private Button _currentScore;
 
     @FXML
+    private Button _internationalButton;
+
+    @FXML
     private GridPane _questionGrid;
 
     /**
      * initialize with GameMenu.fxml
      */
     public void initialize() {
+        if (!_login.checkInternational()) {
+            _internationalButton.setDisable(true);
+        }
         _categories = _gameModel.getGameCategories();
         GameStateData state = _gameModel.getGameStateData();
         _currentScore.setText("$" + _gameModel.getScore());

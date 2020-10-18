@@ -26,18 +26,11 @@ public class HomeMenuController {
     @FXML
     private Label _usernameLabel;
 
-    @FXML
-    private Button _internationalButton;
-
     /**
      * initialize with LoginScreenController.fxml
      */
     public void initialize() {
         _usernameLabel.setText(_login.getUsername());
-
-        if (!_login.checkInternational()) {
-            _internationalButton.setDisable(true);
-        }
     }
 
     /**
