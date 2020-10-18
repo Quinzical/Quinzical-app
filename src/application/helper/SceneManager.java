@@ -69,7 +69,9 @@ public final class SceneManager {
         /** Category chooser scene */
         CATEGORY_CHOOSER("CategoryChooser.fxml"),
         /** Help Screen scene */
-        HELP_SCREEN("HelpScreen.fxml");
+        HELP_SCREEN("HelpScreen.fxml"),
+        /** Edit Menu scene */
+        EDIT_MENU("EditMenu.fxml");
 
         private final String _filename;
 

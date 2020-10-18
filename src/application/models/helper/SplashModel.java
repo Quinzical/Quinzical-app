@@ -1,9 +1,16 @@
 package application.models.helper;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.api.LeaderboardModel;
 import application.models.game.international.InternationalModel;
+import application.models.login.LoginModel;
 import application.models.sql.SQLConnection;
+import application.processes.APILoader;
+import javafx.concurrent.Task;
 
 /**
  * This class is used to delegate tasks to different classes who carry out tasks
@@ -13,6 +20,9 @@ import application.models.sql.SQLConnection;
  * @author Cheng-Zhen Yang
  */
 public final class SplashModel {
+
+    private final ExecutorService _team = Executors.newSingleThreadExecutor();
+    private final SceneManager _sceneManager = SceneManager.getInstance();
 
     private static SplashModel _instance;
 
@@ -59,30 +69,36 @@ public final class SplashModel {
     }
 
     /**
-     * Used to get the next scene after the splash screen.
-     * 
-     * @return Scenes
-     */
-    public Scenes getNextScene() {
-        return _nextScene;
-    }
-
-    /**
      * Used to set the time consuming method that needs to be carried out.
      */
     public void doMethod() {
         switch (_page) {
             case SQL:
-                SQLConnection.getInstance();
+                _team.submit(() -> SQLConnection.getInstance());
+                _team.submit(() -> LoginModel.getInstance());
+                _team.submit(new APILoader());
                 break;
             case INTERNATIONAL:
-                InternationalModel.getInstance().retrieveQuestion();
+                _team.submit(() -> InternationalModel.getInstance().retrieveQuestion());
                 break;
             case LEADERBOARD:
-                LeaderboardModel.getInstance().loadLeaderboard();
+                System.out.println("ok");
+                _team.submit(() -> LeaderboardModel.getInstance().loadLeaderboard());
                 break;
             default:
                 break;
         }
+        _team.submit(new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                return null;
+            }
+
+            @Override
+            protected void succeeded() {
+                _sceneManager.unloadScene(Scenes.SPLASH_SCREEN);
+                _sceneManager.switchScene(_nextScene);
+            }
+        });
     }
 }

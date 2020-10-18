@@ -8,7 +8,6 @@ import application.models.game.sql.GameModelSQL;
 import application.models.login.LoginModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 /**
