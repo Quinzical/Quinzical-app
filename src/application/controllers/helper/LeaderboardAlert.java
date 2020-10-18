@@ -3,7 +3,10 @@ package application.controllers.helper;
 import java.util.Optional;
 
 import application.helper.SceneManager;
+import application.helper.SceneManager.Scenes;
 import application.models.api.LeaderboardModel;
+import application.models.helper.SplashModel;
+import application.models.helper.SplashModel.Pages;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ButtonBar.ButtonData;
@@ -45,11 +48,11 @@ public class LeaderboardAlert extends Alert {
             ButtonType choice = result.get();
             if (choice == buttonTypeLocal) {
                 _leaderboard.setGlobal(false);
-                _sceneManager.switchScene(SceneManager.Scenes.LEADERBOARD);
             } else if (choice == buttonTypeGlobal) {
                 _leaderboard.setGlobal(true);
-                _sceneManager.switchScene(SceneManager.Scenes.LEADERBOARD);
             }
+            SplashModel.getInstance().setNextScene(Scenes.LEADERBOARD, Pages.LEADERBOARD);
+            _sceneManager.switchScene(SceneManager.Scenes.SPLASH_SCREEN);
         }
     }
 }

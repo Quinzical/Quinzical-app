@@ -21,7 +21,7 @@ import org.json.JSONObject;
  * @author Cheng-Zhen Yang
  */
 public final class Leaderboard {
-    private static final String ENDPOINT = "http://localhost:3000";
+    private static final String ENDPOINT = "https://quinzical-api.herokuapp.com";
     private static final String LEADERBOARD = "/leaderboard";
 
     private HttpClient _client = HttpClient.newHttpClient();
@@ -41,7 +41,8 @@ public final class Leaderboard {
 
             for (int i = 0; i < array.length(); i++) {
                 JSONObject item = array.getJSONObject(i);
-                entries.add(new LeaderboardEntry(item.getString("username"), item.getString("categories"),
+                JSONObject user = item.getJSONObject("user_id");
+                entries.add(new LeaderboardEntry(user.getString("username"), item.getString("categories"),
                         item.getInt("score")));
             }
         } catch (JSONException e) {
@@ -57,24 +58,22 @@ public final class Leaderboard {
     /**
      * Used to post an entry to the leaderboard
      * 
-     * @param username
+     * @param mongoID
      * @param categories
      * @param score
      * @return id (mongodb id)
      */
-    public String postLeaderboard(final String username, final String categories, final int score) {
+    public String postLeaderboard(final String mongoID, final String categories, final int score) {
         try {
             JSONObject json = new JSONObject();
             json.put("score", score);
             json.put("categories", categories);
-            json.put("username", username);
+            json.put("user_id", mongoID);
 
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create(ENDPOINT + LEADERBOARD))
                     .header("Content-Type", "application/json").POST(BodyPublishers.ofString(json.toString())).build();
             HttpResponse<String> response = _client.send(request, BodyHandlers.ofString());
 
-            System.out.println(response.body());
-            System.out.println(json.toString());
             JSONObject data = new JSONObject(response.body());
             return data.getString("id");
         } catch (JSONException e) {

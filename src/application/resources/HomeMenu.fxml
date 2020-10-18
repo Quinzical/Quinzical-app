@@ -47,12 +47,12 @@
             <Insets bottom="10.0" top="10.0" />
          </VBox.margin>
       </HBox>
-      <HBox alignment="CENTER" maxHeight="400.0" maxWidth="1263.0" prefHeight="300.0" prefWidth="1263.0">
+      <HBox alignment="CENTER" maxHeight="400.0" maxWidth="1264.0" prefHeight="222.0" prefWidth="1264.0">
          <VBox.margin>
-            <Insets left="20.0" right="20.0" />
+            <Insets left="20.0" right="20.0" top="100.0" />
          </VBox.margin>
          <children>
-            <AnchorPane maxHeight="300.0" maxWidth="1263.0" prefHeight="250.0" prefWidth="1263.0">
+            <AnchorPane maxHeight="300.0" maxWidth="1264.0" prefHeight="235.0" prefWidth="1264.0">
                <children>
                     <HBox alignment="CENTER" layoutX="1.0" prefHeight="159.0" prefWidth="1263.0" spacing="50.0" AnchorPane.topAnchor="0.0">
                         <children>
@@ -71,11 +71,6 @@
                             <Insets left="50.0" right="50.0" />
                         </padding>
                     </HBox>
-                    <Button fx:id="_internationalButton" alignment="CENTER" layoutX="495.0" layoutY="150.0" mnemonicParsing="false" onAction="#handleInternationalButton" prefHeight="60.0" prefWidth="275.0" styleClass="exit-button" text="International Section" textAlignment="CENTER">
-                        <font>
-                            <Font size="24.0" />
-                        </font>
-                    </Button>
                   <HBox alignment="CENTER" layoutX="373.0" layoutY="239.0" spacing="20.0" AnchorPane.bottomAnchor="14.0">
                      <children>
                         <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleLogoutButton" prefHeight="40.0" prefWidth="160.0" styleClass="exit-button" text="Logout" textAlignment="CENTER">
@@ -119,11 +114,6 @@
                         </ImageView>
                     </graphic>
                 </Button>
-            <Button alignment="CENTER" layoutX="14.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleLeaderboardButton" prefHeight="50.0" prefWidth="210.0" styleClass="exit-button" text="Leaderboard" textAlignment="CENTER" AnchorPane.leftAnchor="20.0">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
          </children>
          <VBox.margin>
             <Insets bottom="20.0" left="20.0" right="20.0" />

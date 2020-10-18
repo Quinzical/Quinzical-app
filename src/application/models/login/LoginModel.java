@@ -21,6 +21,7 @@ public final class LoginModel {
     private int _userID;
     private int _gameSessionID = 0;
     private boolean _unlock;
+    private String _mongoID;
 
     private UserDB _userDB = new UserDB();
 
@@ -149,5 +150,23 @@ public final class LoginModel {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Used to return the mongo id for the current user
+     * 
+     * @return String
+     */
+    public String getMongoID() {
+        return _mongoID;
+    }
+
+    /**
+     * Used to set the mongo id for the current user
+     * 
+     * @param mongoID
+     */
+    public void setMongoID(final String mongoID) {
+        _mongoID = mongoID;
     }
 }

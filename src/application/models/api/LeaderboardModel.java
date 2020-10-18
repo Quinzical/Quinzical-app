@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import application.controllers.helper.ExceptionAlert;
+import application.models.login.LoginModel;
 import application.models.sql.data.GameSessionData;
 import application.models.sql.data.UserData;
 import application.models.sql.db.GameSessionDB;
@@ -23,6 +24,8 @@ public final class LeaderboardModel {
     private Leaderboard _leaderboard = new Leaderboard();
 
     private boolean _global = false;
+
+    private List<LeaderboardEntry> _entries = new ArrayList<LeaderboardEntry>();
 
     private LeaderboardModel() {
     }
@@ -63,14 +66,11 @@ public final class LeaderboardModel {
     }
 
     /**
-     * Returns the current leaderboard.
-     * 
-     * @return List<LeaderboardEntry>
+     * Loads the current leaderboard.
      */
-    public List<LeaderboardEntry> getLeaderboard() {
-        List<LeaderboardEntry> entries = new ArrayList<LeaderboardEntry>();
+    public void loadLeaderboard() {
         if (_global) {
-            entries = _leaderboard.getLeaderboard();
+            _entries = _leaderboard.getLeaderboard();
         } else {
             GameSessionDB gameSessionDB = new GameSessionDB();
             List<GameSessionData> sessions = null;
@@ -92,10 +92,38 @@ public final class LeaderboardModel {
                 }
 
                 if (user != null) {
-                    entries.add(new LeaderboardEntry(user.getName(), gameData.getCategoriesString(), gameData.getScore()));
+                    _entries.add(
+                            new LeaderboardEntry(user.getName(), gameData.getCategoriesString(), gameData.getScore()));
                 }
             }
         }
-        return entries;
+    }
+
+    /**
+     * Returns the current leaderboard.
+     * 
+     * @return List<LeaderboardEntry>
+     */
+    public List<LeaderboardEntry> getLeaderboard() {
+        return _entries;
+    }
+
+    /**
+     * Used to post to leaderboard.
+     */
+    public void postLeaderboard() {
+        LoginModel login = LoginModel.getInstance();
+
+        int gameSessionID = login.getGameSessionID();
+        GameSessionDB gameSessionDB = new GameSessionDB();
+        GameSessionData gameData = null;
+
+        try {
+            gameData = gameSessionDB.query(gameSessionID);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        _leaderboard.postLeaderboard(login.getMongoID(), gameData.getCategoriesString(), gameData.getScore());
     }
 }

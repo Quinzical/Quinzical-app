@@ -41,7 +41,6 @@ public class RewardScreenController {
      * Used to initialize RewardScreenController.
      */
     public void initialize() {
-        _gameModel.setUpGameModule();
         int score = _gameModel.getScore();
         _userScore.setText("$" + Integer.toString(score));
         _speak = new SpeakProcess(

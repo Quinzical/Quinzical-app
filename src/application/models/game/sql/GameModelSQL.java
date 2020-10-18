@@ -9,6 +9,7 @@ import java.util.List;
 import application.controllers.helper.GameStateData;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
+import application.models.api.LeaderboardModel;
 import application.models.game.GameModel;
 import application.models.helper.Category;
 import application.models.login.LoginModel;
@@ -53,13 +54,6 @@ public final class GameModelSQL implements GameModel {
             _instance = new GameModelSQL();
         }
         return _instance;
-    }
-
-    /**
-     * Used to set up the game module by calling the correct functions from
-     * supplementary classes.
-     */
-    public void setUpGameModule() {
     }
 
     /**
@@ -194,6 +188,8 @@ public final class GameModelSQL implements GameModel {
      * Used to reset the game for the current user.
      */
     public void resetGameModule() {
+        LeaderboardModel leaderboard = LeaderboardModel.getInstance();
+        leaderboard.postLeaderboard();
         _login.setGameSessionID(0);
         _sceneManager.unloadScene();
         _sceneManager.switchScene(Scenes.CATEGORY_CHOOSER);

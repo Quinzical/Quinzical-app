@@ -12,6 +12,8 @@ import application.helper.SceneManager.Scenes;
 import application.models.game.GameModel;
 import application.models.game.sql.GameModelSQL;
 import application.models.helper.Category;
+import application.models.helper.SplashModel;
+import application.models.helper.SplashModel.Pages;
 import application.models.login.LoginModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -48,10 +50,8 @@ public class GameMenuController {
      * initialize with GameMenu.fxml
      */
     public void initialize() {
-        _gameModel.setUpGameModule();
         _categories = _gameModel.getGameCategories();
         GameStateData state = _gameModel.getGameStateData();
-
         _currentScore.setText("$" + _gameModel.getScore());
 
         for (int i = 0; i < COLUMNS; i++) {
@@ -77,11 +77,9 @@ public class GameMenuController {
             }
         }
 
-        if (!_login.checkInternational()) {
-            if (_gameModel.checkInternational()) {
-                new SuccessAlert("International Section", "International section has been unlocked on the home menu");
-                _login.enableInternational();
-            }
+        if (!_login.checkInternational() && _gameModel.checkInternational()) {
+            new SuccessAlert("International Section", "International section has been unlocked on the home menu");
+            _login.enableInternational();
         }
     }
 
@@ -140,5 +138,17 @@ public class GameMenuController {
     @FXML
     private void handleHelpButton(final ActionEvent event) {
         _sceneManager.switchScene(SceneManager.Scenes.HELP_SCREEN);
+    }
+
+    /**
+     * Used to handle help button
+     *
+     * @param event
+     */
+    @FXML
+    private void handleInternationalButton(final ActionEvent event) {
+        SplashModel.getInstance().setNextScene(Scenes.INTERNATIONAL_QUESTION, Pages.INTERNATIONAL);
+        _sceneManager.unloadScene();
+        _sceneManager.switchScene(Scenes.SPLASH_SCREEN);
     }
 }

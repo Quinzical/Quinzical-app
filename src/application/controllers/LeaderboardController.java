@@ -55,7 +55,7 @@ public class LeaderboardController {
     @FXML
     private void handleBackButton(final ActionEvent event) {
         _sceneManager.unloadScene();
-        _sceneManager.switchScene(SceneManager.Scenes.HOME_MENU);
+        _sceneManager.backScene();
     }
 
     /**

@@ -1,8 +1,7 @@
 package application.controllers;
 
 import application.helper.SceneManager;
-import application.helper.SceneManager.Scenes;
-import application.models.sql.SQLConnection;
+import application.models.helper.SplashModel;
 import javafx.application.Platform;
 
 /**
@@ -12,13 +11,16 @@ import javafx.application.Platform;
  * @author Cheng-Zhen Yang
  */
 public class SplashScreenController {
+
+    private SplashModel _splashModel = SplashModel.getInstance();
+
     /**
      * initialize with SplashScreen.fxml
      */
     public void initialize() {
-        SQLConnection.getInstance();
+        _splashModel.doMethod();
         Platform.runLater(() -> {
-            SceneManager.getInstance().switchScene(Scenes.LOGIN_SCREEN);
+            SceneManager.getInstance().switchScene(_splashModel.getNextScene());
         });
     }
 }
