@@ -9,7 +9,6 @@ import application.controllers.helper.LeaderboardAlert;
 import application.controllers.helper.SuccessAlert;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
-import application.models.api.LeaderboardModel;
 import application.models.game.GameModel;
 import application.models.game.sql.GameModelSQL;
 import application.models.helper.Category;
