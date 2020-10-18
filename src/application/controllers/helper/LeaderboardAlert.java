@@ -45,16 +45,10 @@ public class LeaderboardAlert extends Alert {
             ButtonType choice = result.get();
             if (choice == buttonTypeLocal) {
                 _leaderboard.setGlobal(false);
-                _sceneManager.switchScene(SceneManager.Scenes.LEADERBOARD);
             } else if (choice == buttonTypeGlobal) {
                 _leaderboard.setGlobal(true);
-                try {
-                    _leaderboard.postLeaderboard();
-                    _sceneManager.switchScene(SceneManager.Scenes.LEADERBOARD);
-                } catch (NullPointerException e) {
-                    new WarningAlert("The leaderboard is not availiable as there are no global players who have finished a game.");
-                }
             }
+            _sceneManager.switchScene(SceneManager.Scenes.LEADERBOARD);
         }
     }
 }

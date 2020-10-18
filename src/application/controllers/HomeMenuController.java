@@ -6,6 +6,7 @@ import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.game.GameModel;
 import application.models.game.sql.GameModelSQL;
+import application.models.helper.SplashModel;
 import application.models.login.LoginModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -91,8 +92,10 @@ public class HomeMenuController {
      */
     @FXML
     private void handleInternationalButton(final ActionEvent event) {
+        SplashModel splashModel = SplashModel.getInstance();
+        splashModel.setNextScene(Scenes.INTERNATIONAL_QUESTION);
         _sceneManager.unloadScene();
-        _sceneManager.switchScene(Scenes.INTERNATIONAL_QUESTION);
+        _sceneManager.switchScene(Scenes.SPLASH_SCREEN);
     }
 
     /**

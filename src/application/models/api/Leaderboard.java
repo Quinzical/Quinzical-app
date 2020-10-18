@@ -74,8 +74,6 @@ public final class Leaderboard {
                     .header("Content-Type", "application/json").POST(BodyPublishers.ofString(json.toString())).build();
             HttpResponse<String> response = _client.send(request, BodyHandlers.ofString());
 
-            System.out.println(response.body());
-            System.out.println(json.toString());
             JSONObject data = new JSONObject(response.body());
             return data.getString("id");
         } catch (JSONException e) {

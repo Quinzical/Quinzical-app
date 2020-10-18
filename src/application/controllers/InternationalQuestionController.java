@@ -59,7 +59,6 @@ public class InternationalQuestionController {
      */
     public void initialize() {
         _currentScore.setText("$" + Integer.toString(_internationalModel.getInternationalScore()));
-        _internationalModel.retrieveQuestion();
         String question = _internationalModel.getInternationalQuestion();
 
         _questionLabel.setText(question);
