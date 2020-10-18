@@ -25,6 +25,8 @@ public final class LeaderboardModel {
 
     private boolean _global = false;
 
+    private List<LeaderboardEntry> _entries = new ArrayList<LeaderboardEntry>();
+
     private LeaderboardModel() {
     }
 
@@ -64,14 +66,11 @@ public final class LeaderboardModel {
     }
 
     /**
-     * Returns the current leaderboard.
-     * 
-     * @return List<LeaderboardEntry>
+     * Loads the current leaderboard.
      */
-    public List<LeaderboardEntry> getLeaderboard() {
-        List<LeaderboardEntry> entries = new ArrayList<LeaderboardEntry>();
+    public void loadLeaderboard() {
         if (_global) {
-            entries = _leaderboard.getLeaderboard();
+            _entries = _leaderboard.getLeaderboard();
         } else {
             GameSessionDB gameSessionDB = new GameSessionDB();
             List<GameSessionData> sessions = null;
@@ -93,12 +92,20 @@ public final class LeaderboardModel {
                 }
 
                 if (user != null) {
-                    entries.add(
+                    _entries.add(
                             new LeaderboardEntry(user.getName(), gameData.getCategoriesString(), gameData.getScore()));
                 }
             }
         }
-        return entries;
+    }
+
+    /**
+     * Returns the current leaderboard.
+     * 
+     * @return List<LeaderboardEntry>
+     */
+    public List<LeaderboardEntry> getLeaderboard() {
+        return _entries;
     }
 
     /**

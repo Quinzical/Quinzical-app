@@ -1,12 +1,10 @@
 package application.controllers;
 
 import application.controllers.helper.ConfirmAlert;
-import application.controllers.helper.LeaderboardAlert;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.game.GameModel;
 import application.models.game.sql.GameModelSQL;
-import application.models.helper.SplashModel;
 import application.models.login.LoginModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,7 +35,6 @@ public class HomeMenuController {
     public void initialize() {
         _usernameLabel.setText(_login.getUsername());
 
-        // TODO disable only if not unlocked
         if (!_login.checkInternational()) {
             _internationalButton.setDisable(true);
         }
@@ -86,19 +83,6 @@ public class HomeMenuController {
     }
 
     /**
-     * Used to handle help button
-     *
-     * @param event
-     */
-    @FXML
-    private void handleInternationalButton(final ActionEvent event) {
-        SplashModel splashModel = SplashModel.getInstance();
-        splashModel.setNextScene(Scenes.INTERNATIONAL_QUESTION);
-        _sceneManager.unloadScene();
-        _sceneManager.switchScene(Scenes.SPLASH_SCREEN);
-    }
-
-    /**
      * Used to handle setting button
      * 
      * @param event
@@ -129,15 +113,5 @@ public class HomeMenuController {
     private void handleHelpButton(final ActionEvent event) {
         _sceneManager.unloadScene();
         _sceneManager.switchScene(SceneManager.Scenes.HELP_SCREEN);
-    }
-
-    /**
-     * Used to handle Leaderboard button
-     *
-     * @param event
-     */
-    @FXML
-    private void handleLeaderboardButton(final ActionEvent event) {
-        new LeaderboardAlert();
     }
 }

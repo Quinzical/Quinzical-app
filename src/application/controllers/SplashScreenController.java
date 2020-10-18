@@ -2,7 +2,6 @@ package application.controllers;
 
 import application.helper.SceneManager;
 import application.models.helper.SplashModel;
-import application.models.sql.SQLConnection;
 import javafx.application.Platform;
 
 /**
@@ -14,6 +13,7 @@ import javafx.application.Platform;
 public class SplashScreenController {
 
     private SplashModel _splashModel = SplashModel.getInstance();
+
     /**
      * initialize with SplashScreen.fxml
      */

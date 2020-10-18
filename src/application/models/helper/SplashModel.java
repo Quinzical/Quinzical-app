@@ -1,6 +1,7 @@
 package application.models.helper;
 
 import application.helper.SceneManager.Scenes;
+import application.models.api.LeaderboardModel;
 import application.models.game.international.InternationalModel;
 import application.models.sql.SQLConnection;
 
@@ -16,9 +17,22 @@ public final class SplashModel {
     private static SplashModel _instance;
 
     private Scenes _nextScene = Scenes.LOGIN_SCREEN;
-    private boolean _international = false;
+    private Pages _page = Pages.SQL;
 
     private SplashModel() {
+    }
+
+    /** Enum for each scene with a filename and name */
+    public enum Pages {
+        /** International */
+        INTERNATIONAL(),
+        /** SQL */
+        SQL(),
+        /** Leaderboard */
+        LEADERBOARD();
+
+        Pages() {
+        }
     }
 
     /**
@@ -37,17 +51,11 @@ public final class SplashModel {
      * Used to set the next scene after the splash screen.
      * 
      * @param nextScene
+     * @param page
      */
-    public void setNextScene(final Scenes nextScene) {
+    public void setNextScene(final Scenes nextScene, final Pages page) {
         _nextScene = nextScene;
-        switch (nextScene) {
-            case INTERNATIONAL_QUESTION:
-                _international = true;
-                break;
-            default:
-                _international = false;
-                break;
-        }
+        _page = page;
     }
 
     /**
@@ -63,10 +71,18 @@ public final class SplashModel {
      * Used to set the time consuming method that needs to be carried out.
      */
     public void doMethod() {
-        if (_international) {
-            InternationalModel.getInstance().retrieveQuestion();
-        } else {
-            SQLConnection.getInstance();
+        switch (_page) {
+            case SQL:
+                SQLConnection.getInstance();
+                break;
+            case INTERNATIONAL:
+                InternationalModel.getInstance().retrieveQuestion();
+                break;
+            case LEADERBOARD:
+                LeaderboardModel.getInstance().loadLeaderboard();
+                break;
+            default:
+                break;
         }
     }
 }
