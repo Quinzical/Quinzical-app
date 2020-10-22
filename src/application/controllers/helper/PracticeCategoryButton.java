@@ -32,7 +32,7 @@ public class PracticeCategoryButton extends Button {
         setPrefWidth(DEFAULT_WIDTH);
         setPrefHeight(DEFAULT_HEIGHT);
         // set font
-        setStyle("-fx-font-size:20");
+        setStyle("-fx-font-size:20; -fx-text-fill: white; -fx-border-width: 2 2 2 2; -fx-border-color: white; -fx-border-radius: 10;");
 
         // handle button on press
         setOnAction(new EventHandler<ActionEvent>() {

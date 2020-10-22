@@ -48,7 +48,7 @@ public class GameCategoryButton extends Button {
                 break;
         }
         setStyle("-fx-font-size:16; -fx-padding: 10 10 10 10; -fx-border-insets: 0 10 0 10;"
-                + " -fx-background-insets: 0 10 0 10;" + color);
+                + " -fx-background-insets: 0 10 0 10;" + "-fx-font-size:20; -fx-text-fill: white; -fx-border-width: 2 2 2 2; -fx-border-color: white; -fx-border-radius: 10;" + color);
 
         // handle button on press
         setOnAction(new EventHandler<ActionEvent>() {

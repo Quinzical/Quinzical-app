@@ -60,7 +60,7 @@ public class GameMenuController {
         for (int i = 0; i < COLUMNS; i++) {
             Category category = _categories.get(i);
             Label categoryLabel = new Label(category.toString());
-            categoryLabel.setStyle("-fx-font-size:24");
+            categoryLabel.setStyle("-fx-font-size:24; -fx-fill: white;");
             GridPane.setHalignment(categoryLabel, HPos.CENTER);
             _questionGrid.add(categoryLabel, i, 0);
             int questionNum = _gameModel.getCategoriesQuestionNumber(category);

@@ -1,25 +1,37 @@
 /****************** root & backgrounds ******************/
 
 .root {
-  -fx-background-image: url("./images/innershadow.jpg");
   -fx-background-repeat: no-repeat;
   -fx-background-size: auto 100%;
   -fx-background-position: right;
-  -fx-background-color: #5ecacf;
+  -fx-background-color: #000000;
+  -fx-font-family: "Joffrey";
 }
 
 .background {
-  -fx-background: #54b5ba;
+  -fx-background: #000000;
 }
 
 .transparent {
   -fx-background-color: transparent;
 }
 
+/****************** Fonts ******************/
+
+@font-face {
+  font-family: 'Joffrey';
+  src: url("./Joffrey.ttf");
+}
+
+.text {
+    -fx-font-family: "Joffrey";
+}
+
 /****************** Text Fields ******************/
 
 .question-field {
-  -fx-prompt-text-fill: #5271ff;
+  -fx-prompt-text-fill: white;
+  -fx-prompt-font-size: 30px;
   -fx-background-color: transparent;
 }
 
@@ -40,37 +52,22 @@
   -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 0);
 }
 .header.label {
-  -fx-font-family: "Century Gothic";
+  -fx-text-fill: white;
   -fx-font-weight: bold;
-  -fx-font-size: 7.5em;
+  -fx-font-size: 9em;
 }
 
-.outline.label .text {
-  -fx-fill: #a9b8ff;
-  -fx-stroke: #5271ff;
-  -fx-stroke-width: 2px;
+.menu.label .text {
+  -fx-font-size: 40px;
+  -fx-fill: white;
+  -fx-font-weight: bold;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 3, 0, 0, 0);
 }
 
 .login.label .text {
   -fx-font-size: 30px;
+  -fx-fill: white;
   -fx-font-weight: bold;
-  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 3, 0, 0, 0);
-}
-
-.darkblue.label .text {
-  -fx-fill: #a9b8ff;
-  -fx-stroke: #5271ff;
-  -fx-font-weight: bold;
-  -fx-font-size: 40px;
-  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 3, 0, 0, 0);
-}
-
-
-.purple.label .text {
-  -fx-fill: #a9b8ff;
-  -fx-stroke: #5271ff;
-  -fx-font-weight: bold;
-  -fx-font-size: 30px;
   -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 3, 0, 0, 0);
 }
 
@@ -81,42 +78,46 @@
 /****************** Buttons ******************/
 
 .button {
-  -fx-background-color: #ffeb99;
-  -fx-font-family: "Century Gothic";
+  -fx-background-color: transparent;
   -fx-font-weight: bold;
   -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 20, 0, 0, 0);
-}
-
-.round-button {
-  -fx-background-radius: 30px;
+  -fx-background-radius: 10;
 }
 
 .button:hover {
-  -fx-background-color: #e3d188;
+  -fx-border-color: #07ED00;
 }
 
-.setting-button {
-  -fx-background-repeat: repeat;
-  -fx-font-size: 24px;
-  -fx-background-size: auto;
-}
-
-.play-button {
-  -fx-font-size: 36px;
-}
-
-.practice-button {
-  -fx-font-size: 36px;
+.round-button {
+  -fx-background-radius: 80px;
+  -fx-background-color: #919191;
 }
 
 .exit-button {
-  -fx-font-size: 24px;
+  -fx-border-color: white;
+  -fx-font-weight: bold;
+  -fx-border-width: 2 2 2 2;
+  -fx-font-size: 30px;
+  -fx-text-fill: white;
+  -fx-background-radius: 10;
+  -fx-border-radius: 10;
+}
+
+.game-button {
+  -fx-border-color: white;
+  -fx-font-weight: bold;
+  -fx-border-width: 2 2 2 2;
+  -fx-font-size: 40px;
+  -fx-text-fill: white;
+  -fx-background-radius: 10;
+  -fx-border-radius: 10;
 }
 
 /****************** Text area ******************/
 
 .text-area {
-    text-area-background: #5ecacf;
+    text-area-background: black;
+    -fx-text-fill: white;
 }
 
 .text-area .content {

@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -32,6 +33,7 @@ public final class SceneManager {
     private static final int DEFAULT_HEIGHT = 800;
     private static final int MINIMUM_WIDTH = 800;
     private static final int MINIMUM_HEIGHT = 700;
+    private static final int FONT_SIZE = 14;
 
     /** Scene Logo path */
     public static final String LOGO = "images" + FileHelper.FILE_SEPARATOR + "darklogo.png";
@@ -73,7 +75,11 @@ public final class SceneManager {
         /** Edit Menu scene */
         EDIT_MENU("EditMenu.fxml"),
         /** Offline menu scene */
-        OFFLINE("Offline.fxml");
+        OFFLINE("Offline.fxml"),
+        /** Opening Menu scene */
+        OPENING_MENU("OpeningMenu.fxml"),
+        /** Stats scene */
+        STATS_SCREEN("Stats.fxml");
 
         private final String _filename;
 
@@ -117,6 +123,7 @@ public final class SceneManager {
                 };
             }
         });
+        Font.loadFont(getClass().getResource("/application/resources/joffrey.ttf").toExternalForm(), FONT_SIZE);
         rootStage.setTitle("Quinzical");
         rootStage.getIcons().add(new Image(getPath(LOGO)));
         rootStage.setWidth(DEFAULT_WIDTH);

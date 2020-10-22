@@ -115,7 +115,7 @@ public class LoginScreenController {
      */
     @FXML
     private void handleSettingsButton(final ActionEvent event) {
-        _sceneManager.switchScene(Scenes.SETTINGS_MENU);
+        _sceneManager.switchScene(Scenes.OPENING_MENU);
     }
 
     /**

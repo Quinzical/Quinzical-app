@@ -109,4 +109,19 @@ public class HomeMenuController {
         _sceneManager.unloadScene();
         _sceneManager.switchScene(SceneManager.Scenes.HELP_SCREEN);
     }
+
+    /**
+     * Used to handle stats button
+     *
+     * @param event
+     */
+    @FXML
+    void handleStatsButton(final ActionEvent event) {
+        _sceneManager.switchScene(SceneManager.Scenes.STATS_SCREEN);
+    }
+
+    @FXML
+    void handleInfoButton(final ActionEvent event) {
+        // TODO
+    }
 }

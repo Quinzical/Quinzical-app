@@ -14,7 +14,7 @@
                <children>
                   <ImageView fx:id="_logo" fitHeight="302.0" fitWidth="252.0" pickOnBounds="true" preserveRatio="true" styleClass="header">
                      <image>
-                        <Image url="@images/darklogo.png" />
+                        <Image url="@images/white.png" />
                      </image>
                   </ImageView>
                </children>

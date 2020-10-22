@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
@@ -18,19 +17,10 @@
     <children>
         <HBox alignment="CENTER">
             <children>
-                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="header">
-                    <image>
-                        <Image url="@images/darklogo.png" />
-                    </image>
-                </ImageView>
-                <Label text="Game Module">
+                <Label styleClass="header" text="Game Module">
                     <font>
                         <Font size="90.0" />
                     </font>
-                    <styleClass>
-                        <String fx:value="outline" />
-                        <String fx:value="shadow" />
-                    </styleClass>
                 </Label>
             </children>
             <VBox.margin>
@@ -41,7 +31,7 @@
          <children>
             <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                <children>
-                    <Label text="Select five categories:" textAlignment="CENTER">
+                    <Label styleClass="login" text="Select five categories:" textAlignment="CENTER">
                         <font>
                             <Font size="30.0" />
                         </font>
@@ -62,7 +52,7 @@
             </VBox>
             <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                <children>
-                  <Label text="Chosen categories:" textAlignment="CENTER">
+                  <Label styleClass="login" text="Chosen categories:" textAlignment="CENTER">
                      <font>
                         <Font size="30.0" />
                      </font>
@@ -100,35 +90,39 @@
             </Button>
          </children>
       </HBox>
-      <AnchorPane prefHeight="100.0" prefWidth="200.0">
-         <children>
-              <Button alignment="CENTER" layoutX="14.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleLeaderboardButton" prefHeight="60.0" prefWidth="275.0" styleClass="exit-button" text="Leaderboard" textAlignment="CENTER" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0">
-                  <font>
-                      <Font size="24.0" />
-                  </font>
-              </Button>
-                <Button alignment="CENTER" layoutX="1190.0" layoutY="59.0" maxHeight="66.0" maxWidth="66.0" minHeight="66.0" minWidth="66.0" mnemonicParsing="false" onAction="#handleSettingsButton" prefHeight="66.0" prefWidth="66.0" styleClass="setting-button" textAlignment="CENTER" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="0.0">
-                    <font>
-                        <Font size="24.0" />
-                    </font>
-                    <graphic>
-                        <ImageView fitHeight="70.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@images/settings.png" />
-                            </image>
-                            <viewport>
-                                <Rectangle2D />
-                            </viewport>
-                            <effect>
-                                <Blend />
-                            </effect>
-                        </ImageView>
-                    </graphic>
-                </Button>
-         </children>
+      <HBox>
          <VBox.margin>
-            <Insets left="20.0" right="20.0" />
+            <Insets />
          </VBox.margin>
-      </AnchorPane>
+         <children>
+            <AnchorPane prefHeight="106.0" prefWidth="1276.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button alignment="CENTER" maxHeight="72.0" maxWidth="72.0" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#handleSettingsButton" prefHeight="69.0" prefWidth="72.0" styleClass="round-button" textAlignment="CENTER" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="41.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/settings-white.png" />
+                           </image>
+                           <viewport>
+                              <Rectangle2D />
+                           </viewport>
+                           <effect>
+                              <Blend />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                    <Button alignment="CENTER" layoutX="14.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleLeaderboardButton" prefHeight="60.0" prefWidth="275.0" styleClass="exit-button" text="Leaderboard" textAlignment="CENTER" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0">
+                        <font>
+                            <Font size="24.0" />
+                        </font>
+                    </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
     </children>
 </VBox>
