@@ -24,6 +24,7 @@ public class Main extends Application {
         SceneManager sceneManager = SceneManager.getInstance();
         sceneManager.init(primaryStage);
         sceneManager.switchScene(Scenes.SPLASH_SCREEN);
+        //StarsBackground.Stars(primaryStage);
     }
 
     /**

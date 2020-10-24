@@ -24,7 +24,7 @@ import application.helper.SceneManager;
  */
 
 public class APILoader extends Task<Void> {
-    private static final String ENDPOINT = "https://quinzical-api.herokuapp.com/";
+    private static final String ENDPOINT = "https://quinzical-api.herokuapp.com";
     private static final int OK = 200;
 
     private int _statusCode;

@@ -42,6 +42,7 @@ public final class SceneManager {
 
     private Stage _rootStage;
     private Stack<Scenes> _history = new Stack<Scenes>();
+    private Scenes _currentScene;
     private final Map<Scenes, Scene> _scenes = new HashMap<Scenes, Scene>();
 
     /** Enum for each scene with a filename and name */
@@ -81,7 +82,23 @@ public final class SceneManager {
         /** Customise scene */
         CUSTOMISE_MENU("CustomiseMenu.fxml"),
         /** Stats scene */
-        STATS_SCREEN("Stats.fxml");
+        STATS_SCREEN("Stats.fxml"),
+        /** Online scene */
+        ONLINE_MENU("OnlineMenu.fxml"),
+        /** Create game scene */
+        CREATE_GAME("CreateGame.fxml"),
+        /** Lobby screen scene */
+        LOBBY_SCREEN("LobbyScreen.fxml"),
+        /** Countdown screen before question */
+        COUNTDOWN("CountDown.fxml"),
+        /** Eject screen after question */
+        EJECT("EjectScreen.fxml"),
+        /** Eject screen after question */
+        REMAINING("RemainingScreen.fxml"),
+        /** Online Question screen shows question */
+        ONLINE_QUESTION("OnlineQuestion.fxml"),
+        /** Game over for online */
+        GAME_OVER("GameOver.fxml");
 
         private final String _filename;
 
@@ -153,7 +170,18 @@ public final class SceneManager {
             }
         });
         _history.push(scene);
+        _currentScene = scene;
         _rootStage.setScene(next);
+    }
+
+    /**
+     * Used to clean switch current scene (reload)
+     * 
+     * @param scene Scenes enum
+     */
+    public void cleanSwitchScene(final Scenes scene) {
+        unloadScene(scene);
+        switchScene(scene);
     }
 
     /**
@@ -174,7 +202,6 @@ public final class SceneManager {
         }
         switchScene(_history.pop());
     }
-
 
     /**
      * Used to unload scene
@@ -216,6 +243,15 @@ public final class SceneManager {
      */
     public Scenes getPreviousScene() {
         return _history.peek();
+    }
+
+    /**
+     * Used to get current scene
+     * 
+     * @return current scene
+     */
+    public Scenes getCurrentScene() {
+        return _currentScene;
     }
 
     /**

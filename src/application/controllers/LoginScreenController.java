@@ -80,7 +80,7 @@ public class LoginScreenController {
             JWTStore jwtStore = new JWTStore();
             jwtStore.setJWT(entry.getJwtToken());
             _sceneManager.unloadScene();
-            _sceneManager.switchScene(Scenes.HOME_MENU);
+            _sceneManager.switchScene(Scenes.OPENING_MENU);
         }
     }
 

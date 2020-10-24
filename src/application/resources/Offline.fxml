@@ -41,7 +41,7 @@
         <HBox alignment="CENTER" prefHeight="159.0" prefWidth="1263.0" spacing="20.0">
             <children>
             <Button alignment="CENTER" mnemonicParsing="false" onAction="#handlePracticeButton" prefHeight="95.0" prefWidth="225.0" styleClass="game-button" text="Practice" />
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#handlePlayButton" prefHeight="95.0" prefWidth="225.0" styleClass="game-button" text="Play" />
+            <Button fx:id="_playButton" alignment="CENTER" mnemonicParsing="false" prefHeight="95.0" prefWidth="225.0" styleClass="game-button" text="Play" />
             </children>
             <padding>
                 <Insets left="50.0" right="50.0" />

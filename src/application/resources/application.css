@@ -16,15 +16,21 @@
   -fx-background-color: transparent;
 }
 
+.lobby-background {
+  -fx-background-image: url("images/lobby.png");
+  -fx-background-repeat: no-repeat;
+  -fx-background-size: cover;
+}
+
 /****************** Fonts ******************/
 
 @font-face {
-  font-family: 'Joffrey';
-  src: url("./Joffrey.ttf");
+  font-family: "Joffrey";
+  src: url("Joffrey.ttf");
 }
 
 .text {
-    -fx-font-family: "Joffrey";
+  -fx-font-family: "Joffrey";
 }
 
 /****************** Text Fields ******************/
@@ -65,11 +71,33 @@
   -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 3, 0, 0, 0);
 }
 
+.question.label .text {
+  -fx-fill: white;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 3, 0, 0, 0);
+}
+
+.qrcode {
+    -fx-fill: black;
+    -fx-font-size: 22px;
+}
+
+.count-down {
+  -fx-font-size: 90px;
+  -fx-fill: #ff0000;
+  -fx-font-weight: bold;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 3, 0, 0, 0);
+}
+
 .login.label .text {
   -fx-font-size: 30px;
   -fx-fill: white;
   -fx-font-weight: bold;
   -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 3, 0, 0, 0);
+}
+
+.logingreen.label .text {
+  -fx-font-size: 30px;
+  -fx-fill: #01ff00;
 }
 
 .time.label .text {
@@ -92,12 +120,16 @@
 }
 
 .button:hover {
-  -fx-border-color: #07ED00;
+  -fx-border-color: #07ed00;
 }
 
 .round-button {
   -fx-background-radius: 80px;
   -fx-background-color: #919191;
+}
+.round-button:hover {
+  -fx-border-radius: 80px;
+  -fx-border-color: #07ed00;
 }
 
 .exit-button {
@@ -123,10 +155,10 @@
 /****************** Text area ******************/
 
 .text-area {
-    text-area-background: black;
-    -fx-text-fill: white;
+  text-area-background: black;
+  -fx-text-fill: white;
 }
 
 .text-area .content {
-    -fx-background-color: text-area-background;
+  -fx-background-color: text-area-background;
 }

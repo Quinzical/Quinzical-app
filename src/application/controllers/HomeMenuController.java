@@ -5,7 +5,6 @@ import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.game.GameModel;
 import application.models.game.sql.GameModelSQL;
-import application.models.helper.JWTStore;
 import application.models.login.LoginModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,6 +30,7 @@ public class HomeMenuController {
      */
     public void initialize() {
         _usernameLabel.setText(_login.getUsername());
+        _usernameLabel.getStyleClass().add("logingreen");
     }
 
     /**
@@ -92,10 +92,7 @@ public class HomeMenuController {
      */
     @FXML
     private void handleLogoutButton(final ActionEvent event) {
-        _sceneManager.unloadAllScenes();
-        _sceneManager.switchScene(SceneManager.Scenes.LOGIN_SCREEN);
-        JWTStore jwtStore = new JWTStore();
-        jwtStore.setJWT("");
+        _sceneManager.switchScene(Scenes.OPENING_MENU);
     }
 
     /**
@@ -106,7 +103,7 @@ public class HomeMenuController {
     @FXML
     private void handleHelpButton(final ActionEvent event) {
         _sceneManager.unloadScene();
-        _sceneManager.switchScene(SceneManager.Scenes.HELP_SCREEN);
+        _sceneManager.switchScene(Scenes.HELP_SCREEN);
     }
 
     /**
@@ -115,12 +112,12 @@ public class HomeMenuController {
      * @param event
      */
     @FXML
-    void handleStatsButton(final ActionEvent event) {
-        _sceneManager.switchScene(SceneManager.Scenes.STATS_SCREEN);
+    private void handleStatsButton(final ActionEvent event) {
+        _sceneManager.switchScene(Scenes.STATS_SCREEN);
     }
 
     @FXML
-    void handleInfoButton(final ActionEvent event) {
+    private void handleInfoButton(final ActionEvent event) {
         // TODO
     }
 }

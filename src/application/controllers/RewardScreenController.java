@@ -28,6 +28,7 @@ public class RewardScreenController {
     private final GameModel _gameModel = GameModelSQL.getInstance();
 
     // ExecutorService for running task and speak in the background
+    //TODO
     private ExecutorService _team = Executors.newSingleThreadExecutor();
     private SpeakProcess _speak;
 

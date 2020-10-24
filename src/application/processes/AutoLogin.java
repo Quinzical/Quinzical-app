@@ -63,7 +63,7 @@ public class AutoLogin extends Task<Void> {
 
         _loginModel.setMongoID(body.getString("_id"));
 
-        SplashModel.getInstance().setNextScene(Scenes.HOME_MENU, Pages.SQL);
+        SplashModel.getInstance().setNextScene(Scenes.OPENING_MENU, Pages.SQL);
 
         return null;
     }

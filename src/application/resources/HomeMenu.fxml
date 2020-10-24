@@ -38,6 +38,9 @@
                <font>
                   <Font size="20.0" />
                </font>
+               <HBox.margin>
+                  <Insets bottom="10.0" />
+               </HBox.margin>
             </Label>
          </children>
       </HBox>
@@ -118,7 +121,7 @@
                   </Button>
                </children>
             </HBox>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleLogoutButton" prefHeight="69.0" prefWidth="125.0" styleClass="exit-button" text="Logout" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleLogoutButton" prefHeight="69.0" prefWidth="125.0" styleClass="exit-button" text="Back" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" />
          </children>
       </AnchorPane>
    </children>

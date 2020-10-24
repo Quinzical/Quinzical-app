@@ -5,6 +5,7 @@ import java.util.concurrent.Executors;
 
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
+import application.models.game.GameModel;
 import application.models.game.sql.GameModelSQL;
 import application.models.question.QuestionModel;
 import application.processes.SpeakProcess;
@@ -30,7 +31,7 @@ public class GameQuestionController {
 
     private final QuestionModel _questionModel = QuestionModel.getInstance();
 
-    private final GameModelSQL _gameModel = GameModelSQL.getInstance();
+    private final GameModel _gameModel = GameModelSQL.getInstance();
 
     // ExecutorService for running task and speak in the background
     private ExecutorService _team = Executors.newSingleThreadExecutor();

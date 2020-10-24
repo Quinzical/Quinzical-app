@@ -1,7 +1,10 @@
 package application.controllers;
 
+import application.controllers.helper.ConfirmAlert;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
+import application.models.helper.JWTStore;
+import application.models.login.LoginModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -15,9 +18,23 @@ import javafx.scene.control.Label;
 public class OpeningMenuController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
+    private final LoginModel _login = LoginModel.getInstance();
 
     @FXML
     private Label _usernameLabel;
+
+    /**
+     * initialize with OpeningMenu.fxml
+     */
+    public void initialize() {
+        _usernameLabel.setText(_login.getUsername());
+        _usernameLabel.getStyleClass().add("logingreen");
+    }
+
+    @FXML
+    private void handleCartButton(final ActionEvent event) {
+
+    }
 
     /**
      * Used to handle customise button
@@ -25,7 +42,7 @@ public class OpeningMenuController {
      * @param event
      */
     @FXML
-    void handleCustomiseButton(final ActionEvent event) {
+    private void handleCustomiseButton(final ActionEvent event) {
         _sceneManager.switchScene(Scenes.CUSTOMISE_MENU);
     }
 
@@ -35,38 +52,55 @@ public class OpeningMenuController {
      * @param event
      */
     @FXML
-    void handleHelpButton(final ActionEvent event) {
+    private void handleHelpButton(final ActionEvent event) {
         _sceneManager.switchScene(SceneManager.Scenes.HELP_SCREEN);
     }
 
     @FXML
-    void handleInfoButton(final ActionEvent event) {
+    private void handleInfoButton(final ActionEvent event) {
 
     }
 
     @FXML
-    void handleLocalButton(final ActionEvent event) {
+    private void handleLocalButton(final ActionEvent event) {
+        _sceneManager.switchScene(Scenes.HOME_MENU);
+    }
+
+    @FXML
+    private void handleMessageButton(final ActionEvent event) {
 
     }
 
     @FXML
-    void handleMessageButton(final ActionEvent event) {
+    private void handleOnlineButton(final ActionEvent event) {
+        _sceneManager.switchScene(Scenes.ONLINE_MENU);
+    }
+
+    @FXML
+    private void handleSettingsButton(final ActionEvent event) {
+        _sceneManager.switchScene(Scenes.SETTINGS_MENU);
+    }
+
+    @FXML
+    private void handleStatsButton(final ActionEvent event) {
 
     }
 
     @FXML
-    void handleOnlineButton(final ActionEvent event) {
-
+    private void handleExit(final ActionEvent event) {
+        new ConfirmAlert("Quit the Game") {
+            @Override
+            protected void handleConfirm() {
+                _sceneManager.close();
+            }
+        };
     }
 
     @FXML
-    void handleSettingsButton(final ActionEvent event) {
-
+    private void handleLogout(final ActionEvent event) {
+        _sceneManager.unloadAllScenes();
+        _sceneManager.switchScene(Scenes.LOGIN_SCREEN);
+        JWTStore jwtStore = new JWTStore();
+        jwtStore.setJWT("");
     }
-
-    @FXML
-    void handleStatsButton(final ActionEvent event) {
-
-    }
-
 }
