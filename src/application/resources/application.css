@@ -31,6 +31,7 @@
 
 .question-field {
   -fx-prompt-text-fill: white;
+  -fx-text-fill: white;
   -fx-prompt-font-size: 30px;
   -fx-background-color: transparent;
 }
@@ -67,6 +68,12 @@
 .login.label .text {
   -fx-font-size: 30px;
   -fx-fill: white;
+  -fx-font-weight: bold;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 3, 0, 0, 0);
+}
+
+.time.label .text {
+  -fx-font-size: 40px;
   -fx-font-weight: bold;
   -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 3, 0, 0, 0);
 }

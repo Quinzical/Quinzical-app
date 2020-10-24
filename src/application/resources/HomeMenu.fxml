@@ -87,7 +87,7 @@
                      <graphic>
                         <ImageView fitHeight="61.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/white.png" />
+                              <Image url="@images/white-logo.png" />
                            </image>
                            <viewport>
                               <Rectangle2D />

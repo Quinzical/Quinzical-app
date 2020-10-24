@@ -78,6 +78,8 @@ public final class SceneManager {
         OFFLINE("Offline.fxml"),
         /** Opening Menu scene */
         OPENING_MENU("OpeningMenu.fxml"),
+        /** Customise scene */
+        CUSTOMISE_MENU("CustomiseMenu.fxml"),
         /** Stats scene */
         STATS_SCREEN("Stats.fxml");
 

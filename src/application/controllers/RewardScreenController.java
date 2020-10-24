@@ -8,10 +8,13 @@ import application.helper.SceneManager.Scenes;
 import application.models.game.GameModel;
 import application.models.game.sql.GameModelSQL;
 import application.processes.SpeakProcess;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 
 /**
  * This class is the Reward Screen controller in a MVC design.
@@ -37,16 +40,18 @@ public class RewardScreenController {
     @FXML
     private Button _playAgainButton;
 
+    @FXML
+    private ImageView _backgroundFade;
+
     /**
      * Used to initialize RewardScreenController.
      */
     public void initialize() {
-        int score = _gameModel.getScore();
-        _userScore.setText("$" + Integer.toString(score));
-        _speak = new SpeakProcess(
-                "Congratulations, you completed the Game Module! Your final score was "
-                + Integer.toString(score));
-        _team.submit(_speak);
+        FadeTransition logo = new FadeTransition(Duration.seconds(5), _backgroundFade);
+        logo.setFromValue(0);
+        logo.setToValue(1);
+        logo.setAutoReverse(true);
+        logo.play();
     }
 
     /**
@@ -82,7 +87,6 @@ public class RewardScreenController {
     @FXML
     private void handleSettingsButton(final ActionEvent event) {
         _speak.cancel(true);
-        _sceneManager.unloadScene();
         _sceneManager.switchScene(Scenes.SETTINGS_MENU);
     }
 }

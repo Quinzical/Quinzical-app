@@ -82,7 +82,6 @@ public class HomeMenuController {
      */
     @FXML
     private void handleSettingsButton(final ActionEvent event) {
-        _sceneManager.unloadScene();
         _sceneManager.switchScene(Scenes.SETTINGS_MENU);
     }
 

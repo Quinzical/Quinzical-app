@@ -113,25 +113,7 @@
                      <graphic>
                         <ImageView fitHeight="61.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/white.png" />
-                           </image>
-                           <viewport>
-                              <Rectangle2D />
-                           </viewport>
-                           <effect>
-                              <Blend />
-                           </effect>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button alignment="CENTER" maxHeight="73.0" maxWidth="77.0" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#handleCartButton" prefHeight="73.0" prefWidth="77.0" styleClass="round-button" textAlignment="CENTER">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="68.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/cart.png" />
+                              <Image url="@images/white-logo.png" />
                            </image>
                            <viewport>
                               <Rectangle2D />
