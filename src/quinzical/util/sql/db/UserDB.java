@@ -1,4 +1,4 @@
-package quinzical.models.sql.db;
+package quinzical.util.sql.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,8 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import quinzical.models.sql.SQLConnection;
-import quinzical.models.sql.data.UserData;
+import quinzical.util.sql.SQLConnection;
+import quinzical.util.sql.data.UserData;
 
 /**
  * UserDB used to handle Users SQL Database

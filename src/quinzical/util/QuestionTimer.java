@@ -1,6 +1,6 @@
-package quinzical.helper;
+package quinzical.util;
 
-import quinzical.processes.SpeakProcess;
+import quinzical.util.processes.SpeakProcess;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;

@@ -2,17 +2,17 @@ package quinzical.controllers;
 
 import java.sql.SQLException;
 
-import quinzical.controllers.helper.ConfirmAlert;
-import quinzical.controllers.helper.ExceptionAlert;
-import quinzical.controllers.helper.StarBackground;
-import quinzical.controllers.helper.SuccessAlert;
-import quinzical.controllers.helper.WarningAlert;
-import quinzical.helper.SceneManager;
-import quinzical.helper.SceneManager.Scenes;
-import quinzical.models.api.Login;
-import quinzical.models.api.LoginEntry;
-import quinzical.models.helper.JWTStore;
-import quinzical.models.login.LoginModel;
+import quinzical.controllers.util.alerts.ConfirmAlert;
+import quinzical.controllers.util.alerts.ExceptionAlert;
+import quinzical.controllers.util.StarBackground;
+import quinzical.controllers.util.alerts.SuccessAlert;
+import quinzical.controllers.util.alerts.WarningAlert;
+import quinzical.util.SceneManager;
+import quinzical.util.SceneManager.Scenes;
+import quinzical.util.api.Login;
+import quinzical.util.api.LoginEntry;
+import quinzical.util.JWTStore;
+import quinzical.util.models.LoginModel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;

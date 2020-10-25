@@ -1,8 +1,8 @@
 package quinzical.controllers;
 
-import quinzical.controllers.helper.StarBackground;
-import quinzical.helper.SceneManager;
-import quinzical.models.SettingsModel;
+import quinzical.controllers.util.StarBackground;
+import quinzical.util.SceneManager;
+import quinzical.util.models.SettingsModel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;

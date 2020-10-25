@@ -2,12 +2,12 @@ package quinzical.controllers;
 
 import java.util.List;
 
-import quinzical.controllers.helper.LeaderboardPosition;
-import quinzical.controllers.helper.StarBackground;
-import quinzical.helper.SceneManager;
-import quinzical.helper.SceneManager.Scenes;
-import quinzical.models.api.LeaderboardEntry;
-import quinzical.models.api.LeaderboardModel;
+import quinzical.controllers.util.LeaderboardPosition;
+import quinzical.controllers.util.StarBackground;
+import quinzical.util.SceneManager;
+import quinzical.util.SceneManager.Scenes;
+import quinzical.util.api.LeaderboardEntry;
+import quinzical.util.api.LeaderboardModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

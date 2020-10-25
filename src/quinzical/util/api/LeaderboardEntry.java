@@ -1,4 +1,4 @@
-package quinzical.models.api;
+package quinzical.util.api;
 
 /**
  * This class is used to store Leaderboard entry data retieved from API

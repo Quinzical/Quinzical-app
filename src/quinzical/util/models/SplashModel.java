@@ -1,15 +1,15 @@
-package quinzical.models.helper;
+package quinzical.util.models;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import quinzical.helper.SceneManager;
-import quinzical.helper.SceneManager.Scenes;
-import quinzical.models.api.LeaderboardModel;
-import quinzical.models.game.international.InternationalModel;
-import quinzical.models.sql.SQLConnection;
-import quinzical.processes.APILoader;
-import quinzical.processes.AutoLogin;
+import quinzical.util.SceneManager;
+import quinzical.util.SceneManager.Scenes;
+import quinzical.util.api.LeaderboardModel;
+import quinzical.util.models.game.InternationalModel;
+import quinzical.util.sql.SQLConnection;
+import quinzical.util.processes.APILoader;
+import quinzical.util.processes.AutoLogin;
 import javafx.concurrent.Task;
 
 /**

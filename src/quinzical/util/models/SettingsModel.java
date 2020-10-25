@@ -1,4 +1,4 @@
-package quinzical.models;
+package quinzical.util.models;
 
 /**
  * This class is used to store and calculate data for the settings page that the

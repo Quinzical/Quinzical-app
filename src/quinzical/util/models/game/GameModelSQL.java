@@ -1,4 +1,4 @@
-package quinzical.models.game.sql;
+package quinzical.util.models.game;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -6,19 +6,18 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-import quinzical.controllers.helper.GameStateData;
-import quinzical.helper.SceneManager;
-import quinzical.helper.SceneManager.Scenes;
-import quinzical.models.api.LeaderboardModel;
-import quinzical.models.game.GameModel;
-import quinzical.models.helper.Category;
-import quinzical.models.helper.QuestionHelper;
-import quinzical.models.login.LoginModel;
-import quinzical.models.sql.data.CategoryData;
-import quinzical.models.sql.data.QuestionData;
-import quinzical.models.sql.db.CategoryDB;
-import quinzical.models.sql.db.GameSessionDB;
-import quinzical.models.sql.db.QuestionDB;
+import quinzical.controllers.util.GameStateData;
+import quinzical.util.SceneManager;
+import quinzical.util.SceneManager.Scenes;
+import quinzical.util.api.LeaderboardModel;
+import quinzical.util.models.util.Category;
+import quinzical.util.models.util.QuestionHelper;
+import quinzical.util.models.LoginModel;
+import quinzical.util.sql.data.CategoryData;
+import quinzical.util.sql.data.QuestionData;
+import quinzical.util.sql.db.CategoryDB;
+import quinzical.util.sql.db.GameSessionDB;
+import quinzical.util.sql.db.QuestionDB;
 
 /**
  * This class is used to delegate tasks to different classes who carry out tasks

@@ -1,9 +1,9 @@
-package quinzical.models.helper;
+package quinzical.util.models.util;
 
 import java.io.IOException;
 import java.util.List;
 
-import quinzical.controllers.helper.ExceptionAlert;
+import quinzical.controllers.util.alerts.ExceptionAlert;
 
 /**
  * This is class is used to aid in the handling of questions and answers.

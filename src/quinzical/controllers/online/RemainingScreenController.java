@@ -1,12 +1,12 @@
-package quinzical.controllers;
+package quinzical.controllers.online;
 
 import java.util.HashMap;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import quinzical.controllers.helper.StarBackground;
-import quinzical.models.socket.SocketIO;
+import quinzical.controllers.util.StarBackground;
+import quinzical.util.socket.SocketIO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

@@ -1,13 +1,13 @@
-package quinzical.controllers;
+package quinzical.controllers.local;
 
 //import java.util.concurrent.ExecutorService;
 //import java.util.concurrent.Executors;
-// import quinzical.processes.SpeakProcess;
+// import quinzical.util.processes.SpeakProcess;
 
-import quinzical.helper.SceneManager;
-import quinzical.helper.SceneManager.Scenes;
-import quinzical.models.game.GameModel;
-import quinzical.models.game.sql.GameModelSQL;
+import quinzical.util.SceneManager;
+import quinzical.util.SceneManager.Scenes;
+import quinzical.util.models.game.GameModel;
+import quinzical.util.models.game.GameModelSQL;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

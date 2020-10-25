@@ -1,5 +1,5 @@
 
-package quinzical.processes;
+package quinzical.util.processes;
 
 import javafx.concurrent.Task;
 import java.io.IOException;

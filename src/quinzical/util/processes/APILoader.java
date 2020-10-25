@@ -1,5 +1,5 @@
 
-package quinzical.processes;
+package quinzical.util.processes;
 
 import javafx.concurrent.Task;
 import javafx.scene.control.Alert;
@@ -14,7 +14,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 
-import quinzical.helper.SceneManager;
+import quinzical.util.SceneManager;
 
 /**
  * This process is designed to wait for server to start on heroku.

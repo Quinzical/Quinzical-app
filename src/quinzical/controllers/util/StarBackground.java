@@ -1,4 +1,4 @@
-package quinzical.controllers.helper;
+package quinzical.controllers.util;
 
 import javafx.animation.Animation;
 import javafx.animation.Interpolator;

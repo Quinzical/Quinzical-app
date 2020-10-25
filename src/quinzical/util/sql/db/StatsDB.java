@@ -1,4 +1,4 @@
-package quinzical.models.sql.db;
+package quinzical.util.sql.db;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -7,9 +7,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import quinzical.models.sql.SQLConnection;
-import quinzical.models.sql.data.GameStatsData;
-import quinzical.models.sql.data.UserStatsData;
+import quinzical.util.sql.SQLConnection;
+import quinzical.util.sql.data.GameStatsData;
+import quinzical.util.sql.data.UserStatsData;
 
 /**
  * StatsDB used to handle Stats SQL Database

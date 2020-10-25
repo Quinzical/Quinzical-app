@@ -1,6 +1,6 @@
-package quinzical.controllers.helper;
+package quinzical.controllers.util;
 
-import quinzical.models.api.LeaderboardEntry;
+import quinzical.util.api.LeaderboardEntry;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;

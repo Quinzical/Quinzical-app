@@ -6,9 +6,9 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import quinzical.controllers.helper.StarBackground;
-import quinzical.helper.SceneManager;
-import quinzical.helper.SceneManager.Scenes;
+import quinzical.controllers.util.StarBackground;
+import quinzical.util.SceneManager;
+import quinzical.util.SceneManager.Scenes;
 
 /**
  * This class is the Chat Screen controller in a MVC design.

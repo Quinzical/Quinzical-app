@@ -1,7 +1,7 @@
 
-package quinzical.processes;
+package quinzical.util.processes;
 
-import quinzical.models.SettingsModel;
+import quinzical.util.models.SettingsModel;
 
 import javafx.concurrent.Task;
 

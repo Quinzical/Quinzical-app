@@ -1,4 +1,4 @@
-package quinzical.controllers.helper;
+package quinzical.controllers.util;
 
 /**
  * This Class is used to store Game State Data mainly state of answered

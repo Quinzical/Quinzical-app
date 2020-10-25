@@ -1,4 +1,4 @@
-package quinzical.models.game.international;
+package quinzical.util.models.game;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -10,10 +10,10 @@ import java.sql.SQLException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import quinzical.controllers.helper.ExceptionAlert;
-import quinzical.models.helper.QuestionHelper;
-import quinzical.models.sql.data.GameSessionData;
-import quinzical.models.sql.db.GameSessionDB;
+import quinzical.controllers.util.alerts.ExceptionAlert;
+import quinzical.util.models.util.QuestionHelper;
+import quinzical.util.sql.data.GameSessionData;
+import quinzical.util.sql.db.GameSessionDB;
 
 /**
  * This class is used to delegate tasks to different classes who carry out tasks

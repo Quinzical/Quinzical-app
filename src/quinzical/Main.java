@@ -1,8 +1,8 @@
 package quinzical;
 
-import quinzical.helper.SceneManager;
-import quinzical.helper.SceneManager.Scenes;
-import quinzical.models.sql.SQLConnection;
+import quinzical.util.SceneManager;
+import quinzical.util.SceneManager.Scenes;
+import quinzical.util.sql.SQLConnection;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

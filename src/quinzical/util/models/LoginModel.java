@@ -1,9 +1,9 @@
-package quinzical.models.login;
+package quinzical.util.models;
 
 import java.sql.SQLException;
 
-import quinzical.models.sql.data.UserData;
-import quinzical.models.sql.db.UserDB;
+import quinzical.util.sql.data.UserData;
+import quinzical.util.sql.db.UserDB;
 
 /**
  * This class is used to manage and store login data, this class also prepares

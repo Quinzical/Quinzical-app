@@ -1,7 +1,7 @@
-package quinzical.controllers;
+package quinzical.controllers.online;
 
-import quinzical.controllers.helper.StarBackground;
-import quinzical.models.socket.SocketIO;
+import quinzical.controllers.util.StarBackground;
+import quinzical.util.socket.SocketIO;
 
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;

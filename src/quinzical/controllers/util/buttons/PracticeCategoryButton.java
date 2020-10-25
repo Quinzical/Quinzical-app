@@ -1,9 +1,9 @@
-package quinzical.controllers.helper;
+package quinzical.controllers.util.buttons;
 
-import quinzical.helper.SceneManager;
-import quinzical.helper.SceneManager.Scenes;
-import quinzical.models.helper.Category;
-import quinzical.models.question.QuestionModel;
+import quinzical.util.SceneManager;
+import quinzical.util.SceneManager.Scenes;
+import quinzical.util.models.util.Category;
+import quinzical.util.models.QuestionModel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;

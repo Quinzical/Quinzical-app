@@ -2,12 +2,12 @@ package quinzical.controllers;
 
 import java.util.List;
 
-import quinzical.controllers.helper.EditCategoryButton;
-import quinzical.helper.SceneManager;
-import quinzical.helper.SceneManager.Scenes;
-import quinzical.models.helper.Category;
-import quinzical.models.practice.PracticeModel;
-import quinzical.models.practice.sql.PracticeModelSQL;
+import quinzical.controllers.util.buttons.EditCategoryButton;
+import quinzical.util.SceneManager;
+import quinzical.util.SceneManager.Scenes;
+import quinzical.util.models.util.Category;
+import quinzical.util.models.practice.PracticeModel;
+import quinzical.util.models.practice.PracticeModelSQL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;

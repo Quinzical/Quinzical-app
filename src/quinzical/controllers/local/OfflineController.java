@@ -1,9 +1,9 @@
-package quinzical.controllers;
+package quinzical.controllers.local;
 
-import quinzical.controllers.helper.ConfirmAlert;
-import quinzical.controllers.helper.StarBackground;
-import quinzical.helper.SceneManager;
-import quinzical.helper.SceneManager.Scenes;
+import quinzical.controllers.util.alerts.ConfirmAlert;
+import quinzical.controllers.util.StarBackground;
+import quinzical.util.SceneManager;
+import quinzical.util.SceneManager.Scenes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

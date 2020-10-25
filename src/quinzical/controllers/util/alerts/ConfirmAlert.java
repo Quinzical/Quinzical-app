@@ -1,8 +1,8 @@
-package quinzical.controllers.helper;
+package quinzical.controllers.util.alerts;
 
 import java.util.Optional;
 
-import quinzical.helper.SceneManager;
+import quinzical.util.SceneManager;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;

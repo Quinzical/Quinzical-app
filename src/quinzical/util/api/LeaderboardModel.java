@@ -1,15 +1,15 @@
-package quinzical.models.api;
+package quinzical.util.api;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import quinzical.controllers.helper.ExceptionAlert;
-import quinzical.models.login.LoginModel;
-import quinzical.models.sql.data.GameSessionData;
-import quinzical.models.sql.data.UserData;
-import quinzical.models.sql.db.GameSessionDB;
-import quinzical.models.sql.db.UserDB;
+import quinzical.controllers.util.alerts.ExceptionAlert;
+import quinzical.util.models.LoginModel;
+import quinzical.util.sql.data.GameSessionData;
+import quinzical.util.sql.data.UserData;
+import quinzical.util.sql.db.GameSessionDB;
+import quinzical.util.sql.db.UserDB;
 
 /**
  * This class is used to store and get Leaderboard entry datafrom API

@@ -9,7 +9,7 @@ import javafx.animation.SequentialTransition;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
-import quinzical.models.helper.SplashModel;
+import quinzical.util.models.SplashModel;
 
 /**
  * This class is the SplashScreen controller in a MVC design.

@@ -1,10 +1,10 @@
-package quinzical.controllers;
+package quinzical.controllers.online;
 
-import quinzical.controllers.helper.StarBackground;
-import quinzical.helper.SceneManager;
-import quinzical.helper.SceneManager.Scenes;
-import quinzical.models.socket.SocketIO;
-import quinzical.processes.BasicTimerThread;
+import quinzical.controllers.util.StarBackground;
+import quinzical.util.SceneManager;
+import quinzical.util.SceneManager.Scenes;
+import quinzical.util.socket.SocketIO;
+import quinzical.util.processes.BasicTimerThread;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

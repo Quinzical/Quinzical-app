@@ -1,7 +1,7 @@
 package quinzical.controllers;
 
-import quinzical.controllers.helper.StarBackground;
-import quinzical.helper.SceneManager;
+import quinzical.controllers.util.StarBackground;
+import quinzical.util.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;

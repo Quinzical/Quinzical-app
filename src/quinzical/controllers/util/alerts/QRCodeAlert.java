@@ -1,4 +1,4 @@
-package quinzical.controllers.helper;
+package quinzical.controllers.util.alerts;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
