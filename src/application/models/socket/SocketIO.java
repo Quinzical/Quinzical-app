@@ -389,6 +389,24 @@ public final class SocketIO {
     }
 
     /**
+     * Used to get answer
+     * 
+     * @return answer
+     */
+    public String getAnswer() {
+        return _answer;
+    }
+
+    /**
+     * Used to get correct
+     * 
+     * @return correct
+     */
+    public boolean getCorrect() {
+        return _correct;
+    }
+
+    /**
      * Used to get playing
      * 
      * @return playing

@@ -8,6 +8,7 @@ import application.controllers.helper.CategoryButton;
 import application.controllers.helper.LeaderboardAlert;
 import application.controllers.helper.StarBackground;
 import application.helper.SceneManager;
+import application.helper.SceneManager.Scenes;
 import application.models.helper.Category;
 import application.models.login.LoginModel;
 import application.models.practice.PracticeModel;
@@ -128,7 +129,7 @@ public class CategoryChooserController {
      */
     @FXML
     private void handleBackButton(final ActionEvent event) {
-        _sceneManager.backScene();
+        _sceneManager.switchScene(Scenes.HOME_MENU);
     }
 
     /**
