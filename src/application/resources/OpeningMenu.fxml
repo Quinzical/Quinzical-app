@@ -70,7 +70,7 @@
                         <String fx:value="exit-button" />
                      </styleClass>
                      <graphic>
-                        <ImageView fitHeight="61.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/white-logo.png" />
                            </image>
