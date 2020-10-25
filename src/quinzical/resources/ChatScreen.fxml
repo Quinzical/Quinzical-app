@@ -62,7 +62,7 @@
                         <Font size="16.0" />
                      </font>
                   </TextField>
-                  <Button mnemonicParsing="false" onAction="#handleSendMessage" prefHeight="59.0" prefWidth="54.0">
+                  <Button mnemonicParsing="false" onAction="#handleSendMessage" prefHeight="59.0" prefWidth="54.0" style="-fx-border-radius: 10;">
                      <graphic>
                         <ImageView fitHeight="56.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                            <image>

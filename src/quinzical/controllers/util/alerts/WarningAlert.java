@@ -1,17 +1,12 @@
 package quinzical.controllers.util.alerts;
 
-import quinzical.util.SceneManager;
-import javafx.scene.control.Alert;
-import javafx.scene.image.Image;
-import javafx.stage.Stage;
-
 /**
  * This class is for WarningAlert for Warning Message on Alert
  *
  * @author Maggie Pedersen
  * @author Cheng-Zhen Yang
  */
-public class WarningAlert extends Alert {
+public class WarningAlert extends StyleAlert {
     /**
      * Create ConfirmAlert that displays a window to confirm.
      * 
@@ -19,12 +14,7 @@ public class WarningAlert extends Alert {
      */
     public WarningAlert(final String text) {
         super(AlertType.WARNING);
-        setTitle("Qunizical");
         setHeaderText(text);
-        // Add Icon
-        Stage stage = (Stage) getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image(SceneManager.getPath(SceneManager.LOGO)));
-
         show();
     }
 }

@@ -26,8 +26,9 @@ import javafx.stage.WindowEvent;
 public final class SceneManager {
 
     // CONST
-    private static final String PATH = FileHelper.FILE_SEPARATOR + "application" + FileHelper.FILE_SEPARATOR
-            + "resources" + FileHelper.FILE_SEPARATOR;
+    private static final String FOLDER = "quinzical";
+    private static final String PATH = FileHelper.FILE_SEPARATOR + FOLDER + FileHelper.FILE_SEPARATOR + "resources"
+            + FileHelper.FILE_SEPARATOR;
 
     private static final int DEFAULT_WIDTH = 1280;
     private static final int DEFAULT_HEIGHT = 800;
@@ -146,7 +147,7 @@ public final class SceneManager {
                 };
             }
         });
-        Font.loadFont(getClass().getResource("/application/resources/joffrey.ttf").toExternalForm(), FONT_SIZE);
+        Font.loadFont(getClass().getResource("/" + FOLDER + "/resources/joffrey.ttf").toExternalForm(), FONT_SIZE);
         rootStage.setTitle("Quinzical");
         rootStage.getIcons().add(new Image(getPath(LOGO)));
         rootStage.setWidth(DEFAULT_WIDTH);

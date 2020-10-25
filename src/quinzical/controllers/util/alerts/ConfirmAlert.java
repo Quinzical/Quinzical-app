@@ -1,12 +1,7 @@
 package quinzical.controllers.util.alerts;
 
 import java.util.Optional;
-
-import quinzical.util.SceneManager;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.image.Image;
-import javafx.stage.Stage;
 
 /**
  * This class is for ConfirmAlert for Confirm Button on Alert
@@ -14,7 +9,7 @@ import javafx.stage.Stage;
  * @author Maggie Pedersen
  * @author Cheng-Zhen Yang
  */
-public abstract class ConfirmAlert extends Alert {
+public abstract class ConfirmAlert extends StyleAlert {
     /**
      * Create ConfirmAlert that displays a window to confirm.
      * 
@@ -22,12 +17,8 @@ public abstract class ConfirmAlert extends Alert {
      */
     public ConfirmAlert(final String text) {
         super(AlertType.CONFIRMATION);
-        setTitle("Qunizical");
         setHeaderText(text);
         setContentText("Are you ok with this?");
-        // Add Icon
-        Stage stage = (Stage) getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image(SceneManager.getPath(SceneManager.LOGO)));
 
         // Show Alert
         Optional<ButtonType> result = showAndWait();

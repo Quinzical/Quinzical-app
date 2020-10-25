@@ -1,17 +1,11 @@
 package quinzical.controllers.util.alerts;
-
-import quinzical.util.SceneManager;
-import javafx.scene.control.Alert;
-import javafx.scene.image.Image;
-import javafx.stage.Stage;
-
 /**
  * This class is for SuccessAlert for Custom Alert
  *
  * @author Maggie Pedersen
  * @author Cheng-Zhen Yang
  */
-public class SuccessAlert extends Alert {
+public class SuccessAlert extends StyleAlert {
     /**
      * Create Success Alert
      * @param header
@@ -19,13 +13,8 @@ public class SuccessAlert extends Alert {
      */
     public SuccessAlert(final String header, final String content) {
         super(AlertType.INFORMATION);
-        setTitle("Qunizical");
         setHeaderText(header);
         setContentText(content);
-        // Add Icon
-        Stage stage = (Stage) getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image(SceneManager.getPath(SceneManager.LOGO)));
-
         show();
     }
 }

@@ -50,7 +50,7 @@
             </Label>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Button mnemonicParsing="false" onAction="#handleLeftArrow" prefHeight="52.0" prefWidth="33.0">
+                  <Button mnemonicParsing="false" onAction="#handleLeftArrow" prefHeight="52.0" prefWidth="33.0" style="-fx-border-radius: 10;">
                      <graphic>
                         <ImageView fitHeight="75.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -64,7 +64,7 @@
                         <Image url="@images/sheeps/white.png" />
                      </image>
                   </ImageView>
-                  <Button mnemonicParsing="false" onAction="#handleRightArrow" prefHeight="52.0" prefWidth="33.0">
+                  <Button mnemonicParsing="false" onAction="#handleRightArrow" prefHeight="52.0" prefWidth="33.0" style="-fx-border-radius: 10;">
                      <graphic>
                         <ImageView fitHeight="75.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                            <image>

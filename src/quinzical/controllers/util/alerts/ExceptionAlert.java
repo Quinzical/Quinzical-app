@@ -1,17 +1,12 @@
 package quinzical.controllers.util.alerts;
 
-import quinzical.util.SceneManager;
-import javafx.scene.control.Alert;
-import javafx.scene.image.Image;
-import javafx.stage.Stage;
-
 /**
  * This class is for ExceptionAlert for Exceptions on Alert
  *
  * @author Maggie Pedersen
  * @author Cheng-Zhen Yang
  */
-public class ExceptionAlert extends Alert {
+public class ExceptionAlert extends StyleAlert {
     /**
      * Create ExceptionAlert that displays a error alert with an exception
      * 
@@ -19,12 +14,8 @@ public class ExceptionAlert extends Alert {
      */
     public ExceptionAlert(final Exception exception) {
         super(AlertType.ERROR);
-        setTitle("Qunizical");
         setHeaderText("An Exception has occured");
         setContentText(exception.toString());
-        // Add Icon
-        Stage stage = (Stage) getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image(SceneManager.getPath(SceneManager.LOGO)));
 
         show();
     }
