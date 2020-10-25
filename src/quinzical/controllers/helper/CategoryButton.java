@@ -1,6 +1,6 @@
-package application.controllers.helper;
+package quinzical.controllers.helper;
 
-import application.models.helper.Category;
+import quinzical.models.helper.Category;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;

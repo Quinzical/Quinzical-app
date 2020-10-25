@@ -1,4 +1,4 @@
-package application.helper;
+package quinzical.helper;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import application.controllers.helper.ExceptionAlert;
+import quinzical.controllers.helper.ExceptionAlert;
 
 /**
  * This class is used to avoid code reuse by having helper functions for setting

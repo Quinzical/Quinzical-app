@@ -1,4 +1,4 @@
-package application.models.sql;
+package quinzical.models.sql;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -9,11 +9,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import application.helper.FileHelper;
-import application.models.helper.FileHashCheck;
-import application.models.helper.QuestionHelper;
-import application.models.sql.db.CategoryDB;
-import application.models.sql.db.QuestionDB;
+import quinzical.helper.FileHelper;
+import quinzical.models.helper.FileHashCheck;
+import quinzical.models.helper.QuestionHelper;
+import quinzical.models.sql.db.CategoryDB;
+import quinzical.models.sql.db.QuestionDB;
 
 /**
  * This class is the SQLConnection singleton

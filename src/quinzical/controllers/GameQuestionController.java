@@ -1,16 +1,16 @@
-package application.controllers;
+package quinzical.controllers;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import application.controllers.helper.StarBackground;
-import application.helper.SceneManager;
-import application.helper.SceneManager.Scenes;
-import application.models.game.GameModel;
-import application.models.game.sql.GameModelSQL;
-import application.models.question.QuestionModel;
-import application.processes.SpeakProcess;
-import application.processes.TimerThread;
+import quinzical.controllers.helper.StarBackground;
+import quinzical.helper.SceneManager;
+import quinzical.helper.SceneManager.Scenes;
+import quinzical.models.game.GameModel;
+import quinzical.models.game.sql.GameModelSQL;
+import quinzical.models.question.QuestionModel;
+import quinzical.processes.SpeakProcess;
+import quinzical.processes.TimerThread;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;

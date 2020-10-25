@@ -1,13 +1,13 @@
-package application.controllers;
+package quinzical.controllers;
 
 import java.util.List;
-import application.controllers.helper.PracticeCategoryButton;
-import application.controllers.helper.StarBackground;
-import application.helper.SceneManager;
-import application.helper.SceneManager.Scenes;
-import application.models.helper.Category;
-import application.models.practice.PracticeModel;
-import application.models.practice.sql.PracticeModelSQL;
+import quinzical.controllers.helper.PracticeCategoryButton;
+import quinzical.controllers.helper.StarBackground;
+import quinzical.helper.SceneManager;
+import quinzical.helper.SceneManager.Scenes;
+import quinzical.models.helper.Category;
+import quinzical.models.practice.PracticeModel;
+import quinzical.models.practice.sql.PracticeModelSQL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;

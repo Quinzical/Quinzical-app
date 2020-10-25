@@ -1,8 +1,8 @@
-package application.models.practice;
+package quinzical.models.practice;
 
 import java.util.List;
 
-import application.models.helper.Category;
+import quinzical.models.helper.Category;
 
 /**
  * This class is used to delegate tasks to different classes who carry out tasks

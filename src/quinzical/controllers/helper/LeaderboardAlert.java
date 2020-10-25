@@ -1,12 +1,12 @@
-package application.controllers.helper;
+package quinzical.controllers.helper;
 
 import java.util.Optional;
 
-import application.helper.SceneManager;
-import application.helper.SceneManager.Scenes;
-import application.models.api.LeaderboardModel;
-import application.models.helper.SplashModel;
-import application.models.helper.SplashModel.Pages;
+import quinzical.helper.SceneManager;
+import quinzical.helper.SceneManager.Scenes;
+import quinzical.models.api.LeaderboardModel;
+import quinzical.models.helper.SplashModel;
+import quinzical.models.helper.SplashModel.Pages;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ButtonBar.ButtonData;

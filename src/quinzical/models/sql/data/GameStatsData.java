@@ -1,4 +1,4 @@
-package application.models.sql.data;
+package quinzical.models.sql.data;
 
 /**
  * GameStatsData used to store Game Stats data from SQL Database

@@ -1,6 +1,6 @@
-package application.controllers.helper;
+package quinzical.controllers.helper;
 
-import application.helper.FileHelper;
+import quinzical.helper.FileHelper;
 
 /**
  * Enum for each sheep image file.

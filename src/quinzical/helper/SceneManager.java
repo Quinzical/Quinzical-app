@@ -1,12 +1,12 @@
-package application.helper;
+package quinzical.helper;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
-import application.controllers.helper.ConfirmAlert;
-import application.controllers.helper.ExceptionAlert;
+import quinzical.controllers.helper.ConfirmAlert;
+import quinzical.controllers.helper.ExceptionAlert;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

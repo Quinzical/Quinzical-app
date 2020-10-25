@@ -1,19 +1,19 @@
-package application.controllers;
+package quinzical.controllers;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import application.controllers.helper.CategoryButton;
-import application.controllers.helper.LeaderboardAlert;
-import application.controllers.helper.StarBackground;
-import application.helper.SceneManager;
-import application.helper.SceneManager.Scenes;
-import application.models.helper.Category;
-import application.models.login.LoginModel;
-import application.models.practice.PracticeModel;
-import application.models.practice.sql.PracticeModelSQL;
-import application.models.sql.db.GameSessionDB;
+import quinzical.controllers.helper.CategoryButton;
+import quinzical.controllers.helper.LeaderboardAlert;
+import quinzical.controllers.helper.StarBackground;
+import quinzical.helper.SceneManager;
+import quinzical.helper.SceneManager.Scenes;
+import quinzical.models.helper.Category;
+import quinzical.models.login.LoginModel;
+import quinzical.models.practice.PracticeModel;
+import quinzical.models.practice.sql.PracticeModelSQL;
+import quinzical.models.sql.db.GameSessionDB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;

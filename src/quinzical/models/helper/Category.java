@@ -1,4 +1,4 @@
-package application.models.helper;
+package quinzical.models.helper;
 
 /**
  * This class is used to represent a single Category.

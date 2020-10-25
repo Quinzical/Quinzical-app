@@ -1,13 +1,13 @@
-package application.controllers;
+package quinzical.controllers;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import application.controllers.helper.StarBackground;
-import application.helper.SceneManager;
-import application.helper.SceneManager.Scenes;
-import application.models.question.QuestionModel;
-import application.processes.SpeakProcess;
+import quinzical.controllers.helper.StarBackground;
+import quinzical.helper.SceneManager;
+import quinzical.helper.SceneManager.Scenes;
+import quinzical.models.question.QuestionModel;
+import quinzical.processes.SpeakProcess;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;

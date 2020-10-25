@@ -1,4 +1,4 @@
-package application.models.sql.db;
+package quinzical.models.sql.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,8 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import application.models.sql.SQLConnection;
-import application.models.sql.data.QuestionData;
+import quinzical.models.sql.SQLConnection;
+import quinzical.models.sql.data.QuestionData;
 
 /**
  * QuestionDB used to handle Questions in SQL Database

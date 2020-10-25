@@ -1,12 +1,12 @@
-package application.controllers;
+package quinzical.controllers;
 
-import application.controllers.helper.ConfirmAlert;
-import application.controllers.helper.StarBackground;
-import application.helper.SceneManager;
-import application.helper.SceneManager.Scenes;
-import application.models.game.GameModel;
-import application.models.game.sql.GameModelSQL;
-import application.models.login.LoginModel;
+import quinzical.controllers.helper.ConfirmAlert;
+import quinzical.controllers.helper.StarBackground;
+import quinzical.helper.SceneManager;
+import quinzical.helper.SceneManager.Scenes;
+import quinzical.models.game.GameModel;
+import quinzical.models.game.sql.GameModelSQL;
+import quinzical.models.login.LoginModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

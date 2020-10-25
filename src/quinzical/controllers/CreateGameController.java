@@ -1,9 +1,9 @@
-package application.controllers;
+package quinzical.controllers;
 
-import application.controllers.helper.StarBackground;
-import application.helper.SceneManager;
-import application.models.login.LoginModel;
-import application.models.socket.SocketIO;
+import quinzical.controllers.helper.StarBackground;
+import quinzical.helper.SceneManager;
+import quinzical.models.login.LoginModel;
+import quinzical.models.socket.SocketIO;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;

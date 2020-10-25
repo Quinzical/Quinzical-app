@@ -1,4 +1,4 @@
-package application.models.api;
+package quinzical.models.api;
 
 import java.io.IOException;
 import java.net.URI;
@@ -14,7 +14,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import application.models.helper.JWTStore;
+import quinzical.models.helper.JWTStore;
 
 /**
  * Leaderboard used to call REST API for Global Leaderboard Information

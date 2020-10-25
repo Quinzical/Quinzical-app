@@ -1,5 +1,5 @@
 
-package application.processes;
+package quinzical.processes;
 
 import javafx.concurrent.Task;
 import java.io.IOException;
@@ -13,11 +13,11 @@ import java.sql.SQLException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import application.helper.SceneManager.Scenes;
-import application.models.helper.JWTStore;
-import application.models.helper.SplashModel;
-import application.models.helper.SplashModel.Pages;
-import application.models.login.LoginModel;
+import quinzical.helper.SceneManager.Scenes;
+import quinzical.models.helper.JWTStore;
+import quinzical.models.helper.SplashModel;
+import quinzical.models.helper.SplashModel.Pages;
+import quinzical.models.login.LoginModel;
 
 /**
  * This process is designed to AutoLogin user.

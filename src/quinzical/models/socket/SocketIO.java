@@ -1,4 +1,4 @@
-package application.models.socket;
+package quinzical.models.socket;
 
 import java.net.URISyntaxException;
 import java.util.HashMap;
@@ -7,10 +7,10 @@ import java.util.Iterator;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import application.controllers.LobbyScreenController;
-import application.controllers.helper.WarningAlert;
-import application.helper.SceneManager;
-import application.helper.SceneManager.Scenes;
+import quinzical.controllers.LobbyScreenController;
+import quinzical.controllers.helper.WarningAlert;
+import quinzical.helper.SceneManager;
+import quinzical.helper.SceneManager.Scenes;
 import io.socket.client.IO;
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter;

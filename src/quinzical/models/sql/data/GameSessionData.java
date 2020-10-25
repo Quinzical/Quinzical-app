@@ -1,4 +1,4 @@
-package application.models.sql.data;
+package quinzical.models.sql.data;
 
 import java.util.Arrays;
 

@@ -1,16 +1,16 @@
-package application.models.practice.sql;
+package quinzical.models.practice.sql;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import application.models.helper.Category;
-import application.models.helper.QuestionHelper;
-import application.models.practice.PracticeModel;
-import application.models.sql.data.CategoryData;
-import application.models.sql.data.QuestionData;
-import application.models.sql.db.CategoryDB;
-import application.models.sql.db.QuestionDB;
+import quinzical.models.helper.Category;
+import quinzical.models.helper.QuestionHelper;
+import quinzical.models.practice.PracticeModel;
+import quinzical.models.sql.data.CategoryData;
+import quinzical.models.sql.data.QuestionData;
+import quinzical.models.sql.db.CategoryDB;
+import quinzical.models.sql.db.QuestionDB;
 
 /**
  * This class is used to delegate tasks to different classes who carry out tasks

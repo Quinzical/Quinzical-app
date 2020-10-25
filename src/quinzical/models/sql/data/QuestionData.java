@@ -1,4 +1,4 @@
-package application.models.sql.data;
+package quinzical.models.sql.data;
 
 /**
  * QuestionData used to store Question data from SQL Database

@@ -1,6 +1,6 @@
-package application.processes;
+package quinzical.processes;
 
-import application.helper.BasicQuestionTimer;
+import quinzical.helper.BasicQuestionTimer;
 import javafx.scene.control.Label;
 
 /**

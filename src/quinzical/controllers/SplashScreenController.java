@@ -1,4 +1,4 @@
-package application.controllers;
+package quinzical.controllers;
 
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
@@ -9,7 +9,7 @@ import javafx.animation.SequentialTransition;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
-import application.models.helper.SplashModel;
+import quinzical.models.helper.SplashModel;
 
 /**
  * This class is the SplashScreen controller in a MVC design.

@@ -1,4 +1,4 @@
-package application.models.sql.db;
+package quinzical.models.sql.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import application.models.sql.SQLConnection;
-import application.models.sql.data.CategoryData;
+import quinzical.models.sql.SQLConnection;
+import quinzical.models.sql.data.CategoryData;
 
 /**
  * CategoryDB used to handle Category SQL Database

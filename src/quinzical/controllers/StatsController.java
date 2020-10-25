@@ -1,7 +1,7 @@
-package application.controllers;
+package quinzical.controllers;
 
-import application.controllers.helper.StarBackground;
-import application.helper.SceneManager;
+import quinzical.controllers.helper.StarBackground;
+import quinzical.helper.SceneManager;
 import eu.hansolo.tilesfx.Tile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

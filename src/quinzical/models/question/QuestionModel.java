@@ -1,10 +1,10 @@
-package application.models.question;
+package quinzical.models.question;
 
-import application.models.game.GameModel;
-import application.models.game.sql.GameModelSQL;
-import application.models.helper.Category;
-import application.models.practice.PracticeModel;
-import application.models.practice.sql.PracticeModelSQL;
+import quinzical.models.game.GameModel;
+import quinzical.models.game.sql.GameModelSQL;
+import quinzical.models.helper.Category;
+import quinzical.models.practice.PracticeModel;
+import quinzical.models.practice.sql.PracticeModelSQL;
 
 /**
  * This class is used to delegate tasks to different classes who carry out tasks

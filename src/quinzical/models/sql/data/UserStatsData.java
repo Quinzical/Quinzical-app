@@ -1,4 +1,4 @@
-package application.models.sql.data;
+package quinzical.models.sql.data;
 
 /**
  * UserStatsData used to store User Stats data from SQL Database

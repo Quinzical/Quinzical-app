@@ -1,4 +1,4 @@
-package application.helper;
+package quinzical.helper;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;

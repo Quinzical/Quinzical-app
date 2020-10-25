@@ -1,4 +1,4 @@
-package application.processes;
+package quinzical.processes;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;

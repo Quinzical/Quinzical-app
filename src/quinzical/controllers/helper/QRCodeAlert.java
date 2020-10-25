@@ -1,4 +1,4 @@
-package application.controllers.helper;
+package quinzical.controllers.helper;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

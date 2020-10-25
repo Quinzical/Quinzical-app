@@ -1,4 +1,4 @@
-package application.models.api;
+package quinzical.models.api;
 
 import java.io.IOException;
 import java.net.URI;
@@ -11,7 +11,7 @@ import java.net.http.HttpResponse.BodyHandlers;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import application.controllers.helper.WarningAlert;
+import quinzical.controllers.helper.WarningAlert;
 
 /**
  * Leaderboard used to call REST API for Login Information

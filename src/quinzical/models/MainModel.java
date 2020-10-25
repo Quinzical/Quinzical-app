@@ -1,4 +1,4 @@
-package application.models;
+package quinzical.models;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;

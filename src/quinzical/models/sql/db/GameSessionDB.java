@@ -1,4 +1,4 @@
-package application.models.sql.db;
+package quinzical.models.sql.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,9 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import application.controllers.helper.GameStateData;
-import application.models.sql.SQLConnection;
-import application.models.sql.data.GameSessionData;
+import quinzical.controllers.helper.GameStateData;
+import quinzical.models.sql.SQLConnection;
+import quinzical.models.sql.data.GameSessionData;
 
 /**
  * GameSessionDB used to handle Game Session SQL Database

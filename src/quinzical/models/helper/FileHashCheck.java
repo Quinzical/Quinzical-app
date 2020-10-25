@@ -1,4 +1,4 @@
-package application.models.helper;
+package quinzical.models.helper;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -9,8 +9,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
-import application.controllers.helper.ExceptionAlert;
-import application.helper.FileHelper;
+import quinzical.controllers.helper.ExceptionAlert;
+import quinzical.helper.FileHelper;
 
 /**
  * This class is used to keep a track of the current users score from the games

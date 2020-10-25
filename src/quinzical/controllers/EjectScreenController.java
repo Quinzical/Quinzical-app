@@ -1,7 +1,7 @@
-package application.controllers;
+package quinzical.controllers;
 
-import application.controllers.helper.StarBackground;
-import application.models.socket.SocketIO;
+import quinzical.controllers.helper.StarBackground;
+import quinzical.models.socket.SocketIO;
 
 import java.util.Random;
 import javafx.animation.Animation;

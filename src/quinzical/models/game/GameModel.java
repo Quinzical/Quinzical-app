@@ -1,9 +1,9 @@
-package application.models.game;
+package quinzical.models.game;
 
 import java.util.List;
 
-import application.controllers.helper.GameStateData;
-import application.models.helper.Category;
+import quinzical.controllers.helper.GameStateData;
+import quinzical.models.helper.Category;
 
 /**
  * This class is used to delegate tasks to different classes who carry out tasks

@@ -1,6 +1,6 @@
-package application.controllers.helper;
+package quinzical.controllers.helper;
 
-import application.helper.SceneManager;
+import quinzical.helper.SceneManager;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
