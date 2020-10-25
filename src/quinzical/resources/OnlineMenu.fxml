@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" styleClass="root" stylesheets="@quinzical.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.controllers.online.OnlineMenuController">
+   <children>
+      <AnchorPane id="root" fx:id="_anchor" layoutX="37.0" layoutY="16.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" styleClass="transparent" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fx:id="_background1" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@images/star-background1.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="_background2" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@images/star-background2.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="_background3" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@images/star-background3.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <VBox alignment="CENTER" layoutX="8.0" layoutY="-6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" styleClass="transparent" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane maxHeight="722.0" maxWidth="639.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="722.0" prefWidth="639.0" styleClass="lobby-background">
+               <children>
+                  <Button alignment="CENTER" contentDisplay="RIGHT" layoutX="207.0" layoutY="215.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#createGame" styleClass="exit-button" text="Create Game" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="RIGHT" layoutX="207.0" layoutY="405.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#findGame" styleClass="exit-button" text="Find Game" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="_username" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="47.0" prefHeight="45.0" prefWidth="596.0" style="-fx-font-size: 30;" styleClass="login" text="username" textFill="WHITE" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="34.0">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="_enterCode" layoutX="205.0" layoutY="600.0" prefHeight="69.0" prefWidth="225.0" promptText="Enter Code" style="-fx-background-color: #000000; -fx-prompt-text-fill: #ffffff;" styleClass="exit-button" />
+                  <Button alignment="CENTER" contentDisplay="RIGHT" layoutX="444.0" layoutY="600.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#enterCode" prefHeight="69.0" styleClass="exit-button" text="OK" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+      <Button alignment="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleBack" styleClass="exit-button" text="Back" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" />
+   </children>
+</AnchorPane>

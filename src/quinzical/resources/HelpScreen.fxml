@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane stylesheets="@quinzical.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.controllers.HelpScreenController">
+   <children>
+      <AnchorPane fx:id="_anchor" layoutX="20.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fx:id="_background1" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@images/star-background1.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="_background2" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@images/star-background2.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="_background3" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@images/star-background3.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <VBox alignment="CENTER" layoutX="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" styleClass="transparent" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+          <children>
+              <HBox alignment="CENTER" VBox.vgrow="NEVER">
+                  <children>
+                      <Label text="Help">
+                          <font>
+                              <Font size="90.0" />
+                          </font>
+                          <styleClass>
+                              <String fx:value="header" />
+                              <String fx:value="shadow" />
+                          </styleClass>
+                      </Label>
+                  </children>
+                  <VBox.margin>
+                      <Insets top="10.0" />
+                  </VBox.margin>
+              </HBox>
+              <Label styleClass="login" text="Instructions" textAlignment="CENTER">
+                  <font>
+                      <Font size="54.0" />
+                  </font>
+              </Label>
+            <ScrollPane fitToWidth="true" maxWidth="1.7976931348623157E308" minWidth="600.0" VBox.vgrow="ALWAYS">
+               <content>
+                  <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                     <children>
+                        <VBox AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label styleClass="login" text="Practice Module">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextArea editable="false" minHeight="300.0" minWidth="-Infinity" styleClass="back" text="The game module is where you can test yourself against other player. Each question is worth a &#10;certain value between 100 and 500. &#10;Using the game module:&#10;- Upon opening the game module, you are able to select five categories from the list avaiable. &#10;- After choosing a category, you will be given 5 random questions from each category. &#10;- The question will only be spoken, after this you will have 30 seconds to answer the question.&#10;- You have one attempt to get it correct. &#10;- Pressing 'Don't Know' gives you the answer, but the question will be marked as incorrect.&#10;- The correct answer will be displayed on the screen if you get it incorrect.&#10;- After answering all questions in two categories, the international question section will become &#10;unlocked. " VBox.vgrow="ALWAYS">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </TextArea>
+                              <Label styleClass="login" text="Game Module">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextArea editable="false" minHeight="-Infinity" minWidth="-Infinity" text="The practice module is where you can test yourself on questions in the Quinzical app. There is no &#10;scoring. &#10;Using the practice module:&#10;- Upon opening the practice module, you are able to select a category from the list avaiable. &#10;- After choosing a category, you will be given a random question from that category. &#10;- The question will be spoken and displayed on the screen.&#10;- You have three attempts to get it correct. &#10;- If you reach the third attempt, a clue will be given, in the form of the first letter of the answer. &#10;- Pressing 'Don't Know' automatically takes you to that third attempt. &#10;- The correct answer will be displayed on the screen if you get it incorrect." VBox.vgrow="ALWAYS">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </TextArea>
+                              <Label styleClass="login" text="Settings">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextArea editable="false" prefHeight="123.0" prefWidth="865.0" text="The settings menu allows you to change basic features. &#10;- Change the speed of the text to speech by moving the 'Speed' slider.&#10;- Change the volume by moving the 'Speak' slider. &#10;" VBox.vgrow="ALWAYS">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </TextArea>
+                              <Label styleClass="login" text="Leaderboard">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextArea editable="false" prefHeight="232.0" prefWidth="865.0" text="There are two leaderboards, local and global.&#10;The local leaderboard displays users current scores at any point in the game compared to &#10;other users on the current device. &#10;The global leaderboard displays users highest scores from a game module after they have finished a game. &#10;You must reset the game before you can see your score. It compares scores across every &#10;device where quinzical has been played. &#10;&#10;" VBox.vgrow="ALWAYS">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </TextArea>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </content>
+               <styleClass>
+                  <String fx:value="scroll-pane" />
+                  <String fx:value="background" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets left="200.0" right="200.0" />
+               </VBox.margin>
+            </ScrollPane>
+            <HBox alignment="CENTER" prefHeight="23.0" prefWidth="1240.0">
+               <children>
+                  <AnchorPane prefHeight="57.0" prefWidth="1240.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button alignment="CENTER" maxHeight="73.0" maxWidth="77.0" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#handleSettingsButton" prefHeight="73.0" prefWidth="77.0" styleClass="round-button" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="41.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/settings-white.png" />
+                                 </image>
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                                 <effect>
+                                    <Blend />
+                                 </effect>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleBackButton" styleClass="exit-button" text="Back" AnchorPane.leftAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" />
+               </VBox.margin>
+            </HBox>
+          </children>
+      </VBox>
+   </children>
+</AnchorPane>
