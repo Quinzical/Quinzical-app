@@ -30,7 +30,6 @@ public class RewardScreenController {
     // ExecutorService for running task and speak in the background
     //TODO
     private ExecutorService _team = Executors.newSingleThreadExecutor();
-    private SpeakProcess _speak;
 
     @FXML
     private Label _userScore;
@@ -62,7 +61,6 @@ public class RewardScreenController {
      */
     @FXML
     private void handleMenuButton(final ActionEvent event) {
-        _speak.cancel(true);
         _sceneManager.unloadScene();
         _sceneManager.switchScene(Scenes.HOME_MENU);
     }
@@ -74,7 +72,6 @@ public class RewardScreenController {
      */
     @FXML
     private void handlePlayAgainButton(final ActionEvent event) {
-        _speak.cancel(true);
         _sceneManager.unloadScene();
         _gameModel.resetGameModule();
         _sceneManager.switchScene(Scenes.GAME_MENU);
@@ -87,7 +84,6 @@ public class RewardScreenController {
      */
     @FXML
     private void handleSettingsButton(final ActionEvent event) {
-        _speak.cancel(true);
         _sceneManager.switchScene(Scenes.SETTINGS_MENU);
     }
 }
