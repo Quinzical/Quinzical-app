@@ -40,7 +40,6 @@ public final class SocketIO {
     private boolean _playing;
     private boolean _correct;
     private boolean _win;
-    private String _eject;
     private String _question;
     private String _qualifier;
     private String _answer;

@@ -3,7 +3,6 @@ package quinzical.controllers;
 import quinzical.controllers.helper.StarBackground;
 import quinzical.models.socket.SocketIO;
 
-import java.util.Random;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;

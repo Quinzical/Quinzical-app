@@ -1,4 +1,4 @@
-package application;
+package quinzical;
 
 import quinzical.helper.SceneManager;
 import quinzical.helper.SceneManager.Scenes;
