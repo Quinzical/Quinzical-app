@@ -1,5 +1,6 @@
 package application.controllers;
 
+import application.controllers.helper.StarBackground;
 import application.controllers.helper.WarningAlert;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
@@ -9,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 
 /**
  * This class is used for the online page menu.
@@ -30,10 +32,20 @@ public class OnlineMenuController {
     @FXML
     private TextField _enterCode;
 
+    @FXML
+    private ImageView _background1;
+
+    @FXML
+    private ImageView _background2;
+
+    @FXML
+    private ImageView _background3;
+
     /**
      * initialize with OnlineMenu.fxml
      */
     public void initialize() {
+        StarBackground.animate(_background1, _background2, _background3);
         _username.setText(_login.getUsername());
         _username.getStyleClass().add("logingreen");
         _socket.setUsername(_login.getUsername());

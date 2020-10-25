@@ -71,42 +71,42 @@
                                  <children>
                                     <ImageView fitHeight="107.0" fitWidth="92.0" layoutX="113.0" layoutY="107.0" opacity="0.85" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="108.41434478759766" AnchorPane.leftAnchor="113.0" AnchorPane.topAnchor="107.0">
                                        <image>
-                                          <Image url="@images/pink.png" />
+                                          <Image url="@images/sheeps/pink.png" />
                                        </image>
                                     </ImageView>
                                     <ImageView fitHeight="127.0" fitWidth="109.0" layoutX="170.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@images/orange.png" />
+                                          <Image url="@images/sheeps/orange.png" />
                                        </image>
                                     </ImageView>
                                     <ImageView fitHeight="170.0" fitWidth="143.0" layoutX="224.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@images/yellow.png" />
+                                          <Image url="@images/sheeps/yellow.png" />
                                        </image>
                                     </ImageView>
                                     <ImageView fitHeight="183.0" fitWidth="168.0" layoutX="295.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@images/white.png" />
+                                          <Image url="@images/sheeps/white.png" />
                                        </image>
                                     </ImageView>
                                     <ImageView fitHeight="175.0" fitWidth="168.0" layoutX="388.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@images/blue.png" />
+                                          <Image url="@images/sheeps/blue.png" />
                                        </image>
                                     </ImageView>
                                     <ImageView fitHeight="141.0" fitWidth="149.0" layoutX="472.0" layoutY="82.0" opacity="0.95" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@images/green.png" />
+                                          <Image url="@images/sheeps/green.png" />
                                        </image>
                                     </ImageView>
                                     <ImageView fitHeight="107.0" fitWidth="109.0" layoutX="561.0" layoutY="100.0" opacity="0.9" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@images/cyan.png" />
+                                          <Image url="@images/sheeps/cyan.png" />
                                        </image>
                                     </ImageView>
                                     <ImageView fitHeight="107.0" fitWidth="92.0" layoutX="624.0" layoutY="107.0" opacity="0.85" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="142.0">
                                        <image>
-                                          <Image url="@images/red.png" />
+                                          <Image url="@images/sheeps/red.png" />
                                        </image>
                                     </ImageView>
                                  </children>

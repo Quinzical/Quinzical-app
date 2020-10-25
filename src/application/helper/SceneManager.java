@@ -98,7 +98,11 @@ public final class SceneManager {
         /** Online Question screen shows question */
         ONLINE_QUESTION("OnlineQuestion.fxml"),
         /** Game over for online */
-        GAME_OVER("GameOver.fxml");
+        GAME_OVER("GameOver.fxml"),
+        /** Info scene */
+        INFO("Info.fxml"),
+        /** Chat scene */
+        CHAT_SCREEN("ChatScreen.fxml");
 
         private final String _filename;
 

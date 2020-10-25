@@ -1,5 +1,6 @@
 package application.controllers;
 
+import application.controllers.helper.StarBackground;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.socket.SocketIO;
@@ -9,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 
 /**
  * 
@@ -37,11 +39,21 @@ public class OnlineQuestionController {
     @FXML
     private Button _submitBtn;
 
+    @FXML
+    private ImageView _background1;
+
+    @FXML
+    private ImageView _background2;
+
+    @FXML
+    private ImageView _background3;
+
 
     /**
      * initialize with OnlineQuestion.fxml
      */
     public void initialize() {
+        StarBackground.animate(_background1, _background2, _background3);
         // _timer.setText(_socket.get());
         _qualifier.setText(_socket.getQualifier());
         _question.setText(_socket.getQuestion());

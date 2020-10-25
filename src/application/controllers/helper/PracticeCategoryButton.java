@@ -33,6 +33,7 @@ public class PracticeCategoryButton extends Button {
         setPrefHeight(DEFAULT_HEIGHT);
         // set font
         setStyle("-fx-font-size:20; -fx-text-fill: white; -fx-border-width: 2 2 2 2; -fx-border-color: white; -fx-border-radius: 10;");
+        getStyleClass().add(".button:hover");
 
         // handle button on press
         setOnAction(new EventHandler<ActionEvent>() {

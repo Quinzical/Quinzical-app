@@ -3,6 +3,7 @@ package application.controllers;
 import java.util.List;
 
 import application.controllers.helper.LeaderboardPosition;
+import application.controllers.helper.StarBackground;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.api.LeaderboardEntry;
@@ -10,6 +11,7 @@ import application.models.api.LeaderboardModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
 /**
@@ -32,10 +34,20 @@ public class LeaderboardController {
     @FXML
     private Label _headerText;
 
+    @FXML
+    private ImageView _background1;
+
+    @FXML
+    private ImageView _background2;
+
+    @FXML
+    private ImageView _background3;
+
     /**
      * initialize with LeaderboardScreen.fxml
      */
     public void initialize() {
+        StarBackground.animate(_background1, _background2, _background3);
         _leaderVBox.setSpacing(DEFAULT_SPACING);
         _headerText.setText(_leaderboard.getHeader());
         List<LeaderboardEntry> leaders = _leaderboard.getLeaderboard();

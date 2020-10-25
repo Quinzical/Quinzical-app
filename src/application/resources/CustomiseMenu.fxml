@@ -12,9 +12,28 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.CustomiseController">
+<AnchorPane styleClass="root" stylesheets="@application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.CustomiseController">
    <children>
-      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" styleClass="root" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="_anchor" layoutX="20.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fx:id="_background1" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@images/star-background1.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="_background2" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@images/star-background2.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="_background3" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@images/star-background3.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" styleClass="transparent" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
           <children>
                 <Label styleClass="header" text="Customise">
                     <font>
@@ -42,7 +61,7 @@
                   </Button>
                   <ImageView fx:id="_sheepImage" fitHeight="295.0" fitWidth="293.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/white.png" />
+                        <Image url="@images/sheeps/white.png" />
                      </image>
                   </ImageView>
                   <Button mnemonicParsing="false" onAction="#handleRightArrow" prefHeight="52.0" prefWidth="33.0">
@@ -56,22 +75,7 @@
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <children>
-                    <Button fx:id="_menuButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="60.0" prefWidth="275.0" styleClass="exit-button" text="Back" textAlignment="CENTER">
-                        <font>
-                            <Font size="24.0" />
-                        </font>
-                    </Button>
-               </children>
-               <padding>
-                  <Insets left="50.0" right="50.0" />
-               </padding>
-            </HBox>
-            <HBox prefHeight="23.0" prefWidth="1240.0">
+            <HBox alignment="CENTER" prefHeight="23.0" prefWidth="1240.0">
                <VBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" />
                </VBox.margin>
@@ -96,6 +100,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleBackButton" styleClass="exit-button" text="Back" AnchorPane.leftAnchor="0.0" />
                      </children>
                   </AnchorPane>
                </children>

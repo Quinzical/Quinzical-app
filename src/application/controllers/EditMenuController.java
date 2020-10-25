@@ -54,7 +54,7 @@ public class EditMenuController {
      */
     @FXML
     private void handleBackButton(final ActionEvent event) {
-        _sceneManager.switchScene(Scenes.HOME_MENU);
+        _sceneManager.backScene();
     }
 
     /**

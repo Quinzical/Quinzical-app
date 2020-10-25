@@ -2,6 +2,7 @@ package application.controllers;
 
 import java.util.List;
 import application.controllers.helper.PracticeCategoryButton;
+import application.controllers.helper.StarBackground;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.helper.Category;
@@ -10,6 +11,7 @@ import application.models.practice.sql.PracticeModelSQL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
 
 /**
@@ -30,10 +32,20 @@ public class PracticeMenuController {
     @FXML
     private TilePane _categoriesPane;
 
+    @FXML
+    private ImageView _background1;
+
+    @FXML
+    private ImageView _background2;
+
+    @FXML
+    private ImageView _background3;
+
     /**
      * initialize with PracticeMenu.fxml
      */
     public void initialize() {
+        StarBackground.animate(_background1, _background2, _background3);
         _practiceModel.setUpPracticeModule();
         _categories = _practiceModel.getPracticeCategories();
         for (Category category : _categories) {
@@ -50,7 +62,7 @@ public class PracticeMenuController {
      */
     @FXML
     private void handleBackButton(final ActionEvent event) {
-        _sceneManager.switchScene(Scenes.HOME_MENU);
+        _sceneManager.backScene();
     }
 
     /**

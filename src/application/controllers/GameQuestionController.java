@@ -3,6 +3,7 @@ package application.controllers;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import application.controllers.helper.StarBackground;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.game.GameModel;
@@ -16,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
@@ -61,10 +63,20 @@ public class GameQuestionController {
     @FXML
     private Label _timerLabel;
 
+    @FXML
+    private ImageView _background1;
+
+    @FXML
+    private ImageView _background2;
+
+    @FXML
+    private ImageView _background3;
+
     /**
      * Used to initialize QuestionController and speak question
      */
     public void initialize() {
+        StarBackground.animate(_background1, _background2, _background3);
         _question = _questionModel.getQuestion();
         if (_questionModel.getPractice()) {
             _questionLabel.setText(_question);

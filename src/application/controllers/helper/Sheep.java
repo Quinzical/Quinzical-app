@@ -30,7 +30,7 @@ public enum Sheep {
     private final String _filename;
 
     private static final String PATH = FileHelper.FILE_SEPARATOR + "application" + FileHelper.FILE_SEPARATOR
-            + "resources" + FileHelper.FILE_SEPARATOR + "images" + FileHelper.FILE_SEPARATOR;
+            + "resources" + FileHelper.FILE_SEPARATOR + "images" + FileHelper.FILE_SEPARATOR + "sheeps" + FileHelper.FILE_SEPARATOR;
 
     Sheep(final String filename) {
         _filename = filename;

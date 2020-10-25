@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import application.controllers.helper.ConfirmAlert;
 import application.controllers.helper.ExceptionAlert;
+import application.controllers.helper.StarBackground;
 import application.controllers.helper.SuccessAlert;
 import application.controllers.helper.WarningAlert;
 import application.helper.SceneManager;
@@ -16,6 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
@@ -37,10 +39,20 @@ public class LoginScreenController {
     @FXML
     private TextField _passwordField;
 
+    @FXML
+    private ImageView _background1;
+
+    @FXML
+    private ImageView _background2;
+
+    @FXML
+    private ImageView _background3;
+
     /**
      * initialize with LoginScreen.fxml
      */
     public void initialize() {
+        StarBackground.animate(_background1, _background2, _background3);
         _passwordField.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(final KeyEvent keyEvent) {
@@ -115,7 +127,7 @@ public class LoginScreenController {
      */
     @FXML
     private void handleSettingsButton(final ActionEvent event) {
-        _sceneManager.switchScene(Scenes.CUSTOMISE_MENU);
+        _sceneManager.switchScene(Scenes.SETTINGS_MENU);
     }
 
     /**

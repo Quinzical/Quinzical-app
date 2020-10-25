@@ -1,20 +1,27 @@
 package application.controllers;
 
-import application.controllers.helper.StarBackground;
-import application.helper.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import application.controllers.helper.StarBackground;
+import application.helper.SceneManager;
+import application.helper.SceneManager.Scenes;
 
 /**
- * This class is the Help Screen controller in a MVC design.
+ * This class is the Chat Screen controller in a MVC design.
  * 
  * @author Maggie Pedersen
  * @author Cheng-Zhen Yang
  */
-public class HelpScreenController {
+public class ChatController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
+
+    @FXML
+    private AnchorPane _anchor;
 
     @FXML
     private ImageView _background1;
@@ -25,16 +32,32 @@ public class HelpScreenController {
     @FXML
     private ImageView _background3;
 
+    @FXML
+    private ScrollPane _messageScrollPane;
+
+    @FXML
+    private TextField _messageField;
+
     /**
-     * initialize with HelpScreen.fxml
+     * initialize with ChatScreen.fxml
      */
     public void initialize() {
         StarBackground.animate(_background1, _background2, _background3);
     }
 
     /**
+     * Used to handle send message button
+     * 
+     * @param event
+     */
+    @FXML
+    private void handleSendMessage(final ActionEvent event) {
+        // TODO
+    }
+
+    /**
      * Used to handle back button
-     *
+     * 
      * @param event
      */
     @FXML
@@ -43,12 +66,13 @@ public class HelpScreenController {
     }
 
     /**
-     * Used to handle setting button
-     *
+     * Used to handle settings button
+     * 
      * @param event
      */
     @FXML
     private void handleSettingsButton(final ActionEvent event) {
-        _sceneManager.switchScene(SceneManager.Scenes.SETTINGS_MENU);
+        _sceneManager.switchScene(Scenes.SETTINGS_MENU);
     }
+
 }

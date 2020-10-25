@@ -6,12 +6,14 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import application.controllers.helper.QRCodeAlert;
+import application.controllers.helper.StarBackground;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.socket.SocketIO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
 
 /**
@@ -41,11 +43,20 @@ public class LobbyScreenController {
     @FXML
     private TilePane _users;
 
+    @FXML
+    private ImageView _background1;
+
+    @FXML
+    private ImageView _background2;
+
+    @FXML
+    private ImageView _background3;
+
     /**
      * initialize with LobbyScreen.fxml
      */
     public void initialize() {
-
+        StarBackground.animate(_background1, _background2, _background3);
         JSONObject room = _socket.getRoom();
         _timer.setText(String.valueOf(room.getInt("timer") / TIMER_DIVISION));
         _header.setText("Lobby: " + room.getString("code"));

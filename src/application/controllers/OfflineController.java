@@ -1,11 +1,13 @@
 package application.controllers;
 
 import application.controllers.helper.ConfirmAlert;
+import application.controllers.helper.StarBackground;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 
 /**
  * This class is the Offline Menu controller in a MVC design.
@@ -20,10 +22,20 @@ public class OfflineController {
     @FXML
     private Button _playButton;
 
+    @FXML
+    private ImageView _background1;
+
+    @FXML
+    private ImageView _background2;
+
+    @FXML
+    private ImageView _background3;
+
     /**
-     * initialize with LoginScreenController.fxml
+     * initialize with Offline.fxml
      */
     public void initialize() {
+        StarBackground.animate(_background1, _background2, _background3);
         _playButton.setDisable(true);
     }
 
@@ -49,7 +61,6 @@ public class OfflineController {
      */
     @FXML
     private void handlePracticeButton(final ActionEvent event) {
-        _sceneManager.unloadScene();
         _sceneManager.switchScene(Scenes.PRACTICE_MENU);
     }
 
@@ -60,7 +71,6 @@ public class OfflineController {
      */
     @FXML
     private void handleSettingsButton(final ActionEvent event) {
-        _sceneManager.unloadScene();
         _sceneManager.switchScene(Scenes.SETTINGS_MENU);
     }
 
@@ -82,7 +92,6 @@ public class OfflineController {
      */
     @FXML
     private void handleHelpButton(final ActionEvent event) {
-        _sceneManager.unloadScene();
         _sceneManager.switchScene(SceneManager.Scenes.HELP_SCREEN);
     }
 }

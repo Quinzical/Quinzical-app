@@ -1,6 +1,7 @@
 package application.controllers;
 
 import application.controllers.helper.Sheep;
+import application.controllers.helper.StarBackground;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import javafx.event.ActionEvent;
@@ -35,11 +36,21 @@ public class CustomiseController {
     @FXML
     private Button _menuButton;
 
+    @FXML
+    private ImageView _background1;
+
+    @FXML
+    private ImageView _background2;
+
+    @FXML
+    private ImageView _background3;
+
     /**
      * Used to initialize CustomiseController
      */
     public void initialize() {
         _sheepImage.setImage(new Image(_images[_index].getFilename()));
+        StarBackground.animate(_background1, _background2, _background3);
     }
 
     @FXML

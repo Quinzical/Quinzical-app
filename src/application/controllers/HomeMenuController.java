@@ -1,6 +1,7 @@
 package application.controllers;
 
 import application.controllers.helper.ConfirmAlert;
+import application.controllers.helper.StarBackground;
 import application.helper.SceneManager;
 import application.helper.SceneManager.Scenes;
 import application.models.game.GameModel;
@@ -9,6 +10,7 @@ import application.models.login.LoginModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 
 /**
  * This class is the HomeMenu controller in a MVC design.
@@ -25,12 +27,22 @@ public class HomeMenuController {
     @FXML
     private Label _usernameLabel;
 
+    @FXML
+    private ImageView _background1;
+
+    @FXML
+    private ImageView _background2;
+
+    @FXML
+    private ImageView _background3;
+
     /**
-     * initialize with LoginScreenController.fxml
+     * initialize with HomeMenu.fxml
      */
     public void initialize() {
         _usernameLabel.setText(_login.getUsername());
         _usernameLabel.getStyleClass().add("logingreen");
+        StarBackground.animate(_background1, _background2, _background3);
     }
 
     /**
@@ -71,7 +83,6 @@ public class HomeMenuController {
      */
     @FXML
     private void handlePracticeButton(final ActionEvent event) {
-        _sceneManager.unloadScene();
         _sceneManager.switchScene(Scenes.PRACTICE_MENU);
     }
 
@@ -102,7 +113,6 @@ public class HomeMenuController {
      */
     @FXML
     private void handleHelpButton(final ActionEvent event) {
-        _sceneManager.unloadScene();
         _sceneManager.switchScene(Scenes.HELP_SCREEN);
     }
 
@@ -116,8 +126,13 @@ public class HomeMenuController {
         _sceneManager.switchScene(Scenes.STATS_SCREEN);
     }
 
+     /**
+     * Used to handle info button
+     * 
+     * @param event
+     */
     @FXML
     private void handleInfoButton(final ActionEvent event) {
-        // TODO
+        _sceneManager.switchScene(Scenes.INFO);
     }
 }
