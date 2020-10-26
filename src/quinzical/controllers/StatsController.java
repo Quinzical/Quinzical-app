@@ -2,6 +2,13 @@ package quinzical.controllers;
 
 import quinzical.controllers.util.StarBackground;
 import quinzical.util.SceneManager;
+import quinzical.util.models.LoginModel;
+import quinzical.util.sql.data.GameStatsData;
+import quinzical.util.sql.data.UserStatsData;
+import quinzical.util.sql.db.StatsDB;
+
+import java.sql.SQLException;
+import java.util.List;
 
 import eu.hansolo.tilesfx.Tile;
 import eu.hansolo.tilesfx.chart.ChartData;
@@ -21,6 +28,11 @@ import javafx.scene.layout.Pane;
 public final class StatsController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
+    private final LoginModel _login = LoginModel.getInstance();
+
+    private static final double PERCENTAGE = 100.0;
+
+    private final StatsDB _statsDB = new StatsDB();
 
     @FXML
     private Pane _tilesPane;
@@ -51,26 +63,44 @@ public final class StatsController {
      */
     public void initialize() {
         StarBackground.animate(_background1, _background2, _background3);
+        setScoreChart();
+        setAccuracy();
+        setCategoryChart();
+    }
 
-        _lastGameAccuracy.setValue(10);
+    private void setAccuracy() {
+        try {
+            UserStatsData stats = _statsDB.getUserStatsData(_login.getUserID());
+            _lastGameAccuracy.setValue(_statsDB.getLastCorrectAttempts(_login.getUserID()) * PERCENTAGE
+                    / _statsDB.getLastTotalAttempts(_login.getUserID()));
+            _totalAccuracy.setValue(stats.getCorrectAttempts() * PERCENTAGE / stats.getAttempts());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
-        BarChartItem barChartItem1 = new BarChartItem("Places", 100);
-        BarChartItem barChartItem2  = new BarChartItem("People", 65);
-        _categoryChart.setText("test");
+    private void setCategoryChart() {
+        try {
+            List<BarChartItem> categories = _statsDB.getUserCategoryStats(_login.getUserID());
 
-        _categoryChart.addBarChartItem(barChartItem1);
-        _categoryChart.addBarChartItem(barChartItem2);
-        System.out.println();
+            for (BarChartItem category : categories) {
+                _categoryChart.addBarChartItem(category);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
+    private void setScoreChart() {
+        try {
+            List<GameStatsData> datas = _statsDB.getUserGameStats(_login.getUserID());
 
-        _scoreChart.addChartData(new ChartData(100));
-        _scoreChart.addChartData(new ChartData(23));
-
-        _scoreChart.addChartData(new ChartData(23));
-        _scoreChart.addChartData(new ChartData(23));
-
-        System.out.println("test");
-
+            for (GameStatsData data : datas) {
+                _scoreChart.addChartData(new ChartData(data.getScore()));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
