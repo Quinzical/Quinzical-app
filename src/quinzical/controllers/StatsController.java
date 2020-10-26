@@ -2,7 +2,11 @@ package quinzical.controllers;
 
 import quinzical.controllers.util.StarBackground;
 import quinzical.util.SceneManager;
+
 import eu.hansolo.tilesfx.Tile;
+import eu.hansolo.tilesfx.chart.ChartData;
+import eu.hansolo.tilesfx.skins.BarChartItem;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
@@ -47,6 +51,26 @@ public final class StatsController {
      */
     public void initialize() {
         StarBackground.animate(_background1, _background2, _background3);
+
+        _lastGameAccuracy.setValue(10);
+
+        BarChartItem barChartItem1 = new BarChartItem("Places", 100);
+        BarChartItem barChartItem2  = new BarChartItem("People", 65);
+        _categoryChart.setText("test");
+
+        _categoryChart.addBarChartItem(barChartItem1);
+        _categoryChart.addBarChartItem(barChartItem2);
+        System.out.println();
+
+
+        _scoreChart.addChartData(new ChartData(100));
+        _scoreChart.addChartData(new ChartData(23));
+
+        _scoreChart.addChartData(new ChartData(23));
+        _scoreChart.addChartData(new ChartData(23));
+
+        System.out.println("test");
+
     }
 
     /**
@@ -56,6 +80,7 @@ public final class StatsController {
      */
     @FXML
     void handleBackButton(final ActionEvent event) {
+        _sceneManager.unloadScene();
         _sceneManager.backScene();
     }
 }
