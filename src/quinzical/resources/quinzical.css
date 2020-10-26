@@ -124,6 +124,17 @@
   -fx-border-color: #07ed00;
 }
 
+.category {
+  -fx-text-fill: white;
+  -fx-border-width: 2 2 2 2;
+  -fx-border-color: white;
+  -fx-border-radius: 10;
+}
+
+.category:hover {
+  -fx-border-color: #07ed00;
+}
+
 .round-button {
   -fx-background-radius: 80px;
   -fx-background-color: #919191;
