@@ -7,6 +7,7 @@ import java.util.Stack;
 
 import quinzical.controllers.util.alerts.ConfirmAlert;
 import quinzical.controllers.util.alerts.ExceptionAlert;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -44,7 +45,7 @@ public final class SceneManager {
     private Stage _rootStage;
     private Stack<Scenes> _history = new Stack<Scenes>();
     private Scenes _currentScene;
-    private final Map<Scenes, Scene> _scenes = new HashMap<Scenes, Scene>();
+    private final Map<Scenes, Parent> _scenes = new HashMap<Scenes, Parent>();
 
     /** Enum for each scene with a filename and name */
     public enum Scenes {
@@ -110,6 +111,11 @@ public final class SceneManager {
         Scenes(final String filename) {
             _filename = filename;
         }
+
+        @Override
+        public String toString() {
+            return _filename;
+        }
     }
 
     private SceneManager() {
@@ -165,18 +171,39 @@ public final class SceneManager {
      * @throws RuntimeException
      */
     public void switchScene(final Scenes scene) throws RuntimeException {
-        Scene next = _scenes.computeIfAbsent(scene, k -> {
+        // tilesfx need to be load using javafx thread
+        if (scene == Scenes.STATS_SCREEN) {
+            loadScene(scene);
+            return;
+        }
+        new Thread(() -> {
+            loadScene(scene);
+        }).start();
+    }
+
+    private void loadScene(final Scenes scene) throws RuntimeException {
+        Parent next = _scenes.computeIfAbsent(scene, k -> {
             try {
-                Parent root = FXMLLoader.load(getClass().getResource(getPath(k._filename)));
-                return new Scene(root, DEFAULT_WIDTH, DEFAULT_HEIGHT);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(getPath(k._filename)));
+                Parent root = loader.load();
+                return root;
             } catch (IOException ex) {
-                new ExceptionAlert(ex);
+                Platform.runLater(() -> {
+                    new ExceptionAlert(ex);
+                });
                 throw new RuntimeException(ex);
             }
         });
         _history.push(scene);
         _currentScene = scene;
-        _rootStage.setScene(next);
+        Platform.runLater(() -> {
+
+            if (_rootStage.getScene() == null) {
+                _rootStage.setScene(new Scene(next));
+                return;
+            }
+            _rootStage.getScene().setRoot(next);
+        });
     }
 
     /**

@@ -31,7 +31,8 @@ public class EditCategoryButton extends Button {
         setPrefWidth(DEFAULT_WIDTH);
         setPrefHeight(DEFAULT_HEIGHT);
         // set font
-        setStyle("-fx-font-size:20");
+        getStyleClass().add("category");
+        setStyle("-fx-font-size:22;");
 
         // handle button on press
         setOnAction(new EventHandler<ActionEvent>() {

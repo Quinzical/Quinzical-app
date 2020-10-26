@@ -28,7 +28,8 @@ public abstract class CategoryButton extends Button {
         setPrefHeight(DEFAULT_HEIGHT);
         setMaxWidth(Double.MAX_VALUE);
         // set font
-        setStyle("-fx-font-size:20");
+        getStyleClass().add("category");
+        setStyle("-fx-font-size:22;");
 
         // handle button on press
         setOnAction(new EventHandler<ActionEvent>() {

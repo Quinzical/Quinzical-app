@@ -4,16 +4,18 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
-import java.net.http.HttpRequest.BodyPublishers;
+import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
 import javafx.application.Platform;
-import quinzical.util.JWTStore;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 
 /**
  * Chat classed used to handle all socket chat
@@ -26,8 +28,8 @@ public final class Chat {
     private static final String ENDPOINT = "https://quinzical-api.herokuapp.com";
     private static final String CHAT = "/chat";
 
-
     private HttpClient _client = HttpClient.newHttpClient();
+    private VBox _pane;
 
     /**
      * Used to setup Chat object for getting messages
@@ -40,31 +42,55 @@ public final class Chat {
             public void call(final Object... args) {
                 JSONObject message = (JSONObject) args[0];
                 Platform.runLater(() -> {
-                    //TODO
+                    JSONObject item = message.getJSONObject("message");
+                    String msg = item.getJSONObject("user").getString("username") + ": " + item.getString("message");
+                    Label label = new Label(msg);
+                    label.setStyle("-fx-font-size:20;");
+                    label.setWrapText(true);
+                    _pane.getChildren().add(label);
                 });
             }
         });
     }
 
     /**
-     * Used to send a message using chat
+     * Used to set message scroll pane
      * 
-     * @param message
+     * @param pane
      */
-    public void send(final String message) {
-        try {
-            JSONObject json = new JSONObject();
-            json.put("message", message);
+    public void setPane(final VBox pane) {
+        _pane = pane;
+    }
 
-            JWTStore jwtStore = new JWTStore();
-            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(ENDPOINT + CHAT))
-                    .header("Content-Type", "application/json").header("Authorization", "Bearer " + jwtStore.getJWT())
-                    .POST(BodyPublishers.ofString(json.toString())).build();
-            _client.send(request, BodyHandlers.ofString());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
-        }
+    /**
+     * Used to get history of chat
+     *
+     */
+    public void history() {
+        new Thread(() -> {
+            try {
+                HttpRequest request = HttpRequest.newBuilder().uri(URI.create(ENDPOINT + CHAT)).GET().build();
+                HttpResponse<String> response = _client.send(request, BodyHandlers.ofString());
+
+                JSONArray array = new JSONArray(response.body());
+
+                for (int i = array.length() - 1; i >= 0; i--) {
+                    JSONObject item = array.getJSONObject(i);
+                    final String msg = item.getJSONObject("user").getString("username") + ": "
+                            + item.getString("message");
+
+                    Platform.runLater(() -> {
+                        Label label = new Label(msg);
+                        label.setStyle("-fx-font-size:20;");
+                        label.setWrapText(true);
+                        _pane.getChildren().add(label);
+                    });
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (IOException | InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 }

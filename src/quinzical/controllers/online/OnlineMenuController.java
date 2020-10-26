@@ -73,7 +73,7 @@ public class OnlineMenuController {
 
     @FXML
     private void handleBack(final ActionEvent event) {
-        _sceneManager.backScene();
+        _sceneManager.switchScene(Scenes.OPENING_MENU);
     }
 
 }
