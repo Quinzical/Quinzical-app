@@ -28,6 +28,8 @@ public abstract class SheepAnimation extends ImageView {
     private static final int SHEEP_HEIGHT = 150;
     private static final int SHEEP_WIDTH = 150;
     private static final int ROTATION = 360;
+    private static final int ROTATION_MAX = 7;
+    private static final int ROTATION_MIN = 2;
 
     private ParallelTransition _animation;
 
@@ -57,7 +59,8 @@ public abstract class SheepAnimation extends ImageView {
         setFitWidth(SHEEP_WIDTH);
         setRotate(randomInt(ROTATION, 0));
 
-        RotateTransition rotateTransition = new RotateTransition(Duration.seconds(randomFloat(7, 2)), this);
+        RotateTransition rotateTransition = new RotateTransition(
+                Duration.seconds(randomFloat(ROTATION_MAX, ROTATION_MIN)), this);
         rotateTransition.setByAngle(ROTATION * ((Math.random() < HALF) ? 1 : -1));
         rotateTransition.setCycleCount(Timeline.INDEFINITE);
         rotateTransition.setInterpolator(Interpolator.LINEAR);
