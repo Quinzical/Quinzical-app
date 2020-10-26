@@ -22,22 +22,16 @@ public final class StatsController {
     private Pane _tilesPane;
 
     @FXML
-    private Tile _answerTime;
+    private Tile _lastGameAccuracy;
 
     @FXML
-    private Tile _lastroundAccuracy;
+    private Tile _totalAccuracy;
 
     @FXML
-    private Tile _questionAccuracy;
+    private Tile _scoreChart;
 
     @FXML
-    private Tile _roundLength;
-
-    @FXML
-    private Tile _triesRadial;
-
-    @FXML
-    private Tile _totalTimePlayed;
+    private Tile _categoryChart;
 
     @FXML
     private ImageView _background1;

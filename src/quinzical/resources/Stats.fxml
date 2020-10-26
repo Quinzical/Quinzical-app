@@ -45,12 +45,10 @@
                <children>
                   <AnchorPane prefHeight="500.0" prefWidth="1066.0">
                      <children>
-                                    <Tile fx:id="_answerTime" animated="true" description="Correct" layoutX="77.0" layoutY="62.0" maxValue="15.0" minMeasuredValue="0.0" prefHeight="209.0" prefWidth="178.0" threshold="10.0" title="Avg Time to Answer" unit="sec" />
-                                    <Tile fx:id="_lastroundAccuracy" active="true" animated="true" averageVisible="true" averagingEnabled="true" decimals="0" description="Correct" layoutX="656.0" layoutY="37.0" mapProvider="STREET" minMeasuredValue="0.0" minuteTickMarksVisible="true" prefHeight="238.0" prefWidth="393.0" skinType="RADIAL_DISTRIBUTION" threshold="10.0" title="Last Round Accuracy" unit="\%" />
-                                    <Tile fx:id="_questionAccuracy" animated="true" description="Total Play Time" layoutX="299.0" layoutY="37.0" maxValue="574.0" prefHeight="183.0" prefWidth="310.0" skinType="BAR_CHART" title="Questions Answered" value="50.0" />
-                                    <Tile fx:id="_roundLength" animated="true" decimals="0" layoutX="117.0" layoutY="291.0" prefHeight="190.0" prefWidth="200.0" referenceValue="60.0" skinType="SMOOTH_AREA_CHART" title="Last Round Length" unit="s" />
-                                    <Tile fx:id="_triesRadial" animated="true" description="Total Play Time" layoutX="430.0" layoutY="291.0" maxValue="574.0" prefHeight="209.0" prefWidth="377.0" skinType="RADIAL_CHART" title="Tries to Answer" value="50.0" />
-                                       <Tile fx:id="_totalTimePlayed" animated="true" description="Total Play Time" layoutX="860.0" layoutY="287.0" maxValue="574.0" prefHeight="198.0" prefWidth="206.0" skinType="TIME" title="Total Play Time" unit="m" value="50.0" />
+                                    <Tile fx:id="_lastGameAccuracy" active="true" animated="true" averageVisible="true" averagingEnabled="true" decimals="0" description="Correct" layoutX="632.0" layoutY="14.0" mapProvider="STREET" minMeasuredValue="0.0" minuteTickMarksVisible="true" prefHeight="329.0" prefWidth="420.0" skinType="RADIAL_DISTRIBUTION" threshold="10.0" title="Last Game Accuracy" unit="\%" />
+                        <Tile fx:id="_totalAccuracy" active="true" animated="true" averageVisible="true" averagingEnabled="true" decimals="0" description="Correct" layoutX="632.0" layoutY="275.0" mapProvider="STREET" minMeasuredValue="0.0" minuteTickMarksVisible="true" prefHeight="214.0" prefWidth="420.0" skinType="RADIAL_DISTRIBUTION" threshold="10.0" title="Total Accuracy" unit="\%" />
+                        <Tile fx:id="_scoreChart" layoutX="14.0" layoutY="14.0" prefHeight="450.0" prefWidth="607.0" skinType="SMOOTHED_CHART" />
+                        <Tile fx:id="_categoryChart" description="Category" layoutX="14.0" layoutY="275.0" prefHeight="450.0" prefWidth="607.0" skinType="BAR_CHART" title="Category" />
                      </children>
                   </AnchorPane>
                </children>
