@@ -228,6 +228,7 @@ public class GameQuestionController {
     }
 
     /**
+     * Used to update caret postion when text is entered to the answer text field
      * 
      * @param event
      */
@@ -237,6 +238,7 @@ public class GameQuestionController {
     }
 
     /**
+     * Used to update caret postion when the text field is clicked at a different position
      * 
      * @param event
      */
