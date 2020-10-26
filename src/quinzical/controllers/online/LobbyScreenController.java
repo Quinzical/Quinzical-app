@@ -74,7 +74,7 @@ public class LobbyScreenController {
 
     @FXML
     private void handleBack(final ActionEvent event) {
-        _socket.disconnect();
+        _socket.leaveRoom();
         _sceneManager.switchScene(Scenes.ONLINE_MENU);
     }
 

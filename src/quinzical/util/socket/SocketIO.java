@@ -16,6 +16,8 @@ import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
 import io.socket.engineio.client.EngineIOException;
 import javafx.application.Platform;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.VBox;
 
 /**
  * This class is used to interact with SocketIO and multiplayer
@@ -33,6 +35,7 @@ public final class SocketIO {
     private static final int SHOW_RESULT = 3000;
 
     private Socket _socket;
+    private Chat _chat;
 
     private String _username;
     private HashMap<String, String> _users;
@@ -190,6 +193,8 @@ public final class SocketIO {
                     });
                 }
             });
+
+            _chat = new Chat(_socket);
             _socket.connect();
         } catch (URISyntaxException e) {
             e.printStackTrace();
@@ -284,6 +289,13 @@ public final class SocketIO {
      */
     public void disconnect() {
         _socket.disconnect();
+    }
+
+    /**
+     * Used to leave current Room
+     */
+    public void leaveRoom() {
+        _socket.emit("leaveRoom");
     }
 
     /**
@@ -412,6 +424,16 @@ public final class SocketIO {
      */
     public boolean isPlaying() {
         return _playing;
+    }
+
+    /**
+     * Used to set message scroll pane
+     * 
+     * @param pane
+     */
+    public void setPane(final VBox pane) {
+        _chat.setPane(pane);
+        _chat.history();
     }
 
     private void checkResult(final JSONObject room) {
