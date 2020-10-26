@@ -90,6 +90,38 @@
                   </font>
               </TextField>
             <Pane prefHeight="27.0" prefWidth="1280.0" VBox.vgrow="ALWAYS" />
+            <HBox alignment="CENTER" maxHeight="64.0" prefHeight="64.0" prefWidth="1280.0" spacing="25.0">
+               <children>
+                  <Button alignment="CENTER" minHeight="0.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleA" prefHeight="50.0" prefWidth="54.0" styleClass="macron-button" text="ā" textAlignment="CENTER" textFill="#fffefe">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="CENTER" minHeight="0.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleE" prefHeight="50.0" prefWidth="54.0" styleClass="macron-button" text="ē" textAlignment="CENTER" textFill="#fffefe">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="CENTER" minHeight="0.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleI" prefHeight="50.0" prefWidth="54.0" styleClass="macron-button" text="ī" textAlignment="CENTER" textFill="#fffefe">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="CENTER" minHeight="0.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleO" prefHeight="50.0" prefWidth="54.0" styleClass="macron-button" text="ō" textAlignment="CENTER" textFill="#fffefe">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="CENTER" minHeight="0.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleU" prefHeight="50.0" prefWidth="54.0" styleClass="macron-button" text="ū" textAlignment="CENTER" textFill="#fffefe">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                   <children>
                       <Button fx:id="_dontKnowButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleDontKnowButton" prefHeight="60.0" prefWidth="275.0" styleClass="exit-button" text="Don't Know" textAlignment="CENTER">

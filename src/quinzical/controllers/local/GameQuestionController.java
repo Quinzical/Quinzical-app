@@ -223,4 +223,65 @@ public class GameQuestionController {
             createBackButton();
         }
     }
+
+    /**
+     * Used to add ā macron to the text field
+     * 
+     * @param event
+     */
+    @FXML
+    private void handleA(final ActionEvent event) {
+        insertMacron("ā");
+    }
+
+    /**
+     * Used to add ē macron to the text field
+     * 
+     * @param event
+     */
+    @FXML
+    private void handleE(final ActionEvent event) {
+        insertMacron("ē");
+    }
+
+    /**
+     * Used to add ī macron to the text field
+     * 
+     * @param event
+     */
+    @FXML
+    private void handleI(final ActionEvent event) {
+        insertMacron("ī");
+    }
+
+    /**
+     * Used to add ō macron to the text field
+     * 
+     * @param event
+     */
+    @FXML
+    private void handleO(final ActionEvent event) {
+        insertMacron("ō");
+    }
+
+    /**
+     * Used to add ū macron to the text field
+     * 
+     * @param event
+     */
+    @FXML
+    private void handleU(final ActionEvent event) {
+        insertMacron("ū");
+    }
+
+    /**
+     * Used to insert a macron into the text field at the caret position.
+     * 
+     * @param macron the macron to be added
+     * @return
+     */
+    private void insertMacron(final String macron) {
+        int caretPosition = _answerTextField.getCaretPosition();
+        _answerTextField.insertText(caretPosition, macron);
+    }
 }

@@ -14,8 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane stylesheets="@quinzical.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.controllers.local.GameQuestionController">
+<AnchorPane styleClass="root" stylesheets="@quinzical.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.controllers.local.GameQuestionController">
    <children>
       <AnchorPane id="root" fx:id="_anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -38,29 +37,25 @@
       </AnchorPane>
       <VBox alignment="CENTER" layoutX="3840.0" layoutY="167.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" styleClass="transparent" stylesheets="@quinzical.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
           <children>
-              <HBox alignment="CENTER" VBox.vgrow="NEVER">
-                  <children>
-                      <Label fx:id="_categoryName" alignment="CENTER" styleClass="header" text="Person">
-                          <font>
-                              <Font size="90.0" />
-                          </font>
-                      </Label>
-                  </children>
-                  <VBox.margin>
-                      <Insets top="10.0" />
-                  </VBox.margin>
-              </HBox>
+                <Label fx:id="_categoryName" alignment="CENTER" prefHeight="118.0" prefWidth="347.0" styleClass="header" text="Person">
+                    <font>
+                        <Font size="90.0" />
+                    </font>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+                </Label>
               <Label fx:id="_questionLabel" minHeight="-Infinity" styleClass="login" text="If you want text in different styles, then, if using JavaFX 2, place multiple labels in a FlowPane or, if you are using Java 8+, place the labels in a TextFlow component." textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS">
                   <font>
                       <Font name="System Bold" size="39.0" />
                   </font>
               </Label>
-            <Button alignment="CENTER" maxHeight="72.0" maxWidth="72.0" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#handlePlaybackButton" prefHeight="69.0" prefWidth="72.0" styleClass="round-button" textAlignment="CENTER">
+            <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleStatsButton" prefHeight="56.0" prefWidth="60.0" styleClass="macron-button" textAlignment="CENTER" textFill="#fffefe">
                <font>
-                  <Font size="24.0" />
+                  <Font size="36.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="41.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="57.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/speaker.png" />
                      </image>
@@ -72,13 +67,10 @@
                      </effect>
                   </ImageView>
                </graphic>
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
             </Button>
-            <AnchorPane prefHeight="100.0">
+            <AnchorPane prefHeight="0.0" prefWidth="1280.0">
                <children>
-                  <Label fx:id="_infoLabel" alignment="CENTER" contentDisplay="CENTER" styleClass="login" text="Correct" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Label fx:id="_infoLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="1280.0" styleClass="login" text="Correct" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
                         <Font name="System Bold Italic" size="29.0" />
                      </font>
@@ -90,7 +82,39 @@
                       <Font size="36.0" />
                   </font>
               </TextField>
-            <Pane prefHeight="27.0" prefWidth="1280.0" VBox.vgrow="ALWAYS" />
+            <Pane prefHeight="0.0" prefWidth="1280.0" VBox.vgrow="ALWAYS" />
+            <HBox alignment="CENTER" maxHeight="64.0" prefHeight="64.0" prefWidth="1280.0" spacing="25.0" VBox.vgrow="NEVER">
+               <children>
+                  <Button alignment="CENTER" minHeight="0.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleA" prefHeight="50.0" prefWidth="54.0" styleClass="macron-button" text="ā" textAlignment="CENTER" textFill="#fffefe">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="CENTER" minHeight="0.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleE" prefHeight="50.0" prefWidth="54.0" styleClass="macron-button" text="ē" textAlignment="CENTER" textFill="#fffefe">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="CENTER" minHeight="0.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleI" prefHeight="50.0" prefWidth="54.0" styleClass="macron-button" text="ī" textAlignment="CENTER" textFill="#fffefe">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="CENTER" minHeight="0.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleO" prefHeight="50.0" prefWidth="54.0" styleClass="macron-button" text="ō" textAlignment="CENTER" textFill="#fffefe">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="CENTER" minHeight="0.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleU" prefHeight="50.0" prefWidth="54.0" styleClass="macron-button" text="ū" textAlignment="CENTER" textFill="#fffefe">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
             <HBox alignment="CENTER" spacing="10.0">
                <children>
                   <Label styleClass="time" text="TIME" textFill="WHITE">
@@ -104,6 +128,9 @@
                      </font>
                   </Label>
                </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </HBox>
               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                   <children>
@@ -119,12 +146,12 @@
                       </Button>
                   </children>
               </HBox>
-              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="NEVER">
+              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                   <VBox.margin>
                       <Insets bottom="20.0" left="20.0" right="20.0" />
                   </VBox.margin>
                <children>
-                  <AnchorPane prefHeight="100.0" prefWidth="1296.0" HBox.hgrow="ALWAYS">
+                  <AnchorPane prefHeight="14.0" prefWidth="1240.0" HBox.hgrow="ALWAYS">
                      <children>
                         <Button alignment="CENTER" layoutX="20.0" layoutY="20.0" maxHeight="72.0" maxWidth="72.0" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#handleSettingsButton" prefHeight="69.0" prefWidth="72.0" styleClass="round-button" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <font>

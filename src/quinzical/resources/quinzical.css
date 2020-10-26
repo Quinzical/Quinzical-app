@@ -132,6 +132,16 @@
   -fx-border-color: #07ed00;
 }
 
+.macron-button {
+  -fx-font-size: 25px;
+  -fx-background-radius: 30px;
+  -fx-background-color: #919191;
+}
+.macron-button:hover {
+  -fx-border-radius: 30px;
+  -fx-border-color: #07ed00;
+}
+
 .exit-button {
   -fx-border-color: white;
   -fx-font-weight: bold;
