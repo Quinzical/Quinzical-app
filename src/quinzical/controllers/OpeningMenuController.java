@@ -1,6 +1,7 @@
 package quinzical.controllers;
 
 import quinzical.controllers.util.alerts.ConfirmAlert;
+import quinzical.controllers.util.SheepBackground;
 import quinzical.controllers.util.StarBackground;
 import quinzical.util.SceneManager;
 import quinzical.util.SceneManager.Scenes;
@@ -10,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * This class is the OpeningMenu controller in a MVC design.
@@ -21,6 +23,12 @@ public class OpeningMenuController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
     private final LoginModel _login = LoginModel.getInstance();
+
+    @FXML
+    private AnchorPane _pane;
+
+    @FXML
+    private AnchorPane _sheepPane;
 
     @FXML
     private Label _usernameLabel;
@@ -41,6 +49,7 @@ public class OpeningMenuController {
         _usernameLabel.setText(_login.getUsername());
         _usernameLabel.getStyleClass().add("logingreen");
         StarBackground.animate(_background1, _background2, _background3);
+        new SheepBackground(_pane);
     }
 
     /**
@@ -140,6 +149,7 @@ public class OpeningMenuController {
 
     /**
      * Used to handle logout button
+     * 
      * @param event
      */
     @FXML

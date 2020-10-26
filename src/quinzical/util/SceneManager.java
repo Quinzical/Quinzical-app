@@ -268,4 +268,13 @@ public final class SceneManager {
     public static String getPath(final String name) {
         return (PATH + name).replace(FileHelper.FILE_SEPARATOR, "/");
     }
+
+    /**
+     * Used to return the root stage
+     * 
+     * @return Stage
+     */
+    public Stage getRootStage() {
+        return _rootStage;
+    }
 }
