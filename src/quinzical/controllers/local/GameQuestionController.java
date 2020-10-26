@@ -20,6 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 
 /**
  * This class is the Game Module Question controller in a MVC design.
@@ -39,6 +40,8 @@ public class GameQuestionController {
     private ExecutorService _team = Executors.newSingleThreadExecutor();
     private SpeakProcess _speak;
     private String _question;
+
+    private int _caretPosition;
 
     private TimerThread _timer;
 
@@ -225,6 +228,24 @@ public class GameQuestionController {
     }
 
     /**
+     * 
+     * @param event
+     */
+    @FXML
+    private void handleTextInput(final KeyEvent event) {
+        _caretPosition = _answerTextField.getCaretPosition();
+    }
+
+    /**
+     * 
+     * @param event
+     */
+    @FXML
+    private void handleTextMouse(final MouseEvent event) {
+        _caretPosition = _answerTextField.getCaretPosition();
+    }
+
+    /**
      * Used to add ā macron to the text field
      * 
      * @param event
@@ -281,7 +302,8 @@ public class GameQuestionController {
      * @return
      */
     private void insertMacron(final String macron) {
-        int caretPosition = _answerTextField.getCaretPosition();
-        _answerTextField.insertText(caretPosition, macron);
+        _answerTextField.insertText(_caretPosition, macron);
+        KeyEvent press = new KeyEvent(KeyEvent.KEY_PRESSED, macron, macron, KeyCode.UNDEFINED, false, false, false, false);
+        _answerTextField.fireEvent(press);
     }
 }

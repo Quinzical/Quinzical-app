@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.CubicCurveTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
@@ -33,6 +34,11 @@ public class OpeningMenuController {
     private Sheep[] _images = { Sheep.BLUE, Sheep.CYAN, Sheep.GREEN, Sheep.ORANGE, Sheep.PINK, Sheep.RED, Sheep.WHITE,
             Sheep.YELLOW };
     private static final int NUMBER_OF_SHEEP = 4;
+    private static final int SHEEP_HEIGHT = 200;
+    private static final int SHEEP_WIDTH = 200;
+
+    @FXML
+    private AnchorPane _pane;
 
     @FXML
     private Label _usernameLabel;
@@ -50,14 +56,23 @@ public class OpeningMenuController {
      * initialize with OpeningMenu.fxml
      */
     public void initialize() {
+        _usernameLabel.setText(_login.getUsername());
+        _usernameLabel.getStyleClass().add("logingreen");
+        StarBackground.animate(_background1, _background2, _background3);
+
+        ImageView sheep = new ImageView(new Image(Sheep.GREEN.getFilename()));
+        sheep.setFitHeight(SHEEP_HEIGHT);
+        sheep.setFitWidth(SHEEP_WIDTH);
+
+        _pane.getChildren().add(sheep);
+
         Path path = new Path();
-        path.getElements().add(new MoveTo(20, 20));
-        path.getElements().add(new CubicCurveTo(380, 0, 380, 120, 200, 120));
-        path.getElements().add(new CubicCurveTo(0, 120, 0, 240, 380, 240));
+        path.getElements().add(new MoveTo(100, 1000));
+        path.getElements().add(new CubicCurveTo(380, 0, -380, -120, 380, -120));
         PathTransition pathTransition = new PathTransition();
-        pathTransition.setDuration(Duration.millis(4000));
+        pathTransition.setDuration(Duration.millis(15000));
         pathTransition.setPath(path);
-        pathTransition.setNode(new ImageView(new Image(Sheep.GREEN.getFilename())));
+        pathTransition.setNode(sheep);
         pathTransition.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
         pathTransition.setCycleCount(Timeline.INDEFINITE);
         pathTransition.setAutoReverse(true);
