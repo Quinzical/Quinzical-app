@@ -2,7 +2,17 @@ package quinzical.controllers;
 
 import quinzical.controllers.util.StarBackground;
 import quinzical.util.SceneManager;
+import quinzical.util.models.LoginModel;
+import quinzical.util.sql.data.GameStatsData;
+import quinzical.util.sql.data.UserStatsData;
+import quinzical.util.sql.db.StatsDB;
+
+import java.sql.SQLException;
+import java.util.List;
+
 import eu.hansolo.tilesfx.Tile;
+import eu.hansolo.tilesfx.chart.ChartData;
+import eu.hansolo.tilesfx.skins.BarChartItem;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
@@ -17,27 +27,26 @@ import javafx.scene.layout.Pane;
 public final class StatsController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
+    private final LoginModel _login = LoginModel.getInstance();
+
+    private static final double PERCENTAGE = 100.0;
+
+    private final StatsDB _statsDB = new StatsDB();
 
     @FXML
     private Pane _tilesPane;
 
     @FXML
-    private Tile _answerTime;
+    private Tile _lastGameAccuracy;
 
     @FXML
-    private Tile _lastroundAccuracy;
+    private Tile _totalAccuracy;
 
     @FXML
-    private Tile _questionAccuracy;
+    private Tile _scoreChart;
 
     @FXML
-    private Tile _roundLength;
-
-    @FXML
-    private Tile _triesRadial;
-
-    @FXML
-    private Tile _totalTimePlayed;
+    private Tile _categoryChart;
 
     @FXML
     private ImageView _background1;
@@ -53,6 +62,44 @@ public final class StatsController {
      */
     public void initialize() {
         StarBackground.animate(_background1, _background2, _background3);
+        setScoreChart();
+        setAccuracy();
+        setCategoryChart();
+    }
+
+    private void setAccuracy() {
+        try {
+            UserStatsData stats = _statsDB.getUserStatsData(_login.getUserID());
+            _lastGameAccuracy.setValue(_statsDB.getLastCorrectAttempts(_login.getUserID()) * PERCENTAGE
+                    / _statsDB.getLastTotalAttempts(_login.getUserID()));
+            _totalAccuracy.setValue(stats.getCorrectAttempts() * PERCENTAGE / stats.getAttempts());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setCategoryChart() {
+        try {
+            List<BarChartItem> categories = _statsDB.getUserCategoryStats(_login.getUserID());
+
+            for (BarChartItem category : categories) {
+                _categoryChart.addBarChartItem(category);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setScoreChart() {
+        try {
+            List<GameStatsData> datas = _statsDB.getUserGameStats(_login.getUserID());
+
+            for (GameStatsData data : datas) {
+                _scoreChart.addChartData(new ChartData(data.getScore()));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -62,6 +109,7 @@ public final class StatsController {
      */
     @FXML
     void handleBackButton(final ActionEvent event) {
+        _sceneManager.unloadScene();
         _sceneManager.backScene();
     }
 }

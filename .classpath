@@ -26,6 +26,8 @@
 	<classpathentry kind="lib" path="C:/Program Files/JavaFXSDK-11.02/javafx-sdk-11.0.2/lib/javafx.base.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/JavaFXSDK-11.02/javafx-sdk-11.0.2/lib/javafx.graphics.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/JavaFXSDK-11.02/javafx-sdk-11.0.2/lib/javafx.controls.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/JavaFXSDK-11.02/javafx-sdk-11.0.2/lib/javafx.fxml.jar"/>
+    <classpathentry kind="lib" path="C:/Program Files/JavaFXSDK-11.02/javafx-sdk-11.0.2/lib/javafx.fxml.jar"/>
+    <classpathentry kind="lib" path="C:/Program Files/JavaFXSDK-11.02/javafx-sdk-11.0.2/lib/javafx.web.jar"/>
+    <classpathentry kind="lib" path="C:/Program Files/JavaFXSDK-11.02/javafx-sdk-11.0.2/lib/javafx.media.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
