@@ -13,7 +13,6 @@ import java.util.List;
 import eu.hansolo.tilesfx.Tile;
 import eu.hansolo.tilesfx.chart.ChartData;
 import eu.hansolo.tilesfx.skins.BarChartItem;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
