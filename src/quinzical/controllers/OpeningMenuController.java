@@ -15,7 +15,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.CubicCurve;
 import javafx.scene.shape.CubicCurveTo;
+import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.util.Duration;
@@ -34,8 +36,10 @@ public class OpeningMenuController {
     private Sheep[] _images = { Sheep.BLUE, Sheep.CYAN, Sheep.GREEN, Sheep.ORANGE, Sheep.PINK, Sheep.RED, Sheep.WHITE,
             Sheep.YELLOW };
     private static final int NUMBER_OF_SHEEP = 4;
-    private static final int SHEEP_HEIGHT = 200;
-    private static final int SHEEP_WIDTH = 200;
+    private static final int SHEEP_HEIGHT = 150;
+    private static final int SHEEP_WIDTH = 150;
+
+    private static final int ANIMATION_DURATION = 20000;
 
     @FXML
     private AnchorPane _pane;
@@ -59,24 +63,7 @@ public class OpeningMenuController {
         _usernameLabel.setText(_login.getUsername());
         _usernameLabel.getStyleClass().add("logingreen");
         StarBackground.animate(_background1, _background2, _background3);
-
-        ImageView sheep = new ImageView(new Image(Sheep.GREEN.getFilename()));
-        sheep.setFitHeight(SHEEP_HEIGHT);
-        sheep.setFitWidth(SHEEP_WIDTH);
-
-        _pane.getChildren().add(sheep);
-
-        Path path = new Path();
-        path.getElements().add(new MoveTo(100, 1000));
-        path.getElements().add(new CubicCurveTo(380, 0, -380, -120, 380, -120));
-        PathTransition pathTransition = new PathTransition();
-        pathTransition.setDuration(Duration.millis(15000));
-        pathTransition.setPath(path);
-        pathTransition.setNode(sheep);
-        pathTransition.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
-        pathTransition.setCycleCount(Timeline.INDEFINITE);
-        pathTransition.setAutoReverse(true);
-        pathTransition.play();
+        randomiseAndAnimateSheep();
     }
 
     /**
@@ -190,32 +177,88 @@ public class OpeningMenuController {
     /**
      * Used to animate sheep of random colours, on the screen.
      */
-    private void animateRandomSheep() {
+    private void randomiseAndAnimateSheep() {
 
         int[] randomValues = new int[NUMBER_OF_SHEEP];
+        ImageView[] views = new ImageView[NUMBER_OF_SHEEP];
 
         for (int i = 0; i < NUMBER_OF_SHEEP; i++) {
             // Create random number between 0 and 7 to get the colours of the sheep
-            randomValues[i] = randomNumberGenerator(_images.length, 0);
+            randomValues[i] = (int) (Math.random() * ((_images.length - 1 - 0) + 1)) + 0;
         }
 
-        for (int j = 0; j < randomValues.length; j++) {
-            Path path = new Path();
-            path.getElements().add(new MoveTo(20, 20));
-            path.getElements().add(new CubicCurveTo(380, 0, 380, 120, 200, 120));
-            path.getElements().add(new CubicCurveTo(0, 120, 0, 240, 380, 240));
-            PathTransition pathTransition = new PathTransition();
-            pathTransition.setDuration(Duration.millis(4000));
-            pathTransition.setPath(path);
-            pathTransition.setNode(new ImageView(new Image(_images[randomValues[j]].getFilename())));
-            pathTransition.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
-            pathTransition.setCycleCount(Timeline.INDEFINITE);
-            pathTransition.setAutoReverse(true);
-            pathTransition.play();
+        for (int j = 0; j < NUMBER_OF_SHEEP; j++) {
+            views[j] = new ImageView(new Image(_images[randomValues[j]].getFilename()));
+            views[j].setFitHeight(SHEEP_HEIGHT);
+            views[j].setFitWidth(SHEEP_WIDTH);
+            _pane.getChildren().add(views[j]);
         }
+
+        animateSheep(views);
     }
 
-    private int randomNumberGenerator(int maxNumber, int minNumber) {
-        return (int) (Math.random() * ((maxNumber - minNumber) + 1)) + minNumber;
+    private void animateSheep(final ImageView[] views) {
+        int count = 0;
+        final int safetyDistance = 500;
+
+        int width = (int) _sceneManager.getRootStage().getWidth();
+        int height = (int) _sceneManager.getRootStage().getHeight();
+
+        Path path1 = new Path();
+        path1.getElements().add(new MoveTo(width + safetyDistance, height / 2));
+        path1.getElements().add(new LineTo(-safetyDistance, -safetyDistance));
+        PathTransition pathTransition1 = new PathTransition();
+        pathTransition1.setDuration(Duration.millis(ANIMATION_DURATION + 3000));
+        pathTransition1.setPath(path1);
+        pathTransition1.setNode(views[count]);
+        pathTransition1.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+        pathTransition1.setCycleCount(Timeline.INDEFINITE);
+        pathTransition1.setAutoReverse(true);
+        pathTransition1.play();
+
+        count++;
+
+        final double fractionDistance = 0.75;
+
+        Path path2 = new Path();
+        path2.getElements().add(new MoveTo(width / 2, height + safetyDistance));
+        path2.getElements().add(new LineTo(width + safetyDistance, -safetyDistance));
+        PathTransition pathTransition2 = new PathTransition();
+        pathTransition2.setDuration(Duration.millis(ANIMATION_DURATION));
+        pathTransition2.setPath(path2);
+        pathTransition2.setNode(views[count]);
+        pathTransition2.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+        pathTransition2.setCycleCount(Timeline.INDEFINITE);
+        pathTransition2.setAutoReverse(true);
+        pathTransition2.play();
+
+        count++;
+
+        Path path3 = new Path();
+        path3.getElements().add(new MoveTo(width, -safetyDistance));
+        path3.getElements().add(new LineTo(-safetyDistance, height));
+        PathTransition pathTransition3 = new PathTransition();
+        pathTransition3.setDuration(Duration.millis(ANIMATION_DURATION + 1000));
+        pathTransition3.setPath(path3);
+        pathTransition3.setNode(views[count]);
+        pathTransition3.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+        pathTransition3.setCycleCount(Timeline.INDEFINITE);
+        pathTransition3.setAutoReverse(true);
+        pathTransition3.play();
+
+        count++;
+
+        Path path4 = new Path();
+        path4.getElements().add(new MoveTo(width / 2, height + safetyDistance));
+        path4.getElements().add(new CubicCurveTo((width / 2) * fractionDistance, height * fractionDistance,
+                width * fractionDistance, height / 4, -safetyDistance, -safetyDistance));
+        PathTransition pathTransition4 = new PathTransition();
+        pathTransition4.setDuration(Duration.millis(ANIMATION_DURATION));
+        pathTransition4.setPath(path4);
+        pathTransition4.setNode(views[count]);
+        pathTransition4.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+        pathTransition4.setCycleCount(Timeline.INDEFINITE);
+        pathTransition4.setAutoReverse(true);
+        pathTransition4.play();
     }
 }
