@@ -7,7 +7,6 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse.BodyHandlers;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,7 +26,6 @@ public final class Chat {
     private static final String ENDPOINT = "https://quinzical-api.herokuapp.com";
     private static final String CHAT = "/chat";
 
-    
 
     private HttpClient _client = HttpClient.newHttpClient();
 
