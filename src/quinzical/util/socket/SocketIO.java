@@ -16,7 +16,6 @@ import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
 import io.socket.engineio.client.EngineIOException;
 import javafx.application.Platform;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 
 /**
