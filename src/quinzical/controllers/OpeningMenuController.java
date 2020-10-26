@@ -1,15 +1,23 @@
 package quinzical.controllers;
 
 import quinzical.controllers.util.alerts.ConfirmAlert;
+import quinzical.controllers.util.Sheep;
 import quinzical.controllers.util.StarBackground;
 import quinzical.util.SceneManager;
 import quinzical.util.SceneManager.Scenes;
 import quinzical.util.JWTStore;
 import quinzical.util.models.LoginModel;
+import javafx.animation.PathTransition;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.shape.CubicCurveTo;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Path;
+import javafx.util.Duration;
 
 /**
  * This class is the OpeningMenu controller in a MVC design.
@@ -21,6 +29,10 @@ public class OpeningMenuController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
     private final LoginModel _login = LoginModel.getInstance();
+
+    private Sheep[] _images = { Sheep.BLUE, Sheep.CYAN, Sheep.GREEN, Sheep.ORANGE, Sheep.PINK, Sheep.RED, Sheep.WHITE,
+            Sheep.YELLOW };
+    private static final int NUMBER_OF_SHEEP = 4;
 
     @FXML
     private Label _usernameLabel;
@@ -38,9 +50,18 @@ public class OpeningMenuController {
      * initialize with OpeningMenu.fxml
      */
     public void initialize() {
-        _usernameLabel.setText(_login.getUsername());
-        _usernameLabel.getStyleClass().add("logingreen");
-        StarBackground.animate(_background1, _background2, _background3);
+        Path path = new Path();
+        path.getElements().add(new MoveTo(20, 20));
+        path.getElements().add(new CubicCurveTo(380, 0, 380, 120, 200, 120));
+        path.getElements().add(new CubicCurveTo(0, 120, 0, 240, 380, 240));
+        PathTransition pathTransition = new PathTransition();
+        pathTransition.setDuration(Duration.millis(4000));
+        pathTransition.setPath(path);
+        pathTransition.setNode(new ImageView(new Image(Sheep.GREEN.getFilename())));
+        pathTransition.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+        pathTransition.setCycleCount(Timeline.INDEFINITE);
+        pathTransition.setAutoReverse(true);
+        pathTransition.play();
     }
 
     /**
@@ -140,6 +161,7 @@ public class OpeningMenuController {
 
     /**
      * Used to handle logout button
+     * 
      * @param event
      */
     @FXML
@@ -148,5 +170,37 @@ public class OpeningMenuController {
         _sceneManager.switchScene(Scenes.LOGIN_SCREEN);
         JWTStore jwtStore = new JWTStore();
         jwtStore.setJWT("");
+    }
+
+    /**
+     * Used to animate sheep of random colours, on the screen.
+     */
+    private void animateRandomSheep() {
+
+        int[] randomValues = new int[NUMBER_OF_SHEEP];
+
+        for (int i = 0; i < NUMBER_OF_SHEEP; i++) {
+            // Create random number between 0 and 7 to get the colours of the sheep
+            randomValues[i] = randomNumberGenerator(_images.length, 0);
+        }
+
+        for (int j = 0; j < randomValues.length; j++) {
+            Path path = new Path();
+            path.getElements().add(new MoveTo(20, 20));
+            path.getElements().add(new CubicCurveTo(380, 0, 380, 120, 200, 120));
+            path.getElements().add(new CubicCurveTo(0, 120, 0, 240, 380, 240));
+            PathTransition pathTransition = new PathTransition();
+            pathTransition.setDuration(Duration.millis(4000));
+            pathTransition.setPath(path);
+            pathTransition.setNode(new ImageView(new Image(_images[randomValues[j]].getFilename())));
+            pathTransition.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+            pathTransition.setCycleCount(Timeline.INDEFINITE);
+            pathTransition.setAutoReverse(true);
+            pathTransition.play();
+        }
+    }
+
+    private int randomNumberGenerator(int maxNumber, int minNumber) {
+        return (int) (Math.random() * ((maxNumber - minNumber) + 1)) + minNumber;
     }
 }
