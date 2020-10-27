@@ -12,9 +12,12 @@ import org.json.JSONObject;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import quinzical.controllers.util.StarBackground;
@@ -64,6 +67,15 @@ public class ChatController {
         StarBackground.animate(_background1, _background2, _background3);
         Platform.runLater(() -> {
             _socket.setPane(_chatbox);
+        });
+
+        _messageField.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(final KeyEvent keyEvent) {
+                if (keyEvent.getCode() == KeyCode.ENTER) {
+                    handleSendMessage(new ActionEvent());
+                }
+            }
         });
     }
 
