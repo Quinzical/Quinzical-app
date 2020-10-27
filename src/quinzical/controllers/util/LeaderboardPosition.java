@@ -50,7 +50,7 @@ public class LeaderboardPosition {
         Button placing = new Button();
         placing.setPrefWidth(DEFAULT_WIDTH);
         placing.setPrefHeight(DEFAULT_HEIGHT);
-        placing.setStyle(DEFAULT_FONT_SIZE);
+        placing.setStyle(DEFAULT_FONT_SIZE + "; -fx-border-radius: 10;");
         placing.setText(Integer.toString(_position));
 
         Label username = new Label(_entry.getUsername());

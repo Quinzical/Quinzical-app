@@ -2,6 +2,7 @@ package quinzical.controllers.online;
 
 import quinzical.controllers.util.StarBackground;
 import quinzical.util.SceneManager;
+import quinzical.util.SceneManager.Scenes;
 import quinzical.util.models.LoginModel;
 import quinzical.util.socket.SocketIO;
 import javafx.beans.value.ChangeListener;
@@ -60,6 +61,7 @@ public class CreateGameController {
         _timerSlider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(final ObservableValue<? extends Number> observable, final Number oldValue,
                     final Number newValue) {
+                _timer = newValue.intValue();
                 _timerValue.setText(String.valueOf(newValue.intValue()));
             }
         });
@@ -67,7 +69,7 @@ public class CreateGameController {
 
     @FXML
     private void handleBack(final ActionEvent event) {
-        _sceneManager.backScene();
+        _sceneManager.cleanSwitchScene(Scenes.ONLINE_MENU);
     }
 
     @FXML

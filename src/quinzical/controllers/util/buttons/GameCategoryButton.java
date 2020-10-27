@@ -48,7 +48,8 @@ public class GameCategoryButton extends Button {
                 break;
         }
         setStyle("-fx-font-size:16; -fx-padding: 10 10 10 10; -fx-border-insets: 0 10 0 10;"
-                + " -fx-background-insets: 0 10 0 10;" + "-fx-font-size:20; -fx-text-fill: white; -fx-border-width: 2 2 2 2; -fx-border-color: white; -fx-border-radius: 10;" + color);
+                + " -fx-background-insets: 0 10 0 10;" + "-fx-font-size:20; -fx-text-fill: white;"
+                + " -fx-border-width: 2 2 2 2; -fx-border-color: white; -fx-border-radius: 10;" + color);
         getStyleClass().add("category");
 
         // handle button on press
@@ -60,6 +61,7 @@ public class GameCategoryButton extends Button {
                 questionModel.setPractice(false);
                 questionModel.setCategory(category);
                 questionModel.setQuestionValue(value);
+                setDisable(true);
                 _sceneManager.unloadScene();
                 _sceneManager.switchScene(Scenes.GAME_QUESTION);
             }

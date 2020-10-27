@@ -1,6 +1,7 @@
 package quinzical.util;
 
 import java.io.IOException;
+import java.util.ConcurrentModificationException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
@@ -45,7 +46,7 @@ public final class SceneManager {
     private Stage _rootStage;
     private Stack<Scenes> _history = new Stack<Scenes>();
     private Scenes _currentScene;
-    private final Map<Scenes, Parent> _scenes = new HashMap<Scenes, Parent>();
+    private Map<Scenes, Parent> _scenes = new HashMap<Scenes, Parent>();
 
     /** Enum for each scene with a filename and name */
     public enum Scenes {
@@ -177,7 +178,11 @@ public final class SceneManager {
             return;
         }
         new Thread(() -> {
-            loadScene(scene);
+            try {
+                loadScene(scene);
+            } catch (ConcurrentModificationException e) {
+                //normal XD
+            }
         }).start();
     }
 
@@ -204,6 +209,7 @@ public final class SceneManager {
             }
             _rootStage.getScene().setRoot(next);
         });
+        System.gc();
     }
 
     /**
@@ -212,8 +218,8 @@ public final class SceneManager {
      * @param scene Scenes enum
      */
     public void cleanSwitchScene(final Scenes scene) {
-        unloadScene(scene);
         switchScene(scene);
+        unloadScene(scene);
     }
 
     /**

@@ -37,7 +37,7 @@
       </AnchorPane>
       <VBox alignment="CENTER" layoutX="3840.0" layoutY="167.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" styleClass="transparent" stylesheets="@quinzical.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
           <children>
-                <Label fx:id="_categoryName" alignment="CENTER" prefHeight="118.0" prefWidth="347.0" styleClass="header" text="Person">
+                <Label fx:id="_categoryName" alignment="CENTER" styleClass="header" text="Person">
                     <font>
                         <Font size="90.0" />
                     </font>

@@ -138,6 +138,7 @@ public class PracticeQuestionController {
      */
     private void back() {
         _sceneManager.unloadScene();
+        _team.shutdown();
         _sceneManager.backScene();
     }
 

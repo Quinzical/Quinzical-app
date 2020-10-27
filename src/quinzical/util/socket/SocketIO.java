@@ -165,6 +165,7 @@ public final class SocketIO {
                 public void call(final Object... args) {
                     Platform.runLater(() -> {
                         if (args[0] instanceof EngineIOException) {
+                            System.out.println(args[0]);
                             new WarningAlert("Server disconnected");
                             _sceneManager.cleanSwitchScene(Scenes.OPENING_MENU);
                             return;
@@ -294,7 +295,9 @@ public final class SocketIO {
      * Used to leave current Room
      */
     public void leaveRoom() {
-        _socket.emit("leaveRoom");
+        JSONObject obj = new JSONObject();
+        obj.put("code", getRoom().getString("code"));
+        _socket.emit("leaveRoom", obj);
     }
 
     /**

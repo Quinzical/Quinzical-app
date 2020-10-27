@@ -93,6 +93,7 @@ public final class StatsController {
     private void setScoreChart() {
         try {
             List<GameStatsData> datas = _statsDB.getUserGameStats(_login.getUserID());
+            datas.remove(datas.size() - 1);
 
             for (GameStatsData data : datas) {
                 _scoreChart.addChartData(new ChartData(data.getScore()));

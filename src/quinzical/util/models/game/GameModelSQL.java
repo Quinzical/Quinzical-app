@@ -14,6 +14,7 @@ import quinzical.util.models.util.Category;
 import quinzical.util.models.util.QuestionHelper;
 import quinzical.util.models.LoginModel;
 import quinzical.util.sql.data.CategoryData;
+import quinzical.util.sql.data.GameSessionData;
 import quinzical.util.sql.data.QuestionData;
 import quinzical.util.sql.db.CategoryDB;
 import quinzical.util.sql.db.GameSessionDB;
@@ -63,6 +64,9 @@ public final class GameModelSQL implements GameModel {
      */
     public int getScore() {
         try {
+            if (_gameSessionDB.query(_login.getGameSessionID()) == null) {
+                return 0;
+            }
             return _gameSessionDB.query(_login.getGameSessionID()).getScore();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -137,7 +141,13 @@ public final class GameModelSQL implements GameModel {
         try {
             int[] ids = new int[5];
             _login.getGameSessionID();
-            String[] stringID = _gameSessionDB.query(_login.getGameSessionID()).getCategories();
+            GameSessionData gameSession = _gameSessionDB.query(_login.getGameSessionID());
+
+            if (gameSession == null) {
+                return categories;
+            }
+
+            String[] stringID = gameSession.getCategories();
             for (int i = 0; i < stringID.length; i++) {
                 ids[i] = Integer.valueOf(stringID[i]);
             }
@@ -159,6 +169,10 @@ public final class GameModelSQL implements GameModel {
      */
     public GameStateData getGameStateData() {
         try {
+            GameSessionData data = _gameSessionDB.query(_login.getGameSessionID());
+            if (data == null) {
+                return null;
+            }
             String[] categories = _gameSessionDB.query(_login.getGameSessionID()).getCategories();
             return _gameSessionDB.getGameState(convertArrayToInt(categories), _login.getGameSessionID());
         } catch (SQLException e) {
@@ -230,6 +244,9 @@ public final class GameModelSQL implements GameModel {
      */
     public boolean remainingQuestions() {
         try {
+            if (_gameSessionDB.query(_login.getGameSessionID()) == null) {
+                return true;
+            }
             return !Arrays.equals(_gameSessionDB.query(_login.getGameSessionID()).getQuestions(),
                     new String[] { "5", "5", "5", "5", "5" });
         } catch (SQLException e) {
@@ -260,6 +277,9 @@ public final class GameModelSQL implements GameModel {
     public boolean checkInternational() {
         int count = 0;
         try {
+            if (_gameSessionDB.query(_login.getGameSessionID()) == null) {
+                return false;
+            }
             String[] questions = _gameSessionDB.query(_login.getGameSessionID()).getQuestions();
             for (String question : questions) {
                 if (question.equals("5")) {

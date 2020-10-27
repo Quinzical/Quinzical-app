@@ -153,6 +153,7 @@ public class GameQuestionController {
      */
     private void back() {
         _sceneManager.unloadScene();
+        _team.shutdown();
         if (_gameModel.remainingQuestions()) {
             _sceneManager.backScene();
         } else {

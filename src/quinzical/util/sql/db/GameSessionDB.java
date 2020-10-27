@@ -134,6 +134,8 @@ public class GameSessionDB {
         pstmt.setInt(1, gameSessionID);
 
         ResultSet rs = pstmt.executeQuery();
+
+
         while (rs.next()) {
             for (int i = 0; i < categories.length; i++) {
                 if (categories[i] == rs.getInt("category_id")) {

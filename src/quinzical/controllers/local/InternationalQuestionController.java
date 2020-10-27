@@ -233,6 +233,7 @@ public class InternationalQuestionController {
      */
     private void back() {
         _sceneManager.unloadScene();
+        _team.shutdown();
         _sceneManager.switchScene(Scenes.GAME_MENU);
     }
 
@@ -242,6 +243,7 @@ public class InternationalQuestionController {
     private void reload() {
         SplashModel.getInstance().setNextScene(Scenes.INTERNATIONAL_QUESTION, Pages.INTERNATIONAL);
         _sceneManager.unloadScene();
+        _team.shutdown();
         _sceneManager.switchScene(Scenes.SPLASH_SCREEN);
     }
 }

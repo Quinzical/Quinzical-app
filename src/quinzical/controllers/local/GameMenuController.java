@@ -17,6 +17,7 @@ import quinzical.util.models.util.Category;
 import quinzical.util.models.SplashModel;
 import quinzical.util.models.SplashModel.Pages;
 import quinzical.util.models.LoginModel;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
@@ -73,7 +74,7 @@ public class GameMenuController {
         for (int i = 0; i < COLUMNS; i++) {
             Category category = _categories.get(i);
             Label categoryLabel = new Label(category.toString());
-            categoryLabel.setStyle("-fx-font-size:24; -fx-fill: white;");
+            categoryLabel.setStyle("-fx-font-size:24; -fx-text-fill: white;");
             GridPane.setHalignment(categoryLabel, HPos.CENTER);
             _questionGrid.add(categoryLabel, i, 0);
             int questionNum = _gameModel.getCategoriesQuestionNumber(category);
@@ -94,7 +95,9 @@ public class GameMenuController {
         }
 
         if (!_login.checkInternational() && _gameModel.checkInternational()) {
-            new SuccessAlert("International Section", "International section has been unlocked");
+            Platform.runLater(() -> {
+                new SuccessAlert("International Section", "International section has been unlocked");
+            });
             _login.enableInternational();
         }
 
