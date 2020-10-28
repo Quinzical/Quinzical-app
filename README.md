@@ -49,6 +49,11 @@ Run on .jar by add arguments (replace `/usr/share/java/lib` to javafx sdk)
 java --module-path /usr/share/java/lib --add-modules javafx.controls,javafx.media,javafx.base,javafx.fxml -jar Quinzical.jar
 ```
 
+#### Using login
+If you do not want to create a login, our default login is as below:
+**Username:** ```Bob ```
+**Password:** ```password```
+
 ## Documentation
 
 #### Folder Structure

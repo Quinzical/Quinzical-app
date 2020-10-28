@@ -16,11 +16,11 @@ improve their knowledge about the country.
   * [Local play](#local-play)
   * [Offline mode](#offline-mode)
 * [Game Module](#game-module)
-  * [Game Module Menu](#game-module-menu)
   * [International Section](#international-section)
   * [Reward Screen](#reward-screen)
 * [Practice Module](#practice-module)
 * [Leaderboard](#leaderboard)
+* [Adding questions](#adding-questions)
 * [Customisation](#customisation)
 * [Chat](#chat)
 * [Statistics](#statistics)
@@ -59,15 +59,15 @@ Upon opening the application, you will be presented with the login screen. This 
 ![Login Screen](./images/user-manual/login-screen.png)
 
 **1. Login fields**
-Use the username and password fields to login using your existing account or create a new one.
+Use the username and password fields to login using your existing account or create a new one. 
 ***When logging in:***
-If you entered the correct details for your login you will be taken to the main menu. 
-If you entered the incorrect details for your username, you will be notfied and asked to enter your details again.
+If you entered the correct details for your login you will be taken to the main menu.  
+If you entered the incorrect details for your username, you will be notfied and asked to enter your details again.  
 ***When registering a new account:***
 If you entered a username that has already been taken by another user, you will be notfied and asked to pick another one. 
-If your password is less than 6 characters long, you will be notifed and asked to enter another one with at least 6 characters.
-***Server error***
-If there is an error connecting to the server, you will be notifed that an internal error has occurred. If so, please check your internet connection and ensure that it is working. 
+If your password is less than 6 characters long, you will be notifed and asked to enter another one with at least 6 characters.  
+***Server error:***
+If there is an error connecting to the server, you will be notifed that an internal error has occurred. If so, please check your internet connection and ensure that it is working.  
 
 **2. Offline mode**
 Use this button to play the game when you do not have an internet connection. For this section, you are able to access the games and practice module without logging in but are not able to save your score as a user. See [offline mode](#offline-mode) for more. 
@@ -196,11 +196,11 @@ Using this slider, you can select the duration that players will have to answer 
 **2. Questions**
 Here, you are able to select either the New Zealand or International question banks. Questions will randomly be selected from these question banks.
 
-**4. Confirm**
-This allows you to confirm your chosen online gameplay settings.
-
 **3. Back** 
 The back button will take you back to the previous screen. 
+
+**4. Confirm**
+This allows you to confirm your chosen online gameplay settings.
 
 <div class="page-break"></div>
 
@@ -215,11 +215,11 @@ This shows all the current users in the lobby.
 **2. QR Code**
 This brings up a pop-up with the game QR code so mobile users can easily connect to the web application.
 
-**3. Start**
-This allows you to start the online game. Please note that at least one other user must be in the lobby.
-
-**4. Quit**
+**3. Quit**
 This allows you to quit online gameplay.
+
+**4. Start**
+This allows you to start the online game. Please note that at least one other user must be in the lobby.
 
 <div class="page-break"></div>
 
@@ -463,11 +463,13 @@ The local leaderboard allows you to compare your scores to those of users on the
 **1. Ranking**
 This is the ranking of all the players of Quinzical only pn your current device. The person with the highest score is in first place.  
 
-**2. Settings**
+**2. Back** 
+The back button will take you back to the previous screen. 
+
+**3. Settings**
 Clicking this icon allows you to view and modify the [game settings](#settings).
 
-**3. Back** 
-The back button will take you back to the previous screen. 
+
 
 <div class="page-break"></div>
 
@@ -484,6 +486,26 @@ Clicking this icon allows you to view and modify the [game settings](#settings).
 
 **3. Back** 
 The back button will take you back to the previous screen. 
+
+<div class="page-break"></div>
+
+# Adding questions
+
+---
+
+In order to add your own question, first ensure that the quinzical.txt file is in the exact same directory from which you are running the game. Then, simply add your new question to any of the existing categories by appending it as a new line underneath the previous question. 
+
+Please ensure that your new question is in the format:
+
+```This is the question\ (What is) the answer```
+
+The 'What is' encased in the brackets can be anything, but the prefix, i.e. 'Who is', to the question must be encased in brackets. 
+
+Below is an example of adding a question, where the red underlined line is the new question being added:
+
+![Adding question](./images/user-manual/adding-question.png)
+
+Then simply start the game again and your question will be available!
 
 <div class="page-break"></div>
 
@@ -556,11 +578,11 @@ The help screen aims to give you information about the game, in game so you do n
 **1. Information**
 This gives you in-game help about the different features of the game. 
 
-**2. Settings**
-Clicking this icon allows you to view and modify the [game settings](#settings).
-
-**3. Back** 
+**2. Back** 
 The back button will take you back to the previous screen. 
+
+**3. Settings**
+Clicking this icon allows you to view and modify the [game settings](#settings).
 
 <div class="page-break"></div>
 
