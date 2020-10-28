@@ -16,10 +16,10 @@ Quinzical is a quiz platform written in java and designed for players to test th
 - Online Multiplayer Quinzical
 
 ### Images
-| ![](/images/user-manual/login-screen.png)  | ![](/images/user-manual/opening-menu.png)     |
+| ![](/images/login-screen.png)  | ![](/images//opening-menu.png)     |
 | :---------------------------: | :---------------------------: |
-| ![](/images/user-manual/game-questions.png)     | ![](/images/user-manual/practice-category.png) |
-| ![](/images/user-manual/local-leaderboard.png)  | ![](/images/user-manual/game-question.png)     |
+| ![](/images/game-categories.png)     | ![](/images/practice-module.png) |
+| ![](/images/local-leaderboard.png)  | ![](/images/game-question.png)     |
 
 ## How to Run
 
