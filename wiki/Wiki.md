@@ -1,6 +1,6 @@
-# Wiki for team-44 Assignment Three, Four and Project
-## This wiki contains meeting notes from Zoom meetings that were held twice weekly over the course of this assignment construction
----
+# Wiki for SOFTENG 206 Team 44 Assignment Three, Four and Project
+## This wiki contains meeting notes from Zoom meetings that were held twice weekly over the course of the entire design process
+
 ### Meeting 1: 07/09/2020
 #### Meeting Plan
 * Go through available meeting times - 2 meetings a week? And what days?
@@ -57,20 +57,20 @@
 * How are we going to read files?
   * Read files using java
 * How to we want to do Bash commands?
-  * Decidede upons scripts, but if there are not alot of commands needed, then just use ProcessBuilder.
+  * Decided upons scripts, but if there are not alot of commands needed, then just use ProcessBuilder.
 
 ##### How do we want to store game data?
-As files, like so:
-/data/categories/<categories>
-/data/categories/Places.txt
-/data/categories/...
+As files, like so:  
+/data/categories/<categories>  
+/data/categories/Places.txt  
+/data/categories/...  
 
-For assignment three, since there is no 'users' function, we will have:
-CONST user = “default”
-And
-/data/users/default/categories/Places.txt
-/data/users/default/categories/Places.txt
-/data/users/default/score.txt
+For assignment three, since there is no 'users' function, we will have:  
+CONST user = “default”  
+And  
+/data/users/default/categories/Places.txt  
+/data/users/default/categories/Places.txt  
+/data/users/default/score.txt  
 
 
 ##### How is the GameModel meant to work?
@@ -381,3 +381,38 @@ QuestionModels - singleton
 #### Next meeting plan
 * Next meeting: Tuesday afternoon (20/10/2020)
 * Do finishing touches before A4 submission
+
+---
+
+### Meeting 14: 20/10/2020
+#### Meeting Plan
+* Go over new features we want to add for the competition/final project
+* Everything that is required is added for the final project
+
+##### Things that must be completed
+* Restructure code packages
+* User manual
+* Add macron buttons for user when answering questions
+* UI upgrade to make it a bit more visually appealing
+* Home menu music and sound effects?
+
+##### Things that could be added
+* Multiplayer
+* User stats using charts
+* Convert quinzical.txt to quinzical.json
+
+#### Multiplayer design
+* Lobby - lobby link and code
+* Host game
+*  Different game options
+*   Can pick timer length
+*   Can pick question type, New Zealand or International
+*  qcode for online play?
+
+* As a host, you can do the following:
+*  Change game options
+* Start game
+*  Leave lobby/end game
+
+#### Next meeting plan
+* No next meeting planned, depends on how everything goes as there is not alot more to implement. 
