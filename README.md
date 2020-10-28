@@ -13,20 +13,17 @@ Quinzical is a quiz platform written in java and designed for players to test th
 - Responsive UI design with [fxml](https://openjfx.io/javadoc/12/javafx.fxml/javafx/fxml/doc-files/introduction_to_fxml.html)
 - Settings menu to change volume and TTS speed
 - Github workflows to check code style and lint
-
-##### Coming Soon
-
-- Multiplayer Quinzical
+- Online Multiplayer Quinzical
 
 ### Images
-| ![](/images/LoginScreen.png)  | ![](/images/HomeMenu.png)     |
+| ![](/images/user-manual/login-screen.png)  | ![](/images/user-manual/opening-menu.png)     |
 | :---------------------------: | :---------------------------: |
-| ![](/images/GameMenu.png)     | ![](/images/PracticeMenu.png) |
-| ![](/images/Leaderboard.png)  | ![](/images/Question.png)     |
+| ![](/images/user-manual/game-questions.png)     | ![](/images/user-manual/practice-category.png) |
+| ![](/images/user-manual/local-leaderboard.png)  | ![](/images/user-manual/game-question.png)     |
 
 ## How to Run
 
-Check our server status [here](https://quinzical-api.herokuapp.com/)
+Check our server status [here](https://quinzical.gq)
 
 ### Requirements
 
@@ -59,11 +56,9 @@ java --module-path /usr/share/java/lib --add-modules javafx.controls,javafx.medi
 The workspace contains two folders by default, where:
 
 - `src`: the folder to maintain sources
-    - `application`: application package
+    - `quinzical`: application package
         - `controllers`: controllers for views
-        - `helper`: helpers shared in multiple packages
-        - `models`: models for controllers. includes sql and api
-        - `processes`: background processes
+        - `processes`: includes models for controllers, helper classes shared in multiple sub-packages
         - `resources`: resources includes fxml, css and images
 - `data`: the folder to maintain data
     - `data.db`: sqlite file
