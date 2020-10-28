@@ -1,6 +1,5 @@
 package quinzical.controllers;
 
-import quinzical.controllers.util.StarBackground;
 import quinzical.util.SceneManager;
 import quinzical.util.models.SettingsModel;
 import javafx.beans.value.ChangeListener;
@@ -9,7 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
-import javafx.scene.image.ImageView;
 
 /**
  * This class is the SettingsMenu controller in a MVC design.
@@ -38,20 +36,10 @@ public class SettingsMenuController {
     @FXML
     private Label _speedValue;
 
-    @FXML
-    private ImageView _background1;
-
-    @FXML
-    private ImageView _background2;
-
-    @FXML
-    private ImageView _background3;
-
     /**
      * Initialize with SettingsMenu.fxml
      */
     public void initialize() {
-        StarBackground.animate(_background1, _background2, _background3);
         _speakValue.setStyle("-fx-text-fill: #a9ecff;");
         _speedValue.setStyle("-fx-text-fill: #a9ecff;");
 

@@ -4,7 +4,6 @@ import java.sql.SQLException;
 
 import quinzical.controllers.util.alerts.ConfirmAlert;
 import quinzical.controllers.util.alerts.ExceptionAlert;
-import quinzical.controllers.util.StarBackground;
 import quinzical.controllers.util.alerts.SuccessAlert;
 import quinzical.controllers.util.alerts.WarningAlert;
 import quinzical.util.SceneManager;
@@ -17,7 +16,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
@@ -39,20 +37,10 @@ public class LoginScreenController {
     @FXML
     private TextField _passwordField;
 
-    @FXML
-    private ImageView _background1;
-
-    @FXML
-    private ImageView _background2;
-
-    @FXML
-    private ImageView _background3;
-
     /**
      * initialize with LoginScreen.fxml
      */
     public void initialize() {
-        StarBackground.animate(_background1, _background2, _background3);
         _passwordField.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(final KeyEvent keyEvent) {

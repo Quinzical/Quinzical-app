@@ -1,6 +1,5 @@
 package quinzical.controllers.online;
 
-import quinzical.controllers.util.StarBackground;
 import quinzical.util.socket.SocketIO;
 
 import javafx.animation.Animation;
@@ -13,7 +12,6 @@ import javafx.util.Duration;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -33,20 +31,10 @@ public class EjectScreenController {
     @FXML
     private Label _message;
 
-    @FXML
-    private ImageView _background1;
-
-    @FXML
-    private ImageView _background2;
-
-    @FXML
-    private ImageView _background3;
-
     /**
      * initialize with EjectScreen.fxml
      */
     public void initialize() {
-        StarBackground.animate(_background1, _background2, _background3);
         _message.setText("");
         Platform.runLater(() -> {
             if (_socket.getCorrect()) {

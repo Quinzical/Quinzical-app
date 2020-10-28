@@ -5,13 +5,11 @@ import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import quinzical.controllers.util.StarBackground;
+
 import quinzical.util.socket.SocketIO;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
 
 /**
@@ -30,35 +28,15 @@ public class RemainingScreenController {
     @FXML
     private Button _nextBtn;
 
-    @FXML
-    private ImageView _background1;
-
-    @FXML
-    private ImageView _background2;
-
-    @FXML
-    private ImageView _background3;
-
     /**
      * initialize with RemainingScreen.fxml
      */
     public void initialize() {
-        StarBackground.animate(_background1, _background2, _background3);
         updateUsers();
         if (!_socket.getRoom().getString("host").equals(_socket.getSocketID())) {
             _nextBtn.setDisable(true);
             _nextBtn.setText("Waiting for Host");
         }
-    }
-
-    @FXML
-    private void handleBack(final ActionEvent event) {
-
-    }
-
-    @FXML
-    private void handleNext(final ActionEvent event) {
-
     }
 
     /**

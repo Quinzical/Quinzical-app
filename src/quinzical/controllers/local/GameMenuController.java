@@ -7,7 +7,6 @@ import quinzical.controllers.util.alerts.LeaderboardAlert;
 import quinzical.controllers.util.alerts.SuccessAlert;
 import quinzical.controllers.util.buttons.GameCategoryButton;
 import quinzical.controllers.util.GameStateData;
-import quinzical.controllers.util.StarBackground;
 
 import quinzical.util.SceneManager;
 import quinzical.util.SceneManager.Scenes;
@@ -23,7 +22,6 @@ import javafx.fxml.FXML;
 import javafx.geometry.HPos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
 /**
@@ -53,20 +51,10 @@ public class GameMenuController {
     @FXML
     private GridPane _questionGrid;
 
-    @FXML
-    private ImageView _background1;
-
-    @FXML
-    private ImageView _background2;
-
-    @FXML
-    private ImageView _background3;
-
     /**
      * initialize with GameMenu.fxml
      */
     public void initialize() {
-        StarBackground.animate(_background1, _background2, _background3);
         _categories = _gameModel.getGameCategories();
         GameStateData state = _gameModel.getGameStateData();
         _currentScore.setText("$" + _gameModel.getScore());

@@ -15,12 +15,10 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import quinzical.controllers.util.StarBackground;
 import quinzical.util.JWTStore;
 import quinzical.util.SceneManager;
 import quinzical.util.SceneManager.Scenes;
@@ -46,15 +44,6 @@ public class ChatController {
     private AnchorPane _anchor;
 
     @FXML
-    private ImageView _background1;
-
-    @FXML
-    private ImageView _background2;
-
-    @FXML
-    private ImageView _background3;
-
-    @FXML
     private VBox _chatbox;
 
     @FXML
@@ -64,7 +53,6 @@ public class ChatController {
      * initialize with ChatScreen.fxml
      */
     public void initialize() {
-        StarBackground.animate(_background1, _background2, _background3);
         Platform.runLater(() -> {
             _socket.setPane(_chatbox);
         });

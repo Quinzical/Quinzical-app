@@ -6,7 +6,6 @@ import java.util.List;
 
 import quinzical.controllers.util.buttons.CategoryButton;
 import quinzical.controllers.util.alerts.LeaderboardAlert;
-import quinzical.controllers.util.StarBackground;
 import quinzical.util.SceneManager;
 import quinzical.util.SceneManager.Scenes;
 import quinzical.util.models.util.Category;
@@ -18,7 +17,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 
@@ -50,20 +48,10 @@ public class CategoryChooserController {
     @FXML
     private Button _submitBtn;
 
-    @FXML
-    private ImageView _background1;
-
-    @FXML
-    private ImageView _background2;
-
-    @FXML
-    private ImageView _background3;
-
     /**
      * initialize with CategoryChooser.fxml
      */
     public void initialize() {
-        StarBackground.animate(_background1, _background2, _background3);
         _submitBtn.setDisable(true);
         for (Category category : _practiceModel.getPracticeCategories()) {
             CategoryButton btn = new CategoryButton(category) {

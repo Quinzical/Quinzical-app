@@ -35,8 +35,8 @@ public class OfflineController {
      * initialize with Offline.fxml
      */
     public void initialize() {
-        StarBackground.animate(_background1, _background2, _background3);
         _playButton.setDisable(true);
+        StarBackground.animate(_background1, _background2, _background3);
     }
 
     /**

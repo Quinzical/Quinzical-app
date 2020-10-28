@@ -1,6 +1,5 @@
 package quinzical.controllers.online;
 
-import quinzical.controllers.util.StarBackground;
 import quinzical.util.SceneManager;
 import quinzical.util.SceneManager.Scenes;
 import quinzical.util.models.LoginModel;
@@ -12,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
-import javafx.scene.image.ImageView;
 
 /**
  * This class is used to create an online game using settings on the scene
@@ -42,20 +40,10 @@ public class CreateGameController {
     @FXML
     private Button _international;
 
-    @FXML
-    private ImageView _background1;
-
-    @FXML
-    private ImageView _background2;
-
-    @FXML
-    private ImageView _background3;
-
     /**
      * initialize with CreateGame.fxml
      */
     public void initialize() {
-        StarBackground.animate(_background1, _background2, _background3);
         _international.setDisable(true);
 
         _timerSlider.valueProperty().addListener(new ChangeListener<Number>() {

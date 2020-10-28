@@ -1,9 +1,5 @@
 package quinzical.controllers.local;
 
-//import java.util.concurrent.ExecutorService;
-//import java.util.concurrent.Executors;
-// import quinzical.util.processes.SpeakProcess;
-
 import quinzical.util.SceneManager;
 import quinzical.util.SceneManager.Scenes;
 import quinzical.util.models.game.GameModel;
@@ -27,9 +23,6 @@ public class RewardScreenController {
     private final SceneManager _sceneManager = SceneManager.getInstance();
     private final GameModel _gameModel = GameModelSQL.getInstance();
 
-    // ExecutorService for running task and speak in the background
-    //private ExecutorService _team = Executors.newSingleThreadExecutor();
-
     @FXML
     private Label _userScore;
 
@@ -46,6 +39,8 @@ public class RewardScreenController {
      * Used to initialize RewardScreenController.
      */
     public void initialize() {
+        _userScore.setText("$" + _gameModel.getScore());
+
         FadeTransition logo = new FadeTransition(Duration.seconds(5), _backgroundFade);
         logo.setFromValue(0);
         logo.setToValue(1);
