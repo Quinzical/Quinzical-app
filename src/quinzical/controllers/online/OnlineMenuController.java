@@ -51,12 +51,12 @@ public class OnlineMenuController {
             return;
         }
 
-        _socket.joinRoom(_enterCode.getText().toLowerCase());
+        _socket.joinRoom(_enterCode.getText().toUpperCase().trim());
     }
 
     @FXML
     private void findGame(final ActionEvent event) {
-        _sceneManager.switchScene(Scenes.CREATE_GAME);
+        _sceneManager.switchScene(Scenes.LOBBY_MENU);
     }
 
     @FXML

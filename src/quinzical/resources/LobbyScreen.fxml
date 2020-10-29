@@ -82,6 +82,6 @@
          </children>
       </VBox>
       <Button alignment="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleBack" styleClass="exit-button" text="Quit" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" />
-      <Button alignment="CENTER" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleConfirm" styleClass="exit-button" text="START" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+      <Button fx:id="_start" alignment="CENTER" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleConfirm" styleClass="exit-button" text="START" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
    </children>
 </AnchorPane>

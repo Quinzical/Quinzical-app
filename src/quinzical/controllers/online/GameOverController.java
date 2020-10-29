@@ -4,8 +4,11 @@ import quinzical.util.SceneManager;
 import quinzical.util.SceneManager.Scenes;
 import quinzical.util.socket.SocketIO;
 
+import java.util.HashMap;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.TilePane;
 
@@ -29,13 +32,22 @@ public class GameOverController {
     @FXML
     private TilePane _users;
 
+    @FXML
+    private Button _next;
+
     /**
      * initialize with GameOver.fxml
      */
     public void initialize() {
+        if (!_socket.getRoom().getString("host").equals(_socket.getSocketID())) {
+            _next.setDisable(true);
+        }
+
         if (_socket.getWin()) {
             _header.setText("Winner");
-            _username.setText(_socket.getWinner());
+            HashMap<String, String> allUsers = _socket.getUsers();
+            _username.setText(allUsers.get(_socket.getWinner()));
+
             if (_socket.getWinner().equals(_socket.getSocketID())) {
                 _username.getStyleClass().add("logingreen");
             } else {

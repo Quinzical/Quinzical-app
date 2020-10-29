@@ -46,6 +46,6 @@
          </children>
       </VBox>
       <Button alignment="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleBack" styleClass="exit-button" text="Quit" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" />
-      <Button alignment="CENTER" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#handlePlayAgain" styleClass="exit-button" text="Play Again" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+      <Button fx:id="_next" alignment="CENTER" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#handlePlayAgain" styleClass="exit-button" text="Play Again" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
    </children>
 </AnchorPane>
