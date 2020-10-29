@@ -5,8 +5,10 @@ import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-
+import quinzical.util.SceneManager;
+import quinzical.util.SceneManager.Scenes;
 import quinzical.util.socket.SocketIO;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -21,6 +23,7 @@ import javafx.scene.layout.TilePane;
 public class RemainingScreenController {
 
     private final SocketIO _socket = SocketIO.getInstance();
+    private final SceneManager _sceneManager = SceneManager.getInstance();
 
     @FXML
     private TilePane _users;
@@ -61,5 +64,13 @@ public class RemainingScreenController {
             _users.getChildren().add(user);
         }
     }
-
+    @FXML
+    private void handleNext(final ActionEvent event) {
+        _socket.startGame(_socket.getRoom().getString("code"));
+    }
+    @FXML
+    private void handleBack(final ActionEvent event) {
+        _socket.leaveRoom();
+        _sceneManager.switchScene(Scenes.ONLINE_MENU);
+    }
 }

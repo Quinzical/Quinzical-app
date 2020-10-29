@@ -36,7 +36,6 @@ public final class SocketIO {
     private Socket _socket;
     private Chat _chat;
 
-    private String _username;
     private HashMap<String, String> _users;
     private JSONObject _room;
     private boolean _playing;
@@ -93,11 +92,9 @@ public final class SocketIO {
             _socket.on("startingGame", new Emitter.Listener() {
                 @Override
                 public void call(final Object... args) {
-                    if (_playing) {
-                        Platform.runLater(() -> {
-                            _sceneManager.cleanSwitchScene(Scenes.COUNTDOWN);
-                        });
-                    }
+                    Platform.runLater(() -> {
+                        _sceneManager.cleanSwitchScene(Scenes.COUNTDOWN);
+                    });
                 }
             });
             _socket.on("restartRoom", new Emitter.Listener() {
@@ -113,24 +110,23 @@ public final class SocketIO {
             _socket.on("question", new Emitter.Listener() {
                 @Override
                 public void call(final Object... args) {
-                    if (_playing) {
-                        JSONObject obj = (JSONObject) args[0];
-                        _question = obj.getString("question");
-                        _qualifier = obj.getString("qualifier");
-                        _answer = obj.getString("answer");
-                        Platform.runLater(() -> {
-                            _sceneManager.cleanSwitchScene(Scenes.ONLINE_QUESTION);
-                        });
-                    }
+                    JSONObject obj = (JSONObject) args[0];
+                    _question = obj.getString("question");
+                    _qualifier = obj.getString("qualifier");
+                    _answer = obj.getString("answer");
+                    Platform.runLater(() -> {
+                        _sceneManager.cleanSwitchScene(Scenes.ONLINE_QUESTION);
+                    });
                 }
             });
             _socket.on("end", new Emitter.Listener() {
                 @Override
                 public void call(final Object... args) {
+                    _room = (JSONObject) args[0];
                     if (_playing || _sceneManager.getCurrentScene() != Scenes.REMAINING) {
                         checkResult((JSONObject) args[0]);
                         Platform.runLater(() -> {
-                            _sceneManager.cleanSwitchScene(Scenes.GAME_OVER);
+                            _sceneManager.cleanSwitchScene(Scenes.REMAINING);
                         });
                     }
                 }
@@ -138,6 +134,7 @@ public final class SocketIO {
             _socket.on("win", new Emitter.Listener() {
                 @Override
                 public void call(final Object... args) {
+                    _room = (JSONObject) args[0];
                     if (_playing || _sceneManager.getCurrentScene() != Scenes.REMAINING) {
                         checkResult((JSONObject) args[0]);
                         _win = true;
@@ -151,6 +148,7 @@ public final class SocketIO {
             _socket.on("tie", new Emitter.Listener() {
                 @Override
                 public void call(final Object... args) {
+                    _room = (JSONObject) args[0];
                     if (_playing || _sceneManager.getCurrentScene() != Scenes.REMAINING) {
                         checkResult((JSONObject) args[0]);
                         _win = false;
@@ -358,7 +356,7 @@ public final class SocketIO {
      */
     private boolean exist(final JSONArray array, final String exist) {
         for (int i = 0; i < array.length(); i++) {
-            if (exist == array.getString(i)) {
+            if (exist.equals(array.getString(i))) {
                 return true;
             }
         }
@@ -439,7 +437,9 @@ public final class SocketIO {
     }
 
     private void checkResult(final JSONObject room) {
-        if (exist(_room.getJSONArray("correct"), _username)) {
+        System.out.println(_room.getJSONArray("correct"));
+        System.out.println(getSocketID());
+        if (exist(_room.getJSONArray("correct"), getSocketID())) {
             _correct = true;
         } else {
             _correct = false;
