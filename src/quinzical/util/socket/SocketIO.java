@@ -85,6 +85,8 @@ public final class SocketIO {
                         if (_sceneManager.getCurrentScene() == Scenes.LOBBY_SCREEN) {
                             _lobbyListener.updateUsers();
                             return;
+                        }else{
+                            _sceneManager.cleanSwitchScene(Scenes.LOBBY_SCREEN);
                         }
                     });
                 }
@@ -191,7 +193,6 @@ public final class SocketIO {
                     });
                 }
             });
-
             _chat = new Chat(_socket);
             _socket.connect();
         } catch (URISyntaxException e) {

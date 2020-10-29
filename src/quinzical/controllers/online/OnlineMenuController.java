@@ -51,7 +51,7 @@ public class OnlineMenuController {
             return;
         }
 
-        _socket.joinRoom(_enterCode.getText().toLowerCase());
+        _socket.joinRoom(_enterCode.getText().toUpperCase().trim());
     }
 
     @FXML

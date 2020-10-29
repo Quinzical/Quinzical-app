@@ -8,6 +8,7 @@ import java.util.HashMap;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.TilePane;
 
@@ -31,10 +32,17 @@ public class GameOverController {
     @FXML
     private TilePane _users;
 
+    @FXML
+    private Button _next;
+
     /**
      * initialize with GameOver.fxml
      */
     public void initialize() {
+        if (!_socket.getRoom().getString("host").equals(_socket.getSocketID())) {
+            _next.setDisable(true);
+        }
+
         if (_socket.getWin()) {
             _header.setText("Winner");
             HashMap<String, String> allUsers = _socket.getUsers();

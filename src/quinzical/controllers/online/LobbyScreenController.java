@@ -11,6 +11,7 @@ import quinzical.util.SceneManager.Scenes;
 import quinzical.util.socket.SocketIO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.TilePane;
 
@@ -37,6 +38,9 @@ public class LobbyScreenController {
 
     @FXML
     private Label _international;
+    
+    @FXML
+    private Button _start;
 
     @FXML
     private TilePane _users;
@@ -53,6 +57,10 @@ public class LobbyScreenController {
             _international.setText("TRUE");
         } else {
             _international.setText("FALSE");
+        }
+
+        if (!room.getString("host").equals(_socket.getSocketID())){
+            _start.setDisable(true);
         }
 
         updateUsers();
