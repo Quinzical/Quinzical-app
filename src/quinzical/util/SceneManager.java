@@ -88,6 +88,8 @@ public final class SceneManager {
         STATS_SCREEN("Stats.fxml"),
         /** Online scene */
         ONLINE_MENU("OnlineMenu.fxml"),
+        /** Lobby menu scene */
+        LOBBY_MENU("LobbyMenu.fxml"),
         /** Create game scene */
         CREATE_GAME("CreateGame.fxml"),
         /** Lobby screen scene */

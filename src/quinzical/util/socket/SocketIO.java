@@ -85,7 +85,7 @@ public final class SocketIO {
                         if (_sceneManager.getCurrentScene() == Scenes.LOBBY_SCREEN) {
                             _lobbyListener.updateUsers();
                             return;
-                        }else{
+                        } else {
                             _sceneManager.cleanSwitchScene(Scenes.LOBBY_SCREEN);
                         }
                     });

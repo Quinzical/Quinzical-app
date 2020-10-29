@@ -56,7 +56,7 @@ public class OnlineMenuController {
 
     @FXML
     private void findGame(final ActionEvent event) {
-        _sceneManager.switchScene(Scenes.CREATE_GAME);
+        _sceneManager.switchScene(Scenes.LOBBY_MENU);
     }
 
     @FXML
