@@ -7,14 +7,16 @@ import quinzical.util.sql.data.UserStatsData;
 import quinzical.util.sql.db.StatsDB;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import eu.hansolo.tilesfx.Tile;
+import eu.hansolo.tilesfx.TileBuilder;
 import eu.hansolo.tilesfx.chart.ChartData;
 import eu.hansolo.tilesfx.skins.BarChartItem;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * This class is the Stats screen controller in a MVC design.
@@ -32,7 +34,7 @@ public final class StatsController {
     private final StatsDB _statsDB = new StatsDB();
 
     @FXML
-    private Pane _tilesPane;
+    private AnchorPane _tilesPane;
 
     @FXML
     private Tile _lastGameAccuracy;
@@ -70,9 +72,16 @@ public final class StatsController {
         try {
             List<BarChartItem> categories = _statsDB.getUserCategoryStats(_login.getUserID());
 
-            for (BarChartItem category : categories) {
-                _categoryChart.addBarChartItem(category);
-            }
+            // CHECKSTYLE:OFF
+            Tile categoryChart = TileBuilder.create().skinType(Tile.SkinType.BAR_CHART).title("Category Answered")
+                    .animated(true).barChartItems(categories.toArray(new BarChartItem[0]))
+                    .maxValue(categories.stream().mapToInt(v -> (int) v.getValue()).max().getAsInt()).build();
+            _tilesPane.getChildren().add(categoryChart);
+            categoryChart.setMinWidth(607.0);
+            categoryChart.setLayoutX(14);
+            categoryChart.setLayoutY(275);
+            // CHECKSTYLE:ON
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -81,11 +90,25 @@ public final class StatsController {
     private void setScoreChart() {
         try {
             List<GameStatsData> datas = _statsDB.getUserGameStats(_login.getUserID());
+            List<ChartData> chartdatas = new ArrayList<ChartData>();
+            int max = 0;
             datas.remove(datas.size() - 1);
 
             for (GameStatsData data : datas) {
-                _scoreChart.addChartData(new ChartData(data.getScore()));
+                if (data.getScore() > max) {
+                    max = data.getScore();
+                }
+                chartdatas.add(new ChartData(data.getScore()));
             }
+            // CHECKSTYLE:OFF
+            Tile categoryChart = TileBuilder.create().skinType(Tile.SkinType.SMOOTH_AREA_CHART).title("Score")
+                    .decimals(0).unit(" Points").animated(true).chartData(chartdatas.toArray(new ChartData[0])).build();
+            _tilesPane.getChildren().add(categoryChart);
+            categoryChart.setMinWidth(607.0);
+            // categoryChart.setMinWidth(450.0);
+            categoryChart.setLayoutX(14);
+            categoryChart.setLayoutY(14);
+            // CHECKSTYLE:ON
         } catch (SQLException e) {
             e.printStackTrace();
         }
