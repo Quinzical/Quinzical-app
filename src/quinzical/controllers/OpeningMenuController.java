@@ -49,7 +49,7 @@ public class OpeningMenuController {
         _usernameLabel.setText(_login.getUsername());
         _usernameLabel.getStyleClass().add("logingreen");
         StarBackground.animate(_background1, _background2, _background3);
-        new SheepBackground(_pane);
+        new SheepBackground(_sheepPane);
     }
 
     /**

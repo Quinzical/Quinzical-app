@@ -165,7 +165,6 @@ public final class SocketIO {
                 public void call(final Object... args) {
                     Platform.runLater(() -> {
                         if (args[0] instanceof EngineIOException) {
-                            System.out.println(args[0]);
                             new WarningAlert("Server disconnected");
                             _sceneManager.cleanSwitchScene(Scenes.OPENING_MENU);
                             return;
@@ -438,8 +437,6 @@ public final class SocketIO {
     }
 
     private void checkResult(final JSONObject room) {
-        System.out.println(_room.getJSONArray("correct"));
-        System.out.println(getSocketID());
         if (exist(_room.getJSONArray("correct"), getSocketID())) {
             _correct = true;
         } else {

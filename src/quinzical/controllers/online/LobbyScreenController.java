@@ -38,7 +38,7 @@ public class LobbyScreenController {
 
     @FXML
     private Label _international;
-    
+
     @FXML
     private Button _start;
 
@@ -59,7 +59,7 @@ public class LobbyScreenController {
             _international.setText("FALSE");
         }
 
-        if (!room.getString("host").equals(_socket.getSocketID())){
+        if (!room.getString("host").equals(_socket.getSocketID())) {
             _start.setDisable(true);
         }
 

@@ -1,6 +1,9 @@
 /****************** root & backgrounds ******************/
-
 .root {
+  -fx-background-color: rgba(255, 255, 255, 0);
+  -fx-font-family: "Joffrey";
+}
+.background {
   -fx-background-repeat: no-repeat;
   -fx-background-image: url("images/Background.png");
   -fx-background-color: #000000;
@@ -63,6 +66,17 @@
   -fx-text-fill: white;
   -fx-font-weight: bold;
   -fx-font-size: 9em;
+}
+
+.game-field {
+    -fx-prompt-text-fill: white;
+    -fx-font-size: 32px;
+    -fx-text-fill: white;
+}
+
+.game-field .text {
+    -fx-prompt-text-fill: white;
+    -fx-fill: white;
 }
 
 .menu.label .text {
@@ -187,6 +201,7 @@
 
 /****************** Alert *******************/
 .dialog-pane {
+  -fx-background-color: black;
   -fx-border-color: black;
   -fx-border-width: 2px;
 }

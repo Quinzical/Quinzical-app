@@ -10,6 +10,8 @@ import quinzical.util.models.game.InternationalModel;
 import quinzical.util.sql.SQLConnection;
 import quinzical.util.processes.APILoader;
 import quinzical.util.processes.AutoLogin;
+import javafx.animation.RotateTransition;
+import javafx.animation.SequentialTransition;
 import javafx.concurrent.Task;
 
 /**
@@ -70,8 +72,12 @@ public final class SplashModel {
 
     /**
      * Used to set the time consuming method that needs to be carried out.
+     * 
+     * @param outer
+     * @param inner
+     * @param logo
      */
-    public void doMethod() {
+    public void doMethod(final RotateTransition outer, final RotateTransition inner, final SequentialTransition logo) {
         switch (_page) {
             case SQL:
                 _team.submit(() -> SQLConnection.getInstance());
@@ -95,6 +101,9 @@ public final class SplashModel {
 
             @Override
             protected void succeeded() {
+                outer.stop();
+                inner.stop();
+                logo.stop();
                 _sceneManager.unloadScene(Scenes.SPLASH_SCREEN);
                 _sceneManager.switchScene(_nextScene);
             }

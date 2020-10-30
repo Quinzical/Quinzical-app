@@ -54,6 +54,8 @@ public class OnlineQuestionController {
             _answerField.setText("Spectating");
             _submitBtn.setDisable(true);
         }
+
+        _answerField.getStyleClass().setAll("game-field");
     }
 
     @FXML

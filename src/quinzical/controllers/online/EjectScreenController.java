@@ -2,7 +2,6 @@ package quinzical.controllers.online;
 
 import quinzical.util.socket.SocketIO;
 
-import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
@@ -66,7 +65,7 @@ public class EjectScreenController {
         });
 
         line.getKeyFrames().add(frame);
-        line.setCycleCount(Animation.INDEFINITE);
+        line.setCycleCount(length + 1);
         line.play();
     }
 }
