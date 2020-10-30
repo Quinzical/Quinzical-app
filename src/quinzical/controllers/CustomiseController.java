@@ -3,6 +3,7 @@ package quinzical.controllers;
 import quinzical.controllers.util.Sheep;
 import quinzical.util.SceneManager;
 import quinzical.util.SceneManager.Scenes;
+import quinzical.util.api.ImageModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -20,9 +21,14 @@ public class CustomiseController {
 
     private final SceneManager _sceneManager = SceneManager.getInstance();
 
+    private final ImageModel _imageModel = ImageModel.getInstance();
+
     private static final int WHITE_POS = 6;
 
-    private Sheep[] _images = {Sheep.BLUE, Sheep.CYAN, Sheep.GREEN, Sheep.ORANGE, Sheep.PINK, Sheep.RED, Sheep.WHITE, Sheep.YELLOW};
+    private Sheep[] _images = { Sheep.BLUE, Sheep.CYAN, Sheep.GREEN, Sheep.ORANGE, Sheep.PINK, Sheep.RED, Sheep.WHITE,
+            Sheep.YELLOW };
+
+    private Sheep _currentSheep;
 
     private static int _index = WHITE_POS;
 
@@ -39,11 +45,27 @@ public class CustomiseController {
      * Used to initialize CustomiseController
      */
     public void initialize() {
-        _sheepImage.setImage(new Image(_images[_index].getFilename()));
+        _currentSheep = _imageModel.getImage();
+
+        if (_currentSheep == null) {
+            _sheepImage.setImage(new Image(_images[WHITE_POS].getFilename()));
+        } else {
+            _sheepImage.setImage(new Image(_currentSheep.getFilename()));
+        }
+
+        int count = 0;
+        for (Sheep sheep : _images) {
+            if (sheep == _currentSheep) {
+                _index = count;
+            }
+            count++;
+        }
     }
 
     @FXML
     private void handleBackButton(final ActionEvent event) {
+        _imageModel.postImage(_images[_index]);
+        _sceneManager.unloadScene();
         _sceneManager.backScene();
     }
 

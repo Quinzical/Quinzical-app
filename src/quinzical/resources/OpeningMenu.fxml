@@ -27,7 +27,7 @@
                   <Insets top="20.0" />
                </VBox.margin>
             </Label>
-            <Pane prefHeight="233.0" prefWidth="1280.0" />
+            <ImageView fx:id="_sheep" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
             <HBox alignment="CENTER" prefHeight="88.0" prefWidth="1280.0" spacing="5.0">
                <children>
                   <Label alignment="CENTER" styleClass="login" text="Logged in as:">

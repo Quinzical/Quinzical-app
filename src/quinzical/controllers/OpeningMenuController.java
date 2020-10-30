@@ -1,15 +1,18 @@
 package quinzical.controllers;
 
 import quinzical.controllers.util.alerts.ConfirmAlert;
+import quinzical.controllers.util.Sheep;
 import quinzical.controllers.util.SheepBackground;
 import quinzical.controllers.util.StarBackground;
 import quinzical.util.SceneManager;
 import quinzical.util.SceneManager.Scenes;
+import quinzical.util.api.ImageModel;
 import quinzical.util.JWTStore;
 import quinzical.util.models.LoginModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
@@ -34,6 +37,9 @@ public class OpeningMenuController {
     private Label _usernameLabel;
 
     @FXML
+    private ImageView _sheep;
+
+    @FXML
     private ImageView _background1;
 
     @FXML
@@ -50,6 +56,14 @@ public class OpeningMenuController {
         _usernameLabel.getStyleClass().add("logingreen");
         StarBackground.animate(_background1, _background2, _background3);
         new SheepBackground(_sheepPane);
+
+        Sheep currentSheep = ImageModel.getInstance().getImage();
+
+        if (currentSheep == null) {
+            _sheep.setImage(new Image(Sheep.WHITE.getFilename()));
+        } else {
+            _sheep.setImage(new Image(currentSheep.getFilename()));
+        }
     }
 
     /**
@@ -59,6 +73,7 @@ public class OpeningMenuController {
      */
     @FXML
     private void handleCustomiseButton(final ActionEvent event) {
+        _sceneManager.unloadScene();
         _sceneManager.switchScene(Scenes.CUSTOMISE_MENU);
     }
 

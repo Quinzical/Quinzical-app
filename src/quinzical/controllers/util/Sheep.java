@@ -36,12 +36,36 @@ public enum Sheep {
         _filename = filename;
     }
 
+     /**
+     * Used to return the image name of the sheep
+     * 
+     * @return String filename
+     */
+    public String getImageName() {
+        return _filename;
+    }
+
     /**
-     * Used to return the filename of the sheep logo
+     * Used to return the filename of the sheep
      * 
      * @return String filename
      */
     public String getFilename() {
         return PATH + _filename;
+    }
+
+    /**
+     * Used to return the equivalent sheep object from a filename
+     * 
+     * @param filename
+     * @return Sheep the sheep that relates to the file
+     */
+    public static Sheep fromString(final String filename) {
+        for (Sheep sheep : Sheep.values()) {
+            if (sheep._filename.equals(filename)) {
+                return sheep;
+            }
+        }
+        return null;
     }
 }
