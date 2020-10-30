@@ -4,33 +4,12 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" styleClass="root" stylesheets="@quinzical.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.controllers.online.OnlineQuestionController">
+<AnchorPane id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" stylesheets="@quinzical.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.controllers.online.OnlineQuestionController">
    <children>
-      <AnchorPane fx:id="_anchor" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <ImageView fx:id="_background1" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <image>
-                  <Image url="@images/star-background1.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="_background2" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <image>
-                  <Image url="@images/star-background2.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="_background3" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <image>
-                  <Image url="@images/star-background3.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
       <VBox alignment="CENTER" styleClass="transparent" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label fx:id="_timer" alignment="CENTER" contentDisplay="CENTER" style="-fx-font-size: 80;" styleClass="question" text="10" />
@@ -45,7 +24,7 @@
             </Label>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <TextField fx:id="_answerField" alignment="CENTER" prefHeight="69.0" prefWidth="351.0" promptText="Answer" style="-fx-background-color: #000000; -fx-prompt-text-fill: #ffffff;" styleClass="exit-button" />
+                  <TextField fx:id="_answerField" alignment="CENTER" prefHeight="69.0" prefWidth="351.0" promptText="Answer" styleClass="game-field" />
                </children>
             </HBox>
             <Button fx:id="_submitBtn" alignment="CENTER" mnemonicParsing="false" onAction="#handleSubmit" styleClass="exit-button" text="Submit">

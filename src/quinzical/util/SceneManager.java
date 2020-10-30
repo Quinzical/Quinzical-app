@@ -11,9 +11,11 @@ import quinzical.controllers.util.alerts.ExceptionAlert;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -44,9 +46,10 @@ public final class SceneManager {
     private static SceneManager _instance = new SceneManager();
 
     private Stage _rootStage;
+    private AnchorPane _anchor;
     private Stack<Scenes> _history = new Stack<Scenes>();
     private Scenes _currentScene;
-    private Map<Scenes, Parent> _scenes = new HashMap<Scenes, Parent>();
+    private Map<Scenes, Node> _scenes = new HashMap<Scenes, Node>();
 
     /** Enum for each scene with a filename and name */
     public enum Scenes {
@@ -164,6 +167,16 @@ public final class SceneManager {
         rootStage.setMinWidth(MINIMUM_WIDTH);
         rootStage.setMinHeight(MINIMUM_HEIGHT);
         rootStage.show();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(getPath("Background.fxml")));
+        Pane root;
+        try {
+            root = loader.load();
+            rootStage.setScene(new Scene(root));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         _rootStage = rootStage;
     }
 
@@ -183,16 +196,16 @@ public final class SceneManager {
             try {
                 loadScene(scene);
             } catch (ConcurrentModificationException e) {
-                //normal XD
+                // normal XD
             }
         }).start();
     }
 
     private void loadScene(final Scenes scene) throws RuntimeException {
-        Parent next = _scenes.computeIfAbsent(scene, k -> {
+        Node next = _scenes.computeIfAbsent(scene, k -> {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(getPath(k._filename)));
-                Parent root = loader.load();
+                Node root = loader.load();
                 return root;
             } catch (IOException ex) {
                 Platform.runLater(() -> {
@@ -204,12 +217,12 @@ public final class SceneManager {
         _history.push(scene);
         _currentScene = scene;
         Platform.runLater(() -> {
-
-            if (_rootStage.getScene() == null) {
-                _rootStage.setScene(new Scene(next));
-                return;
-            }
-            _rootStage.getScene().setRoot(next);
+            _anchor.getChildren().clear();
+            _anchor.getChildren().add(next);
+            AnchorPane.setTopAnchor(next, 0.0);
+            AnchorPane.setBottomAnchor(next, 0.0);
+            AnchorPane.setLeftAnchor(next, 0.0);
+            AnchorPane.setRightAnchor(next, 0.0);
         });
         System.gc();
     }
@@ -230,6 +243,15 @@ public final class SceneManager {
     public void backScene() {
         _history.pop();
         switchScene(_history.pop());
+    }
+
+    /**
+     * Used to set AnchorPane
+     * 
+     * @param anchor
+     */
+    public void setAnchor(final AnchorPane anchor) {
+        _anchor = anchor;
     }
 
     /**

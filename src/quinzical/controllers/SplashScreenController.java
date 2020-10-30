@@ -59,6 +59,6 @@ public class SplashScreenController {
         SequentialTransition seqTransition = new SequentialTransition(new PauseTransition(Duration.seconds(1)), logo);
         seqTransition.play();
 
-        _splashModel.doMethod();
+        _splashModel.doMethod(outer, inner, seqTransition);
     }
 }

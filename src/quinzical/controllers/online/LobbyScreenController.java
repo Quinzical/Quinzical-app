@@ -38,7 +38,7 @@ public class LobbyScreenController {
 
     @FXML
     private Label _international;
-   
+
     @FXML
     private Button _start;
 

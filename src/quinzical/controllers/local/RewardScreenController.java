@@ -68,7 +68,6 @@ public class RewardScreenController {
     private void handlePlayAgainButton(final ActionEvent event) {
         _sceneManager.unloadScene();
         _gameModel.resetGameModule();
-        _sceneManager.switchScene(Scenes.GAME_MENU);
     }
 
     /**
