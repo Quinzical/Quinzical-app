@@ -159,7 +159,7 @@ public final class SceneManager {
                 };
             }
         });
-        Font.loadFont(getClass().getResource("/" + FOLDER + "/resources/joffrey.ttf").toExternalForm(), FONT_SIZE);
+        Font.loadFont(getClass().getResource("/" + FOLDER + "/resources/Joffrey.ttf").toExternalForm(), FONT_SIZE);
         rootStage.setTitle("Quinzical");
         rootStage.getIcons().add(new Image(getPath(LOGO)));
         rootStage.setWidth(DEFAULT_WIDTH);
