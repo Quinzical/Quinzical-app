@@ -64,6 +64,7 @@ public class OpeningMenuController {
         } else {
             _sheep.setImage(new Image(currentSheep.getFilename()));
         }
+        ImageModel.getInstance().setImageView(_sheep);
     }
 
     /**

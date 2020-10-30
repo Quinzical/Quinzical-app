@@ -64,8 +64,8 @@ public class CustomiseController {
 
     @FXML
     private void handleBackButton(final ActionEvent event) {
+        _imageModel.getImageView().setImage(new Image(_images[_index].getFilename()));
         _imageModel.postImage(_images[_index]);
-        _sceneManager.unloadScene();
         _sceneManager.backScene();
     }
 

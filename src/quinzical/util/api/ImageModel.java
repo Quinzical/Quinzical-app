@@ -1,5 +1,6 @@
 package quinzical.util.api;
 
+import javafx.scene.image.ImageView;
 import quinzical.controllers.util.Sheep;
 import quinzical.util.models.LoginModel;
 
@@ -12,6 +13,8 @@ import quinzical.util.models.LoginModel;
 public final class ImageModel {
 
     private static ImageModel _instance;
+
+    private ImageView _sheep;
 
     private Image _image = new Image();
 
@@ -28,6 +31,24 @@ public final class ImageModel {
             _instance = new ImageModel();
         }
         return _instance;
+    }
+
+    /**
+     * Used to set sheep ImageView
+     * 
+     * @param sheep
+     */
+    public void setImageView(final ImageView sheep) {
+        _sheep = sheep;
+    }
+
+    /**
+     * Used to get sheep ImageView
+     * 
+     * @return sheep
+     */
+    public ImageView getImageView() {
+        return _sheep;
     }
 
     /**
