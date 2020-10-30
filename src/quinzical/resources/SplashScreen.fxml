@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" styleClass="root" stylesheets="@quinzical.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.controllers.SplashScreenController">
+<VBox id="root" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" stylesheets="@quinzical.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.controllers.SplashScreenController">
    <children>
       <AnchorPane VBox.vgrow="ALWAYS">
          <children>
