@@ -24,12 +24,12 @@
                 </Label>
                 <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
                     <children>
-                        <AnchorPane prefHeight="500.0" prefWidth="1066.0">
+                        <AnchorPane fx:id="_tilesPane" prefHeight="500.0" prefWidth="1066.0">
                             <children>
                                 <Tile fx:id="_lastGameAccuracy" animated="true" description="Accuracy" layoutX="632.0" layoutY="14.0" prefHeight="250.0" prefWidth="420.0" title="Last Game Accuracy" unit="\%" />
                                 <Tile fx:id="_totalAccuracy" animated="true" description="Accuracy" layoutX="632.0" layoutY="275.0" prefHeight="250.0" prefWidth="420.0" title="Total Accuracy" unit="\%" />
-                                <Tile fx:id="_scoreChart" animated="true" description="Score" descriptionAlignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="450.0" prefWidth="607.0" skinType="SMOOTH_AREA_CHART" title="Game Score" />
-                                <Tile fx:id="_categoryChart" layoutX="14.0" layoutY="275.0" prefWidth="607.0" skinType="BAR_CHART" title="Category" value="50.0" />
+                                <Tile fx:id="_scoreChart" backgroundImageKeepAspect="false" chartType="AREA" description="Score" descriptionAlignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="450.0" prefWidth="607.0" skinType="SMOOTH_AREA_CHART" title="Game Score" />
+                                <Tile fx:id="_categoryChart" layoutX="14.0" layoutY="275.0" prefWidth="607.0" skinType="BAR_CHART" title="Category" />
                             </children>
                         </AnchorPane>
                     </children>
