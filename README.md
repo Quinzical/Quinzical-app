@@ -97,3 +97,16 @@ This is the Māori word for stomach\ (What is) Puku
 
 #### User Data
 Local userdata is stored in sqlite and on cloud using the [endpoint](https://quinzical-api.herokuapp.com/)
+
+## Code Attribution and Resources used
+- [Styling pop ups](https://stackoverflow.com/a/37368747/13876862)
+- [Scene Manager Concept](https://stackoverflow.com/a/52932422/13876862)
+- [Learning more about JavaFX Animations](https://www.genuinecoder.com/javafx-animation-tutorial/)
+- [Socket io usage](https://github.com/socketio/socket.io-client-java#usage)
+- [Using org.json](https://stackoverflow.com/a/19018552/13876862)
+- [Idea of using Timelines to animate](https://stackoverflow.com/questions/20022889/how-to-make-the-ball-bounce-off-the-walls-in-javafx)
+- [TilesFX demo project was referenced to use library](https://github.com/HanSolo/tilesfxdemo) (bad docs)
+- [Native HttpClient was used](https://openjdk.java.net/groups/net/httpclient/intro.html)
+
+Most code follow java and library documentations.
+
