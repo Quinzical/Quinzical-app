@@ -4,6 +4,8 @@ import quinzical.controllers.util.Sheep;
 import quinzical.util.SceneManager;
 import quinzical.util.SceneManager.Scenes;
 import quinzical.util.api.ImageModel;
+import quinzical.util.models.SplashModel;
+import quinzical.util.models.SplashModel.Pages;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -45,7 +47,7 @@ public class CustomiseController {
      * Used to initialize CustomiseController
      */
     public void initialize() {
-        _currentSheep = _imageModel.getImage();
+        _currentSheep = _imageModel.getSheep();
 
         if (_currentSheep == null) {
             _sheepImage.setImage(new Image(_images[WHITE_POS].getFilename()));
@@ -65,8 +67,10 @@ public class CustomiseController {
     @FXML
     private void handleBackButton(final ActionEvent event) {
         _imageModel.getImageView().setImage(new Image(_images[_index].getFilename()));
-        _imageModel.postImage(_images[_index]);
-        _sceneManager.backScene();
+        _imageModel.setSheep(_images[_index]);
+        _sceneManager.unloadScene();
+        SplashModel.getInstance().setNextScene(Scenes.OPENING_MENU, Pages.OPENING_MENU);
+        _sceneManager.switchScene(SceneManager.Scenes.SPLASH_SCREEN);
     }
 
     @FXML

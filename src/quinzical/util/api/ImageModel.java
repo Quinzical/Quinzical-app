@@ -14,9 +14,13 @@ public final class ImageModel {
 
     private static ImageModel _instance;
 
-    private ImageView _sheep;
+    private ImageView _imageView;
+
+    private ImageEntry _imageEntry;
 
     private Image _image = new Image();
+
+    private Sheep _currentSheep;
 
     private ImageModel() {
     }
@@ -39,7 +43,7 @@ public final class ImageModel {
      * @param sheep
      */
     public void setImageView(final ImageView sheep) {
-        _sheep = sheep;
+        _imageView = sheep;
     }
 
     /**
@@ -48,33 +52,47 @@ public final class ImageModel {
      * @return sheep
      */
     public ImageView getImageView() {
-        return _sheep;
+        return _imageView;
+    }
+
+    /**
+     * Used to return the users sheep after being loaded from the api.=
+     * 
+     * @return sheep
+     */
+    public Sheep getSheep() {
+        if (_imageEntry == null) {
+            return Sheep.WHITE;
+        } else {
+            return _imageEntry.getSheep();
+        }
+    }
+
+    /**
+     * Used to set the users new sheep
+     * 
+     * @param sheep
+     */
+    public void setSheep(final Sheep sheep) {
+        _currentSheep = sheep;
     }
 
     /**
      * Used to post sheep image
-     * 
-     * @param sheep
      */
-    public void postImage(final Sheep sheep) {
-        _image.postImage(sheep.getImageName());
+    public void postImage() {
+        if (_currentSheep != null) {
+            _image.postImage(_currentSheep.getImageName());
+        }
     }
 
     /**
      * Used to get the users image from the api
-     * 
-     * @return Sheep
      */
-    public Sheep getImage() {
+    public void getImage() {
         Image image = new Image();
         LoginModel login = LoginModel.getInstance();
 
-        ImageEntry imageEntry = image.getImage(login.getJwtToken());
-
-        if (imageEntry == null) {
-            return Sheep.WHITE;
-        } else {
-            return imageEntry.getSheep();
-        }
+        _imageEntry = image.getImage(login.getJwtToken());
     }
 }

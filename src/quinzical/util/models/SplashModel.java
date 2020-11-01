@@ -5,6 +5,7 @@ import java.util.concurrent.Executors;
 
 import quinzical.util.SceneManager;
 import quinzical.util.SceneManager.Scenes;
+import quinzical.util.api.ImageModel;
 import quinzical.util.api.LeaderboardModel;
 import quinzical.util.models.game.InternationalModel;
 import quinzical.util.sql.SQLConnection;
@@ -40,6 +41,10 @@ public final class SplashModel {
         INTERNATIONAL(),
         /** Leaderboard */
         LEADERBOARD(),
+        /** Customise menu */
+        CUSTOMISE(),
+        /** Opening menu */
+        OPENING_MENU(),
         /** SQL */
         SQL();
 
@@ -89,6 +94,12 @@ public final class SplashModel {
                 break;
             case LEADERBOARD:
                 _team.submit(() -> LeaderboardModel.getInstance().loadLeaderboard());
+                break;
+            case CUSTOMISE:
+                _team.submit(() -> ImageModel.getInstance().getImage());
+                break;
+            case OPENING_MENU:
+                _team.submit(() -> ImageModel.getInstance().postImage());
                 break;
             default:
                 break;

@@ -9,6 +9,8 @@ import quinzical.util.SceneManager.Scenes;
 import quinzical.util.api.ImageModel;
 import quinzical.util.JWTStore;
 import quinzical.util.models.LoginModel;
+import quinzical.util.models.SplashModel;
+import quinzical.util.models.SplashModel.Pages;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -57,7 +59,9 @@ public class OpeningMenuController {
         StarBackground.animate(_background1, _background2, _background3);
         new SheepBackground(_sheepPane);
 
-        Sheep currentSheep = ImageModel.getInstance().getImage();
+        ImageModel imageModel = ImageModel.getInstance();
+        imageModel.getImage();
+        Sheep currentSheep = imageModel.getSheep();
 
         if (currentSheep == null) {
             _sheep.setImage(new Image(Sheep.WHITE.getFilename()));
@@ -74,8 +78,8 @@ public class OpeningMenuController {
      */
     @FXML
     private void handleCustomiseButton(final ActionEvent event) {
-        _sceneManager.unloadScene();
-        _sceneManager.switchScene(Scenes.CUSTOMISE_MENU);
+        SplashModel.getInstance().setNextScene(Scenes.CUSTOMISE_MENU, Pages.CUSTOMISE);
+        _sceneManager.switchScene(SceneManager.Scenes.SPLASH_SCREEN);
     }
 
     /**
