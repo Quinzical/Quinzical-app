@@ -71,6 +71,9 @@ public final class StatsController {
     private void setCategoryChart() {
         try {
             List<BarChartItem> categories = _statsDB.getUserCategoryStats(_login.getUserID());
+            if (categories.size() == 0) {
+                return;
+            }
 
             // CHECKSTYLE:OFF
             Tile categoryChart = TileBuilder.create().skinType(Tile.SkinType.BAR_CHART).title("Category Answered")
@@ -92,7 +95,9 @@ public final class StatsController {
             List<GameStatsData> datas = _statsDB.getUserGameStats(_login.getUserID());
             List<ChartData> chartdatas = new ArrayList<ChartData>();
             int max = 0;
-            datas.remove(datas.size() - 1);
+            if (datas.size() > 0) {
+                datas.remove(datas.size() - 1);
+            }
 
             for (GameStatsData data : datas) {
                 if (data.getScore() > max) {
